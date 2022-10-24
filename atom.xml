@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-10-24T12:15:05.613Z</updated>
+  <updated>2022-10-24T14:08:40.041Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -21,36 +21,16 @@
     <link href="http://binbin0613.github.io/2022/102416107.html"/>
     <id>http://binbin0613.github.io/2022/102416107.html</id>
     <published>2022-10-24T07:52:23.665Z</published>
-    <updated>2022-10-24T12:15:05.613Z</updated>
+    <updated>2022-10-24T14:08:40.041Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;欢迎大家访问我的博客Binbin0613&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://binbin0613.github.io/2022/102316107.html"/>
-    <id>http://binbin0613.github.io/2022/102316107.html</id>
-    <published>2022-10-23T12:51:02.372Z</published>
-    <updated>2022-10-24T13:15:10.068Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h2 id=&quot;欢迎大家访问我的博客Binbin0613&quot;&gt;&lt;a href=&quot;#欢迎大家访问我的博客Binbin0613&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -61,7 +41,9 @@
     
     <category term="Binbin0613" scheme="http://binbin0613.github.io/tags/Binbin0613/"/>
     
-    <category term="日常" scheme="http://binbin0613.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="博客" scheme="http://binbin0613.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="实用小工具" scheme="http://binbin0613.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
