@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-10-24T07:53:52.540Z</updated>
+  <updated>2022-10-24T12:15:05.613Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://binbin0613.github.io/2022/102416107.html"/>
     <id>http://binbin0613.github.io/2022/102416107.html</id>
     <published>2022-10-24T07:52:23.665Z</published>
-    <updated>2022-10-24T07:53:52.540Z</updated>
+    <updated>2022-10-24T12:15:05.613Z</updated>
     
     
       
@@ -43,7 +43,7 @@
     <link href="http://binbin0613.github.io/2022/102316107.html"/>
     <id>http://binbin0613.github.io/2022/102316107.html</id>
     <published>2022-10-23T12:51:02.372Z</published>
-    <updated>2022-10-24T02:20:53.237Z</updated>
+    <updated>2022-10-24T12:22:00.736Z</updated>
     
     
       
@@ -56,6 +56,12 @@
     
     
     
+    <category term="博客介绍" scheme="http://binbin0613.github.io/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+    <category term="Binbin0613" scheme="http://binbin0613.github.io/tags/Binbin0613/"/>
+    
+    <category term="日常" scheme="http://binbin0613.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
