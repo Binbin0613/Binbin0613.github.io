@@ -47,4 +47,31 @@
     
   </entry>
   
+  <entry>
+    <title>Hello World</title>
+    <link href="http://binbin0613.github.io/2022/102316107.html"/>
+    <id>http://binbin0613.github.io/2022/102316107.html</id>
+    <published>2022-10-23T12:51:02.372Z</published>
+    <updated>2022-10-24T14:12:19.982Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="博客介绍" scheme="http://binbin0613.github.io/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/"/>
+    
+    
+    <category term="Binbin0613" scheme="http://binbin0613.github.io/tags/Binbin0613/"/>
+    
+    <category term="日常" scheme="http://binbin0613.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
 </feed>
