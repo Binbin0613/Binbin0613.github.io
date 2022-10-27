@@ -4,11 +4,51 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2022/10270.html"/>
+      <url>/2022/10270.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 搭建个人博客</title>
+      <link href="/2022/102516107.html"/>
+      <url>/2022/102516107.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="如你所见，您现在正在浏览的就是我使用Hexo框架搭建的个人博客"><a href="#如你所见，您现在正在浏览的就是我使用Hexo框架搭建的个人博客" class="headerlink" title="如你所见，您现在正在浏览的就是我使用Hexo框架搭建的个人博客"></a>如你所见，您现在正在浏览的就是我使用Hexo框架搭建的个人博客</h2><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><blockquote><p>在安装之前，你的电脑上应该已经安装了以下内容：</p><ul><li>Git: </li><li>node.js: Hexo框架运行的</li></ul></blockquote><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1、安装Git"><a href="#1、安装Git" class="headerlink" title="1、安装Git"></a>1、安装Git</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="2、安装Node-js"><a href="#2、安装Node-js" class="headerlink" title="2、安装Node.js"></a>2、安装Node.js</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="3、本地安装Hexo"><a href="#3、本地安装Hexo" class="headerlink" title="3、本地安装Hexo"></a>3、本地安装Hexo</h3><p>在安装完成Git和NodeJS之后，接下来就是本地下载Hexo，首先在本地创建一个Blog(名字任取)的文件夹，打开这个文件夹，鼠标右键使用git bash。</p><p>(1)使用命令安装Hexo</p><pre class=" language-bash"><code class="language-bash">$ hexo <span class="token function">install</span> -g hexo-cli</code></pre><p>(2)使用命令查看Hexo的版本信息</p><pre class=" language-bash"><code class="language-bash">$ hexo -v</code></pre><p>(3)安装完毕之后进行初始化，完成对自己博客项目的创建</p><pre class=" language-bash"><code class="language-bash">$ hexo init</code></pre><p>在安装完成的目录下，会存在以下目录：</p><blockquote><ul><li>node_modules: 依赖包</li><li>public: 存放生成的页面</li><li>scaffolds: 生成文章的一些模板</li><li>source: 用来你的文章</li><li>themes: 下载保存自己的主题，本主题<a href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a></li><li>_config.yml: 重点配置文件</li></ul></blockquote><p>(4)使用命令生成创建的页面</p><pre class=" language-bash"><code class="language-bash">$ hexo g</code></pre><p>(5)本地运行你的博客项目</p><pre class=" language-bash"><code class="language-bash">$ hexo s</code></pre><p>运行成功后，你会看到这样的界面<br><img src="/2022/102516107/hexoServer.png"></p><p>然后访问日志中的地址：localhost:4000</p><p>恭喜你，你的第一个博客系统搭建成功！</p><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="4、GitHub创建个人仓库"><a href="#4、GitHub创建个人仓库" class="headerlink" title="4、GitHub创建个人仓库"></a>4、GitHub创建个人仓库</h3><p>首先在Github上注册自己的账号，注册完成之后，完善各项账号的信息。<br>然后New Repository 命令为你为：[Github名].github.io<br>例如：我的github名称为Binbin0613, 我的博客仓库名为：Binbin0613.github.io (可以参考<a href="https://github.com/Binbin0613/Binbin0613.github.io">我的仓库</a>)</p><h3 id="5、将本地的Hexo部署上GitHub上"><a href="#5、将本地的Hexo部署上GitHub上" class="headerlink" title="5、将本地的Hexo部署上GitHub上"></a>5、将本地的Hexo部署上GitHub上</h3><p>在你完成Hexo初始化的地方(同第三步的位置)，输入命令，完成代码的上传</p><pre class=" language-bash"><code class="language-bash">$ hexo d</code></pre><p>执行到这一步之后，浏览器输入: [Github名].github.io 即可看到你的博客网站了</p><h3 id="6、发布文章"><a href="#6、发布文章" class="headerlink" title="6、发布文章"></a>6、发布文章</h3><p>至此你的博客项目就搭建好了，那么想要发布文章就需要接下来的几步了！</p><p>(1)、在： [:\BlogName\source_posts] 目录下创建自己想要发布文章的文件(所有的文章发布都是以markDown格式发布的)<br>你可以看到的是已经有一个名为Hello World.md的文件</p><p>(2)、文章中需要插入图片的话，首先找到_config.yml文件。</p><pre class=" language-yml"><code class="language-yml">post_asset_folder: true # 原来是false，将其设置为true</code></pre><p>与此同时，在[:\BlogName\source_posts] 目录下创建与文章同名的文件夹，然后将图片放入，若要在文章中引入，则直接使用相对路径的方式进行访问[.&#x2F;文章名&#x2F;XXX.png]，即可完成图片访问。</p><p>(3)、完成文章的编写后，使用下列命名进行缓存的清楚</p><pre class=" language-bash"><code class="language-bash">$ hexo clean</code></pre><p>(4)、使用下列命令完成博客的重新生成</p><pre class=" language-bash"><code class="language-bash">$ hexo g</code></pre><p>(5)、使用下列命令完成对博客项目的本地查看</p><pre class=" language-bash"><code class="language-bash">$ hexo s</code></pre><p>(6)、使用下列命令完成对博客项目的上传(至Github仓库)</p><pre class=" language-bash"><code class="language-bash">$ hexo d</code></pre></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客介绍 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Binbin0613 </tag>
+            
+            <tag> 日常 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Binbin0613</title>
       <link href="/2022/102416107.html"/>
       <url>/2022/102416107.html</url>
       
-        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="欢迎大家访问我的博客Binbin0613"><a href="#欢迎大家访问我的博客Binbin0613" class="headerlink" title="欢迎大家访问我的博客Binbin0613"></a><strong>欢迎大家访问我的博客<a href="Binbin0613.github.io">Binbin0613</a></strong></h2><h3 id="咳咳，首先做一个自我介绍"><a href="#咳咳，首先做一个自我介绍" class="headerlink" title="咳咳，首先做一个自我介绍"></a>咳咳，首先做一个自我介绍</h3><p>Bin，<a href="http://www.xhu.edu.cn/">XHU</a>软件工程本，<a href="https://sias.uestc.edu.cn/">UESTC</a>电子信息专硕，21岁大四在读身高170cm体重不说每天8点到23点待实验室周末无休还卡在毕设的码农一位！</p><blockquote><ul><li>爱好： 踢足球(大学基本没碰过&amp;#x1F605;)</li><li>学习方向： <a href="https://github.com/Binbin0613">REID</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">Search</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">JAVA</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">Vue</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">React</a></li></ul></blockquote><h3 id="大一，懵逼的我"><a href="#大一，懵逼的我" class="headerlink" title="大一，懵逼的我"></a>大一，懵逼的我</h3><h3 id="大二，懵逼的我"><a href="#大二，懵逼的我" class="headerlink" title="大二，懵逼的我"></a>大二，懵逼的我</h3><p><img src="/2022/102416107/avatar.jpg"></p><h4 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info:"></a>More Info:</h4><p>QQ：3474251879<br>WeChat: Ilovedaisysomuch<br>Email: <a href="mailto:&#x42;&#105;&#x6e;&#98;&#x69;&#x6e;&#x2e;&#x30;&#54;&#50;&#54;&#x40;&#102;&#x6f;&#120;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;">&#x42;&#105;&#x6e;&#98;&#x69;&#x6e;&#x2e;&#x30;&#54;&#50;&#54;&#x40;&#102;&#x6f;&#120;&#109;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a><br>Github: <a href="https://github.com/Binbin0613">https://github.com/Binbin0613</a><br>Sina: 基本上不玩，偶尔看看</p></font>]]></content>
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="欢迎大家访问我的博客Binbin0613"><a href="#欢迎大家访问我的博客Binbin0613" class="headerlink" title="欢迎大家访问我的博客Binbin0613"></a><strong>欢迎大家访问我的博客<a href="Binbin0613.github.io">Binbin0613</a></strong></h2><h3 id="咳咳，首先做一个自我介绍"><a href="#咳咳，首先做一个自我介绍" class="headerlink" title="咳咳，首先做一个自我介绍"></a>咳咳，首先做一个自我介绍</h3><p>Bin，<a href="http://www.xhu.edu.cn/">XHU</a>软件工程本，<a href="https://sias.uestc.edu.cn/">UESTC</a>电子信息专硕，21岁大四在读身高170cm体重不说每天8点到23点待实验室周末无休还卡在毕设的码农一位！</p><blockquote><ul><li>爱好： 踢足球(大学基本没碰过&amp;#x1F605;)</li><li>学习方向： <a href="https://github.com/Binbin0613">REID</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">Search</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">JAVA</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">Vue</a> &amp;nbsp;&amp;nbsp; <a href="https://github.com/Binbin0613">React</a></li></ul></blockquote><h3 id="大一，懵逼的我"><a href="#大一，懵逼的我" class="headerlink" title="大一，懵逼的我"></a>大一，懵逼的我</h3><h3 id="大二，懵逼的我"><a href="#大二，懵逼的我" class="headerlink" title="大二，懵逼的我"></a>大二，懵逼的我</h3><p><img src="/2022/102416107/avatar.jpg"></p><h4 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info:"></a>More Info:</h4><p>QQ：3474251879<br>WeChat: Ilovedaisysomuch<br>Email: <a href="mailto:&#66;&#x69;&#x6e;&#98;&#x69;&#x6e;&#46;&#x30;&#x36;&#x32;&#x36;&#x40;&#102;&#111;&#x78;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">&#66;&#x69;&#x6e;&#98;&#x69;&#x6e;&#46;&#x30;&#x36;&#x32;&#x36;&#x40;&#102;&#111;&#x78;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a><br>Github: <a href="https://github.com/Binbin0613">https://github.com/Binbin0613</a><br>Sina: 基本上不玩，偶尔看看</p></font>]]></content>
       
       
       <categories>
