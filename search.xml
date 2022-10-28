@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>图书管理系统1-创建Vue前端项目</title>
-      <link href="/2022/102716107.html"/>
-      <url>/2022/102716107.html</url>
+      <title>图书管理系统2-创建springboot后端项目</title>
+      <link href="/2022/102816107.html"/>
+      <url>/2022/102816107.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2><h3 id="一、创建springboot后端项目"><a class="header-anchor" href="#一、创建springboot后端项目">¶</a>一、创建springboot后端项目</h3><p>根据springboot官网或idea创建springboot项目，这不有手就行😅</p><h3 id="二、完成相关的配置"><a class="header-anchor" href="#二、完成相关的配置">¶</a>二、完成相关的配置</h3><p>(1)、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了</p><pre class=" language-language-xml"><code class="language-language-xml"><!--mysql驱动--><dependency>    <groupId>mysql</groupId>    <artifactId>mysql-connector-java</artifactId>    <version>5.1.47</version></dependency><!-- log4j日志 --><dependency>    <groupId>log4j</groupId>    <artifactId>log4j</artifactId>    <version>1.2.17</version></dependency><!-- lombok --><dependency>    <groupId>org.projectlombok</groupId>    <artifactId>lombok</artifactId>    <version>1.18.12</version></dependency></code></pre><p>(2)、springboot要运行起来，需要完成数据库的配置</p><pre class=" language-language-yml"><code class="language-language-yml">server:  port: 9090spring:  datasource:    driver-class-name: com.mysql.cj.jdbc.Driver    url: jdbc:mysql://localhost:3306/library-managment    username: root    password: "0613"</code></pre><pre class=" language-language-protityes"><code class="language-language-protityes">server.port=8080</code></pre><h3 id="三、完成springboot查出数据库当中的数据"><a class="header-anchor" href="#三、完成springboot查出数据库当中的数据">¶</a>三、完成springboot查出数据库当中的数据</h3><p>(1)、后端代码结构<br><img src="/2022/102816107/%E5%90%8E%E7%AB%AF%E7%BB%93%E6%9E%84.png" alt></p><p>(2)、数据库表结构及内容<br><img src="/2022/102816107/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84.png" alt></p><p>(3)、springboot相关代码</p><p>User实体类代码</p><pre class=" language-language-java"><code class="language-language-java">@Data@AllArgsConstructor@NoArgsConstructorpublic class User &#123;    private Integer id;    private String name;    private String username;    private Integer age;    private String sex;    private String phone;    private String address;&#125;</code></pre><p>UserController代码</p><pre class=" language-language-java"><code class="language-language-java">@RestController@RequestMapping("/user")@CrossOriginpublic class UserController &#123;    @Autowired    private IUserService userService;    @GetMapping("/list")    public List<User> getUserList()&#123;        return userService.getUsersList();    &#125;&#125;</code></pre><p>UserService代码</p><pre class=" language-language-java"><code class="language-language-java">public interface IUserService &#123;    List<User> getUsersList();&#125;</code></pre>]]></content>
       
       
       <categories>
@@ -20,9 +20,34 @@
       
         <tags>
             
-            <tag> SpringBoot </tag>
+            <tag> SpringBoot+vue </tag>
             
-            <tag> Vue </tag>
+            <tag> 前后端分离 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图书管理系统1-创建Vue前端项目</title>
+      <link href="/2022/102716107.html"/>
+      <url>/2022/102716107.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2><h3 id="一、创建Vue项目及安装依赖项"><a class="header-anchor" href="#一、创建Vue项目及安装依赖项">¶</a>一、创建Vue项目及安装依赖项</h3><p>(1)、使用下列命令安装/更新Vue-cli</p><pre class=" language-language-base"><code class="language-language-base">npm install -g @vue/cli# ORyarn global add @vue/cli</code></pre><p><a href="https://cli.vuejs.org/zh/guide/installation.html">vue-vli学习网站</a></p><p>(2)、使用下列命令安装Vue框架内容</p><pre class=" language-language-base"><code class="language-language-base">vue create [项目名]</code></pre><p>(3)、使用命令访问创建的项目内容</p><pre class=" language-language-base"><code class="language-language-base">vue run dev/serve</code></pre><p>(4)、前端项目当中使用Element-ui<br>官网：<a href="https://element.eleme.cn/#/zh-CN/guide/design">https://element.eleme.cn/#/zh-CN/guide/design</a></p><pre class=" language-language-bash"><code class="language-language-bash">npm i element-ui -S</code></pre><p>在vue前端项目当中使用</p><pre class=" language-language-javascript"><code class="language-language-javascript">// main.jsimport Vue from 'vue';import ElementUI from 'element-ui';import 'element-ui/lib/theme-chalk/index.css';import App from './App.vue';Vue.use(ElementUI);new Vue(&#123;  el: '#app',  render: h => h(App)&#125;);</code></pre><h3 id="二、几个小技巧"><a class="header-anchor" href="#二、几个小技巧">¶</a>二、几个小技巧</h3><p>(1)、通常情况下，原始的界面都会出现页面一小部分留白，我们可以编辑全局样式进行控制<br>a、在assets目录下创建global.css<br>b、在main.js当中进行引入：import “@/assets/global.css”</p><pre class=" language-language-css"><code class="language-language-css">body &#123;    margin: 0;    padding: 0;&#125;* &#123;    box-sizing: border-box; //消除掉盒子模型的内边距，通常是有一个像素的大小&#125;</code></pre><p>(2)、在IDEA编译器当中Add Configurations当中选择npm，找到执行的package.json文件，使用npm run serve命令</p><p><img src="/2022/102716107/IDEA%E4%BD%BF%E7%94%A8npm%E8%BF%90%E8%A1%8C%E7%AA%97%E5%8F%A3.png" alt></p><p>(3)、更新相关的系统icon<br>         阿里巴巴icon图标库： <a href="https://www.iconfont.cn/">https://www.iconfont.cn/</a></p><p>(4)、系统的框架的搭建<br>通常情况下，系统的页面都是分为[头部栏][左侧导航栏][中间主体部分]三个部分，我们就这三部分进行系统页面的划分<br>在创建好的vue前端项目当中，在app.vue文件当中完成三个部分的划分</p><p>a)、头部区域</p><pre class=" language-language-html"><code class="language-language-html"><!--头部区域--><!--    其中将整个头部区域设置height: 60px; line-height: 60px; 是确定内部的元素都是居中对齐的                        margin-bottom: 2px; 是头部与下列两部分之间存在一个2px的间隙    图片只设置宽度/高度中的一个  而不设置两个是为了不让logo失真    position: relative; 是让图片从其中脱离出来，自由定位--><div style="height: 60px; line-height: 60px; background-color: white; margin-bottom: 2px">    <img src="@/assets/logo.png" style="width: 40px; position: relative; top: 9px; left: 10px">    <span style="font-size: 20px; margin-left: 30px;">图书管理系统</span></div></code></pre><p>b)、主体区域</p><pre class=" language-language-html"><code class="language-language-html"><!--侧边栏和主体内容--><div style="display: flex">    <!--侧边栏导航位置-->    <div style="width: 200px; min-height: calc(100vh - 62px); overflow: hidden; margin-right: 2px; background-color: white">        <el-menu :default-active="$route.path" router class="el-menu-demo"  @select="handleSelect">            <el-menu-item index="/">                <i class="el-icon-s-home"></i>                <span>首页</span>            </el-menu-item>            <el-submenu index="2">                <template slot="title">                    <i class="el-icon-question"></i>                    <span>关于</span>                </template>                <el-menu-item index="/about">关于页面</el-menu-item>                <el-submenu index="2-4">                    <template slot="title">选项4</template>                    <el-menu-item index="2-4-1">选项1</el-menu-item>                    <el-menu-item index="2-4-2">选项2</el-menu-item>                    <el-menu-item index="2-4-3">选项3</el-menu-item>                </el-submenu>            </el-submenu>        </el-menu>    </div>    <!--主体数据区域-->    <div style="flex: 1; background-color: white">        <router-view/>    </div></div><!--    style="display: flex":                  确保下面的两个div是并排出现的 使用flex布局    min-height: calc(100vh - 62px):         将下面的主题区域撑满，并且要减去头部的大小(60 + 2)    index="/":                              在导航栏当中，index表示的就是跳转的路径，可以对应到router.js当中的path    <router-view/>:                         切换过程当中页面切换的部分，一个代替的部分，只需要放到主题数据区域即可--></code></pre><p>(5)、将elementUI中的各类组件的大小进行配置</p><pre class=" language-language-javascript"><code class="language-language-javascript">Vue.use(ElementUI, &#123;size: 'mini'&#125;); // 配置elementui的样式大小 medium small mini</code></pre></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前后端分离web系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot+vue </tag>
             
             <tag> 前后端分离 </tag>
             

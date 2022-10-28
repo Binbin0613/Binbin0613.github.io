@@ -3,9 +3,17 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="图书管理系统1-创建Vue前端项目, Software Engineer">
-    <meta name="description" content="">
+    <meta name="description" content="
+¶Quick Start
+¶一、创建Vue项目及安装依赖项
+(1)、使用下列命令安装/更新Vue-cli
+npm install -g @vue/cli
+# OR
+yarn global add @vue/cli
+
+vue-vli学习网站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -52,12 +60,12 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Binbin0613" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Binbin0613" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -364,12 +372,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringBoot/">
-                                <span class="chip bg-color">SpringBoot</span>
-                            </a>
-                        
-                            <a href="/tags/Vue/">
-                                <span class="chip bg-color">Vue</span>
+                            <a href="/tags/SpringBoot-vue/">
+                                <span class="chip bg-color">SpringBoot+vue</span>
                             </a>
                         
                             <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
@@ -404,14 +408,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-27
+                    2022-10-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    460
                 </div>
                 
 
@@ -438,7 +442,115 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <font face="Times New Roman, 楷体">
+<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
+<h3 id="一、创建Vue项目及安装依赖项"><a class="header-anchor" href="#一、创建Vue项目及安装依赖项">¶</a>一、创建Vue项目及安装依赖项</h3>
+<p>(1)、使用下列命令安装/更新Vue-cli</p>
+<pre class=" language-language-base"><code class="language-language-base">npm install -g @vue/cli
+# OR
+yarn global add @vue/cli
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/installation.html">vue-vli学习网站</a></p>
+<p>(2)、使用下列命令安装Vue框架内容</p>
+<pre class=" language-language-base"><code class="language-language-base">vue create [项目名]
+</code></pre>
+<p>(3)、使用命令访问创建的项目内容</p>
+<pre class=" language-language-base"><code class="language-language-base">vue run dev/serve
+</code></pre>
+<p>(4)、前端项目当中使用Element-ui<br>
+官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/guide/design">https://element.eleme.cn/#/zh-CN/guide/design</a></p>
+<pre class=" language-language-bash"><code class="language-language-bash">npm i element-ui -S
+</code></pre>
+<p>在vue前端项目当中使用</p>
+<pre class=" language-language-javascript"><code class="language-language-javascript">// main.js
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import App from './App.vue';
+
+Vue.use(ElementUI);
+
+new Vue(&#123;
+  el: '#app',
+  render: h => h(App)
+&#125;);
+</code></pre>
+<h3 id="二、几个小技巧"><a class="header-anchor" href="#二、几个小技巧">¶</a>二、几个小技巧</h3>
+<p>(1)、通常情况下，原始的界面都会出现页面一小部分留白，我们可以编辑全局样式进行控制<br>
+a、在assets目录下创建global.css<br>
+b、在main.js当中进行引入：import “@/assets/global.css”</p>
+<pre class=" language-language-css"><code class="language-language-css">body &#123;
+    margin: 0;
+    padding: 0;
+&#125;
+* &#123;
+    box-sizing: border-box; //消除掉盒子模型的内边距，通常是有一个像素的大小
+&#125;
+</code></pre>
+<p>(2)、在IDEA编译器当中Add Configurations当中选择npm，找到执行的package.json文件，使用npm run serve命令</p>
+<p><img src="/2022/102716107/IDEA%E4%BD%BF%E7%94%A8npm%E8%BF%90%E8%A1%8C%E7%AA%97%E5%8F%A3.png" alt></p>
+<p>(3)、更新相关的系统icon<br>
+         阿里巴巴icon图标库： <a target="_blank" rel="noopener" href="https://www.iconfont.cn/">https://www.iconfont.cn/</a></p>
+<p>(4)、系统的框架的搭建<br>
+通常情况下，系统的页面都是分为[头部栏][左侧导航栏][中间主体部分]三个部分，我们就这三部分进行系统页面的划分<br>
+在创建好的vue前端项目当中，在app.vue文件当中完成三个部分的划分</p>
+<p>a)、头部区域</p>
+<pre class=" language-language-html"><code class="language-language-html"><!--头部区域-->
+<!--
+    其中将整个头部区域设置height: 60px; line-height: 60px; 是确定内部的元素都是居中对齐的
+                        margin-bottom: 2px; 是头部与下列两部分之间存在一个2px的间隙
+
+    图片只设置宽度/高度中的一个  而不设置两个是为了不让logo失真
+    position: relative; 是让图片从其中脱离出来，自由定位
+-->
+<div style="height: 60px; line-height: 60px; background-color: white; margin-bottom: 2px">
+    <img src="@/assets/logo.png" style="width: 40px; position: relative; top: 9px; left: 10px">
+    <span style="font-size: 20px; margin-left: 30px;">图书管理系统</span>
+</div>
+</code></pre>
+<p>b)、主体区域</p>
+<pre class=" language-language-html"><code class="language-language-html"><!--侧边栏和主体内容-->
+<div style="display: flex">
+    <!--侧边栏导航位置-->
+    <div style="width: 200px; min-height: calc(100vh - 62px); overflow: hidden; margin-right: 2px; background-color: white">
+        <el-menu :default-active="$route.path" router class="el-menu-demo"  @select="handleSelect">
+            <el-menu-item index="/">
+                <i class="el-icon-s-home"></i>
+                <span>首页</span>
+            </el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">
+                    <i class="el-icon-question"></i>
+                    <span>关于</span>
+                </template>
+                <el-menu-item index="/about">关于页面</el-menu-item>
+                <el-submenu index="2-4">
+                    <template slot="title">选项4</template>
+                    <el-menu-item index="2-4-1">选项1</el-menu-item>
+                    <el-menu-item index="2-4-2">选项2</el-menu-item>
+                    <el-menu-item index="2-4-3">选项3</el-menu-item>
+                </el-submenu>
+            </el-submenu>
+        </el-menu>
+    </div>
+
+    <!--主体数据区域-->
+    <div style="flex: 1; background-color: white">
+        <router-view/>
+    </div>
+</div>
+
+<!--
+    style="display: flex":                  确保下面的两个div是并排出现的 使用flex布局
+    min-height: calc(100vh - 62px):         将下面的主题区域撑满，并且要减去头部的大小(60 + 2)
+    index="/":                              在导航栏当中，index表示的就是跳转的路径，可以对应到router.js当中的path
+    <router-view/>:                         切换过程当中页面切换的部分，一个代替的部分，只需要放到主题数据区域即可
+-->
+</code></pre>
+<p>(5)、将elementUI中的各类组件的大小进行配置</p>
+<pre class=" language-language-javascript"><code class="language-language-javascript">Vue.use(ElementUI, &#123;size: 'mini'&#125;); // 配置elementui的样式大小 medium small mini
+</code></pre>
+</font>
                 
             </div>
             <hr/>
@@ -502,12 +614,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringBoot/">
-                                    <span class="chip bg-color">SpringBoot</span>
-                                </a>
-                            
-                                <a href="/tags/Vue/">
-                                    <span class="chip bg-color">Vue</span>
+                                <a href="/tags/SpringBoot-vue/">
+                                    <span class="chip bg-color">SpringBoot+vue</span>
                                 </a>
                             
                                 <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
@@ -590,18 +698,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/102716107.html">
+                <a href="/2022/102816107.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="图书管理系统2-创建springboot后端项目">
                         
-                        <span class="card-title">图书管理系统1-创建Vue前端项目</span>
+                        <span class="card-title">图书管理系统2-创建springboot后端项目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -611,9 +718,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-28
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -626,16 +733,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
-                    </a>
-                    
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/SpringBoot-vue/">
+                        <span class="chip bg-color">SpringBoot+vue</span>
                     </a>
                     
                     <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
@@ -1201,7 +1303,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>
