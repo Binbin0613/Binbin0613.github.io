@@ -4,12 +4,16 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="图书管理系统2-创建springboot后端项目, Software Engineer">
-    <meta name="description" content="¶Quick Start
-¶一、创建springboot后端项目
-根据springboot官网或idea创建springboot项目，这不有手就行😅
-¶二、完成相关的配置
-¶(1)、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行">
+    <meta name="keywords" content="图书管理系统3-实现分页查询的功能, Software Engineer">
+    <meta name="description" content="
+¶Quick Start
+¶一、后端完成相关的配置
+¶(1)、安装pageHelper的依赖
+
+    com.github.pagehelper
+    pagehelper-spring-boot-starter
+    1.4.5
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +25,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>图书管理系统2-创建springboot后端项目 | Binbin0613</title>
+    <title>图书管理系统3-实现分页查询的功能 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -339,12 +343,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">图书管理系统2-创建springboot后端项目</h1>
+                    <h1 class="description center-align post-title">图书管理系统3-实现分页查询的功能</h1>
                 </div>
             </div>
         </div>
@@ -404,21 +408,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-28
+                    2022-10-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    770
+                    359
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -438,87 +442,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
-<h3 id="一、创建springboot后端项目"><a class="header-anchor" href="#一、创建springboot后端项目">¶</a>一、创建springboot后端项目</h3>
-<p>根据springboot官网或idea创建springboot项目，这不有手就行😅</p>
-<h3 id="二、完成相关的配置"><a class="header-anchor" href="#二、完成相关的配置">¶</a>二、完成相关的配置</h3>
-<h5 id="1-、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了"><a class="header-anchor" href="#1-、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了">¶</a>(1)、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了</h5>
-<pre class=" language-language-xml"><code class="language-language-xml"><!--mysql驱动-->
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.47</version>
-</dependency>
-
-<!-- log4j日志 -->
-<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-</dependency>
-
-<!-- lombok -->
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.12</version>
+                <font face="Times New Roman, 楷体">
+<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
+<h3 id="一、后端完成相关的配置"><a class="header-anchor" href="#一、后端完成相关的配置">¶</a>一、后端完成相关的配置</h3>
+<h5 id="1-、安装pageHelper的依赖"><a class="header-anchor" href="#1-、安装pageHelper的依赖">¶</a>(1)、安装pageHelper的依赖</h5>
+<pre class=" language-language-xml"><code class="language-language-xml"><dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.4.5</version>
 </dependency>
 </code></pre>
-<h5 id="2-、springboot要运行起来，需要完成数据库的配置"><a class="header-anchor" href="#2-、springboot要运行起来，需要完成数据库的配置">¶</a>(2)、springboot要运行起来，需要完成数据库的配置</h5>
-<pre class=" language-language-yml"><code class="language-language-yml">server:
-  port: 9090
-
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/library-managment
-    username: root
-    password: "0613"
-</code></pre>
-<pre class=" language-language-protityes"><code class="language-language-protityes">server.port=8080
-
-</code></pre>
-<h3 id="三、完成springboot查出数据库当中的数据"><a class="header-anchor" href="#三、完成springboot查出数据库当中的数据">¶</a>三、完成springboot查出数据库当中的数据</h3>
-<h5 id="1-、后端代码结构"><a class="header-anchor" href="#1-、后端代码结构">¶</a>(1)、后端代码结构</h5>
-<p><img src="/2022/102816107/%E5%90%8E%E7%AB%AF%E7%BB%93%E6%9E%84.png" alt></p>
-<h5 id="2-、数据库表结构及内容"><a class="header-anchor" href="#2-、数据库表结构及内容">¶</a>(2)、数据库表结构及内容</h5>
-<p><img src="/2022/102816107/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84.png" alt></p>
-<h5 id="3-、springboot相关代码"><a class="header-anchor" href="#3-、springboot相关代码">¶</a>(3)、springboot相关代码</h5>
-<p>User实体类代码</p>
-<pre class=" language-language-java"><code class="language-language-java">@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class User &#123;
-    private Integer id;
-    private String name;
-    private String username;
-    private Integer age;
-    private String sex;
-    private String phone;
-    private String address;
+<p><img src="/2022/102816108/pageHelper%E4%BE%9D%E8%B5%96.png" alt></p>
+<h5 id="2-、相关代码"><a class="header-anchor" href="#2-、相关代码">¶</a>(2)、相关代码</h5>
+<p>UserController:</p>
+<pre class=" language-language-java"><code class="language-language-java">// 编写分页查询的功能
+@GetMapping("/page")
+public Result UserPage(UserPageRequest userPageRequest)&#123;
+    return Result.success(userService.getUserPage(userPageRequest));
 &#125;
 </code></pre>
-<p>UserController代码</p>
-<pre class=" language-language-java"><code class="language-language-java">@RestController
-@RequestMapping("/user")
-@CrossOrigin
-public class UserController &#123;
-
-    @Autowired
-    private IUserService userService;
-
-    @GetMapping("/list")
-    public List<User> getUserList()&#123;
-        return userService.getUsersList();
-    &#125;
-&#125;
-</code></pre>
-<p>UserService代码</p>
+<p>UserService:</p>
 <pre class=" language-language-java"><code class="language-language-java">public interface IUserService &#123;
     List<User> getUsersList();
+
+    // 分页查询user
+    Object getUserPage(UserPageRequest userPageRequest);
 &#125;
 </code></pre>
-<p>UserServiceImpl</p>
+<p>UserServiceImpl:</p>
 <pre class=" language-language-java"><code class="language-language-java">@Service
 public class UserServiceImpl implements IUserService &#123;
 
@@ -529,138 +480,78 @@ public class UserServiceImpl implements IUserService &#123;
     public List<User> getUsersList() &#123;
         return userMapper.UsersList();
     &#125;
-&#125;
-</code></pre>
-<h5 id="4-、启动项目，在http-localhost-9090-user-list"><a class="header-anchor" href="#4-、启动项目，在http-localhost-9090-user-list">¶</a>(4)、启动项目，在http://localhost:9090/user/list</h5>
-<p>在浏览器中即可看到如下内容：<br>
-<img src="/2022/102816107/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
-<h5 id="5-、前端使用fetch完成数据的转化"><a class="header-anchor" href="#5-、前端使用fetch完成数据的转化">¶</a>(5)、前端使用fetch完成数据的转化</h5>
-<pre class=" language-language-javascript"><code class="language-language-javascript">fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;
-        console.log(res);
-        this.tableData = res;
-      &#125;)
-</code></pre>
-<p>前端效果如图:<br>
-<img src="/2022/102816107/%E5%89%8D%E7%AB%AF%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
-<h5 id="6-、使用mybatis：-https-mybatis-net-cn"><a class="header-anchor" href="#6-、使用mybatis：-https-mybatis-net-cn">¶</a>(6)、使用mybatis： <a target="_blank" rel="noopener" href="https://mybatis.net.cn/">https://mybatis.net.cn/</a></h5>
-<p>在resources目录下创建一个mapper的目录，创建User.xml，编写SQL语句</p>
-<pre class=" language-language-xml"><code class="language-language-xml"><?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.bin.library_back.mapper.UserMapper">
-
-    <select id="UsersList" resultType="com.bin.library_back.entity.User">
-        select * from user
-    </select>
-
-</mapper>
-
-</code></pre>
-<p>其次在配置文件当中编写mybatis的配置</p>
-<pre class=" language-language-yml"><code class="language-language-yml"># 定义mapper的路径
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-</code></pre>
-<p>完成上述相同的测试效果</p>
-<h5 id="7-、统一返回结果Result-java"><a class="header-anchor" href="#7-、统一返回结果Result-java">¶</a>(7)、统一返回结果Result.java</h5>
-<pre class=" language-language-java"><code class="language-language-java">@Data
-public class Result &#123;
-    private static final String SUCCESS_CODE = "200";
-    private static final String ERROR_CODE = "-1";
-
-    private String code;
-    private Object data;
-    private String msg;
-
-    // 返回成功或者失败的方法
-    public static Result success()&#123;
-        Result result = new Result();
-        result.setCode(SUCCESS_CODE);
-        return result;
-    &#125;
-    public static Result success(Object data)&#123;
-        Result result = new Result();
-        result.setCode(SUCCESS_CODE);
-        result.setData(data);
-        return result;
-    &#125;
-    public static Result error(String msg)&#123;
-        Result result = new Result();
-        result.setCode(ERROR_CODE);
-        result.setMsg(msg);
-        return result;
+    // 分页查询以及条件查询
+    @Override
+    public Object getUserPage(UserPageRequest userPageRequest) &#123;
+        // 再将参数进行传递到mapper当中进行模糊查询 重点！！！！！！！！！！！！！！！！！！！！！
+        PageHelper.startPage(userPageRequest.getPageNum(), userPageRequest.getPageSize());
+        List<User> users = userMapper.selectUserByCondition(userPageRequest);
+        return new PageInfo<>(users);
     &#125;
 &#125;
-
 </code></pre>
-<h5 id="8-、解决跨域问题（最简单：在Controller的方法上加上-CrossOrigin的注解）"><a class="header-anchor" href="#8-、解决跨域问题（最简单：在Controller的方法上加上-CrossOrigin的注解）">¶</a>(8)、解决跨域问题（最简单：在Controller的方法上加上@CrossOrigin的注解）</h5>
-<pre class=" language-language-java"><code class="language-language-java">@CrossOrigin
+<p>UserMapper:</p>
+<pre class=" language-language-java"><code class="language-language-java">@Mapper
+public interface UserMapper &#123;
+
+//    @Select("select * from user")
+    List<User> UsersList();
+
+    // 通过参数进行条件查询：并且返回分页的效果
+    List<User> selectUserByCondition(UserPageRequest userPageRequest);
+&#125;
 </code></pre>
-<h3 id="四、完成前后端对接"><a class="header-anchor" href="#四、完成前后端对接">¶</a>四、完成前后端对接</h3>
-<p>前端项目当中编写一个utils方法：request.js</p>
-<pre class=" language-language-javascript"><code class="language-language-javascript">import axios from 'axios'
-import router from "@/router";
-import Cookies from 'js-cookie'
+<p>User.xml:</p>
+<p><img src="/2022/102816108/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2xml.png" alt></p>
+<h3 id="二、前端代码"><a class="header-anchor" href="#二、前端代码">¶</a>二、前端代码</h3>
+<h5 id="1-、分页插件的代码"><a class="header-anchor" href="#1-、分页插件的代码">¶</a>(1)、分页插件的代码</h5>
+<p><img src="/2022/102816108/%E5%89%8D%E7%AB%AF%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6.png" alt></p>
+<h5 id="2-、处理变化函数的代码"><a class="header-anchor" href="#2-、处理变化函数的代码">¶</a>(2)、处理变化函数的代码</h5>
+<pre class=" language-language-javascript"><code class="language-language-javascript">load()&#123;
+    // fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;
+    //   console.log(res);
+    //   this.tableData = res;
+    // &#125;)
 
-const request = axios.create(&#123;
-    baseURL: 'http://localhost:9090',
-    timeout: 5000
-&#125;)
-
-// request 拦截器
-// 可以自请求发送前对请求做一些处理
-// 比如统一加token，对请求参数统一加密
-request.interceptors.request.use(config => &#123;
-    config.headers['Content-Type'] = 'application/json;charset=utf-8';
-
-    const adminJson = Cookies.get('admin')
-    if (adminJson) &#123;
-        // 设置请求头
-        config.headers['token'] = JSON.parse(adminJson).token
-    &#125;
-    return config
-&#125;, error => &#123;
-    return Promise.reject(error)
-&#125;);
-
-// response 拦截器
-// 可以在接口响应后统一处理结果
-request.interceptors.response.use(
-    response => &#123;
-        let res = response.data;
-        // 兼容服务端返回的字符串数据
-        if (typeof res === 'string') &#123;
-            res = res ? JSON.parse(res) : res
+    request.get("/user/page", &#123;
+        params: this.params
+        &#125;).then(res => &#123;
+        if(res.code === '200')&#123;
+            this.tableData = res.data.list;
+            this.total = res.data.total;
         &#125;
-        if (res.code === '401') &#123;
-            router.push('/login')
-        &#125;
-        return res;
-    &#125;,
-    error => &#123;
-        console.log('err' + error) // for debug
-        return Promise.reject(error)
+    &#125;)
+&#125;,
+
+// 重置函数：将各种参数置为初始值后重新加载
+reset()&#123;
+    this.params = &#123;
+    name: '',
+    phone: '',
+    pageSize: 10,
+    pageNum: 1
     &#125;
-)
+    this.load();
+&#125;,
 
-export default request
-
+// 分页条件的监视函数
+handleSizeChange(pageSize)&#123;
+    // console.log("多少条每页发生变化");
+    // console.log(pageSize);
+    this.params.pageSize = pageSize;
+    this.load();
+&#125;,
+handleCurrentChange(pageNum)&#123;
+    // console.log("前往第几页发生变化");
+    // console.log(pageNum);
+    this.params.pageNum = pageNum;
+    this.load();
+&#125;
 </code></pre>
-<p>在vue代码当中完成请求后端的接口</p>
-<pre class=" language-language-javascript"><code class="language-language-javascript">import request from "../utils/request";
-
-request.get("/user/page", &#123;
-    params: this.params
-    &#125;).then(res => &#123;
-    if(res.code === '200')&#123;
-        this.tableData = res.data.list;
-        this.total = res.data.total;
-    &#125;
-&#125;)
-</code></pre>
-
+<p><img src="/2022/102816108/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Y4y1N7Sw/?p=4&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程</a></p>
+</font>
                 
             </div>
             <hr/>
@@ -686,7 +577,7 @@ request.get("/user/page", &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2022/102816107.html">http://Binbin0613.github.io/2022/102816107.html</a>
+                    <a href="http://Binbin0613.github.io/2022/102816108.html">http://Binbin0613.github.io/2022/102816108.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -808,9 +699,10 @@ request.get("/user/page", &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/102816108.html">
                     <div class="card-image">
@@ -828,9 +720,9 @@ request.get("/user/page", &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -843,6 +735,7 @@ request.get("/user/page", &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -865,13 +758,13 @@ request.get("/user/page", &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/102716107.html">
+                <a href="/2022/102816107.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="图书管理系统2-创建springboot后端项目">
                         
-                        <span class="card-title">图书管理系统1-创建Vue前端项目</span>
+                        <span class="card-title">图书管理系统2-创建springboot后端项目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -882,7 +775,7 @@ request.get("/user/page", &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-28
                             </span>
                         <span class="publish-author">
                             
