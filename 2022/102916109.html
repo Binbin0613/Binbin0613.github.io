@@ -4,16 +4,17 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="图书管理系统3-实现分页查询的功能, Software Engineer">
+    <meta name="keywords" content="图书管理系统4-表单验证及正则表达式, Software Engineer">
     <meta name="description" content="
 ¶Quick Start
-¶一、后端完成相关的配置
-¶(1)、安装pageHelper的依赖
+¶一、表单验证代码
+¶(1)、前端代码
 
-    com.github.pagehelper
-    pagehelper-spring-boot-starter
-    1.4.5
-">
+¶(2)、前端逻辑代码
+import request from &#34;../../utils/request&#34;;
+
+export default &amp;#123;
+    nam">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +26,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>图书管理系统3-实现分页查询的功能 | Binbin0613</title>
+    <title>图书管理系统4-表单验证及正则表达式 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -343,12 +344,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">图书管理系统3-实现分页查询的功能</h1>
+                    <h1 class="description center-align post-title">图书管理系统4-表单验证及正则表达式</h1>
                 </div>
             </div>
         </div>
@@ -372,12 +373,20 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">实用小工具</span>
+                            </a>
+                        
                             <a href="/tags/SpringBoot-vue/">
                                 <span class="chip bg-color">SpringBoot+vue</span>
                             </a>
                         
                             <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
                                 <span class="chip bg-color">前后端分离</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                <span class="chip bg-color">正则表达式</span>
                             </a>
                         
                     </div>
@@ -401,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-28
+                    2022-10-29
                 </div>
                 
 
@@ -415,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    359
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    9 分
                 </div>
                 
 
@@ -444,113 +453,205 @@
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
 <h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
-<h3 id="一、后端完成相关的配置"><a class="header-anchor" href="#一、后端完成相关的配置">¶</a>一、后端完成相关的配置</h3>
-<h5 id="1-、安装pageHelper的依赖"><a class="header-anchor" href="#1-、安装pageHelper的依赖">¶</a>(1)、安装pageHelper的依赖</h5>
-<pre class=" language-language-xml"><code class="language-language-xml"><dependency>
-    <groupId>com.github.pagehelper</groupId>
-    <artifactId>pagehelper-spring-boot-starter</artifactId>
-    <version>1.4.5</version>
-</dependency>
-</code></pre>
-<p><img src="/2022/102816108/pageHelper%E4%BE%9D%E8%B5%96.png" alt></p>
-<h5 id="2-、相关代码"><a class="header-anchor" href="#2-、相关代码">¶</a>(2)、相关代码</h5>
-<p>UserController:</p>
-<pre class=" language-language-java"><code class="language-language-java">// 编写分页查询的功能
-@GetMapping("/page")
-public Result UserPage(UserPageRequest userPageRequest)&#123;
-    return Result.success(userService.getUserPage(userPageRequest));
-&#125;
-</code></pre>
-<p>UserService:</p>
-<pre class=" language-language-java"><code class="language-language-java">public interface IUserService &#123;
-    List<User> getUsersList();
+<h3 id="一、表单验证代码"><a class="header-anchor" href="#一、表单验证代码">¶</a>一、表单验证代码</h3>
+<h5 id="1-、前端代码"><a class="header-anchor" href="#1-、前端代码">¶</a>(1)、前端代码</h5>
+<p><img src="/2022/102916109/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81html%E4%BB%A3%E7%A0%81.png" alt></p>
+<h5 id="2-、前端逻辑代码"><a class="header-anchor" href="#2-、前端逻辑代码">¶</a>(2)、前端逻辑代码</h5>
+<pre class=" language-language-javascript"><code class="language-language-javascript">import request from "../../utils/request";
 
-    // 分页查询user
-    Object getUserPage(UserPageRequest userPageRequest);
-&#125;
-</code></pre>
-<p>UserServiceImpl:</p>
-<pre class=" language-language-java"><code class="language-language-java">@Service
-public class UserServiceImpl implements IUserService &#123;
-
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public List<User> getUsersList() &#123;
-        return userMapper.UsersList();
-    &#125;
-
-    // 分页查询以及条件查询
-    @Override
-    public Object getUserPage(UserPageRequest userPageRequest) &#123;
-        // 再将参数进行传递到mapper当中进行模糊查询 重点！！！！！！！！！！！！！！！！！！！！！
-        PageHelper.startPage(userPageRequest.getPageNum(), userPageRequest.getPageSize());
-        List<User> users = userMapper.selectUserByCondition(userPageRequest);
-        return new PageInfo<>(users);
-    &#125;
-&#125;
-</code></pre>
-<p>UserMapper:</p>
-<pre class=" language-language-java"><code class="language-language-java">@Mapper
-public interface UserMapper &#123;
-
-//    @Select("select * from user")
-    List<User> UsersList();
-
-    // 通过参数进行条件查询：并且返回分页的效果
-    List<User> selectUserByCondition(UserPageRequest userPageRequest);
-&#125;
-</code></pre>
-<p>User.xml:</p>
-<p><img src="/2022/102816108/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2xml.png" alt></p>
-<h3 id="二、前端代码"><a class="header-anchor" href="#二、前端代码">¶</a>二、前端代码</h3>
-<h5 id="1-、分页插件的代码"><a class="header-anchor" href="#1-、分页插件的代码">¶</a>(1)、分页插件的代码</h5>
-<p><img src="/2022/102816108/%E5%89%8D%E7%AB%AF%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6.png" alt></p>
-<h5 id="2-、处理变化函数的代码"><a class="header-anchor" href="#2-、处理变化函数的代码">¶</a>(2)、处理变化函数的代码</h5>
-<pre class=" language-language-javascript"><code class="language-language-javascript">load()&#123;
-    // fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;
-    //   console.log(res);
-    //   this.tableData = res;
-    // &#125;)
-
-    request.get("/user/page", &#123;
-        params: this.params
-        &#125;).then(res => &#123;
-        if(res.code === '200')&#123;
-            this.tableData = res.data.list;
-            this.total = res.data.total;
+export default &#123;
+    name: "addAdmin",
+    data()&#123;
+        //////////////////////////////////// 自定义表单校验规则 //////////////////////////////////
+        const checkAge = (rule, value, callback) => &#123;
+            if (!value) &#123;
+                return callback(new Error('年龄不能为空'));
+            &#125;
+            // 验证是数字
+            if (!/^[0-9]*$/.test(value)) &#123;
+                callback(new Error('请输入数字值'));
+            &#125;
+            // 验证是合理的范围
+            if(parseInt(value) > 120 || parseInt(value) < 0)&#123;
+                callback(new Error('请输入合理的年龄范围'));
+            &#125;
+            callback();
+        &#125;;
+        const checkPhone = (rule, value, callback) => &#123;
+            if(!/^[1][3,4,5,6,7,8,9][0-9]&#123;9&#125;$/.test(value))&#123;
+                callback(new Error('请输入正确的手机号'));
+            &#125;
+            callback();
+        &#125;;
+        //////////////////////////////////// 自定义表单校验规则 //////////////////////////////////
+        return &#123;
+            addAdminForm: &#123;
+                username: '',
+                email: '',
+                phone: ''
+            &#125;,
+            addAdminRules: &#123;
+                // 与表单的prop属性相对应
+                name:[
+                    &#123;required:true, message:'请输入姓名', trigger:'blur'&#125;
+                ],
+                age:[
+                    &#123; validator: checkAge, trigger: 'blur' &#125;
+                ],
+                phone:[
+                    &#123; validator: checkPhone, trigger: 'blur' &#125;
+                ]
+            &#125;
         &#125;
-    &#125;)
-&#125;,
-
-// 重置函数：将各种参数置为初始值后重新加载
-reset()&#123;
-    this.params = &#123;
-    name: '',
-    phone: '',
-    pageSize: 10,
-    pageNum: 1
+    &#125;,
+    methods: &#123;
+        submit()&#123;
+            this.$refs['addUserRef'].validate((valid) => &#123;
+                request.post("/admin/save", this.addAdminForm).then(res => &#123;
+                    if(res.code === '200')&#123;
+                        this.$notify.success('添加成功');
+                        this.addAdminForm = &#123;&#125;;
+                    &#125;else&#123;
+                        this.$notify.error(res.msg)
+                    &#125;
+                &#125;)
+            &#125;)
+        &#125;
     &#125;
-    this.load();
-&#125;,
-
-// 分页条件的监视函数
-handleSizeChange(pageSize)&#123;
-    // console.log("多少条每页发生变化");
-    // console.log(pageSize);
-    this.params.pageSize = pageSize;
-    this.load();
-&#125;,
-handleCurrentChange(pageNum)&#123;
-    // console.log("前往第几页发生变化");
-    // console.log(pageNum);
-    this.params.pageNum = pageNum;
-    this.load();
 &#125;
+
 </code></pre>
-<p><img src="/2022/102816108/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Y4y1N7Sw/?p=4&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/form">官网案例</a></p>
+<h3 id="二、相关的正则表达式"><a class="header-anchor" href="#二、相关的正则表达式">¶</a>二、相关的正则表达式</h3>
+<pre class=" language-language-javascript"><code class="language-language-javascript">语法：
+	1) //:在js中表示一个正则表达式  var regExp =/......./
+	2)^:匹配字符串的开头位置
+	    $:匹配字符串的结束位置
+	3）[] 匹配指定字符串中的以为字符
+	4）&#123;&#125; 匹配字数   例：&#123;m，n&#125;  匹配M到n次
+	5）特殊符号：
+		\d  匹配一位数字，相当于[0-9]
+		\D 匹配以为非数字
+		\w 匹配所有的字符，包括数字 字母 下划线
+		\W 匹配费字符  ，处理字母 数字 下划线之外的字符
+		* 匹配0次或者多次  相当于[0，]
+		+ 匹配1次或者多次 相当于[1，]
+		？ 匹配0次或者1次，相当于[0，1]
+
+
+1. 数字：^[0-9]*$
+ 
+2. n位的数字：^\d&#123;n&#125;$
+ 
+3. 至少n位的数字：^\d&#123;n,&#125;$
+ 
+4. m-n位的数字：^\d&#123;m,n&#125;$
+ 
+5. 零和非零开头的数字：^(0|[1-9][0-9]*)$
+ 
+6. 非零开头的最多带两位小数的数字：^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$
+ 
+7. 带1-2位小数的正数或负数：^(\-)?\d+(\.\d&#123;1,2&#125;)?$
+ 
+8. 正数、负数、和小数：^(\-|\+)?\d+(\.\d+)?$
+ 
+9. 有两位小数的正实数：^[0-9]+(.[0-9]&#123;2&#125;)?$
+ 
+10. 有1~3位小数的正实数：^[0-9]+(.[0-9]&#123;1,3&#125;)?$
+ 
+11. 非零的正整数：^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$
+ 
+12. 非零的负整数：^\-[1-9][]0-9"*$ 或 ^-[1-9]\d*$
+
+13. 非负整数：^(([1-9]\d*)|0)$
+
+14. 非正整数：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$
+
+15. 非负浮点数：^\d+(\.\d+)?$ 或 ^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$
+
+16. 非正浮点数：^((-\d+(\.\d+)?)|(0+(\.0+)?))$ 或 ^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$
+
+17. 正浮点数：^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$ 或 ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|
+([0-9]*[1-9][0-9]*))$
+
+18. 负浮点数：^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$ 或 ^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$
+
+19. 浮点数：^(-?\d+)(\.\d+)?$ 或 ^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$
+
+
+
+二、校验字符的表达式
+ 
+1. 汉字：^[\u4e00-\u9fa5]&#123;0,&#125;$
+2. 英文和数字：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]&#123;4,40&#125;$
+3. 长度为3-20的所有字符：^.&#123;3,20&#125;$
+4. 由26个英文字母组成的字符串：^[A-Za-z]+$
+5. 由26个大写英文字母组成的字符串：^[A-Z]+$
+6. 由26个小写英文字母组成的字符串：^[a-z]+$
+7. 由数字和26个英文字母组成的字符串：^[A-Za-z0-9]+$
+8. 由数字、26个英文字母或者下划线组成的字符串：^\w+$ 或 ^\w&#123;3,20&#125;$
+9. 中文、英文、数字包括下划线：^[\u4E00-\u9FA5A-Za-z0-9_]+$
+10. 中文、英文、数字但不包括下划线等符号：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;$
+11. 可以输入含有^%&',;=?$\"等字符：[^%&',;=?$\x22]+ 12 禁止输入含有~的字符：[^~\x22]+
+
+
+三、特殊需求表达式
+1. Email地址：^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+2. 域名：[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(/.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+/.?
+3. InternetURL：[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$
+4. 手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d&#123;8&#125;$
+5. 电话号码("XXX-XXXXXXX"、"XXXX-XXXXXXXX"、"XXX-XXXXXXX"、"XXX-XXXXXXXX"、"XXXXXXX"和"XXXXXXXX)：^(\(\d&#123;3,4&#125;-)|\d&#123;3.4&#125;-)?\d&#123;7,8&#125;$
+ 
+6. 国内电话号码(0511-4405222、021-87888822)：\d&#123;3&#125;-\d&#123;8&#125;|\d&#123;4&#125;-\d&#123;7&#125;
+7. 身份证号(15位、18位数字)：^\d&#123;15&#125;|\d&#123;18&#125;$
+8. 短身份证号码(数字、字母x结尾)：^([0-9])&#123;7,18&#125;(x|X)?$ 或 ^\d&#123;8,18&#125;|[0-9x]&#123;8,18&#125;|[0-9X]&#123;8,18&#125;?$
+9. 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$
+10. 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：^[a-zA-Z]\w&#123;5,17&#125;$
+11. 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$
+12. 日期格式：^\d&#123;4&#125;-\d&#123;1,2&#125;-\d&#123;1,2&#125;
+13. 一年的12个月(01～09和1～12)：^(0?[1-9]|1[0-2])$
+14. 一个月的31天(01～09和1～31)：^((0?[1-9])|((1|2)[0-9])|30|31)$
+15. 钱的输入格式：
+16. 1.有四种钱的表示形式我们可以接受:"10000.00" 和 "10,000.00", 和没有 "分" 的 "10000" 和 "10,000"：^[1-9][0-9]*$
+ 
+17. 2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符"0"不通过,所以我们采用下面的形式：^(0|[1-9][0-9]*)$
+ 
+18. 3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：^(0|-?[1-9][0-9]*)$
+ 
+19. 4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：^[0-9]+(.[0-9]+)?$
+ 
+20. 5.必须说明的是,小数点后面至少应该有1位数,所以"10."是不通过的,但是 "10" 和 "10.2" 是通过的：^[0-9]+(.[0-9]&#123;2&#125;)?$
+ 
+21. 6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：^[0-9]+(.[0-9]&#123;1,2&#125;)?$
+ 
+22. 7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：^[0-9]&#123;1,3&#125;(,[0-9]&#123;3&#125;)*(.[0-9]&#123;1,2&#125;)?$
+ 
+23 8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：^([0-9]+|[0-9]&#123;1,3&#125;(,[0-9]&#123;3&#125;)*)(.[0-9]&#123;1,2&#125;)?$
+ 
+24. 备注：这就是最终结果了,别忘了"+"可以用"*"替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里
+ 
+25. xml文件：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$
+ 
+26. 中文字符的正则表达式：[\u4e00-\u9fa5]
+ 
+27. 双字节字符：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))
+ 
+28. 空白行的正则表达式：\n\s*\r (可以用来删除空白行)
+ 
+29. HTML标记的正则表达式：<(\S*?)[^>]*>.*?</\1>|<.*? /> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)
+ 
+30. 首尾空白字符的正则表达式：^\s*|\s*$或(^\s*)|(\s*$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)
+ 
+31. 腾讯QQ号：[1-9][0-9]&#123;4,&#125; (腾讯QQ号从10000开始)
+ 
+32. 中国邮政编码：[1-9]\d&#123;5&#125;(?!\d) (中国邮政编码为6位数字)
+ 
+33. IP地址：\d+\.\d+\.\d+\.\d+ (提取IP地址时有用)
+ 
+34. IP地址：((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.)&#123;3&#125;(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))
+
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">正则表达式语法</a></p>
 </font>
                 
             </div>
@@ -577,7 +678,7 @@ handleCurrentChange(pageNum)&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2022/102816108.html">http://Binbin0613.github.io/2022/102816108.html</a>
+                    <a href="http://Binbin0613.github.io/2022/102916109.html">http://Binbin0613.github.io/2022/102916109.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -615,12 +716,20 @@ handleCurrentChange(pageNum)&#123;
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">实用小工具</span>
+                                </a>
+                            
                                 <a href="/tags/SpringBoot-vue/">
                                     <span class="chip bg-color">SpringBoot+vue</span>
                                 </a>
                             
                                 <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
                                     <span class="chip bg-color">前后端分离</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                                    <span class="chip bg-color">正则表达式</span>
                                 </a>
                             
                         </div>
@@ -703,13 +812,13 @@ handleCurrentChange(pageNum)&#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/102916109.html">
+                <a href="/2022/103116110.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="图书管理系统4-表单验证及正则表达式">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="图书管理系统5-登录系统的逻辑">
                         
-                        <span class="card-title">图书管理系统4-表单验证及正则表达式</span>
+                        <span class="card-title">图书管理系统5-登录系统的逻辑</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -720,7 +829,7 @@ handleCurrentChange(pageNum)&#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-31
                         </span>
                         <span class="publish-author">
                             
@@ -764,13 +873,13 @@ handleCurrentChange(pageNum)&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/102816107.html">
+                <a href="/2022/102816108.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="图书管理系统2-创建springboot后端项目">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="图书管理系统3-实现分页查询的功能">
                         
-                        <span class="card-title">图书管理系统2-创建springboot后端项目</span>
+                        <span class="card-title">图书管理系统3-实现分页查询的功能</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
