@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-10-31T13:15:28.554Z</updated>
+  <updated>2022-11-04T12:27:40.619Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>reID基础知识1-行人重识别定义及过程</title>
+    <link href="http://binbin0613.github.io/2022/110416112.html"/>
+    <id>http://binbin0613.github.io/2022/110416112.html</id>
+    <published>2022-11-04T12:20:08.324Z</published>
+    <updated>2022-11-04T12:27:40.619Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h2 id=&quot;登录&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#登录&quot;&gt;¶&lt;/a&gt;登录&lt;/h2&gt;
+&lt;h3 id=&quot;一、&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="reID" scheme="http://binbin0613.github.io/categories/reID/"/>
+    
+    
+    <category term="行人重识别" scheme="http://binbin0613.github.io/tags/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB/"/>
+    
+    <category term="reId" scheme="http://binbin0613.github.io/tags/reId/"/>
+    
+    <category term="科研er" scheme="http://binbin0613.github.io/tags/%E7%A7%91%E7%A0%94er/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>神经网络基础-线性函数&amp;损失函数</title>
+    <link href="http://binbin0613.github.io/2022/110116112.html"/>
+    <id>http://binbin0613.github.io/2022/110116112.html</id>
+    <published>2022-11-01T07:29:58.897Z</published>
+    <updated>2022-11-01T07:58:28.371Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h2 id=&quot;登录&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#登录&quot;&gt;¶&lt;/a&gt;登录&lt;/h2&gt;
+&lt;h3 id=&quot;一、&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="神经网络学习" scheme="http://binbin0613.github.io/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="神经网络基础" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>图书管理系统6-springboot系统中三层架构的分析</title>
