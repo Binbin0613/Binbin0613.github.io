@@ -6,9 +6,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="reID基础知识1-行人重识别定义及过程, Software Engineer">
     <meta name="description" content="
-¶登录
-¶一、
-">
+¶reID: Person re-identification
+¶一、reID要做什么？
+
+
+在多摄像头的复杂环境当中，快速的定位查找指定的目标的所有结果
+
+
+in other words：给定一个照片，我们需要在复杂的环境当中找到最匹配">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,7 +419,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3
+                    413
                 </div>
                 
 
@@ -442,8 +447,45 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="登录"><a class="header-anchor" href="#登录">¶</a>登录</h2>
-<h3 id="一、"><a class="header-anchor" href="#一、">¶</a>一、</h3>
+<h2 id="reID-Person-re-identification"><a class="header-anchor" href="#reID-Person-re-identification">¶</a>reID: Person re-identification</h2>
+<h3 id="一、reID要做什么？"><a class="header-anchor" href="#一、reID要做什么？">¶</a>一、reID要做什么？</h3>
+<blockquote>
+<ul>
+<li>在多摄像头的复杂环境当中，快速的定位查找指定的目标的所有结果</li>
+</ul>
+</blockquote>
+<p>in other words：给定一个照片，我们需要在复杂的环境当中找到最匹配这张照片的若干个结果！</p>
+<h3 id="二、行人重识别是什么？"><a class="header-anchor" href="#二、行人重识别是什么？">¶</a>二、行人重识别是什么？</h3>
+<p>行人识别：是将图像当中的行人找到<br>
+行人重识别：输入一张图像，然后在众多的摄像头所截取的图像当中获取具备输入图像特征的若干张行人图像<br>
+一般而言：我们会将该输入图像进行特征提取获取其特征图（例如：1024维的特征向量/图），然后再将图像库当中的数据也全部转化为1024维的特征向量/图，最后通过计算他们之间的相似度，来判别最后那些图像是我需要寻找的。<br>
+<img src="/2022/110416113/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E5%9B%BE.png" alt></p>
+<h3 id="三、行人重识别的应用场景"><a class="header-anchor" href="#三、行人重识别的应用场景">¶</a>三、行人重识别的应用场景</h3>
+<blockquote>
+<ul>
+<li>手机相册分类（有些是人脸识别，有些是人的特征）</li>
+<li>人机交互</li>
+<li>智能超市</li>
+<li>一分钟我要她的所有信息</li>
+</ul>
+</blockquote>
+<p><img src="/2022/110416113/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E7%9A%84%E8%83%8C%E6%99%AF.png" alt></p>
+<p>一句话： 我们进行重识别，其根本的方法就是<font color="#0000FF">相似度的匹配</font></p>
+<h3 id="四、行人重识别领域当中存在的挑战"><a class="header-anchor" href="#四、行人重识别领域当中存在的挑战">¶</a>四、行人重识别领域当中存在的挑战</h3>
+<blockquote>
+<ul>
+<li>由于行人存在于图像当中，检测的过程当中截取出来的行人像素较低</li>
+<li>不同于人脸识别，人脸所存在的干扰非常少，而行人包括：肢体，背景，环境，衣着等的影响</li>
+<li></li>
+</ul>
+</blockquote>
+<p><img src="/2022/110416113/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E5%AD%98%E5%9C%A8%E7%9A%84%E6%8C%91%E6%88%98.png" alt></p>
+<p>牛逼的地方：<br>
+<a target="_blank" rel="noopener" href="https://research.megvii.com/">旷视研究院</a><br>
+<a href>AAAI</a><br>
+<a href>CVPR</a></p>
+<p>课件地址: (E:\DeepLearning\REID\RGA)</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1eW4y1h7SZ?p=2&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">课程地址</a></p>
 </font>
                 
             </div>
@@ -470,7 +512,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2022/110416112.html">http://Binbin0613.github.io/2022/110416112.html</a>
+                    <a href="http://Binbin0613.github.io/2022/110416113.html">http://Binbin0613.github.io/2022/110416113.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,7 +643,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/110416112.html">
+                <a href="/2022/110416113.html">
                     <div class="card-image">
                         
                         
