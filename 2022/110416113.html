@@ -412,21 +412,21 @@ in other words：给定一个照片，我们需要在复杂的环境当中找到
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-04
+                    2022-11-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    413
+                    812
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -476,10 +476,41 @@ in other words：给定一个照片，我们需要在复杂的环境当中找到
 <ul>
 <li>由于行人存在于图像当中，检测的过程当中截取出来的行人像素较低</li>
 <li>不同于人脸识别，人脸所存在的干扰非常少，而行人包括：肢体，背景，环境，衣着等的影响</li>
-<li></li>
+<li>使用到的数据集量比较低，校园数据集一般而言都是1000人、10000图片左右</li>
 </ul>
 </blockquote>
 <p><img src="/2022/110416113/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E5%AD%98%E5%9C%A8%E7%9A%84%E6%8C%91%E6%88%98.png" alt></p>
+<blockquote>
+<ul>
+<li>分辨率较低</li>
+<li>行人肢体受到遮挡</li>
+<li>不同视角下的图像，对比起来较为困难</li>
+<li>不同视角下的图像，光照条件可能不同</li>
+<li>视觉模糊</li>
+</ul>
+</blockquote>
+<p>目前研究所存在的问题：<font color="#00FF00">跨域问题</font>，就是在测试环境当中是<font color="#FF0000">state-of-the-art</font>，放到各种复杂的环境当中效果蹭蹭往下掉！公开的数据集都是学校的数据集！</p>
+<h4 id="论文当中常用的数据集"><a class="header-anchor" href="#论文当中常用的数据集">¶</a>论文当中常用的数据集</h4>
+<blockquote>
+<ul>
+<li>CUHK03: 香港中文大学(CUHK)校园</li>
+<li>Market-1501: 清华大学校园</li>
+<li>DukeMTMC: 8个摄像机</li>
+<li>MSMIT17：12个室外和3个室内（校园）</li>
+</ul>
+</blockquote>
+<p><img src="/2022/110416113/%E6%A0%A1%E5%9B%AD%E6%95%B0%E6%8D%AE%E9%9B%86.png" alt></p>
+<h3 id="五、行人重识别效果的评估标准"><a class="header-anchor" href="#五、行人重识别效果的评估标准">¶</a>五、行人重识别效果的评估标准</h3>
+<p>评估标准：基本上所有论文都是提出两个概念： <font color="#FF0000">rank1</font>      <font color="#FF0000">map</font></p>
+<h4 id="rank1-返回结果的一系列图像当中，rank1表示第一章结果正确"><a class="header-anchor" href="#rank1-返回结果的一系列图像当中，rank1表示第一章结果正确">¶</a>rank1: 返回结果的一系列图像当中，rank1表示第一章结果正确</h4>
+<h4 id="map-计算ap-average-presicion-的平均值"><a class="header-anchor" href="#map-计算ap-average-presicion-的平均值">¶</a>map: 计算ap(average presicion)的平均值</h4>
+<p><img src="/2022/110416113/map%E7%9A%84%E8%AE%A1%E7%AE%971.png" alt></p>
+<p>通俗的计算： ap(average presicion) = 1/1 + 2/3 + 3/6 + 4/9 + 5/10<br>
+分子为：每一个正确的图片所应该存放的位置<br>
+分母为：识别的正确的结果(橙色)在识别的结果当中的位置<br>
+map = ap/n  (上述案例n=5)</p>
+<p>分析：如果识别的所有结果均在正确的位置上，也就是说，识别出来的第一张最相似，第二张次之，以此类推，那么ap = 1/1 + 2/2 + 3/3 + 4/4 +5/5 = 1, map = ap/5 = 1。即map值越接近于1，越能够证明识别的效果好！</p>
+<p><img src="/2022/110416113/map%E7%9A%84%E8%AE%A1%E7%AE%972.png" alt></p>
 <p>牛逼的地方：<br>
 <a target="_blank" rel="noopener" href="https://research.megvii.com/">旷视研究院</a><br>
 <a href>AAAI</a><br>
