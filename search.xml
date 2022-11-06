@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>模型/代码/论文/资源 地址汇总</title>
+      <link href="/2022/110616115.html"/>
+      <url>/2022/110616115.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="一、模型"><a class="header-anchor" href="#一、模型">¶</a>一、模型</h2><pre><code>模型本地存放地址：</code></pre><h3 id="1、ResNet相关预训练模型下载地址"><a class="header-anchor" href="#1、ResNet相关预训练模型下载地址">¶</a>1、ResNet相关预训练模型下载地址</h3><pre class=" language-language-python"><code class="language-language-python">model_urls = &#123;    'resnet18': 'https://download.pytorch.org/models/resnet18-f37072fd.pth',    'resnet34': 'https://download.pytorch.org/models/resnet34-b627a593.pth',    'resnet50': 'https://download.pytorch.org/models/resnet50-0676ba61.pth',    'resnet101': 'https://download.pytorch.org/models/resnet101-63fe2227.pth',    'resnet152': 'https://download.pytorch.org/models/resnet152-394f9c45.pth',    'resnext50_32x4d': 'https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth',    'resnext101_32x8d': 'https://download.pytorch.org/models/resnext101_32x8d-8ba56ff5.pth',    'wide_resnet50_2': 'https://download.pytorch.org/models/wide_resnet50_2-95faca4d.pth',    'wide_resnet101_2': 'https://download.pytorch.org/models/wide_resnet101_2-32ee1156.pth',&#125;</code></pre><p>两种载入方式：</p><pre class=" language-language-python"><code class="language-language-python">    # methold1：    # model = torchvision.models.resnet152(pretrained=True)     # methold2：    model=torchvision.models.resnet152()    model.load_state_dict(torch.load('./resnet152-394f9c45.pth'))</code></pre><h2 id="二、代码"><a class="header-anchor" href="#二、代码">¶</a>二、代码</h2><h4 id="1、reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020"><a class="header-anchor" href="#1、reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020">¶</a>1、reID: Relation-Aware Global Attention for Person Re-identification(CVPR2020)</h4><p><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_Relation-Aware_Global_Attention_for_Person_Re-Identification_CVPR_2020_paper.pdf">论文地址</a><br><a href="https://github.com/microsoft/Relation-Aware-Global-Attention-Networks">github地址</a><br><a href="https://www.bilibili.com/video/BV1eW4y1h7SZ?p=9&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程地址</a><br>本机代码地址： [E:\DeepLearning\REID\RGA\Relation Network for Person Re-identification\githubCode]</p><h2 id="三、论文"><a class="header-anchor" href="#三、论文">¶</a>三、论文</h2><h4 id="1、reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020-v2"><a class="header-anchor" href="#1、reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020-v2">¶</a>1、<a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_Relation-Aware_Global_Attention_for_Person_Re-Identification_CVPR_2020_paper.pdf">reID: Relation-Aware Global Attention for Person Re-identification(CVPR2020)</a></h4><h2 id="四、其他资源"><a class="header-anchor" href="#四、其他资源">¶</a>四、其他资源</h2></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> 资源 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 资源 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>reID论文-Relation_Aware_Global_Attention_for_Person_Re-identification(CVPR2020)</title>
+      <link href="/2022/110616114.html"/>
+      <url>/2022/110616114.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020"><a class="header-anchor" href="#reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020">¶</a>reID: Relation-Aware Global Attention for Person Re-identification(CVPR2020)</h2><p><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhang_Relation-Aware_Global_Attention_for_Person_Re-Identification_CVPR_2020_paper.pdf">论文地址</a></p><p><a href="https://github.com/microsoft/Relation-Aware-Global-Attention-Networks">github地址</a></p><p><a href="https://www.bilibili.com/video/BV1eW4y1h7SZ?p=9&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程地址</a></p><h3 id="一、模型图解读"><a class="header-anchor" href="#一、模型图解读">¶</a>一、模型图解读</h3><p><img src="/2022/110616114/%E5%9F%BA%E4%BA%8E%E7%A9%BA%E9%97%B4%E5%92%8Cchannel%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6.png" alt></p><p>图a: 空间注意力机制的提取：得到特征图之后，一个维度上进行特征的运算<br>图b: 空间注意力机制的提取：得到特征图之后，一个channel上进行特征的运算</p><p>整体思想：通过提取图像的特征图，从特征图上来看，本文的两个创新点在于：</p><p>1、对应图a，从一个channel出发，一张图像[H * W]的所有特征点可以并不是全部都是行人的特征(存在部分背景因素),因此我们需要将特征点进行权重的划分，即获取一个大小为[H * W]的权重数组，再与特征图进行相乘。<br>2、对应图b，从不同的channel出发，我们并不是需要对每一个channel通道进行运算，而是根据通道之间的权重进行计算，因此我们计算出不同通道的权重[c],最后与特征图的通道相乘。<br>注：以上的两个操作过程相似，只是从两个不同的维度出发的！</p><p>模型结构：<br>图a：<br>        1、将图像的特征图embedding成一个通道的立体图(原始特征图的特征)-----&gt;保留原始的特征图信息</p><p>        2、计算[H * W]当中两两特征点之间的关系，reshape成一个[H * W]的特征</p><p>        3、为什么有两个？-----&gt; 一个计算的是我与另外一个特征点的关系，一个是另外一个特征点与我的关系(他们之间的关系是不一样的，可以试着理解理解)</p><p>        4、最后将上述的三个特征图进行组装拼接，即：Relation-aware Feature</p><p>        5、最后将Relation-aware Feature做一个卷积操作，提取出每一个特征点位置上的权重值，及大小为[H * W]的权重数组Spatial Attention</p><p>图b: 几乎同上(获取通道的权重数组)</p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> reID </category>
+          
+          <category> reID论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 行人重识别 </tag>
+            
+            <tag> reId </tag>
+            
+            <tag> 科研er </tag>
+            
+            <tag> 论文 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>reID基础知识1-行人重识别定义及过程</title>
       <link href="/2022/110416113.html"/>
       <url>/2022/110416113.html</url>
