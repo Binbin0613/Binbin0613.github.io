@@ -9,11 +9,9 @@
 ¶Quick Start
 ¶一、后端完成相关的配置
 ¶(1)、安装pageHelper的依赖
-
-    com.github.pagehelper
-    pagehelper-spring-boot-starter
-    1.4.5
-">
+&amp;lt;dependency&gt;
+    &amp;lt;groupId&gt;com.github.pagehelper&amp;lt;/groupId&gt;
+    &amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -61,7 +59,7 @@
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Binbin0613" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -343,7 +341,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/113.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -415,7 +413,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    359
+                    386
                 </div>
                 
 
@@ -437,6 +435,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -446,109 +447,103 @@
 <h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
 <h3 id="一、后端完成相关的配置"><a class="header-anchor" href="#一、后端完成相关的配置">¶</a>一、后端完成相关的配置</h3>
 <h5 id="1-、安装pageHelper的依赖"><a class="header-anchor" href="#1-、安装pageHelper的依赖">¶</a>(1)、安装pageHelper的依赖</h5>
-<pre class=" language-language-xml"><code class="language-language-xml"><dependency>
-    <groupId>com.github.pagehelper</groupId>
-    <artifactId>pagehelper-spring-boot-starter</artifactId>
-    <version>1.4.5</version>
-</dependency>
-</code></pre>
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.github.pagehelper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>pagehelper-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.4.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
 <p><img src="/2022/102816108/pageHelper%E4%BE%9D%E8%B5%96.png" alt></p>
 <h5 id="2-、相关代码"><a class="header-anchor" href="#2-、相关代码">¶</a>(2)、相关代码</h5>
 <p>UserController:</p>
-<pre class=" language-language-java"><code class="language-language-java">// 编写分页查询的功能
-@GetMapping("/page")
-public Result UserPage(UserPageRequest userPageRequest)&#123;
-    return Result.success(userService.getUserPage(userPageRequest));
-&#125;
-</code></pre>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">// 编写分页查询的功能</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/page"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token class-name">UserPage</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>userService<span class="token punctuation">.</span><span class="token function">getUserPage</span><span class="token punctuation">(</span>userPageRequest<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserService:</p>
-<pre class=" language-language-java"><code class="language-language-java">public interface IUserService &#123;
-    List<User> getUsersList();
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // 分页查询user
-    Object getUserPage(UserPageRequest userPageRequest);
-&#125;
-</code></pre>
+    <span class="token comment">// 分页查询user</span>
+    <span class="token class-name">Object</span> <span class="token function">getUserPage</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserServiceImpl:</p>
-<pre class=" language-language-java"><code class="language-language-java">@Service
-public class UserServiceImpl implements IUserService &#123;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
 
-    @Autowired
-    private UserMapper userMapper;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">UserMapper</span> userMapper<span class="token punctuation">;</span>
 
-    @Override
-    public List<User> getUsersList() &#123;
-        return userMapper.UsersList();
-    &#125;
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name"><span class="token namespace">userMapper<span class="token punctuation">.</span></span>UsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    // 分页查询以及条件查询
-    @Override
-    public Object getUserPage(UserPageRequest userPageRequest) &#123;
-        // 再将参数进行传递到mapper当中进行模糊查询 重点！！！！！！！！！！！！！！！！！！！！！
-        PageHelper.startPage(userPageRequest.getPageNum(), userPageRequest.getPageSize());
-        List<User> users = userMapper.selectUserByCondition(userPageRequest);
-        return new PageInfo<>(users);
-    &#125;
-&#125;
-</code></pre>
+    <span class="token comment">// 分页查询以及条件查询</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">getUserPage</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 再将参数进行传递到mapper当中进行模糊查询 重点！！！！！！！！！！！！！！！！！！！！！</span>
+        <span class="token class-name">PageHelper</span><span class="token punctuation">.</span><span class="token function">startPage</span><span class="token punctuation">(</span>userPageRequest<span class="token punctuation">.</span><span class="token function">getPageNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> userPageRequest<span class="token punctuation">.</span><span class="token function">getPageSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> users <span class="token operator">=</span> userMapper<span class="token punctuation">.</span><span class="token function">selectUserByCondition</span><span class="token punctuation">(</span>userPageRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>users<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserMapper:</p>
-<pre class=" language-language-java"><code class="language-language-java">@Mapper
-public interface UserMapper &#123;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
 
-//    @Select("select * from user")
-    List<User> UsersList();
+<span class="token comment">//    @Select("select * from user")</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token class-name">UsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // 通过参数进行条件查询：并且返回分页的效果
-    List<User> selectUserByCondition(UserPageRequest userPageRequest);
-&#125;
-</code></pre>
+    <span class="token comment">// 通过参数进行条件查询：并且返回分页的效果</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">selectUserByCondition</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>User.xml:</p>
 <p><img src="/2022/102816108/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2xml.png" alt></p>
 <h3 id="二、前端代码"><a class="header-anchor" href="#二、前端代码">¶</a>二、前端代码</h3>
 <h5 id="1-、分页插件的代码"><a class="header-anchor" href="#1-、分页插件的代码">¶</a>(1)、分页插件的代码</h5>
 <p><img src="/2022/102816108/%E5%89%8D%E7%AB%AF%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6.png" alt></p>
 <h5 id="2-、处理变化函数的代码"><a class="header-anchor" href="#2-、处理变化函数的代码">¶</a>(2)、处理变化函数的代码</h5>
-<pre class=" language-language-javascript"><code class="language-language-javascript">load()&#123;
-    // fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;
-    //   console.log(res);
-    //   this.tableData = res;
-    // &#125;)
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;</span>
+    <span class="token comment">//   console.log(res);</span>
+    <span class="token comment">//   this.tableData = res;</span>
+    <span class="token comment">// &#125;)</span>
 
-    request.get("/user/page", &#123;
-        params: this.params
-        &#125;).then(res => &#123;
-        if(res.code === '200')&#123;
-            this.tableData = res.data.list;
-            this.total = res.data.total;
-        &#125;
-    &#125;)
-&#125;,
+    request<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/user/page"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+        <span class="token literal-property property">params</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>params
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token string">'200'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>tableData <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>list<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>total <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>total<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
 
-// 重置函数：将各种参数置为初始值后重新加载
-reset()&#123;
-    this.params = &#123;
-    name: '',
-    phone: '',
-    pageSize: 10,
-    pageNum: 1
-    &#125;
-    this.load();
-&#125;,
+<span class="token comment">// 重置函数：将各种参数置为初始值后重新加载</span>
+<span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>params <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">pageSize</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">pageNum</span><span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
 
-// 分页条件的监视函数
-handleSizeChange(pageSize)&#123;
-    // console.log("多少条每页发生变化");
-    // console.log(pageSize);
-    this.params.pageSize = pageSize;
-    this.load();
-&#125;,
-handleCurrentChange(pageNum)&#123;
-    // console.log("前往第几页发生变化");
-    // console.log(pageNum);
-    this.params.pageNum = pageNum;
-    this.load();
-&#125;
-</code></pre>
+<span class="token comment">// 分页条件的监视函数</span>
+<span class="token function">handleSizeChange</span><span class="token punctuation">(</span><span class="token parameter">pageSize</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// console.log("多少条每页发生变化");</span>
+    <span class="token comment">// console.log(pageSize);</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>params<span class="token punctuation">.</span>pageSize <span class="token operator">=</span> pageSize<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token function">handleCurrentChange</span><span class="token punctuation">(</span><span class="token parameter">pageNum</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token comment">// console.log("前往第几页发生变化");</span>
+    <span class="token comment">// console.log(pageNum);</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>params<span class="token punctuation">.</span>pageNum <span class="token operator">=</span> pageNum<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p><img src="/2022/102816108/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Y4y1N7Sw/?p=4&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程</a></p>
 </font>
@@ -707,7 +702,7 @@ handleCurrentChange(pageNum)&#123;
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="图书管理系统4-表单验证及正则表达式">
+                        <img src="/medias/featureimages/127.jpg" class="responsive-img" alt="图书管理系统4-表单验证及正则表达式">
                         
                         <span class="card-title">图书管理系统4-表单验证及正则表达式</span>
                     </div>
@@ -768,7 +763,7 @@ handleCurrentChange(pageNum)&#123;
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="图书管理系统2-创建springboot后端项目">
+                        <img src="/medias/featureimages/186.jpg" class="responsive-img" alt="图书管理系统2-创建springboot后端项目">
                         
                         <span class="card-title">图书管理系统2-创建springboot后端项目</span>
                     </div>
@@ -858,6 +853,9 @@ handleCurrentChange(pageNum)&#123;
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

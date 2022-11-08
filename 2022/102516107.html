@@ -55,7 +55,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Binbin0613" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -337,7 +337,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/115.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -435,6 +435,9 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -460,14 +463,11 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 <h3 id="3、本地安装Hexo"><a class="header-anchor" href="#3、本地安装Hexo">¶</a>3、本地安装Hexo</h3>
 <p>在安装完成Git和NodeJS之后，接下来就是本地下载Hexo，首先在本地创建一个Blog(名字任取)的文件夹，打开这个文件夹，鼠标右键使用git bash。</p>
 <p>(1)使用命令安装Hexo</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo install -g hexo-cli
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo <span class="token function">install</span> <span class="token parameter variable">-g</span> hexo-cli</code></pre>
 <p>(2)使用命令查看Hexo的版本信息</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo -v
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo <span class="token parameter variable">-v</span></code></pre>
 <p>(3)安装完毕之后进行初始化，完成对自己博客项目的创建</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo init
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo init</code></pre>
 <p>在安装完成的目录下，会存在以下目录：</p>
 <blockquote>
 <ul>
@@ -480,14 +480,11 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 </ul>
 </blockquote>
 <p>(4)使用命令生成创建的页面</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo g
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo g</code></pre>
 <p>(5)本地运行你的博客项目</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo s
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo s</code></pre>
 <p>运行成功后，你会看到如下提示</p>
-<pre class=" language-language-bash"><code class="language-language-bash">Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop. 
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">Hexo is running at http://localhost:4000/ <span class="token builtin class-name">.</span> Press Ctrl+C to stop. </code></pre>
 <p>然后访问日志中的地址：localhost:4000</p>
 <p>恭喜你，你的第一个博客系统搭建成功！</p>
 <h3 id="4、GitHub创建个人仓库"><a class="header-anchor" href="#4、GitHub创建个人仓库">¶</a>4、GitHub创建个人仓库</h3>
@@ -496,29 +493,23 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 例如：我的github名称为Binbin0613, 我的博客仓库名为：<a href="http://Binbin0613.github.io">Binbin0613.github.io</a> (可以参考<a target="_blank" rel="noopener" href="https://github.com/Binbin0613/Binbin0613.github.io">我的仓库</a>)</p>
 <h3 id="5、将本地的Hexo部署上GitHub上"><a class="header-anchor" href="#5、将本地的Hexo部署上GitHub上">¶</a>5、将本地的Hexo部署上GitHub上</h3>
 <p>在你完成Hexo初始化的地方(同第三步的位置)，输入命令，完成代码的上传</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo d
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo d</code></pre>
 <p>执行到这一步之后，浏览器输入: [Github名].github.io 即可看到你的博客网站了</p>
 <h3 id="6、发布文章"><a class="header-anchor" href="#6、发布文章">¶</a>6、发布文章</h3>
 <p>至此你的博客项目就搭建好了，那么想要发布文章就需要接下来的几步了！</p>
 <p>(1)、在： [:\BlogName\source_posts] 目录下创建自己想要发布文章的文件(所有的文章发布都是以markDown格式发布的)<br>
 你可以看到的是已经有一个名为Hello World.md的文件</p>
 <p>(2)、文章中需要插入图片的话，首先找到_config.yml文件。</p>
-<pre class=" language-language-yml"><code class="language-language-yml">post_asset_folder: true # 原来是false，将其设置为true
-</code></pre>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">post_asset_folder</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> <span class="token comment"># 原来是false，将其设置为true</span></code></pre>
 <p>与此同时，在[:\BlogName\source_posts] 目录下创建与文章同名的文件夹，然后将图片放入，若要在文章中引入，则直接使用相对路径的方式进行访问[./文章名/XXX.png]，即可完成图片访问。</p>
 <p>(3)、完成文章的编写后，使用下列命名进行缓存的清楚</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo clean
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo clean</code></pre>
 <p>(4)、使用下列命令完成博客的重新生成</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo g # generate
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo g <span class="token comment"># generate</span></code></pre>
 <p>(5)、使用下列命令完成对博客项目的本地查看</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo s # server
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo s <span class="token comment"># server</span></code></pre>
 <p>(6)、使用下列命令完成对博客项目的上传(至Github仓库)</p>
-<pre class=" language-language-bash"><code class="language-language-bash">$ hexo d # deploy
-</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo d <span class="token comment"># deploy</span></code></pre>
 <h3 id="更多信息请关注"><a class="header-anchor" href="#更多信息请关注">¶</a>更多信息请关注</h3>
 <p>(1)、<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqingchuan92/article/details/112277112?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;spm=1018.2226.3001.4187">解决博客的enjoy问题</a>          <a target="_blank" rel="noopener" href="https://apps.timwhitlock.info/emoji/tables/unicode#">enjoy表情包合集</a></p>
 <p>(2)、<a href>Hexo更多的配置相关问题(开个玩笑)</a></p>
@@ -685,7 +676,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
+                        <img src="/medias/featureimages/193.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
                         
                         <span class="card-title">图书管理系统1-创建Vue前端项目</span>
                     </div>
@@ -738,7 +729,7 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Binbin0613">
+                        <img src="/medias/featureimages/122.jpg" class="responsive-img" alt="Binbin0613">
                         
                         <span class="card-title">Binbin0613</span>
                     </div>
@@ -832,6 +823,9 @@ Welcome to Hexo! This is your very first post. Check documentation for more info
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

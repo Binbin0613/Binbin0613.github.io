@@ -57,7 +57,7 @@
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Binbin0613" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -339,7 +339,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/186.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -411,14 +411,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    770
+                    884
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -433,6 +433,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -443,40 +446,37 @@
 <p>根据springboot官网或idea创建springboot项目，这不有手就行😅</p>
 <h3 id="二、完成相关的配置"><a class="header-anchor" href="#二、完成相关的配置">¶</a>二、完成相关的配置</h3>
 <h5 id="1-、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了"><a class="header-anchor" href="#1-、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了">¶</a>(1)、添加相关的依赖项，这里做一个总结（偷懒，以后直接来用就行了</h5>
-<pre class=" language-language-xml"><code class="language-language-xml"><!--mysql驱动-->
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.47</version>
-</dependency>
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--mysql驱动--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.1.47<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
-<!-- log4j日志 -->
-<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-</dependency>
+<span class="token comment">&lt;!-- log4j日志 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>log4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>log4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.17<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 
-<!-- lombok -->
-<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.12</version>
-</dependency>
-</code></pre>
+<span class="token comment">&lt;!-- lombok --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.projectlombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>lombok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.18.12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
 <h5 id="2-、springboot要运行起来，需要完成数据库的配置"><a class="header-anchor" href="#2-、springboot要运行起来，需要完成数据库的配置">¶</a>(2)、springboot要运行起来，需要完成数据库的配置</h5>
-<pre class=" language-language-yml"><code class="language-language-yml">server:
-  port: 9090
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9090</span>
 
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/library-managment
-    username: root
-    password: "0613"
-</code></pre>
-<pre class=" language-language-protityes"><code class="language-language-protityes">server.port=8080
-
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/library<span class="token punctuation">-</span>managment
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token string">"0613"</span></code></pre>
+<pre class="language-protityes" data-language="protityes"><code class="language-protityes">server.port&#x3D;8080
 </code></pre>
 <h3 id="三、完成springboot查出数据库当中的数据"><a class="header-anchor" href="#三、完成springboot查出数据库当中的数据">¶</a>三、完成springboot查出数据库当中的数据</h3>
 <h5 id="1-、后端代码结构"><a class="header-anchor" href="#1-、后端代码结构">¶</a>(1)、后端代码结构</h5>
@@ -485,182 +485,170 @@ spring:
 <p><img src="/2022/102816107/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84.png" alt></p>
 <h5 id="3-、springboot相关代码"><a class="header-anchor" href="#3-、springboot相关代码">¶</a>(3)、springboot相关代码</h5>
 <p>User实体类代码</p>
-<pre class=" language-language-java"><code class="language-language-java">@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class User &#123;
-    private Integer id;
-    private String name;
-    private String username;
-    private Integer age;
-    private String sex;
-    private String phone;
-    private String address;
-&#125;
-</code></pre>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> sex<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> phone<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> address<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserController代码</p>
-<pre class=" language-language-java"><code class="language-language-java">@RestController
-@RequestMapping("/user")
-@CrossOrigin
-public class UserController &#123;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@CrossOrigin</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">&#123;</span>
 
-    @Autowired
-    private IUserService userService;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">IUserService</span> userService<span class="token punctuation">;</span>
 
-    @GetMapping("/list")
-    public List<User> getUserList()&#123;
-        return userService.getUsersList();
-    &#125;
-&#125;
-</code></pre>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/list"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUserList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> userService<span class="token punctuation">.</span><span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserService代码</p>
-<pre class=" language-language-java"><code class="language-language-java">public interface IUserService &#123;
-    List<User> getUsersList();
-&#125;
-</code></pre>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>UserServiceImpl</p>
-<pre class=" language-language-java"><code class="language-language-java">@Service
-public class UserServiceImpl implements IUserService &#123;
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
 
-    @Autowired
-    private UserMapper userMapper;
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">UserMapper</span> userMapper<span class="token punctuation">;</span>
 
-    @Override
-    public List<User> getUsersList() &#123;
-        return userMapper.UsersList();
-    &#125;
-&#125;
-</code></pre>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token class-name"><span class="token namespace">userMapper<span class="token punctuation">.</span></span>UsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <h5 id="4-、启动项目，在http-localhost-9090-user-list"><a class="header-anchor" href="#4-、启动项目，在http-localhost-9090-user-list">¶</a>(4)、启动项目，在http://localhost:9090/user/list</h5>
 <p>在浏览器中即可看到如下内容：<br>
 <img src="/2022/102816107/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
 <h5 id="5-、前端使用fetch完成数据的转化"><a class="header-anchor" href="#5-、前端使用fetch完成数据的转化">¶</a>(5)、前端使用fetch完成数据的转化</h5>
-<pre class=" language-language-javascript"><code class="language-language-javascript">fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;
-        console.log(res);
-        this.tableData = res;
-      &#125;)
-</code></pre>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"http://localhost:9090/user/list"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tableData <span class="token operator">=</span> res<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre>
 <p>前端效果如图:<br>
 <img src="/2022/102816107/%E5%89%8D%E7%AB%AF%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
 <h5 id="6-、使用mybatis：-https-mybatis-net-cn"><a class="header-anchor" href="#6-、使用mybatis：-https-mybatis-net-cn">¶</a>(6)、使用mybatis： <a target="_blank" rel="noopener" href="https://mybatis.net.cn/">https://mybatis.net.cn/</a></h5>
 <p>在resources目录下创建一个mapper的目录，创建User.xml，编写SQL语句</p>
-<pre class=" language-language-xml"><code class="language-language-xml"><?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">mapper</span>
+        <span class="token name">PUBLIC</span> <span class="token string">"-//mybatis.org//DTD Mapper 3.0//EN"</span>
+        <span class="token string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span><span class="token punctuation">></span></span>
 
-<mapper namespace="com.bin.library_back.mapper.UserMapper">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mapper</span> <span class="token attr-name">namespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.bin.library_back.mapper.UserMapper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-    <select id="UsersList" resultType="com.bin.library_back.entity.User">
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UsersList<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.bin.library_back.entity.User<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         select * from user
-    </select>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
 
-</mapper>
-
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>其次在配置文件当中编写mybatis的配置</p>
-<pre class=" language-language-yml"><code class="language-language-yml"># 定义mapper的路径
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-</code></pre>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 定义mapper的路径</span>
+<span class="token key atrule">mybatis</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mapper-locations</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>mapper/<span class="token important">*.xml</span></code></pre>
 <p>完成上述相同的测试效果</p>
 <h5 id="7-、统一返回结果Result-java"><a class="header-anchor" href="#7-、统一返回结果Result-java">¶</a>(7)、统一返回结果Result.java</h5>
-<pre class=" language-language-java"><code class="language-language-java">@Data
-public class Result &#123;
-    private static final String SUCCESS_CODE = "200";
-    private static final String ERROR_CODE = "-1";
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Result</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">SUCCESS_CODE</span> <span class="token operator">=</span> <span class="token string">"200"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> <span class="token constant">ERROR_CODE</span> <span class="token operator">=</span> <span class="token string">"-1"</span><span class="token punctuation">;</span>
 
-    private String code;
-    private Object data;
-    private String msg;
+    <span class="token keyword">private</span> <span class="token class-name">String</span> code<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Object</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> msg<span class="token punctuation">;</span>
 
-    // 返回成功或者失败的方法
-    public static Result success()&#123;
-        Result result = new Result();
-        result.setCode(SUCCESS_CODE);
-        return result;
-    &#125;
-    public static Result success(Object data)&#123;
-        Result result = new Result();
-        result.setCode(SUCCESS_CODE);
-        result.setData(data);
-        return result;
-    &#125;
-    public static Result error(String msg)&#123;
-        Result result = new Result();
-        result.setCode(ERROR_CODE);
-        result.setMsg(msg);
-        return result;
-    &#125;
-&#125;
-
+    <span class="token comment">// 返回成功或者失败的方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setCode</span><span class="token punctuation">(</span><span class="token constant">SUCCESS_CODE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">success</span><span class="token punctuation">(</span><span class="token class-name">Object</span> data<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setCode</span><span class="token punctuation">(</span><span class="token constant">SUCCESS_CODE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Result</span> <span class="token function">error</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Result</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setCode</span><span class="token punctuation">(</span><span class="token constant">ERROR_CODE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setMsg</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 </code></pre>
 <h5 id="8-、解决跨域问题（最简单：在Controller的方法上加上-CrossOrigin的注解）"><a class="header-anchor" href="#8-、解决跨域问题（最简单：在Controller的方法上加上-CrossOrigin的注解）">¶</a>(8)、解决跨域问题（最简单：在Controller的方法上加上@CrossOrigin的注解）</h5>
-<pre class=" language-language-java"><code class="language-language-java">@CrossOrigin
-</code></pre>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@CrossOrigin</span></code></pre>
 <h3 id="四、完成前后端对接"><a class="header-anchor" href="#四、完成前后端对接">¶</a>四、完成前后端对接</h3>
 <p>前端项目当中编写一个utils方法：request.js</p>
-<pre class=" language-language-javascript"><code class="language-language-javascript">import axios from 'axios'
-import router from "@/router";
-import Cookies from 'js-cookie'
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">"@/router"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Cookies <span class="token keyword">from</span> <span class="token string">'js-cookie'</span>
 
-const request = axios.create(&#123;
-    baseURL: 'http://localhost:9090',
-    timeout: 5000
-&#125;)
+<span class="token keyword">const</span> request <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">baseURL</span><span class="token operator">:</span> <span class="token string">'http://localhost:9090'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">timeout</span><span class="token operator">:</span> <span class="token number">5000</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-// request 拦截器
-// 可以自请求发送前对请求做一些处理
-// 比如统一加token，对请求参数统一加密
-request.interceptors.request.use(config => &#123;
-    config.headers['Content-Type'] = 'application/json;charset=utf-8';
+<span class="token comment">// request 拦截器</span>
+<span class="token comment">// 可以自请求发送前对请求做一些处理</span>
+<span class="token comment">// 比如统一加token，对请求参数统一加密</span>
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token parameter">config</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    config<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'Content-Type'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'application/json;charset=utf-8'</span><span class="token punctuation">;</span>
 
-    const adminJson = Cookies.get('admin')
-    if (adminJson) &#123;
-        // 设置请求头
-        config.headers['token'] = JSON.parse(adminJson).token
-    &#125;
-    return config
-&#125;, error => &#123;
-    return Promise.reject(error)
-&#125;);
+    <span class="token keyword">const</span> adminJson <span class="token operator">=</span> Cookies<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>adminJson<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 设置请求头</span>
+        config<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'token'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>adminJson<span class="token punctuation">)</span><span class="token punctuation">.</span>token
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> config
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token parameter">error</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// response 拦截器
-// 可以在接口响应后统一处理结果
-request.interceptors.response.use(
-    response => &#123;
-        let res = response.data;
-        // 兼容服务端返回的字符串数据
-        if (typeof res === 'string') &#123;
-            res = res ? JSON.parse(res) : res
-        &#125;
-        if (res.code === '401') &#123;
-            router.push('/login')
-        &#125;
-        return res;
-    &#125;,
-    error => &#123;
-        console.log('err' + error) // for debug
-        return Promise.reject(error)
-    &#125;
-)
+<span class="token comment">// response 拦截器</span>
+<span class="token comment">// 可以在接口响应后统一处理结果</span>
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+    <span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> res <span class="token operator">=</span> response<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+        <span class="token comment">// 兼容服务端返回的字符串数据</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> res <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res <span class="token operator">=</span> res <span class="token operator">?</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">:</span> res
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token string">'401'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token parameter">error</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'err'</span> <span class="token operator">+</span> error<span class="token punctuation">)</span> <span class="token comment">// for debug</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span>
 
-export default request
-
+<span class="token keyword">export</span> <span class="token keyword">default</span> request
 </code></pre>
 <p>在vue代码当中完成请求后端的接口</p>
-<pre class=" language-language-javascript"><code class="language-language-javascript">import request from "../utils/request";
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">"../utils/request"</span><span class="token punctuation">;</span>
 
-request.get("/user/page", &#123;
-    params: this.params
-    &#125;).then(res => &#123;
-    if(res.code === '200')&#123;
-        this.tableData = res.data.list;
-        this.total = res.data.total;
-    &#125;
-&#125;)
-</code></pre>
-
+request<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/user/page"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">params</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>params
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">===</span> <span class="token string">'200'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tableData <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>list<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>total <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>total<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre>
                 
             </div>
             <hr/>
@@ -816,7 +804,7 @@ request.get("/user/page", &#123;
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="图书管理系统3-实现分页查询的功能">
+                        <img src="/medias/featureimages/113.jpg" class="responsive-img" alt="图书管理系统3-实现分页查询的功能">
                         
                         <span class="card-title">图书管理系统3-实现分页查询的功能</span>
                     </div>
@@ -869,7 +857,7 @@ request.get("/user/page", &#123;
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
+                        <img src="/medias/featureimages/193.jpg" class="responsive-img" alt="图书管理系统1-创建Vue前端项目">
                         
                         <span class="card-title">图书管理系统1-创建Vue前端项目</span>
                     </div>
@@ -959,6 +947,9 @@ request.get("/user/page", &#123;
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
