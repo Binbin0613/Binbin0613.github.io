@@ -4,14 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Pytorch学习-基础代码解析, Software Engineer">
+    <meta name="keywords" content="目标检测--利用labelimg制作深度学习数据集, Software Engineer">
     <meta name="description" content="
-¶一、数据加载模块
-DataSet: 提供一种方式去获取数据及其label
-DataLoader: 为后面的网络提供不同的数据形式
-from torch.utils.data import Dataset
-import cv2
-from ">
+¶一、使用labelImg标记数据
+Labelimg是一款开源的数据标注工具，可以标注三种格式。
+   1  VOC标签格式，保存为xml文件。
+
+   2  yolo标签格式，保存为txt文件。
+
+   3 createML标签格式，保">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +24,7 @@ from ">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Pytorch学习-基础代码解析 | Binbin0613</title>
+    <title>目标检测--利用labelimg制作深度学习数据集 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +342,12 @@ from ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/67.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Pytorch学习-基础代码解析</h1>
+                    <h1 class="description center-align post-title">目标检测--利用labelimg制作深度学习数据集</h1>
                 </div>
             </div>
         </div>
@@ -374,8 +375,16 @@ from ">
                                 <span class="chip bg-color">Pytorch</span>
                             </a>
                         
-                            <a href="/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/">
-                                <span class="chip bg-color">Pytorch基础代码</span>
+                            <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">神经网络</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">
+                                <span class="chip bg-color">网络模型</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/">
+                                <span class="chip bg-color">模型训练</span>
                             </a>
                         
                     </div>
@@ -399,28 +408,28 @@ from ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-11-07
+                    2022-11-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-07
+                    2022-11-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    600
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    2 分
                 </div>
                 
 
@@ -444,199 +453,33 @@ from ">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h4 id="一、数据加载模块"><a class="header-anchor" href="#一、数据加载模块">¶</a>一、数据加载模块</h4>
-<p>DataSet: 提供一种方式去获取数据及其label<br>
-DataLoader: 为后面的网络提供不同的数据形式</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> Dataset
-<span class="token keyword">import</span> cv2
-<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
-<span class="token keyword">import</span> os
+<h3 id="一、使用labelImg标记数据"><a class="header-anchor" href="#一、使用labelImg标记数据">¶</a>一、使用labelImg标记数据</h3>
+<p>Labelimg是一款开源的数据标注工具，可以标注三种格式。</p>
+<pre><code>   1  VOC标签格式，保存为xml文件。
 
-<span class="token keyword">class</span> <span class="token class-name">MyData</span><span class="token punctuation">(</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   2  yolo标签格式，保存为txt文件。
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> root_dir<span class="token punctuation">,</span> label_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>root_dir <span class="token operator">=</span> root_dir
-        self<span class="token punctuation">.</span>label_dir <span class="token operator">=</span> label_dir
-        self<span class="token punctuation">.</span>path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>root_dir<span class="token punctuation">,</span> self<span class="token punctuation">.</span>label_dir<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>img_path <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>self<span class="token punctuation">.</span>path<span class="token punctuation">)</span>       <span class="token comment"># 获取路径下的所有图片地址</span>
-
-    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        img_name <span class="token operator">=</span> self<span class="token punctuation">.</span>img_path<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>               <span class="token comment"># 每一张图片的位置</span>
-        <span class="token comment"># 每一张图片的加载路径 使用到了os.path.join  root_dir  label_dir img_name</span>
-        img_item_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>root_dir<span class="token punctuation">,</span> self<span class="token punctuation">.</span>label_dir<span class="token punctuation">,</span> img_name<span class="token punctuation">)</span>
-        img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>img_item_path<span class="token punctuation">)</span>             <span class="token comment"># 返回的是图片，打开</span>
-        label <span class="token operator">=</span> self<span class="token punctuation">.</span>label_dir                      <span class="token comment"># 返回该图片的label位置</span>
-        <span class="token keyword">return</span> img<span class="token punctuation">,</span> label
-
-    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>img_path<span class="token punctuation">)</span>                   <span class="token comment"># 返回定义的所有照片的list长度</span>
-
-<span class="token comment"># 创建实例</span>
-root_dir <span class="token operator">=</span> <span class="token string">"dataset/hymenoptera_data/train"</span>
-ants_label_dir <span class="token operator">=</span> <span class="token string">"ants"</span>
-bees_label_dir <span class="token operator">=</span> <span class="token string">"bees"</span>
-
-ants_dataset <span class="token operator">=</span> MyData<span class="token punctuation">(</span>root_dir<span class="token punctuation">,</span> ants_label_dir<span class="token punctuation">)</span>     <span class="token comment"># 返回的是蚂蚁数据集</span>
-bees_dataset <span class="token operator">=</span> MyData<span class="token punctuation">(</span>root_dir<span class="token punctuation">,</span> bees_label_dir<span class="token punctuation">)</span>
-train_dataset <span class="token operator">=</span> ants_dataset <span class="token operator">+</span> bees_dataset
-
-<span class="token comment"># 输出ants_dataset当中的img, label</span>
-img<span class="token punctuation">,</span> label <span class="token operator">=</span> ants_dataset<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-<span class="token comment"># img.show(ants_dataset[0])</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> label<span class="token punctuation">)</span>
-<span class="token comment"># &lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=500x333 at 0x14AE1EC0340> ants</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span>
-<span class="token comment"># ants</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>ants_dataset<span class="token punctuation">.</span>__len__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># 124</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>ants_dataset<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment"># 124</span></code></pre>
-<p><img src="/2022/110716117/DataSet%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt></p>
-<h4 id="二、tensorboard数据展示模块"><a class="header-anchor" href="#二、tensorboard数据展示模块">¶</a>二、tensorboard数据展示模块</h4>
-<p>tensorboard的使用</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
-<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> Dataset
-<span class="token keyword">import</span> cv2
-<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
-
-<span class="token comment"># 将相关的解析文件存放在logs文件夹当中</span>
-writer <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">)</span>
-image_path <span class="token operator">=</span> <span class="token string">"dataset/train/ants_image/0013035.jpg"</span>
-img_PIL <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>image_path<span class="token punctuation">)</span>
-img_array <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>img_PIL<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>img_array<span class="token punctuation">)</span><span class="token punctuation">)</span>      <span class="token comment"># &lt;class 'numpy.ndarray'></span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img_array<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>      <span class="token comment"># (512, 768, 3) 查看通道的数量和位置，即下面的dataformats</span>
-
-<span class="token comment"># 参数分别表示：名称, 图像，步骤，数据格式</span>
-<span class="token comment"># 这个步骤可以在tensorboard上进行拖动展示，表示每一个步骤的图像结果</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> img_array<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> dataformats<span class="token operator">=</span><span class="token string">"HWC"</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 绘制一条y=x的线</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">"y=2*x"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">*</span>i<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-
-writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 这里是会出现多个函数，最后扭在一起是多个函数进行了一个拟合，需要把logs文件夹里面的内容删除即可</span>
-<span class="token comment"># terminal当中编写命令： tensorboard --logdir=logs --port=6007</span>
+   3 createML标签格式，保存为json格式。
 </code></pre>
-<p><img src="/2022/110716117/tensorboard%E8%BF%87%E7%A8%8B.png" alt></p>
-<p><img src="/2022/110716117/tensorboard%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
-<h4 id="三、transforms"><a class="header-anchor" href="#三、transforms">¶</a>三、transforms</h4>
-<p>在python当中的用法 —&gt;tensor的数据类型<br>
-通过transforms.ToTensor去看两个问题：<br>
-1、transforms该如何使用（python）<br>
-2、为什么我们需要Tensor数据类型</p>
-<p><img src="/2022/110716117/transforms%E7%BB%93%E6%9E%9C%E5%8F%8A%E7%94%A8%E6%B3%95.png" alt></p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
-<span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
-<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
-<span class="token keyword">import</span> cv2
-
-img_path <span class="token operator">=</span> <span class="token string">"dataset/train/ants_image/6240329_72c01e663e.jpg"</span>
-img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>img_path<span class="token punctuation">)</span>
-
-writer <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 1、使用transforms的方法</span>
-tensor_trans <span class="token operator">=</span> transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-tensor_img <span class="token operator">=</span> tensor_trans<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>tensor_img<span class="token punctuation">)</span>
-<span class="token comment"># &lt;PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=500x369 at 0x20B7D789640></span>
-<span class="token comment"># tensor([[[0.3725, 0.3725, 0.3725,  ..., 0.7216, 0.7216, 0.7176],</span>
-<span class="token comment">#          [0.3843, 0.3843, 0.3804,  ..., 0.7216, 0.7176, 0.7176],</span>
-<span class="token comment">#          [0.4000, 0.4000, 0.3961,  ..., 0.7176, 0.7176, 0.7176],</span>
-<span class="token comment">#          ...,</span>
-<span class="token comment">#          [0.1176, 0.1176, 0.1176,  ..., 0.3059, 0.3059, 0.3020],</span>
-<span class="token comment">#          [0.1176, 0.1176, 0.1176,  ..., 0.3020, 0.2980, 0.2980],</span>
-<span class="token comment">#          [0.1176, 0.1020, 0.0980,  ..., 0.3020, 0.2980, 0.2941]],</span>
-<span class="token comment">#</span>
-<span class="token comment">#         [[0.3137, 0.3137, 0.3137,  ..., 0.6588, 0.6588, 0.6549],</span>
-<span class="token comment">#          [0.3255, 0.3255, 0.3216,  ..., 0.6588, 0.6549, 0.6549],</span>
-<span class="token comment">#          [0.3412, 0.3412, 0.3373,  ..., 0.6549, 0.6549, 0.6549],</span>
-<span class="token comment">#          ...,</span>
-<span class="token comment">#          [0.0980, 0.0980, 0.0980,  ..., 0.5176, 0.5176, 0.5137],</span>
-<span class="token comment">#          [0.0980, 0.0980, 0.0980,  ..., 0.5137, 0.5098, 0.5098],</span>
-<span class="token comment">#          [0.1020, 0.0863, 0.0824,  ..., 0.5137, 0.5098, 0.5059]],</span>
-<span class="token comment">#</span>
-<span class="token comment">#         [[0.2941, 0.2941, 0.2941,  ..., 0.6588, 0.6588, 0.6549],</span>
-<span class="token comment">#          [0.3059, 0.3059, 0.3020,  ..., 0.6588, 0.6549, 0.6549],</span>
-<span class="token comment">#          [0.3216, 0.3216, 0.3176,  ..., 0.6549, 0.6549, 0.6549],</span>
-<span class="token comment">#          ...,</span>
-<span class="token comment">#          [0.0824, 0.0824, 0.0824,  ..., 0.5647, 0.5647, 0.5608],</span>
-<span class="token comment">#          [0.0824, 0.0824, 0.0824,  ..., 0.5608, 0.5569, 0.5569],</span>
-<span class="token comment">#          [0.0902, 0.0745, 0.0706,  ..., 0.5608, 0.5569, 0.5529]]])</span>
-
-
-<span class="token comment"># 2、为什么使用tensor的数据类型</span>
-
-<span class="token comment"># 将其存放到logs当中的tensorboard当中</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"Tensor_img"</span><span class="token punctuation">,</span> tensor_img<span class="token punctuation">)</span>
-
-writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h5 id="transforms常见的函数"><a class="header-anchor" href="#transforms常见的函数">¶</a>transforms常见的函数</h5>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
-<span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
-<span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
-
-writer <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">)</span>
-img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"dataset/train/ants_image/6240329_72c01e663e.jpg"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-
-<span class="token comment"># transforms当中的方法的使用</span>
-
-
-<span class="token comment"># 1、ToTensor</span>
-<span class="token comment"># 将原来的PIL数据类型转化为tensor的数据类型</span>
-trans_totensor <span class="token operator">=</span> transforms<span class="token punctuation">.</span>ToTensor<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 首先定义一个方法trans_totensor为：类型转化为Tensor</span>
-img_tensor <span class="token operator">=</span> trans_totensor<span class="token punctuation">(</span>img<span class="token punctuation">)</span>        <span class="token comment"># 将参数传进去，完成数据类型的返回</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"ToTensor"</span><span class="token punctuation">,</span> img_tensor<span class="token punctuation">)</span><span class="token comment"># 添加到tensorboard当中去</span>
-
-
-<span class="token comment"># 2、Normalize</span>
-<span class="token comment"># Normalize()函数的作用是将数据转换为标准高斯分布，即逐个channel的对图像进行标准化</span>
-<span class="token comment"># （均值变为0，标准差为1），可以加快模型的收敛</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img_tensor<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-trans_norm <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Normalize<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-img_norm <span class="token operator">=</span> trans_norm<span class="token punctuation">(</span>img_tensor<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img_norm<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"Normalize"</span><span class="token punctuation">,</span> img_norm<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-
-<span class="token comment"># 3、 Resize 将图像大大小转为512 512</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img<span class="token punctuation">.</span>size<span class="token punctuation">)</span>
-trans_resize <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Resize<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-img_resize <span class="token operator">=</span> trans_resize<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img_resize<span class="token punctuation">)</span>
-<span class="token comment"># &lt;PIL.Image.Image image mode=RGB size=512x512 at 0x1B3F3850130></span>
-<span class="token comment"># 大小为 512 * 512</span>
-img_resize <span class="token operator">=</span> trans_totensor<span class="token punctuation">(</span>img_resize<span class="token punctuation">)</span>  <span class="token comment"># 将原来的PIL类型转为tensor类型，再放入tensorboard当中</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"Resize"</span><span class="token punctuation">,</span> img_resize<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>img_resize<span class="token punctuation">)</span>
-
-
-<span class="token comment"># 4、Compose - resize -2</span>
-<span class="token comment"># Compose 中的参数需要一个列表 列表的表示形式为[数据1， 数据2，...]</span>
-<span class="token comment"># 在Compose中 数据需要tansforms类型 所以得到的是Compose([tansforms参数1],[tansforms参数2]...)</span>
-trans_resize_2 <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Resize<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
-trans_compose <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>trans_resize_2<span class="token punctuation">,</span> trans_totensor<span class="token punctuation">]</span><span class="token punctuation">)</span>
-img_resize_2 <span class="token operator">=</span> trans_compose<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"Resize"</span><span class="token punctuation">,</span> img_resize_2<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-
-<span class="token comment"># 5、RandomCrop 随机的裁剪图片</span>
-trans_random <span class="token operator">=</span> transforms<span class="token punctuation">.</span>RandomCrop<span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span>
-trans_compose_2 <span class="token operator">=</span> transforms<span class="token punctuation">.</span>Compose<span class="token punctuation">(</span><span class="token punctuation">[</span>trans_random<span class="token punctuation">,</span> trans_totensor<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    img_crop <span class="token operator">=</span> trans_compose_2<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
-    writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"RandomCrop"</span><span class="token punctuation">,</span> img_crop<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-
-writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p><img src="/2022/110716117/transform%E6%96%B9%E6%B3%95.png" alt></p>
+<h3 id="二、labelimg的安装"><a class="header-anchor" href="#二、labelimg的安装">¶</a>二、labelimg的安装</h3>
+<p>这里主要讲的是在window系统中的安装，首先打开cmd命令行（快捷键：win+R）。进入cmd命令行控制台。输入如下的命令：</p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">pip install labelimg -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</code></pre>
+<p>行如上命令后，系统就会自动下载labelimg相关的依赖。由于这是一个很轻量的工具，所以下载起来很快，当出现如下红色框框中的告诉我们成功安装的时候，说明labelimg安装成功了。<br>
+<img src="/2022/110916121/%E5%AE%89%E8%A3%85labelimg.png" alt></p>
+<h3 id="三、数据准备"><a class="header-anchor" href="#三、数据准备">¶</a>三、数据准备</h3>
+<p>首先这里需要准备我们需要打标注的数据集。这里我建议新建一个名为VOC2007的文件夹（这个是约定俗成，不这么做也行），里面创建一个名为JPEGImages的文件夹存放我们需要打标签的图片文件；再创建一个名为Annotations存放标注的标签文件；最后创建一个名为 predefined_classes.txt 的txt文件来存放所要标注的类别名称。</p>
+<p>VOC2007的目录结构为：</p>
+<p>├── VOC2007<br>
+│├── JPEGImages  存放需要打标签的图片文件<br>
+│├── Annotations  存放标注的标签文件<br>
+│├── predefined_classes.txt  定义自己要标注的所有类别（这个文件可有可无，但是在我们定义类别比较多的时候，最好有这个创建一个这样的txt文件来存放类别）</p>
+<p>具体查看：E:\DeepLearning\BinCode\VOCdevkit\VOC2007</p>
+<p><img src="/2022/110916121/%E6%A0%87%E6%B3%A8%E8%AE%BE%E7%BD%AE.png" alt></p>
+<p>打开cmd命令终端（快捷键：win+R）。进入到刚刚创建的这个VOC2007路径（这个很重要，涉及到能不能利用predefined_classes.txt 这个txt文件中定义的类别，我在这里卡了很久，一度以为不能显示txt文件中定义的类别是我安装有问题）。执行如图中的命令进入到VOC2007路径下（每个人的路径都不一样，按个人的路径去写）如下图所示：可以看到进入到相应的目录了。</p>
+<p><img src="/2022/110916121/%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt></p>
+<p>输入如下的命令打开labelimg。这个命令的意思是打开labelimg工具；打开JPEGImage文件夹，初始化predefined_classes.txt里面定义的类。</p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">labelimg JPEGImages predefined_classes.txt</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didiaopao/article/details/119808973">学习路径</a></p>
 </font>
 
                 
@@ -664,7 +507,7 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2022/110716117.html">http://Binbin0613.github.io/2022/110716117.html</a>
+                    <a href="http://Binbin0613.github.io/2022/110916121.html">http://Binbin0613.github.io/2022/110916121.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -706,8 +549,16 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                                     <span class="chip bg-color">Pytorch</span>
                                 </a>
                             
-                                <a href="/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/">
-                                    <span class="chip bg-color">Pytorch基础代码</span>
+                                <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">神经网络</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">
+                                    <span class="chip bg-color">网络模型</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/">
+                                    <span class="chip bg-color">模型训练</span>
                                 </a>
                             
                         </div>
@@ -786,17 +637,18 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/110716118.html">
+                <a href="/2022/110916121.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/111.jpg" class="responsive-img" alt="Pytorch学习-神经网络的搭建">
+                        <img src="/medias/featureimages/67.jpg" class="responsive-img" alt="目标检测--利用labelimg制作深度学习数据集">
                         
-                        <span class="card-title">Pytorch学习-神经网络的搭建</span>
+                        <span class="card-title">目标检测--利用labelimg制作深度学习数据集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -806,9 +658,9 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -821,6 +673,7 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -828,16 +681,16 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                         <span class="chip bg-color">Pytorch</span>
                     </a>
                     
-                    <a href="/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/">
-                        <span class="chip bg-color">Pytorch基础代码</span>
-                    </a>
-                    
                     <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
                         <span class="chip bg-color">神经网络</span>
                     </a>
                     
-                    <a href="/tags/Python%E5%8D%B7%E7%A7%AF-%E6%B1%A0%E5%8C%96-%E9%9D%9E%E7%BA%BF%E6%80%A7/">
-                        <span class="chip bg-color">Python卷积/池化/非线性</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">网络模型</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/">
+                        <span class="chip bg-color">模型训练</span>
                     </a>
                     
                 </div>
@@ -851,13 +704,13 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/110716116.html">
+                <a href="/2022/110816121.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/201.jpg" class="responsive-img" alt="Pytorch环境安装">
+                        <img src="/medias/featureimages/201.jpg" class="responsive-img" alt="Pytorch学习-使用GPU训练模型">
                         
-                        <span class="card-title">Pytorch环境安装</span>
+                        <span class="card-title">Pytorch学习-使用GPU训练模型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -868,7 +721,7 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-08
                             </span>
                         <span class="publish-author">
                             
@@ -887,6 +740,18 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                     
                     <a href="/tags/Pytorch/">
                         <span class="chip bg-color">Pytorch</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">神经网络</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/">
+                        <span class="chip bg-color">网络模型</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/">
+                        <span class="chip bg-color">模型训练</span>
                     </a>
                     
                 </div>

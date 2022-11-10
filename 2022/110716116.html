@@ -12,7 +12,7 @@ anaconda官网
 anaconda历史版本
 安装教程视频
 ¶1、安装anaconda
-安装上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功
+根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功
 
 ¶2、显卡的配置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -405,14 +405,14 @@ anaconda历史版本
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-07
+                    2022-11-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    208
+                    366
                 </div>
                 
 
@@ -449,7 +449,7 @@ anaconda历史版本
 <p><a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">anaconda历史版本</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411t7RN/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">安装教程视频</a></p>
 <h4 id="1、安装anaconda"><a class="header-anchor" href="#1、安装anaconda">¶</a>1、安装anaconda</h4>
-<p>安装上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功<br>
+<p>根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功<br>
 <img src="/2022/110716116/anaconda%E7%9A%84base%E7%8E%AF%E5%A2%83.png" alt></p>
 <h4 id="2、显卡的配置"><a class="header-anchor" href="#2、显卡的配置">¶</a>2、显卡的配置</h4>
 <p>本地显卡版本：任务管理器-性能-GPU<br>
@@ -470,13 +470,40 @@ anaconda历史版本
 &gt;&gt;&gt; import torch
 &gt;&gt;&gt; torch.cuda.is_available();
 # 返回True表示本机GPU可被pytorch使用</code></pre>
+<p>5、删除虚拟环境</p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">conda remove -n pytorch_env(虚拟环境名称)  --all</code></pre>
 <p><img src="/2022/110716116/%E6%9F%A5%E7%9C%8Bpytorch%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%A8.png" alt></p>
+<p>6、将pytorch安装到指定的目录下</p>
+<pre class="language-cmd" data-language="cmd"><code class="language-cmd">查看anaconda文档
+conda create help
+
+安装虚拟环境到指定目录下
+conda create --prefix&#x3D;D:\Anaconda\setup\envs\BinPytorch python&#x3D;3.8
+
+查看当前的环境及地址
+conda info --envs
+
+出现以下环境：
+labelImg                 C:\Users\Administrator\.conda\envs\labelImg
+base                  *  D:\Anaconda\setup
+pytorch                  D:\Anaconda\setup\envs\pytorch
+</code></pre>
+<p>7、创建好了虚拟环境之后，安装pytorch<br>
+<a target="_blank" rel="noopener" href="https://pytorch.org/">pytorch安装路径</a><br>
+<img src alt></p>
 <h3 id="二、相关的操作命令"><a class="header-anchor" href="#二、相关的操作命令">¶</a>二、相关的操作命令</h3>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">dir() : 打开函数，查看有哪些方法
 help(): 工具的使用方法</code></pre>
 <p><img src="/2022/110716116/pythorch%E5%91%BD%E4%BB%A4.png" alt><br>
 <img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A42.png" alt><br>
 <img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A43.png" alt></p>
+<h5 id="查看是否安装成功"><a class="header-anchor" href="#查看是否安装成功">¶</a>查看是否安装成功</h5>
+<p>在pycharm当中完成环境的配置之后</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>cuda_version<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>version<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </font>
                 
             </div>
