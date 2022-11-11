@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-11T07:48:28.159Z</updated>
+  <updated>2022-11-11T07:52:54.765Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VGG-图像分类卷积神经网络</title>
+    <link href="http://binbin0613.github.io/2022/111116121.html"/>
+    <id>http://binbin0613.github.io/2022/111116121.html</id>
+    <published>2022-11-11T07:51:12.950Z</published>
+    <updated>2022-11-11T07:52:54.765Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman,</summary>
+        
+      
+    
+    
+    
+    <category term="VGG" scheme="http://binbin0613.github.io/categories/VGG/"/>
+    
+    
+    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="网络模型" scheme="http://binbin0613.github.io/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="VGG" scheme="http://binbin0613.github.io/tags/VGG/"/>
+    
+  </entry>
   
   <entry>
     <title>目标检测--利用labelimg制作深度学习数据集</title>
@@ -208,9 +237,9 @@
     
     <category term="Pytorch" scheme="http://binbin0613.github.io/tags/Pytorch/"/>
     
-    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    
     <category term="Pytorch基础代码" scheme="http://binbin0613.github.io/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/"/>
+    
+    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
     <category term="Python卷积/池化/非线性" scheme="http://binbin0613.github.io/tags/Python%E5%8D%B7%E7%A7%AF-%E6%B1%A0%E5%8C%96-%E9%9D%9E%E7%BA%BF%E6%80%A7/"/>
     
@@ -602,36 +631,6 @@
     <category term="关于博客" scheme="http://binbin0613.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/"/>
     
     <category term="日常" scheme="http://binbin0613.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Binbin0613</title>
-    <link href="http://binbin0613.github.io/2022/102416107.html"/>
-    <id>http://binbin0613.github.io/2022/102416107.html</id>
-    <published>2022-10-24T07:52:23.665Z</published>
-    <updated>2022-10-27T12:13:03.128Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;欢迎大家访问我的博客Binbin0613&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="博客介绍" scheme="http://binbin0613.github.io/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/"/>
-    
-    
-    <category term="Binbin0613" scheme="http://binbin0613.github.io/tags/Binbin0613/"/>
-    
-    <category term="关于博客" scheme="http://binbin0613.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="实用小工具" scheme="http://binbin0613.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
