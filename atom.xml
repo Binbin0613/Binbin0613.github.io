@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-11T07:52:54.765Z</updated>
+  <updated>2022-11-13T02:27:00.492Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -17,18 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VGG-图像分类实现猫狗分类</title>
+    <link href="http://binbin0613.github.io/2022/111316122.html"/>
+    <id>http://binbin0613.github.io/2022/111316122.html</id>
+    <published>2022-11-13T01:41:39.732Z</published>
+    <updated>2022-11-13T02:27:00.492Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、项目目录结构及相关代码解析&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、项目目录结构及相关代码解析&quot;&gt;¶&lt;/a&gt;一、项目目录结构及相关代码解析&lt;/h3&gt;
+&lt;h5</summary>
+        
+      
+    
+    
+    
+    <category term="VGG" scheme="http://binbin0613.github.io/categories/VGG/"/>
+    
+    
+    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="网络模型" scheme="http://binbin0613.github.io/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="VGG" scheme="http://binbin0613.github.io/tags/VGG/"/>
+    
+    <category term="猫狗分类" scheme="http://binbin0613.github.io/tags/%E7%8C%AB%E7%8B%97%E5%88%86%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>VGG-图像分类卷积神经网络</title>
     <link href="http://binbin0613.github.io/2022/111116121.html"/>
     <id>http://binbin0613.github.io/2022/111116121.html</id>
     <published>2022-11-11T07:51:12.950Z</published>
-    <updated>2022-11-11T07:52:54.765Z</updated>
+    <updated>2022-11-13T11:58:43.077Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;font face=&quot;Times New Roman,</summary>
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、查看ImageNet图像分类竞赛历年Tops错误率&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -601,36 +635,6 @@
     <category term="SpringBoot+vue" scheme="http://binbin0613.github.io/tags/SpringBoot-vue/"/>
     
     <category term="前后端分离" scheme="http://binbin0613.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 搭建个人博客</title>
-    <link href="http://binbin0613.github.io/2022/102516107.html"/>
-    <id>http://binbin0613.github.io/2022/102516107.html</id>
-    <published>2022-10-25T12:49:38.574Z</published>
-    <updated>2022-10-27T12:10:08.319Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;如你所见，您现在正在浏览的就是我使用Hexo框架搭建的个人博客&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="博客介绍" scheme="http://binbin0613.github.io/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/"/>
-    
-    
-    <category term="Binbin0613" scheme="http://binbin0613.github.io/tags/Binbin0613/"/>
-    
-    <category term="关于博客" scheme="http://binbin0613.github.io/tags/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/"/>
-    
-    <category term="日常" scheme="http://binbin0613.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
