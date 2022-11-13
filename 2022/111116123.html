@@ -418,14 +418,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -475,6 +475,7 @@
 <h3 id="二、重点研究VGG16"><a class="header-anchor" href="#二、重点研究VGG16">¶</a>二、重点研究VGG16</h3>
 <h5 id="1、VGG16-从输入到输出的每一层含义"><a class="header-anchor" href="#1、VGG16-从输入到输出的每一层含义">¶</a>1、VGG16 从输入到输出的每一层含义</h5>
 <p><img src="/2022/111116123/vgg16%E6%A6%82%E5%BF%B5%E5%9B%BE.png" alt></p>
+<p>在卷积层1（conv3-64）,卷积层2（conv3-128）,卷积层3（conv3-256）,卷积层4（conv3-512）分别有64个，128个，256个，512个3X3卷积核，在每两层之间有池化层为移动步长为2的2X2池化矩阵（maxpool）。在卷积层5（conv3-512）后有全连接层，再之后是soft-max预测层。</p>
 <blockquote>
 <ul>
 <li>最常用的迁移学习的骨干模型</li>
@@ -486,22 +487,27 @@
 <li>长宽信息逐渐减小，通道信息逐渐增加（将像素空间的信息转化成语义信息）</li>
 </ul>
 </blockquote>
-<p><img src="/2022/111116123/vgg16%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt></p>
-<h5 id="2、VGG16-在每一层当中的参数数量以及内存消耗"><a class="header-anchor" href="#2、VGG16-在每一层当中的参数数量以及内存消耗">¶</a>2、VGG16 在每一层当中的参数数量以及内存消耗</h5>
+<h5 id="2、数据的输入过程"><a class="header-anchor" href="#2、数据的输入过程">¶</a>2、数据的输入过程</h5>
+<p><img src="/2022/111116123/vgg16%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt><br>
+1、输入处理<br>
+如果要使用224x224的图作为训练的输入，用S表示图片最小边的值，当S=224时这个图就直接使用，直接将多余的部分减掉；对于S远大于224的，模型将对图像进行单尺度和多尺度的剪裁，通过剪切这个图片中包含object的子图作为训练数据。</p>
+<p>2、训练方式<br>
+采用带动量的小批量梯度下降法，来优化目标函数，并且当学习效果较为满意时，最初加入的学习率权重衰减系数会起作用，会减小学习率，缓慢达到最优解。</p>
+<h5 id="3、VGG16-在每一层当中的参数数量以及内存消耗"><a class="header-anchor" href="#3、VGG16-在每一层当中的参数数量以及内存消耗">¶</a>3、VGG16 在每一层当中的参数数量以及内存消耗</h5>
 <p><img src="/2022/111116123/vgg16%E7%9A%84%E5%8F%82%E6%95%B0%E5%8F%8A%E5%86%85%E5%AD%98.png" alt></p>
 <p>从上图当中可以看出：<br>
 前两层卷积占据了巨大部分的内存<br>
 第一层全连接占据了绝大部分的参数</p>
-<h5 id="3、VGG16-在每一层当中层数变化过程"><a class="header-anchor" href="#3、VGG16-在每一层当中层数变化过程">¶</a>3、VGG16 在每一层当中层数变化过程</h5>
+<h5 id="4、VGG16-在每一层当中层数变化过程！！！重点看这个！！！"><a class="header-anchor" href="#4、VGG16-在每一层当中层数变化过程！！！重点看这个！！！">¶</a>4、VGG16 在每一层当中层数变化过程！！！重点看这个！！！</h5>
 <p><img src="/2022/111116123/vgg16%E6%AF%8F%E4%B8%80%E5%B1%82%E5%8F%98%E5%8C%96%E5%9B%BE.png" alt></p>
-<h5 id="4、使用3-3作为卷积核的作用"><a class="header-anchor" href="#4、使用3-3作为卷积核的作用">¶</a>4、使用3 * 3作为卷积核的作用</h5>
+<h5 id="5、使用3-3作为卷积核的作用"><a class="header-anchor" href="#5、使用3-3作为卷积核的作用">¶</a>5、使用3 * 3作为卷积核的作用</h5>
 <p><img src="/2022/111116123/33%E5%8D%B7%E7%A7%AF%E6%A0%B8%E7%9A%84%E4%BD%9C%E7%94%A8.png" alt></p>
 <p><img src="/2022/111116123/%E4%B8%A4%E6%AC%A133%E5%8D%B7%E7%A7%AF.png" alt></p>
 <p>两次33卷积，可以等同于一次的55卷积<br>
 好处：模型变深了、非线性次数变多了、学习能力变得更好、表示空间变得更大，两次33卷积的参数数量要远小于一次5 * 5卷积</p>
 <p>进而可以推断：3个3 * 3的卷积的过程，可以替代一次7 * 7的卷积的过程</p>
 <p>还有一个原因就是：3 * 3是最小的能够表示上下左右的所有因素的一个单元</p>
-<h5 id="5、VGG16模型的特点"><a class="header-anchor" href="#5、VGG16模型的特点">¶</a>5、VGG16模型的特点</h5>
+<h5 id="6、VGG16模型的特点"><a class="header-anchor" href="#6、VGG16模型的特点">¶</a>6、VGG16模型的特点</h5>
 <p>在效果上，vgg16的效果并不是很好，在后续有resNet等优秀的模型更优秀</p>
 <p><img src="/2022/111116123/vgg%E6%95%88%E6%9E%9C%E5%B9%B6%E4%B8%8D%E5%A5%BD.png" alt><br>
 从上图当中可以看到，左图准确率为中游的水平,右图可以看出计算量和处理的流程都非常的臃肿！</p>
@@ -520,9 +526,6 @@
 <pre class="language-none"><code class="language-none">将一个领域的已经成熟的知识应用到其他的场景中。</code></pre>
 <p>7、所用卷积核和池化核的大小是多少？</p>
 <pre class="language-none"><code class="language-none">卷积核大小为(3,3)，池化核大小为(2,2)。</code></pre>
-<pre class="language-none"><code class="language-none">&#96;&#96;&#96;
-</code></pre>
-<pre><code>&lt;/font&gt;</code></pre>
 </font>
                 
             </div>
