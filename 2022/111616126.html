@@ -371,8 +371,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/cs2311n/">
-                                <span class="chip bg-color">cs2311n</span>
+                            <a href="/tags/cs231n/">
+                                <span class="chip bg-color">cs231n</span>
                             </a>
                         
                             <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
@@ -387,8 +387,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/cs2311n/" class="post-category">
-                                cs2311n
+                            <a href="/categories/cs231n/" class="post-category">
+                                cs231n
                             </a>
                         
                     </div>
@@ -414,14 +414,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    11 分
                 </div>
                 
 
@@ -476,7 +476,75 @@ Lecture2-8</p>
 </ul>
 </blockquote>
 <p><img src="/2022/111616126/%E5%9B%B0%E9%9A%BE%E4%B8%8E%E6%8C%91%E6%88%98.png" alt></p>
-<p><strong>数据驱动方法：</strong> 如何写一个图像分类的算法呢？这和写个排序算法可是大不一样。怎么写一个从图像中认出猫的算法？搞不清楚。因此，与其在代码中直接写明各类物体到底看起来是什么样的，倒不如说我们采取的方法和教小孩儿看图识物类似：给计算机很多数据，然后实现学习算法，让计算机学习到每个类的外形。这种方法，就是数据驱动方法。既然该方法的第一步就是收集已经做好分类标注的图片来作为训练集，那么下面就看看数据库到底长什么样：</p>
+<p><strong>数据驱动方法：</strong> 如何写一个图像分类的算法呢？这和写个排序算法可是大不一样。怎么写一个从图像中认出猫的算法？搞不清楚。因此，与其在代码中直接写明各类物体到底看起来是什么样的，倒不如说我们采取的方法和教小孩儿看图识物类似：给计算机很多数据，然后实现学习算法，让计算机学习到每个类的外形。这种方法，就是数据驱动方法。既然该方法的第一步就是收集已经做好分类标注的图片来作为训练集，那么下面就看看数据库到底长什么样：<br>
+<img src="/2022/111616126/dataset.png" alt></p>
+<p><strong>图像分类流程:</strong> 在课程视频中已经学习过，图像分类就是输入一个元素为像素值的数组，然后给它分配一个分类标签。完整流程如下：</p>
+<blockquote>
+<ul>
+<li><strong>输入：</strong> 输入是包含N个图像的集合，每个图像的标签是K种分类标签中的一种。这个集合称为训练集。</li>
+<li>**学习：**这一步的任务是使用训练集来学习每个类到底长什么样。一般该步骤叫做训练分类器或者学习一个模型。</li>
+<li>**评价：**让分类器来预测它未曾见过的图像的分类标签，并以此来评价分类器的质量。我们会把分类器预测的标签和图像真正的分类标签对比。毫无疑问，分类器预测的分类标签和图像真正的分类标签如果一致，那就是好事，这样的情况越多越好。</li>
+</ul>
+</blockquote>
+<h3 id="三、Nearest-Neighbor-最邻近算法-分类器"><a class="header-anchor" href="#三、Nearest-Neighbor-最邻近算法-分类器">¶</a>三、Nearest Neighbor(最邻近算法)分类器</h3>
+<p>作为课程介绍的第一个方法，我们来实现一个<strong>Nearest Neighbor分类器</strong>。虽然这个分类器和卷积神经网络没有任何关系，实际中也极少使用，但通过实现它，可以让读者对于解决图像分类问题的方法有个基本的认识。</p>
+<p><strong>图像分类数据集：CIFAR-10</strong> 一个非常流行的图像分类数据集是<a target="_blank" rel="noopener" href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a>。这个数据集包含了60000张32X32的小图像。每张图像都有10种分类标签中的一种。这60000张图像被分为包含50000张图像的训练集和包含10000张图像的测试集。在下图中你可以看见10个类的10张随机图片。<br>
+<img src="/2022/111616126/cifar.png" alt></p>
+<p>假设现在我们有CIFAR-10的50000张图片（每种分类5000张）作为训练集，我们希望将余下的10000作为测试集并给他们打上标签。Nearest Neighbor算法将会拿着测试图片和训练集中每一张图片去比较，然后将它认为最相似的那个训练集图片的标签赋给这张测试图片。上面右边的图片就展示了这样的结果。请注意上面10个分类中，只有3个是准确的。比如第8行中，马头被分类为一个红色的跑车，原因在于红色跑车的黑色背景非常强烈，所以这匹马就被错误分类为跑车了。</p>
+<p>那么具体如何比较两张图片呢？在本例中，就是比较32x32x3的像素块。最简单的方法就是逐个像素比较，最后将差异值全部加起来。换句话说，就是将两张图片先转化为两个向量I1和，然后计算他们的L1距离：<br>
+<img src="/2022/111616126/l1.png" alt></p>
+<p>下面，让我们看看如何用代码来实现这个分类器。首先，我们将CIFAR-10的数据加载到内存中，并分成4个数组：训练数据和标签，测试数据和标签。在下面的代码中，Xtr（大小是50000x32x32x3）存有训练集中所有的图像，Ytr是对应的长度为50000的1维数组，存有图像对应的分类标签（从0到9）：</p>
+<pre class="language-python" data-language="python"><code class="language-python">Xtr<span class="token punctuation">,</span> Ytr<span class="token punctuation">,</span> Xte<span class="token punctuation">,</span> Yte <span class="token operator">=</span> load_CIFAR10<span class="token punctuation">(</span><span class="token string">'data/cifar10/'</span><span class="token punctuation">)</span> <span class="token comment"># a magic function we provide</span>
+<span class="token comment"># flatten out all images to be one-dimensional</span>
+<span class="token comment"># 将原始的width * height * 3的数据reshape为1维的数据</span>
+Xtr_rows <span class="token operator">=</span> Xtr<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>Xtr<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># Xtr_rows becomes 50000 x 3072</span>
+Xte_rows <span class="token operator">=</span> Xte<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span>Xte<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment"># Xte_rows becomes 10000 x 3072</span></code></pre>
+<p>现在我们得到所有的图像数据，并且把他们拉长成为行向量了。接下来展示如何训练并评价一个分类器：</p>
+<pre class="language-python" data-language="python"><code class="language-python">nn <span class="token operator">=</span> NearestNeighbor<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># create a Nearest Neighbor classifier class</span>
+nn<span class="token punctuation">.</span>train<span class="token punctuation">(</span>Xtr_rows<span class="token punctuation">,</span> Ytr<span class="token punctuation">)</span> <span class="token comment"># train the classifier on the training images and labels</span>
+Yte_predict <span class="token operator">=</span> nn<span class="token punctuation">.</span>predict<span class="token punctuation">(</span>Xte_rows<span class="token punctuation">)</span> <span class="token comment"># predict labels on the test images</span>
+<span class="token comment"># and now print the classification accuracy, which is the average number</span>
+<span class="token comment"># of examples that are correctly predicted (i.e. label matches)</span>
+<span class="token keyword">print</span> <span class="token string">'accuracy: %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>Yte_predict <span class="token operator">==</span> Yte<span class="token punctuation">)</span> <span class="token punctuation">)</span></code></pre>
+<p>作为评价标准，我们常常使用准确率，它描述了我们预测正确的得分。请注意以后我们实现的所有分类器都需要有这个API：train(X, y)函数。该函数使用训练集的数据和标签来进行训练。从其内部来看，类应该实现一些关于标签和标签如何被预测的模型。这里还有个predict(X)函数，它的作用是预测输入的新数据的分类标签。现在还没介绍分类器的实现，下面就是使用L1距离的Nearest Neighbor分类器的实现套路：</p>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">class</span> <span class="token class-name">NearestNeighbor</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+  <span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" X is N x D where each row is an example. Y is 1-dimension of size N """</span>
+    <span class="token comment"># the nearest neighbor classifier simply remembers all the training data</span>
+    self<span class="token punctuation">.</span>Xtr <span class="token operator">=</span> X
+    self<span class="token punctuation">.</span>ytr <span class="token operator">=</span> y
+
+  <span class="token keyword">def</span> <span class="token function">predict</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" X is N x D where each row is an example we wish to predict label for """</span>
+    num_test <span class="token operator">=</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token comment"># lets make sure that the output type matches the input type</span>
+    Ypred <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>num_test<span class="token punctuation">,</span> dtype <span class="token operator">=</span> self<span class="token punctuation">.</span>ytr<span class="token punctuation">.</span>dtype<span class="token punctuation">)</span>
+
+    <span class="token comment"># loop over all test rows</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">xrange</span><span class="token punctuation">(</span>num_test<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token comment"># find the nearest training image to the i'th test image</span>
+      <span class="token comment"># using the L1 distance (sum of absolute value differences)</span>
+      distances <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">abs</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>Xtr <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      min_index <span class="token operator">=</span> np<span class="token punctuation">.</span>argmin<span class="token punctuation">(</span>distances<span class="token punctuation">)</span> <span class="token comment"># get the index with smallest distance</span>
+      Ypred<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>ytr<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token comment"># predict the label of the nearest example</span>
+
+    <span class="token keyword">return</span> Ypred</code></pre>
+<p><img src="/2022/111616126/testFast.png" alt></p>
+<p>如果你用这段代码跑CIFAR-10，你会发现准确率能达到38.6%。这比随机猜测的10%要好，但是比人类识别的<a target="_blank" rel="noopener" href="http://karpathy.github.io/2011/04/27/manually-classifying-cifar10/">水平（据研究推测是94%）</a>和卷积神经网络能达到的95%还是差多了。点击查看基于CIFAR-10数据的<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/cifar-10/leaderboard">Kaggle算法竞赛排行榜</a>。</p>
+<p><strong>距离选择：</strong> 计算向量间的距离有很多种方法，另一个常用的方法是L2距离，从几何学的角度，可以理解为它在计算两个向量间的欧式距离。L2距离的公式如下：</p>
+<p>换句话说，我们依旧是在计算像素间的差值，只是先求其平方，然后把这些平方全部加起来，最后对这个和开方。在Numpy中，我们只需要替换上面代码中的1行代码就行：</p>
+<pre class="language-python" data-language="python"><code class="language-python">distances <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>Xtr <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>注意在这里使用了np.sqrt，但是在实际中可能不用。因为求平方根函数是一个单调函数，它对不同距离的绝对值求平方根虽然改变了数值大小，但依然保持了不同距离大小的顺序。所以用不用它，都能够对像素差异的大小进行正确比较。如果你在CIFAR-10上面跑这个模型，正确率是35.4%，比刚才低了一点。</p>
+<p><strong>L1和L2比较</strong> 比较这两个度量方式是挺有意思的。在面对两个向量之间的差异时，L2比L1更加不能容忍这些差异。也就是说，相对于1个巨大的差异，L2距离更倾向于接受多个中等程度的差异。L1和L2都是在p-norm常用的特殊形式。</p>
+<h3 id="四、k-Nearest-Neighbor分类器"><a class="header-anchor" href="#四、k-Nearest-Neighbor分类器">¶</a>四、k-Nearest Neighbor分类器</h3>
+<p>你可能注意到了，为什么只用最相似的1张图片的标签来作为测试图像的标签呢？这不是很奇怪吗！是的，使用k-Nearest Neighbor分类器就能做得更好。它的思想很简单：与其只找最相近的那1个图片的标签，我们找最相似的k个图片的标签，然后让他们针对测试图片进行投票，最后把票数最高的标签作为对测试图片的预测。所以当k=1的时候，k-Nearest Neighbor分类器就是Nearest Neighbor分类器。从直观感受上就可以看到，更高的k值可以让分类的效果更平滑，使得分类器对于异常值更有抵抗力。</p>
+<p><img src="/2022/111616126/k.png" alt></p>
+<p>上面示例展示了Nearest Neighbor分类器和5-Nearest Neighbor分类器的区别。例子使用了2维的点来表示，分成3类（红、蓝和绿）。不同颜色区域代表的是使用L2距离的分类器的决策边界。白色的区域是分类模糊的例子（即图像与两个以上的分类标签绑定）。需要注意的是，在NN分类器中，异常的数据点（比如：在蓝色区域中的绿点）制造出一个不正确预测的孤岛。5-NN分类器将这些不规则都平滑了，使得它针对测试数据的泛化（generalization）能力更好（例子中未展示）。注意，5-NN中也存在一些灰色区域，这些区域是因为近邻标签的最高票数相同导致的（比如：2个邻居是红色，2个邻居是蓝色，还有1个是绿色）。</p>
 </font>
 
                 
@@ -542,8 +610,8 @@ Lecture2-8</p>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/cs2311n/">
-                                    <span class="chip bg-color">cs2311n</span>
+                                <a href="/tags/cs231n/">
+                                    <span class="chip bg-color">cs231n</span>
                                 </a>
                             
                                 <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
@@ -654,8 +722,8 @@ Lecture2-8</p>
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/cs2311n/" class="post-category">
-                                    cs2311n
+                            <a href="/categories/cs231n/" class="post-category">
+                                    cs231n
                                 </a>
                             
                             
@@ -666,8 +734,8 @@ Lecture2-8</p>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cs2311n/">
-                        <span class="chip bg-color">cs2311n</span>
+                    <a href="/tags/cs231n/">
+                        <span class="chip bg-color">cs231n</span>
                     </a>
                     
                     <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">

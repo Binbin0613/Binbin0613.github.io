@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-16T12:43:20.015Z</updated>
+  <updated>2022-11-16T14:03:35.411Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://binbin0613.github.io/2022/111616126.html"/>
     <id>http://binbin0613.github.io/2022/111616126.html</id>
     <published>2022-11-16T08:59:35.856Z</published>
-    <updated>2022-11-16T12:43:20.015Z</updated>
+    <updated>2022-11-16T14:03:35.411Z</updated>
     
     
       
@@ -35,10 +35,10 @@
     
     
     
-    <category term="cs2311n" scheme="http://binbin0613.github.io/categories/cs2311n/"/>
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
     
     
-    <category term="cs2311n" scheme="http://binbin0613.github.io/tags/cs2311n/"/>
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
     
     <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
     
@@ -95,9 +95,9 @@
     <category term="cs2311n" scheme="http://binbin0613.github.io/categories/cs2311n/"/>
     
     
-    <category term="cs2311n" scheme="http://binbin0613.github.io/tags/cs2311n/"/>
-    
     <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="cs2311n" scheme="http://binbin0613.github.io/tags/cs2311n/"/>
     
   </entry>
   
@@ -388,9 +388,9 @@
     
     <category term="Pytorch" scheme="http://binbin0613.github.io/tags/Pytorch/"/>
     
-    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    
     <category term="Pytorch基础代码" scheme="http://binbin0613.github.io/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/"/>
+    
+    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
     <category term="Python卷积/池化/非线性" scheme="http://binbin0613.github.io/tags/Python%E5%8D%B7%E7%A7%AF-%E6%B1%A0%E5%8C%96-%E9%9D%9E%E7%BA%BF%E6%80%A7/"/>
     
