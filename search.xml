@@ -4,7 +4,34 @@
   
     
     <entry>
-      <title>cs231n学习笔记-图像分类笔记(上)</title>
+      <title>cs231n-图像分类笔记(下)</title>
+      <link href="/2022/111616127.html"/>
+      <url>/2022/111616127.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h3 id="一、本节大纲"><a class="header-anchor" href="#一、本节大纲">¶</a>一、本节大纲</h3><blockquote><ul><li>1、图像分类、数据驱动方法和流程<br>2、Nearest Neighbor分类器<br>        k-Nearest Neighbor<br>3、验证集、交叉验证集和超参数调优 译者注：下篇翻译起始处<br>4.Nearest Neighbor的优劣<br>5、小结：应用kNN实践<br>6、拓展阅读</li></ul></blockquote><h3 id="二、"><a class="header-anchor" href="#二、">¶</a>二、</h3></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> cs231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cs231n </tag>
+            
+            <tag> 课程笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cs231n-图像分类笔记(上)</title>
       <link href="/2022/111616126.html"/>
       <url>/2022/111616126.html</url>
       
@@ -67,16 +94,16 @@
       
       <categories>
           
-          <category> cs2311n </category>
+          <category> cs231n </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 课程笔记 </tag>
+            <tag> cs231n </tag>
             
-            <tag> cs2311n </tag>
+            <tag> 课程笔记 </tag>
             
         </tags>
       
