@@ -379,6 +379,10 @@
                                 <span class="chip bg-color">课程笔记</span>
                             </a>
                         
+                            <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+                                <span class="chip bg-color">图像分类</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -407,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-16
+                    2022-11-18
                 </div>
                 
 
@@ -460,7 +464,7 @@
 <p><strong>例子：</strong> 以下图为例，图像分类模型读取该图片，并生成该图片属于集合 {cat, dog, hat, mug}中各个标签的概率。需要注意的是，对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该图像就包含了248X400X3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。我们的任务就是把这些上百万的数字变成一个简单的标签，比如“猫”。</p>
 <p><img src="/2022/111616126/rgb.png" alt></p>
 <p>Lecture2-9</p>
-<p><strong>图像分类的任务:</strong> 就是对于一个给定的图像，预测它属于的那个分类标签（或者给出属于一系列不同标签的可能性）。图像是3维数组，数组元素是取值范围从0到255的整数。数组的尺寸是宽度x高度x3，其中这个3代表的是红、绿和蓝3个颜色通道。</p>
+<p><strong>图像分类的任务:</strong> 就是对于一个给定的图像，预测它属于的那个分类标签（或者给出属于一系列不同标签的可能性）。图像是3维数组，数组元素是取值范围从0到255的整数。数组的尺寸是 [宽度 * 高度 * 3]，其中这个3代表的是红、绿和蓝3个颜色通道。</p>
 <p><img src="/2022/111616126/rgbdemo.png" alt></p>
 <p>Lecture2-8</p>
 <p><strong>困难和挑战：</strong> 对于人来说，识别出一个像“猫”一样视觉概念是简单至极的，然而从计算机视觉算法的角度来看就值得深思了。我们在下面列举了计算机视觉算法在图像识别方面遇到的一些困难，要记住图像是以3维数组来表示的，数组中的元素是亮度值。</p>
@@ -536,7 +540,8 @@ Yte_predict <span class="token operator">=</span> nn<span class="token punctuati
     <span class="token keyword">return</span> Ypred</code></pre>
 <p><img src="/2022/111616126/testFast.png" alt></p>
 <p>如果你用这段代码跑CIFAR-10，你会发现准确率能达到38.6%。这比随机猜测的10%要好，但是比人类识别的<a target="_blank" rel="noopener" href="http://karpathy.github.io/2011/04/27/manually-classifying-cifar10/">水平（据研究推测是94%）</a>和卷积神经网络能达到的95%还是差多了。点击查看基于CIFAR-10数据的<a target="_blank" rel="noopener" href="https://www.kaggle.com/c/cifar-10/leaderboard">Kaggle算法竞赛排行榜</a>。</p>
-<p><strong>距离选择：</strong> 计算向量间的距离有很多种方法，另一个常用的方法是L2距离，从几何学的角度，可以理解为它在计算两个向量间的欧式距离。L2距离的公式如下：</p>
+<p><strong>距离选择：</strong> 计算向量间的距离有很多种方法，另一个常用的方法是L2距离，从几何学的角度，可以理解为它在计算两个向量间的欧式距离。L2距离的公式如下：<br>
+<img src="/2022/111616126/l2.png" alt></p>
 <p>换句话说，我们依旧是在计算像素间的差值，只是先求其平方，然后把这些平方全部加起来，最后对这个和开方。在Numpy中，我们只需要替换上面代码中的1行代码就行：</p>
 <pre class="language-python" data-language="python"><code class="language-python">distances <span class="token operator">=</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>np<span class="token punctuation">.</span>square<span class="token punctuation">(</span>self<span class="token punctuation">.</span>Xtr <span class="token operator">-</span> X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>注意在这里使用了np.sqrt，但是在实际中可能不用。因为求平方根函数是一个单调函数，它对不同距离的绝对值求平方根虽然改变了数值大小，但依然保持了不同距离大小的顺序。所以用不用它，都能够对像素差异的大小进行正确比较。如果你在CIFAR-10上面跑这个模型，正确率是35.4%，比刚才低了一点。</p>
@@ -617,6 +622,10 @@ Yte_predict <span class="token operator">=</span> nn<span class="token punctuati
                             
                                 <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
                                     <span class="chip bg-color">课程笔记</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+                                    <span class="chip bg-color">图像分类</span>
                                 </a>
                             
                         </div>
@@ -739,6 +748,10 @@ Yte_predict <span class="token operator">=</span> nn<span class="token punctuati
                     
                     <a href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
                         <span class="chip bg-color">课程笔记</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+                        <span class="chip bg-color">图像分类</span>
                     </a>
                     
                 </div>

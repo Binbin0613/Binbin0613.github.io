@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-16T14:12:10.803Z</updated>
+  <updated>2022-11-18T08:56:55.960Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>cs231n-图像分类笔记(下)</title>
-    <link href="http://binbin0613.github.io/2022/111616127.html"/>
-    <id>http://binbin0613.github.io/2022/111616127.html</id>
-    <published>2022-11-16T14:09:27.461Z</published>
-    <updated>2022-11-16T14:12:10.803Z</updated>
+    <title>cs231n-线性分类笔记(中)</title>
+    <link href="http://binbin0613.github.io/2022/111816129.html"/>
+    <id>http://binbin0613.github.io/2022/111816129.html</id>
+    <published>2022-11-18T03:02:46.500Z</published>
+    <updated>2022-11-18T08:56:55.960Z</updated>
     
     
       
@@ -41,6 +41,68 @@
     <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
     
     <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="线性分类" scheme="http://binbin0613.github.io/tags/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cs231n-线性分类笔记(上)</title>
+    <link href="http://binbin0613.github.io/2022/111816128.html"/>
+    <id>http://binbin0613.github.io/2022/111816128.html</id>
+    <published>2022-11-18T01:40:42.542Z</published>
+    <updated>2022-11-18T03:03:56.122Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="线性分类" scheme="http://binbin0613.github.io/tags/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cs231n-图像分类笔记(下)</title>
+    <link href="http://binbin0613.github.io/2022/111616127.html"/>
+    <id>http://binbin0613.github.io/2022/111616127.html</id>
+    <published>2022-11-16T14:09:27.461Z</published>
+    <updated>2022-11-18T01:41:37.264Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="图像分类" scheme="http://binbin0613.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
     
   </entry>
   
@@ -49,7 +111,7 @@
     <link href="http://binbin0613.github.io/2022/111616126.html"/>
     <id>http://binbin0613.github.io/2022/111616126.html</id>
     <published>2022-11-16T08:59:35.856Z</published>
-    <updated>2022-11-16T14:25:21.941Z</updated>
+    <updated>2022-11-18T01:41:49.913Z</updated>
     
     
       
@@ -70,6 +132,8 @@
     
     <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
     
+    <category term="图像分类" scheme="http://binbin0613.github.io/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/"/>
+    
   </entry>
   
   <entry>
@@ -77,7 +141,7 @@
     <link href="http://binbin0613.github.io/2022/111516128.html"/>
     <id>http://binbin0613.github.io/2022/111516128.html</id>
     <published>2022-11-15T03:54:34.503Z</published>
-    <updated>2022-11-16T14:20:47.148Z</updated>
+    <updated>2022-11-18T09:12:20.652Z</updated>
     
     
       
@@ -130,11 +194,11 @@
   </entry>
   
   <entry>
-    <title>VGG-图像分类卷积神经网络</title>
+    <title>VGG-VGG源代码及结构解析和训练</title>
     <link href="http://binbin0613.github.io/2022/111316124.html"/>
     <id>http://binbin0613.github.io/2022/111316124.html</id>
     <published>2022-11-13T12:42:40.828Z</published>
-    <updated>2022-11-13T13:11:51.262Z</updated>
+    <updated>2022-11-18T01:15:58.501Z</updated>
     
     
       
@@ -568,66 +632,6 @@
     <category term="行人重识别" scheme="http://binbin0613.github.io/tags/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB/"/>
     
     <category term="reId" scheme="http://binbin0613.github.io/tags/reId/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>神经网络基础-线性函数&amp;损失函数</title>
-    <link href="http://binbin0613.github.io/2022/110116112.html"/>
-    <id>http://binbin0613.github.io/2022/110116112.html</id>
-    <published>2022-11-01T07:29:58.897Z</published>
-    <updated>2022-11-06T14:31:34.662Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;登录&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#登录&quot;&gt;¶&lt;/a&gt;登录&lt;/h2&gt;
-&lt;h3 id=&quot;一、&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="神经网络学习" scheme="http://binbin0613.github.io/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="神经网络基础" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图书管理系统6-springboot系统中三层架构的分析</title>
-    <link href="http://binbin0613.github.io/2022/103116111.html"/>
-    <id>http://binbin0613.github.io/2022/103116111.html</id>
-    <published>2022-10-31T13:14:50.289Z</published>
-    <updated>2022-10-31T13:15:28.554Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;登录&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#登录&quot;&gt;¶&lt;/a&gt;登录&lt;/h2&gt;
-&lt;h3 id=&quot;一、&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前后端分离web系统" scheme="http://binbin0613.github.io/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BBweb%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="实用小工具" scheme="http://binbin0613.github.io/tags/%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="SpringBoot+vue" scheme="http://binbin0613.github.io/tags/SpringBoot-vue/"/>
-    
-    <category term="前后端分离" scheme="http://binbin0613.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/"/>
-    
-    <category term="正则表达式" scheme="http://binbin0613.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
