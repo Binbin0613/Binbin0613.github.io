@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-19T14:45:22.757Z</updated>
+  <updated>2022-11-22T01:37:19.699Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>cs231n-最优化(上)</title>
+    <link href="http://binbin0613.github.io/2022/112016131.html"/>
+    <id>http://binbin0613.github.io/2022/112016131.html</id>
+    <published>2022-11-20T07:36:54.941Z</published>
+    <updated>2022-11-22T01:37:19.699Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="最优化" scheme="http://binbin0613.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cs231n-线性分类笔记(下)</title>
+    <link href="http://binbin0613.github.io/2022/112016130.html"/>
+    <id>http://binbin0613.github.io/2022/112016130.html</id>
+    <published>2022-11-20T03:20:50.447Z</published>
+    <updated>2022-11-20T07:36:32.529Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="线性分类" scheme="http://binbin0613.github.io/tags/%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>cs231n-线性分类笔记(中)</title>
     <link href="http://binbin0613.github.io/2022/111816129.html"/>
     <id>http://binbin0613.github.io/2022/111816129.html</id>
     <published>2022-11-18T03:02:46.500Z</published>
-    <updated>2022-11-19T14:45:22.757Z</updated>
+    <updated>2022-11-20T03:19:36.633Z</updated>
     
     
       
@@ -568,70 +628,6 @@
     
     
     <category term="资源" scheme="http://binbin0613.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>reID论文-Relation_Aware_Global_Attention_for_Person_Re-identification(CVPR2020)</title>
-    <link href="http://binbin0613.github.io/2022/110616114.html"/>
-    <id>http://binbin0613.github.io/2022/110616114.html</id>
-    <published>2022-11-06T10:08:15.271Z</published>
-    <updated>2022-11-07T00:44:06.987Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;reID-Relation-Aware-Global-Attention-for-Person-Re-identification-CVPR2020&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="reID" scheme="http://binbin0613.github.io/categories/reID/"/>
-    
-    <category term="reID论文" scheme="http://binbin0613.github.io/categories/reID/reID%E8%AE%BA%E6%96%87/"/>
-    
-    
-    <category term="科研er" scheme="http://binbin0613.github.io/tags/%E7%A7%91%E7%A0%94er/"/>
-    
-    <category term="行人重识别" scheme="http://binbin0613.github.io/tags/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB/"/>
-    
-    <category term="reId" scheme="http://binbin0613.github.io/tags/reId/"/>
-    
-    <category term="论文" scheme="http://binbin0613.github.io/tags/%E8%AE%BA%E6%96%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>reID基础知识1-行人重识别定义及过程</title>
-    <link href="http://binbin0613.github.io/2022/110416113.html"/>
-    <id>http://binbin0613.github.io/2022/110416113.html</id>
-    <published>2022-11-04T12:20:08.324Z</published>
-    <updated>2022-11-06T10:07:22.418Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;reID-Person-re-identification&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="reID" scheme="http://binbin0613.github.io/categories/reID/"/>
-    
-    
-    <category term="科研er" scheme="http://binbin0613.github.io/tags/%E7%A7%91%E7%A0%94er/"/>
-    
-    <category term="行人重识别" scheme="http://binbin0613.github.io/tags/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB/"/>
-    
-    <category term="reId" scheme="http://binbin0613.github.io/tags/reId/"/>
     
   </entry>
   
