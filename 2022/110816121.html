@@ -6,12 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习4-使用GPU训练模型, Software Engineer">
     <meta name="description" content="
-¶一、第一种方式使用GPU训练模型
-¶方法：在损失函数，网络模型，数据(imgs, targets) 上添加 .cuda()
-import torch
+
+一、第一种方式使用GPU训练模型方法：在损失函数，网络模型，数据(imgs, targets) 上添加 .cuda()import torch
 import torchvision
 import time
-from torch.u">
+from torch.util">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,9 +451,8 @@ from torch.u">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h4 id="一、第一种方式使用GPU训练模型"><a class="header-anchor" href="#一、第一种方式使用GPU训练模型">¶</a>一、第一种方式使用GPU训练模型</h4>
-<h5 id="方法：在损失函数，网络模型，数据-imgs-targets-上添加-cuda"><a class="header-anchor" href="#方法：在损失函数，网络模型，数据-imgs-targets-上添加-cuda">¶</a>方法：在损失函数，网络模型，数据(imgs, targets) 上添加 .cuda()</h5>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+
+<h4 id="一、第一种方式使用GPU训练模型"><a href="#一、第一种方式使用GPU训练模型" class="headerlink" title="一、第一种方式使用GPU训练模型"></a>一、第一种方式使用GPU训练模型</h4><h5 id="方法：在损失函数，网络模型，数据-imgs-targets-上添加-cuda"><a href="#方法：在损失函数，网络模型，数据-imgs-targets-上添加-cuda" class="headerlink" title="方法：在损失函数，网络模型，数据(imgs, targets) 上添加 .cuda()"></a>方法：在损失函数，网络模型，数据(imgs, targets) 上添加 .cuda()</h5><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torchvision
 <span class="token keyword">import</span> time
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
@@ -587,13 +585,9 @@ writer <span class="token operator">=</span> SummaryWriter<span class="token pun
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"模型已保存"</span><span class="token punctuation">)</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h4 id="一、第二种方式使用GPU训练模型"><a class="header-anchor" href="#一、第二种方式使用GPU训练模型">¶</a>一、第二种方式使用GPU训练模型</h4>
-<h5 id="方法：添加"><a class="header-anchor" href="#方法：添加">¶</a>方法：添加</h5>
-<p>.to(device)<br>
-Device = torch.device(“cpu”)<br>
-Torch.device(“cuda”)<br>
-Torch.device(“cuda:0”)<br>
-Torch.device(“cuda:1”)</p>
+
+
+<h4 id="一、第二种方式使用GPU训练模型"><a href="#一、第二种方式使用GPU训练模型" class="headerlink" title="一、第二种方式使用GPU训练模型"></a>一、第二种方式使用GPU训练模型</h4><h5 id="方法：添加"><a href="#方法：添加" class="headerlink" title="方法：添加"></a>方法：添加</h5><p>.to(device)<br>Device = torch.device(“cpu”)<br>Torch.device(“cuda”)<br>Torch.device(“cuda:0”)<br>Torch.device(“cuda:1”)</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torchvision
 <span class="token keyword">import</span> time
@@ -729,6 +723,9 @@ writer <span class="token operator">=</span> SummaryWriter<span class="token pun
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"模型已保存"</span><span class="token punctuation">)</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
+
+
 </font>
                 
             </div>

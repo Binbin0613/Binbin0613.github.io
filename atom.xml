@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2022-11-22T01:37:19.699Z</updated>
+  <updated>2022-11-22T02:25:59.662Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cs231n-反向传播</title>
+    <link href="http://binbin0613.github.io/2022/112216133.html"/>
+    <id>http://binbin0613.github.io/2022/112216133.html</id>
+    <published>2022-11-22T02:24:21.817Z</published>
+    <updated>2022-11-22T02:25:59.662Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="反向传播" scheme="http://binbin0613.github.io/tags/%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cs231n-最优化(下)</title>
+    <link href="http://binbin0613.github.io/2022/112216132.html"/>
+    <id>http://binbin0613.github.io/2022/112216132.html</id>
+    <published>2022-11-22T01:45:34.748Z</published>
+    <updated>2022-11-22T02:04:58.849Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/categories/cs231n/"/>
+    
+    
+    <category term="cs231n" scheme="http://binbin0613.github.io/tags/cs231n/"/>
+    
+    <category term="课程笔记" scheme="http://binbin0613.github.io/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="最优化" scheme="http://binbin0613.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>cs231n-最优化(上)</title>
@@ -29,7 +91,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -59,7 +122,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -89,7 +153,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -119,7 +184,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -149,7 +215,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -179,7 +246,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、本节大纲&quot;&gt;&lt;a href=&quot;#一、本节大纲&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -209,7 +277,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;毕设&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;毕设&quot;&gt;&lt;a href=&quot;#毕设&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -237,8 +306,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、CS231N课程笔记学习&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、CS231N课程笔记学习&quot;&gt;¶&lt;/a&gt;一、CS231N课程笔记学习&lt;/h3&gt;
-&lt;h4</summary>
+
+&lt;h3 id=&quot;一、CS231N课程笔记学习&quot;&gt;&lt;a href=&quot;#一、CS231N课程笔记学习&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -266,6 +335,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
 &lt;p&gt;&lt;img src=&quot;/2022/111316124/vgg16%E6%AF%8F%E4%B8%80%E5%B1%82%E5%8F%98%E5%8C%96%E5%9B%BE.png&quot;</summary>
         
       
@@ -298,8 +368,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、项目目录结构及相关代码解析&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、项目目录结构及相关代码解析&quot;&gt;¶&lt;/a&gt;一、项目目录结构及相关代码解析&lt;/h3&gt;
-&lt;h5</summary>
+
+&lt;h3 id=&quot;一、项目目录结构及相关代码解析&quot;&gt;&lt;a href=&quot;#一、项目目录结构及相关代码解析&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -331,7 +401,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、查看ImageNet图像分类竞赛历年Tops错误率&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、查看ImageNet图像分类竞赛历年Tops错误率&quot;&gt;&lt;a href=&quot;#一、查看ImageNet图像分类竞赛历年Tops错误率&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -361,7 +432,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、项目的克隆以及必要的环境依赖&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、项目的克隆以及必要的环境依赖&quot;&gt;&lt;a href=&quot;#一、项目的克隆以及必要的环境依赖&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -397,7 +469,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、使用labelImg标记数据&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h3 id=&quot;一、使用labelImg标记数据&quot;&gt;&lt;a href=&quot;#一、使用labelImg标记数据&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -429,7 +502,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h4 id=&quot;一、第一种方式使用GPU训练模型&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+
+&lt;h4 id=&quot;一、第一种方式使用GPU训练模型&quot;&gt;&lt;a href=&quot;#一、第一种方式使用GPU训练模型&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -461,9 +535,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、模型的使用&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、模型的使用&quot;&gt;¶&lt;/a&gt;一、模型的使用&lt;/h3&gt;
-&lt;p&gt;首先创建模型的py文件&lt;/p&gt;
-&lt;pre</summary>
+
+&lt;h3 id=&quot;一、模型的使用&quot;&gt;&lt;a href=&quot;#一、模型的使用&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -495,8 +568,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、模型的使用&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、模型的使用&quot;&gt;¶&lt;/a&gt;一、模型的使用&lt;/h3&gt;
-&lt;h5 id=&quot;查看vgg16的模型结构&quot;&gt;&lt;a</summary>
+
+&lt;h3 id=&quot;一、模型的使用&quot;&gt;&lt;a href=&quot;#一、模型的使用&quot; class=&quot;headerlink&quot; title=&quot;一、模型的使用&quot;&gt;&lt;/a&gt;一、模型的使用&lt;/h3&gt;&lt;h5</summary>
         
       
     
@@ -528,8 +601,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h4 id=&quot;一、相关地址&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、相关地址&quot;&gt;¶&lt;/a&gt;一、相关地址&lt;/h4&gt;
-&lt;h5</summary>
+
+&lt;h4 id=&quot;一、相关地址&quot;&gt;&lt;a href=&quot;#一、相关地址&quot; class=&quot;headerlink&quot; title=&quot;一、相关地址&quot;&gt;&lt;/a&gt;一、相关地址&lt;/h4&gt;&lt;h5</summary>
         
       
     
@@ -540,9 +613,9 @@
     
     <category term="Pytorch" scheme="http://binbin0613.github.io/tags/Pytorch/"/>
     
-    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
-    
     <category term="Pytorch基础代码" scheme="http://binbin0613.github.io/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/"/>
+    
+    <category term="神经网络" scheme="http://binbin0613.github.io/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
     
     <category term="Python卷积/池化/非线性" scheme="http://binbin0613.github.io/tags/Python%E5%8D%B7%E7%A7%AF-%E6%B1%A0%E5%8C%96-%E9%9D%9E%E7%BA%BF%E6%80%A7/"/>
     
@@ -561,8 +634,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h4 id=&quot;一、数据加载模块&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、数据加载模块&quot;&gt;¶&lt;/a&gt;一、数据加载模块&lt;/h4&gt;
-&lt;p&gt;DataSet:</summary>
+
+&lt;h4 id=&quot;一、数据加载模块&quot;&gt;&lt;a href=&quot;#一、数据加载模块&quot; class=&quot;headerlink&quot; title=&quot;一、数据加载模块&quot;&gt;&lt;/a&gt;一、数据加载模块&lt;/h4&gt;&lt;p&gt;DataSet:</summary>
         
       
     
@@ -574,60 +647,6 @@
     <category term="Pytorch" scheme="http://binbin0613.github.io/tags/Pytorch/"/>
     
     <category term="Pytorch基础代码" scheme="http://binbin0613.github.io/tags/Pytorch%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pytorch学习1-环境安装</title>
-    <link href="http://binbin0613.github.io/2022/110716116.html"/>
-    <id>http://binbin0613.github.io/2022/110716116.html</id>
-    <published>2022-11-07T00:46:34.942Z</published>
-    <updated>2022-11-10T13:10:32.151Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h3 id=&quot;一、各类资源地址&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、各类资源地址&quot;&gt;¶&lt;/a&gt;一、各类资源地址&lt;/h3&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Pytorch" scheme="http://binbin0613.github.io/categories/Pytorch/"/>
-    
-    
-    <category term="Pytorch" scheme="http://binbin0613.github.io/tags/Pytorch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>模型/代码/论文/资源 地址汇总</title>
-    <link href="http://binbin0613.github.io/2022/110616115.html"/>
-    <id>http://binbin0613.github.io/2022/110616115.html</id>
-    <published>2022-11-06T12:44:51.365Z</published>
-    <updated>2022-11-06T12:54:15.275Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-&lt;h2 id=&quot;一、模型&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#一、模型&quot;&gt;¶&lt;/a&gt;一、模型&lt;/h2&gt;
-&lt;pre class=&quot;language-none&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="资源" scheme="http://binbin0613.github.io/categories/%E8%B5%84%E6%BA%90/"/>
-    
-    
-    <category term="资源" scheme="http://binbin0613.github.io/tags/%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   

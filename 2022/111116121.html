@@ -6,8 +6,8 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="目标检测--利用yoloV5训练自己的目标检测模型, Software Engineer">
     <meta name="description" content="
-¶一、项目的克隆以及必要的环境依赖
-YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。不得不说GitHub的确是全球最大的男性交友网站，里面的人个个都是人才，yolov5发布才一年左右的时间，YOLOv5就已经更新了5个">
+
+一、项目的克隆以及必要的环境依赖YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。不得不说GitHub的确是全球最大的男性交友网站，里面的人个个都是人才，yolov5发布才一年左右的时间，YOLOv5就已经更新了5个分">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -425,7 +425,7 @@ YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    3.7k
                 </div>
                 
 
@@ -456,47 +456,37 @@ YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、项目的克隆以及必要的环境依赖"><a class="header-anchor" href="#一、项目的克隆以及必要的环境依赖">¶</a>一、项目的克隆以及必要的环境依赖</h3>
-<p>YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。不得不说GitHub的确是全球最大的男性交友网站，里面的人个个都是人才，yolov5发布才一年左右的时间，YOLOv5就已经更新了5个分支了，分别是yolov5.1-yolov5.5分支。该项目就是利用的yolov5.5分支来作为讲解。</p>
+
+<h3 id="一、项目的克隆以及必要的环境依赖"><a href="#一、项目的克隆以及必要的环境依赖" class="headerlink" title="一、项目的克隆以及必要的环境依赖"></a>一、项目的克隆以及必要的环境依赖</h3><p>YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。不得不说GitHub的确是全球最大的男性交友网站，里面的人个个都是人才，yolov5发布才一年左右的时间，YOLOv5就已经更新了5个分支了，分别是yolov5.1-yolov5.5分支。该项目就是利用的yolov5.5分支来作为讲解。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/tree/v5.0">官网</a></p>
-<h5 id="1、注意的是：需要在Tags上选择V5-0版本"><a class="header-anchor" href="#1、注意的是：需要在Tags上选择V5-0版本">¶</a>1、注意的是：需要在Tags上选择V5.0版本</h5>
-<p>个开源的项目通过大家的不断的完善和修复已经到了第5个分支，因此我们选择第五个版本来实验，首先点击左上角的master这个图标来选择项目的第5个分支，如下图所示，然后将版本选择好以后，点击右上角的code那个按键，将代码下载下来。至此整个项目就已经准备好了。</p>
+<h5 id="1、注意的是：需要在Tags上选择V5-0版本"><a href="#1、注意的是：需要在Tags上选择V5-0版本" class="headerlink" title="1、注意的是：需要在Tags上选择V5.0版本"></a>1、注意的是：需要在Tags上选择V5.0版本</h5><p>个开源的项目通过大家的不断的完善和修复已经到了第5个分支，因此我们选择第五个版本来实验，首先点击左上角的master这个图标来选择项目的第5个分支，如下图所示，然后将版本选择好以后，点击右上角的code那个按键，将代码下载下来。至此整个项目就已经准备好了。</p>
 <p><img src="/2022/111116121/yolov5%E5%9C%B0%E5%9D%80.png" alt></p>
-<h5 id="2、项目的代码结构"><a class="header-anchor" href="#2、项目的代码结构">¶</a>2、项目的代码结构</h5>
-<p><img src="/2022/111116121/YOLO%E7%9B%AE%E5%BD%95.png" alt></p>
+<h5 id="2、项目的代码结构"><a href="#2、项目的代码结构" class="headerlink" title="2、项目的代码结构"></a>2、项目的代码结构</h5><p><img src="/2022/111116121/YOLO%E7%9B%AE%E5%BD%95.png" alt></p>
 <p>├── data：主要是存放一些超参数的配置文件（这些文件（yaml文件）是用来配置训练集和测试集还有验证集的路径的，其中还包括目标检测的种类数和种类的名称）；还有一些官方提供测试的图片。如果是训练自己的数据集的话，那么就需要修改其中的yaml文件。但是自己的数据集不建议放在这个路径下面，而是建议把数据集放到yolov5项目的同级目录下面。</p>
 <p>├── models：里面主要是一些网络构建的配置文件和函数，其中包含了该项目的四个不同的版本，分别为是s、m、l、x。从名字就可以看出，这几个版本的大小。他们的检测测度分别都是从快到慢，但是精确度分别是从低到高。这就是所谓的鱼和熊掌不可兼得。如果训练自己的数据集的话，就需要修改这里面相对应的yaml文件来训练自己模型。</p>
 <p>├── utils：存放的是工具类的函数，里面有loss函数，metrics函数，plots函数等等。</p>
 <p>├── weights：放置训练好的权重参数。</p>
-<p>├── <a target="_blank" rel="noopener" href="http://detect.py">detect.py</a>：利用训练好的权重参数进行目标检测，可以进行图像、视频和摄像头的检测。</p>
-<p>├── <a target="_blank" rel="noopener" href="http://train.py">train.py</a>：训练自己的数据集的函数。</p>
-<p>├── <a target="_blank" rel="noopener" href="http://test.py">test.py</a>：测试训练的结果的函数。</p>
+<p>├── detect.py：利用训练好的权重参数进行目标检测，可以进行图像、视频和摄像头的检测。</p>
+<p>├── train.py：训练自己的数据集的函数。</p>
+<p>├── test.py：测试训练的结果的函数。</p>
 <p>├──requirements.txt：这是一个文本文件，里面写着使用yolov5项目的环境依赖包的一些版本，可以利用该文本导入相应版本的包。</p>
 <p>以上就是yolov5项目代码的整体介绍。我们训练和测试自己的数据集基本就是利用到如上的代码。</p>
-<h5 id="3、环境依赖安装"><a class="header-anchor" href="#3、环境依赖安装">¶</a>3、环境依赖安装</h5>
-<p>打开requirements.txt这个文件，可以看到里面有很多的依赖库和其对应的版本要求。我们打开pycharm的命令终端，在中输入如下的命令，就可以安装了。</p>
+<h5 id="3、环境依赖安装"><a href="#3、环境依赖安装" class="headerlink" title="3、环境依赖安装"></a>3、环境依赖安装</h5><p>打开requirements.txt这个文件，可以看到里面有很多的依赖库和其对应的版本要求。我们打开pycharm的命令终端，在中输入如下的命令，就可以安装了。</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">pip install -r requirements.txt</code></pre>
-<h3 id="二、数据集的准备和预训练权重的准备"><a class="header-anchor" href="#二、数据集的准备和预训练权重的准备">¶</a>二、数据集的准备和预训练权重的准备</h3>
-<p>数据最好放在最外一级目录中，然后数据集的目录格式如下图所示。大家一定要严格按我的格式来，否则非常容易出问题。<br>
-<font color="#0000FF">目录结构当中的VOCdevkit就是我的数据集</font></p>
+
+<h3 id="二、数据集的准备和预训练权重的准备"><a href="#二、数据集的准备和预训练权重的准备" class="headerlink" title="二、数据集的准备和预训练权重的准备"></a>二、数据集的准备和预训练权重的准备</h3><p>数据最好放在最外一级目录中，然后数据集的目录格式如下图所示。大家一定要严格按我的格式来，否则非常容易出问题。<br><font color="#0000FF">目录结构当中的VOCdevkit就是我的数据集</font></p>
 <p><img src="/2022/111116121/%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9B%AE%E5%BD%95.png" alt></p>
-<h5 id="预训练权重"><a class="header-anchor" href="#预训练权重">¶</a>预训练权重</h5>
-<p>一般为了缩短网络的训练时间，并达到更好的精度，我们一般加载预训练权重进行网络的训练。而yolov5的5.0版本给我们提供了几个预训练权重，我们可以对应我们不同的需求选择不同的版本的预训练权重。通过如下的图可以获得权重的名字和大小信息，可以预料的到，预训练权重越大，训练出来的精度就会相对来说越高，但是其检测的速度就会越慢。预训练权重可以通过这个网址进行下载，<a target="_blank" rel="noopener" href="http://xn--yolov5s-e73k318ipqlslfg1fwix19biu0b9seda6019aga742nml2cia0817a06ywvj.pt">本次训练自己的数据集用的预训练权重为yolov5s.pt</a>。</p>
+<h5 id="预训练权重"><a href="#预训练权重" class="headerlink" title="预训练权重"></a>预训练权重</h5><p>一般为了缩短网络的训练时间，并达到更好的精度，我们一般加载预训练权重进行网络的训练。而yolov5的5.0版本给我们提供了几个预训练权重，我们可以对应我们不同的需求选择不同的版本的预训练权重。通过如下的图可以获得权重的名字和大小信息，可以预料的到，预训练权重越大，训练出来的精度就会相对来说越高，但是其检测的速度就会越慢。预训练权重可以通过这个网址进行下载，本次训练自己的数据集用的预训练权重为yolov5s.pt。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/releases">网址的底部</a></p>
-<h3 id="三、训练自己的模型"><a class="header-anchor" href="#三、训练自己的模型">¶</a>三、训练自己的模型</h3>
-<h5 id="1、修改数据配置文件"><a class="header-anchor" href="#1、修改数据配置文件">¶</a>1、修改数据配置文件</h5>
-<p>    预训练模型和数据集都准备好了，就可以开始训练自己的yolov5目标检测模型了，训练目标检测模型需要修改两个yaml文件中的参数。一个是data目录下的相应的yaml文件，一个是model目录文件下的相应的yaml文件。</p>
-<p>    修改data目录下的相应的yaml文件。找到目录下的voc.yaml文件，将该文件复制一份，将复制的文件重命名，最好和项目相关，这样方便后面操作。我这里修改为hat.yaml。该项目是对安全帽的识别。</p>
+<h3 id="三、训练自己的模型"><a href="#三、训练自己的模型" class="headerlink" title="三、训练自己的模型"></a>三、训练自己的模型</h3><h5 id="1、修改数据配置文件"><a href="#1、修改数据配置文件" class="headerlink" title="1、修改数据配置文件"></a>1、修改数据配置文件</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;预训练模型和数据集都准备好了，就可以开始训练自己的yolov5目标检测模型了，训练目标检测模型需要修改两个yaml文件中的参数。一个是data目录下的相应的yaml文件，一个是model目录文件下的相应的yaml文件。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;修改data目录下的相应的yaml文件。找到目录下的voc.yaml文件，将该文件复制一份，将复制的文件重命名，最好和项目相关，这样方便后面操作。我这里修改为hat.yaml。该项目是对安全帽的识别。</p>
 <p><img src="/2022/111116121/%E7%9B%AE%E5%BD%95%E6%9B%B4%E6%94%B9.png" alt></p>
-<h6 id="data文件夹下hat-yaml文件的修改"><a class="header-anchor" href="#data文件夹下hat-yaml文件的修改">¶</a>data文件夹下hat.yaml文件的修改</h6>
-<p>打开这个文件夹修改其中的参数，首先将箭头1中的那一行代码注释掉（我已经注释掉了），如果不注释这行代码训练的时候会报错；箭头2中需要将训练和测试的数据集的路径填上（最好要填绝对路径，有时候由目录结构的问题会莫名奇妙的报错）；箭头3中需要检测的类别数，我这里是识别安全帽和人，所以这里填写2；最后箭头4中填写需要识别的类别的名字（必须是英文，否则会乱码识别不出来）。到这里和data目录下的yaml文件就修改好了。</p>
+<h6 id="data文件夹下hat-yaml文件的修改"><a href="#data文件夹下hat-yaml文件的修改" class="headerlink" title="data文件夹下hat.yaml文件的修改"></a>data文件夹下hat.yaml文件的修改</h6><p>打开这个文件夹修改其中的参数，首先将箭头1中的那一行代码注释掉（我已经注释掉了），如果不注释这行代码训练的时候会报错；箭头2中需要将训练和测试的数据集的路径填上（最好要填绝对路径，有时候由目录结构的问题会莫名奇妙的报错）；箭头3中需要检测的类别数，我这里是识别安全帽和人，所以这里填写2；最后箭头4中填写需要识别的类别的名字（必须是英文，否则会乱码识别不出来）。到这里和data目录下的yaml文件就修改好了。</p>
 <p><img src="/2022/111116121/data%E4%B8%8Byaml%E6%96%87%E4%BB%B6.png" alt></p>
-<h6 id="models文件夹下hat-yaml文件的修改"><a class="header-anchor" href="#models文件夹下hat-yaml文件的修改">¶</a>models文件夹下hat.yaml文件的修改</h6>
-<p>由于该项目使用的是yolov5s.pt这个预训练权重，所以要使用models目录下的yolov5s.yaml文件中的相应参数（因为不同的预训练权重对应着不同的网络层数，所以用错预训练权重会报错）。同上修改data目录下的yaml文件一样，我们最好将yolov5s.yaml文件复制一份，然后将其重命名，我将其重命名为hat.yaml。</p>
+<h6 id="models文件夹下hat-yaml文件的修改"><a href="#models文件夹下hat-yaml文件的修改" class="headerlink" title="models文件夹下hat.yaml文件的修改"></a>models文件夹下hat.yaml文件的修改</h6><p>由于该项目使用的是yolov5s.pt这个预训练权重，所以要使用models目录下的yolov5s.yaml文件中的相应参数（因为不同的预训练权重对应着不同的网络层数，所以用错预训练权重会报错）。同上修改data目录下的yaml文件一样，我们最好将yolov5s.yaml文件复制一份，然后将其重命名，我将其重命名为hat.yaml。</p>
 <p>打开yolov5_hat.yaml文件只需要修改如图中的数字就好了，这里是识别两个类别。</p>
 <p><img src="/2022/111116121/models%E4%B8%8Byaml%E6%96%87%E4%BB%B6.png" alt></p>
-<h6 id="train-py文件的相关参数的修改"><a class="header-anchor" href="#train-py文件的相关参数的修改">¶</a>train.py文件的相关参数的修改</h6>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+<h6 id="train-py文件的相关参数的修改"><a href="#train-py文件的相关参数的修改" class="headerlink" title="train.py文件的相关参数的修改"></a>train.py文件的相关参数的修改</h6><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
 <span class="token triple-quoted-string string">"""
     opt模型主要参数解析：
     --weights：初始化的权重文件的路径地址
@@ -562,40 +552,32 @@ YOLOv5的代码是开源的，因此我们可以从github上克隆其源码。�
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--save_period'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'Log model after every "save_period" epoch'</span><span class="token punctuation">)</span>
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--artifact_alias'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">"latest"</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'version of dataset artifact to be used'</span><span class="token punctuation">)</span>
     opt <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+
 <p>训练自己的模型需要修改如下几个参数就可以训练了。首先将weights权重的路径填写到对应的参数里面，然后将修好好的models模型的yolov5s.yaml文件路径填写到相应的参数里面，最后将data数据的hat.yaml文件路径填写到相对于的参数里面。这几个参数就必须要修改的参数。</p>
 <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--weights'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'weights/yolov5s.pt'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'initial weights path'</span><span class="token punctuation">)</span>
 parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--cfg'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'models/yolov5s_hat.yaml'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'model.yaml path'</span><span class="token punctuation">)</span>
 parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--data'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'data/hat.yaml'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'data.yaml path'</span><span class="token punctuation">)</span></code></pre>
+
 <p>还有几个需要根据自己的需求来更改的参数：</p>
 <p>首先是模型的训练轮次，这里是训练的300轮。(我的垃圾戴尔G3[GPU GTX1650]训练40轮，搞了一天,)</p>
 <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--epochs'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">)</span></code></pre>
+
 <p><font color="#FF0000">如果出现 out of memory 表示显存溢出了， 需要下调以下两个参数</font></p>
 <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--batch-size'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'total batch size for all GPUs'</span><span class="token punctuation">)</span>
 
 parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--workers'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'maximum number of dataloader workers'</span><span class="token punctuation">)</span></code></pre>
+
 <p><font color="#FF0000">如果出现OSError：[WinError 1455] 页面文件太小，无法完成操作</font></p>
 <p>可以根据如下的操作来修改，在utils路径下找到datasets.py这个文件，将里面的第81行里面的参数nw改完0就可以了。</p>
-<p>🍑<br>
-🍒<br>
-🍓<br>
-🍔<br>
-🍕<br>
-🍖<br>
-🍗<br>
-🍘<br>
-🍙<br>
-🍚<br>
-🍛</p>
+<p>&#x1F351;<br>&#x1F352;<br>&#x1F353;<br>&#x1F354;<br>&#x1F355;<br>&#x1F356;<br>&#x1F357;<br>&#x1F358;<br>&#x1F359;<br>&#x1F35A;<br>&#x1F35B;</p>
 <p>然后运行train.py就可以训练模型了</p>
-<h3 id="四，使用tensorboard查看参数"><a class="header-anchor" href="#四，使用tensorboard查看参数">¶</a>四，使用tensorboard查看参数</h3>
-<p>yolov5里面有写好的tensorbord函数，可以运行命令就可以调用tensorbord，然后查看tensorbord了。首先打开pycharm的命令控制终端，输入如下命令，就会出现一个网址地址，将那行网址复制下来到浏览器打开就可以看到训练的过程了</p>
+<h3 id="四，使用tensorboard查看参数"><a href="#四，使用tensorboard查看参数" class="headerlink" title="四，使用tensorboard查看参数"></a>四，使用tensorboard查看参数</h3><p>yolov5里面有写好的tensorbord函数，可以运行命令就可以调用tensorbord，然后查看tensorbord了。首先打开pycharm的命令控制终端，输入如下命令，就会出现一个网址地址，将那行网址复制下来到浏览器打开就可以看到训练的过程了</p>
 <p>注意需要切换到pytorch虚拟环境下</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">tensorboard --logdir&#x3D;runs&#x2F;train</code></pre>
+
 <p><img src="/2022/111116121/tensorboard%E9%9D%A2%E6%9D%BF.png" alt></p>
-<h3 id="五、训练完成之后，会出现一个runs的文件夹"><a class="header-anchor" href="#五、训练完成之后，会出现一个runs的文件夹">¶</a>五、训练完成之后，会出现一个runs的文件夹</h3>
-<p>等到数据训练好了以后，就会在主目录下产生一个run文件夹，在run/train/exp/weights目录下会产生两个权重文件，一个是最后一轮的权重文件，一个是最好的权重文件，一会我们就要利用这个最好的权重文件来做推理测试。除此以外还会产生一些验证文件的图片等一些文件</p>
-<p>找到detect.py文件<br>
-然后找到主函数的入口，这里面有模型的主要参数。模型的主要参数解析如下所示。</p>
+<h3 id="五、训练完成之后，会出现一个runs的文件夹"><a href="#五、训练完成之后，会出现一个runs的文件夹" class="headerlink" title="五、训练完成之后，会出现一个runs的文件夹"></a>五、训练完成之后，会出现一个runs的文件夹</h3><p>等到数据训练好了以后，就会在主目录下产生一个run文件夹，在run/train/exp/weights目录下会产生两个权重文件，一个是最后一轮的权重文件，一个是最好的权重文件，一会我们就要利用这个最好的权重文件来做推理测试。除此以外还会产生一些验证文件的图片等一些文件</p>
+<p>找到detect.py文件<br>然后找到主函数的入口，这里面有模型的主要参数。模型的主要参数解析如下所示。</p>
 <pre class="language-python" data-language="python"><code class="language-python">f __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
 <span class="token triple-quoted-string string">"""
 --weights:权重的路径地址
@@ -633,14 +615,14 @@ parser<span class="token punctuation">.</span>add_argument<span class="token pun
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--name'</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'exp'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'save results to project/name'</span><span class="token punctuation">)</span>
     parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--exist-ok'</span><span class="token punctuation">,</span> action<span class="token operator">=</span><span class="token string">'store_true'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'existing project/name ok, do not increment'</span><span class="token punctuation">)</span>
     opt <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>这里需要将刚刚训练好的最好的权重传入到推理函数中去。然后就可以对图像视频进行推理了。</p>
- <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--weights'</span><span class="token punctuation">,</span> nargs<span class="token operator">=</span><span class="token string">'+'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'runs/train/exp/weights/best.pt'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'model.pt path(s)'</span><span class="token punctuation">)</span></code></pre>
-<p>对图片进行测试推理，将如下参数修改成图片的路径，然后运行detect.py就可以进行测试了。</p>
- <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--source'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'000295.jpg'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'source'</span><span class="token punctuation">)</span> </code></pre>
+
+<p> 这里需要将刚刚训练好的最好的权重传入到推理函数中去。然后就可以对图像视频进行推理了。<br> <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--weights'</span><span class="token punctuation">,</span> nargs<span class="token operator">=</span><span class="token string">'+'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'runs/train/exp/weights/best.pt'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'model.pt path(s)'</span><span class="token punctuation">)</span></code></pre></p>
+<p> 对图片进行测试推理，将如下参数修改成图片的路径，然后运行detect.py就可以进行测试了。<br> <pre class="language-python" data-language="python"><code class="language-python">parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'--source'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'000295.jpg'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'source'</span><span class="token punctuation">)</span> </code></pre></p>
 <p>在runs下有detect文件夹，即为运行的结果</p>
 <p>对视频进行测试，和如上的图片的测试是一样的，只不过是将图片的路径改为视频的路径而已。利用摄像头进行测试只需将路径改写为0就好了。但是好像还是会报错，这一点卡了我很久。报错如下。</p>
 <p>打开datasets文件，找到第279行代码，给两个url参数加上str就可以了，如图所示，就可以完美运行电脑的摄像头了。</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> <span class="token string">'youtube.com/'</span> <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token string">'youtu.be/'</span> <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span></code></pre>
+
 <font></font></font>
                 
             </div>

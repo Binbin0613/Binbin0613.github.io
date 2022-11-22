@@ -6,10 +6,9 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="VGG-图像分类实现猫狗分类, Software Engineer">
     <meta name="description" content="
-¶一、项目目录结构及相关代码解析
-¶使用pytorch框架利用VGG16网络实现猫狗分类的目录结构
 
-├── data.py：进行图像数据的整理(原始给定的数据集当中的图像是不规范的数据，需要对其完成数据的规范化处理)–对数据集进行大小的">
+一、项目目录结构及相关代码解析使用pytorch框架利用VGG16网络实现猫狗分类的目录结构
+├── data.py：进行图像数据的整理(原始给定的数据集当中的图像是不规范的数据，需要对其完成数据的规范化处理)–对数据集进行大小的调整/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -450,16 +449,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、项目目录结构及相关代码解析"><a class="header-anchor" href="#一、项目目录结构及相关代码解析">¶</a>一、项目目录结构及相关代码解析</h3>
-<h5 id="使用pytorch框架利用VGG16网络实现猫狗分类的目录结构"><a class="header-anchor" href="#使用pytorch框架利用VGG16网络实现猫狗分类的目录结构">¶</a>使用pytorch框架利用VGG16网络实现猫狗分类的目录结构</h5>
-<p><img src="/2022/111316122/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt></p>
-<p>├── <a target="_blank" rel="noopener" href="http://data.py">data.py</a>：进行图像数据的整理(原始给定的数据集当中的图像是不规范的数据，需要对其完成数据的规范化处理)–对数据集进行大小的调整/翻转，使得数据具备更强的鲁棒性</p>
-<p>├── <a target="_blank" rel="noopener" href="http://net.py">net.py</a>: 编写的VGG16网络的代码，这里的代码可以去pytorch官网上找到<a target="_blank" rel="noopener" href="https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#vgg16">源代码</a>，并做出相关的修改</p>
-<p>├── <a target="_blank" rel="noopener" href="http://txt.py">txt.py</a>: 将训练的图像的地址进行输出，输出为：cls_train.txt中</p>
-<p>├── <a target="_blank" rel="noopener" href="http://main.py">main.py</a>: 进行训练的源代码，包括：数据的加载、创建模型网络、优化器编写、开始训练、保存模型等</p>
-<p>├── <a target="_blank" rel="noopener" href="http://predict.py">predict.py</a>: 进行训练出来的模型的效果验证，</p>
-<h6 id="data-py"><a class="header-anchor" href="#data-py">¶</a><a target="_blank" rel="noopener" href="http://data.py">data.py</a></h6>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> cv2
+
+<h3 id="一、项目目录结构及相关代码解析"><a href="#一、项目目录结构及相关代码解析" class="headerlink" title="一、项目目录结构及相关代码解析"></a>一、项目目录结构及相关代码解析</h3><h5 id="使用pytorch框架利用VGG16网络实现猫狗分类的目录结构"><a href="#使用pytorch框架利用VGG16网络实现猫狗分类的目录结构" class="headerlink" title="使用pytorch框架利用VGG16网络实现猫狗分类的目录结构"></a>使用pytorch框架利用VGG16网络实现猫狗分类的目录结构</h5><p><img src="/2022/111316122/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt></p>
+<p>├── data.py：进行图像数据的整理(原始给定的数据集当中的图像是不规范的数据，需要对其完成数据的规范化处理)–对数据集进行大小的调整/翻转，使得数据具备更强的鲁棒性</p>
+<p>├── net.py: 编写的VGG16网络的代码，这里的代码可以去pytorch官网上找到<a target="_blank" rel="noopener" href="https://pytorch.org/vision/stable/_modules/torchvision/models/vgg.html#vgg16">源代码</a>，并做出相关的修改</p>
+<p>├── txt.py: 将训练的图像的地址进行输出，输出为：cls_train.txt中</p>
+<p>├── main.py: 进行训练的源代码，包括：数据的加载、创建模型网络、优化器编写、开始训练、保存模型等</p>
+<p>├── predict.py: 进行训练出来的模型的效果验证，</p>
+<h6 id="data-py"><a href="#data-py" class="headerlink" title="data.py"></a>data.py</h6><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> cv2
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">as</span> data
 <span class="token keyword">from</span> PIL <span class="token keyword">import</span>  Image
@@ -549,8 +546,8 @@
         image_data<span class="token operator">=</span>cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>x<span class="token punctuation">,</span>cv2<span class="token punctuation">.</span>COLOR_HSV2RGB<span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">255</span>
         <span class="token keyword">return</span> image_data
 </code></pre>
-<h6 id="net-py"><a class="header-anchor" href="#net-py">¶</a><a target="_blank" rel="noopener" href="http://net.py">net.py</a></h6>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+
+<h6 id="net-py"><a href="#net-py" class="headerlink" title="net.py"></a>net.py</h6><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
 
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>hub <span class="token keyword">import</span> load_state_dict_from_url
@@ -633,8 +630,8 @@ cfgs <span class="token operator">=</span> <span class="token punctuation">&#123
         <span class="token punctuation">)</span>
     <span class="token keyword">return</span> model
 </code></pre>
-<h6 id="main-py-train"><a class="header-anchor" href="#main-py-train">¶</a><a target="_blank" rel="noopener" href="http://main.py">main.py</a>(train)</h6>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+
+<h6 id="main-py-train"><a href="#main-py-train" class="headerlink" title="main.py(train)"></a>main.py(train)</h6><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
 <span class="token keyword">from</span> net <span class="token keyword">import</span> vgg16
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> DataLoader
@@ -705,8 +702,8 @@ epochs <span class="token operator">=</span> <span class="token number">50</span
     torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>net<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"Adogandcat.&#123;&#125;.pth"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>epoch<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 只保存网络的结构</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"模型已保存"</span><span class="token punctuation">)</span>
 </code></pre>
-<h6 id="predict-py"><a class="header-anchor" href="#predict-py">¶</a><a target="_blank" rel="noopener" href="http://predict.py">predict.py</a></h6>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+<h6 id="predict-py"><a href="#predict-py" class="headerlink" title="predict.py"></a>predict.py</h6><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
 <span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
@@ -737,6 +734,7 @@ plt<span class="token punctuation">.</span>suptitle<span class="token punctuatio
 plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>img<span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
+
 <p>代码地址： H:\DeepLeaning\VGG16\cat_or_dog\BinCode</p>
 <p>注： 运行了17轮的模型，效果一直不怎么好，正确率感觉上不去</p>
 </font>
