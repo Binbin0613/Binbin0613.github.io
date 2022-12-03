@@ -4,6 +4,122 @@
   
     
     <entry>
+      <title>cs231n-卷积神经网络</title>
+      <link href="/2022/112316139.html"/>
+      <url>/2022/112316139.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h3 id="一、课程大纲"><a href="#一、课程大纲" class="headerlink" title="一、课程大纲"></a>一、课程大纲</h3><blockquote><ul><li>结构概述</li><li>用来构建卷积神经网络的各种层<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卷积层<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇聚层<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;归一化层<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全连接层<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将全连接层转化成卷积层</li><li>卷积神经网络的结构<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层的排列规律<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层的尺寸设置规律<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;案例学习（LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算上的考量</li></ul></blockquote><h3 id="二、卷积神经网络（CNNs-ConvNets）"><a href="#二、卷积神经网络（CNNs-ConvNets）" class="headerlink" title="二、卷积神经网络（CNNs / ConvNets）"></a>二、卷积神经网络（CNNs / ConvNets）</h3><p>卷积神经网络和上一章讲的常规神经网络非常相似：它们都是由神经元组成，神经元中有具有学习能力的权重和偏差。<strong>每个神经元都得到一些输入数据，进行内积运算后再进行激活函数运算</strong>。整个网络依旧是一个<strong>可导的评分函数</strong>：该函数的<strong>输入是原始的图像像素</strong>，<strong>输出是不同类别的评分</strong>。在最后一层（往往是<strong>全连接层</strong>），网络依旧有一个损失函数（比如SVM或Softmax），并且在神经网络中我们实现的各种技巧和要点依旧适用于卷积神经网络。</p><p>那么有哪些地方变化了呢？卷积神经网络的结构基于一个假设，即输入数据是图像，基于该假设，我们就向结构中添加了一些特有的性质。这些特有属性使得前向传播函数实现起来更高效，并且大幅度降低了网络中参数的数量。</p><h3 id="三、结构概述"><a href="#三、结构概述" class="headerlink" title="三、结构概述"></a>三、结构概述</h3><p><strong>回顾：常规神经网络</strong>。在上一章中，神经网络的输入是一个向量，然后在一系列的隐层中对它做变换。每个隐层都是由若干的神经元组成，每个神经元都与前一层中的所有神经元连接。但是在一个隐层中，神经元相互独立不进行任何连接。最后的全连接层被称为“输出层”，在分类问题中，它输出的值被看做是不同类别的评分值。</p><p>常规神经网络对于大尺寸图像效果不尽人意。在CIFAR-10中，图像的尺寸是32x32x3（宽高均为32像素，3个颜色通道），因此，对应的的常规神经网络的第一个隐层中，每一个单独的全连接神经元就有32x32x3=3072个权重。这个数量看起来还可以接受，但是很显然这个全连接的结构不适用于更大尺寸的图像。举例说来，一个尺寸为200x200x3的图像，会让神经元包含200x200x3=120,000个权重值。而网络中肯定不止一个神经元，那么参数的量就会快速增加！显而易见，这种全连接方式效率低下，大量的参数也很快会导致网络过拟合。</p><p>神经元的三维排列。卷积神经网络针对输入全部是图像的情况，将结构调整得更加合理，获得了不小的优势。与常规神经网络不同，卷积神经网络的各层中的神经元是3维排列的：<strong>宽度、高度和深度</strong>（这里的深度指的是激活数据体的第三个维度，而不是整个网络的深度，整个网络的深度指的是网络的层数）。举个例子，CIFAR-10中的图像是作为卷积神经网络的输入，该数据体的维度是32x32x3（宽度，高度和深度）。我们将看到，层中的神经元将只与前一层中的一小块区域连接，而不是采取全连接方式。对于用来分类CIFAR-10中的图像的卷积网络，其最后的输出层的维度是1x1x10，因为在卷积神经网络结构的最后部分将会把全尺寸的图像压缩为包含分类评分的一个向量，向量是在深度方向排列的。下面是例子：<br><img src="/2022/112316139/demo.png" alt></p><p>左边是一个3层的神经网络。右边是一个卷积神经网络，图例中网络将它的神经元都排列成3个维度（宽、高和深度）。卷积神经网络的每一层都将3D的输入数据变化为神经元3D的激活数据并输出。在这个例子中，红色的输入层装的是图像，所以它的宽度和高度就是图像的宽度和高度，它的深度是3（代表了红、绿、蓝3种颜色通道）。</p><blockquote><ul><li>卷积神经网络是由层组成的。每一层都有一个简单的API：用一些含或者不含参数的可导的函数，将输入的3D数据变换为3D的输出数据。</li></ul></blockquote><h3 id="四、用来构建卷积网络的各种层"><a href="#四、用来构建卷积网络的各种层" class="headerlink" title="四、用来构建卷积网络的各种层"></a>四、用来构建卷积网络的各种层</h3><p>一个简单的卷积神经网络是由各种层按照顺序排列组成，网络中的每个层使用一个可以微分的函数将激活数据从一个层传递到另一个层。卷积神经网络主要由三种类型的层构成：<strong>卷积层</strong>，<strong>汇聚（Pooling）层</strong>和<strong>全连接层（全连接层和常规神经网络中的一样）</strong>。通过将这些层叠加起来，就可以构建一个完整的卷积神经网络。</p><p>网络结构例子：这仅仅是个概述，下面会更详解的介绍细节。一个用于CIFAR-10图像数据分类的卷积神经网络的结构可以是[输入层-卷积层-ReLU层-汇聚层-全连接层]。细节如下：</p><blockquote><ul><li>输入[32x32x3]存有图像的原始像素值，本例中图像宽高均为32，有3个颜色通道。</li><li>卷积层中，神经元与输入层中的一个局部区域相连，每个神经元都计算自己与输入层相连的小区域与自己权重的内积。卷积层会计算所有神经元的输出。如果我们使用12个滤波器（也叫作核），得到的输出数据体的维度就是[32x32x12]。</li><li>ReLU层将会逐个元素地进行激活函数操作，比如使用以0为阈值的max(0, x)作为激活函数。该层对数据尺寸没有改变，还是[32x32x12]。</li><li>汇聚层在在空间维度（宽度和高度）上进行降采样（downsampling）操作，数据尺寸变为[16x16x12]。</li><li>全连接层将会计算分类评分，数据尺寸变为[1x1x10]，其中10个数字对应的就是CIFAR-10中10个类别的分类评分值。正如其名，全连接层与常规神经网络一样，其中每个神经元都与前一层中所有神经元相连接。</li></ul></blockquote><p>由此看来，卷积神经网络一层一层地将图像从原始像素值变换成最终的分类评分值。其中有的层含有参数，有的没有。具体说来，卷积层和全连接层（CONV/FC）对输入执行变换操作的时候，不仅会用到激活函数，还会用到很多参数（神经元的突触权值和偏差）。而ReLU层和汇聚层则是进行一个固定不变的函数操作。卷积层和全连接层中的参数会随着梯度下降被训练，这样卷积神经网络计算出的分类评分就能和训练集中的每个图像的标签吻合了。</p><h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><blockquote><ul><li>简单案例中卷积神经网络的结构，就是一系列的层将输入数据变换为输出数据（比如分类评分）。</li><li>卷积神经网络结构中有几种不同类型的层（目前最流行的有卷积层、全连接层、ReLU层和汇聚层）。</li><li>每个层的输入是3D数据，然后使用一个可导的函数将其变换为3D的输出数据。</li><li>有的层有参数，有的没有（卷积层和全连接层有，ReLU层和汇聚层没有）。</li><li>有的层有额外的超参数，有的没有（卷积层、全连接层和汇聚层有，ReLU层没有）。</li></ul></blockquote><p><img src="/2022/112316139/demo2.png" alt></p><p>一个卷积神经网络的激活输出例子。左边的输入层存有原始图像像素，右边的输出层存有类别分类评分。在处理流程中的每个激活数据体是铺成一列来展示的。因为对3D数据作图比较困难，我们就把每个数据体切成层，然后铺成一列显示。最后一层装的是针对不同类别的分类得分，这里只显示了得分最高的5个评分值和对应的类别。完整的网页演示在我们的课程主页。本例中的结构是一个小的VGG网络，VGG网络后面会有讨论。</p><h3 id="五、卷积层"><a href="#五、卷积层" class="headerlink" title="五、卷积层"></a>五、卷积层</h3><h5 id="卷积层是构建卷积神经网络的核心层，它产生了网络中大部分的计算量。"><a href="#卷积层是构建卷积神经网络的核心层，它产生了网络中大部分的计算量。" class="headerlink" title="卷积层是构建卷积神经网络的核心层，它产生了网络中大部分的计算量。"></a>卷积层是构建卷积神经网络的核心层，它产生了网络中大部分的计算量。</h5><p>概述和直观介绍：首先讨论的是，在没有大脑和生物意义上的神经元之类的比喻下，卷积层到底在计算什么。卷积层的参数是有一些可学习的滤波器集合构成的。每个滤波器在空间上（宽度和高度）都比较小，但是深度和输入数据一致。举例来说，卷积神经网络第一层的一个典型的滤波器的尺寸可以是5x5x3（宽高都是5像素，深度是3是因为图像应为颜色通道，所以有3的深度）。在前向传播的时候，让每个滤波器都在输入数据的宽度和高度上滑动（更精确地说是卷积），然后计算整个滤波器和输入数据任一处的内积。当滤波器沿着输入数据的宽度和高度滑过后，会生成一个2维的激活图（activation map），激活图给出了在每个空间位置处滤波器的反应。直观地来说，网络会让滤波器学习到当它看到某些类型的视觉特征时就激活，具体的视觉特征可能是某些方位上的边界，或者在第一层上某些颜色的斑点，甚至可以是网络更高层上的蜂巢状或者车轮状图案。</p><p>在每个卷积层上，我们会有一整个集合的滤波器（比如12个），每个都会生成一个不同的二维激活图。将这些激活映射在深度方向上层叠起来就生成了输出数据。</p><p><strong>局部连接</strong>：在处理图像这样的高维度输入时，让每个神经元都与前一层中的所有神经元进行全连接是不现实的。相反，我们让每个神经元只与输入数据的一个局部区域连接。该连接的空间大小叫做神经元的感受野（receptive field），它的尺寸是一个超参数（其实就是滤波器的空间尺寸）。在深度方向上，这个连接的大小总是和输入量的深度相等。需要再次强调的是，我们对待空间维度（宽和高）与深度维度是不同的：连接在空间（宽高）上是局部的，但是在深度上总是和输入数据的深度一致。</p><p><strong>例</strong>1：假设输入数据体尺寸为[32x32x3]（比如CIFAR-10的RGB图像），如果感受野（或滤波器尺寸）是5x5，那么卷积层中的每个神经元会有输入数据体中[5x5x3]区域的权重，共5x5x3=75个权重（还要加一个偏差参数）。注意这个连接在深度维度上的大小必须为3，和输入数据体的深度一致。</p><p><strong>例2</strong>：假设输入数据体的尺寸是[16x16x20]，感受野尺寸是3x3，那么卷积层中每个神经元和输入数据体就有3x3x20=180个连接。再次提示：在空间上连接是局部的（3x3），但是在深度上是和输入数据体一致的（20）。</p><p><img src="/2022/112316139/conv.png" alt></p><p>左边：红色的是输入数据体（比如CIFAR-10中的图像），蓝色的部分是第一个卷积层中的神经元。卷积层中的每个神经元都只是与输入数据体的一个局部在空间上相连，但是与输入数据体的所有深度维度全部相连（所有颜色通道）。在深度方向上有多个神经元（本例中5个），它们都接受输入数据的同一块区域（<strong>感受野相同</strong>）。至于深度列的讨论在下文中有。</p><p>右边：神经网络章节中介绍的神经元保持不变，它们还是计算权重和输入的内积，然后进行激活函数运算，只是它们的连接被限制在一个局部空间。</p><p><strong>空间排列</strong>：上文讲解了卷积层中每个神经元与输入数据体之间的连接方式，但是尚未讨论输出数据体中神经元的数量，以及它们的排列方式。3个超参数控制着输出数据体的尺寸：<strong>深度（depth）</strong>，<strong>步长（stride）</strong>和<strong>零填充（zero-padding）</strong>。下面是对它们的讨论：</p><blockquote><ul><li>首先，输出数据体的深度是一个超参数：它和使用的滤波器的数量一致，而每个滤波器在输入数据中寻找一些不同的东西。举例来说，如果第一个卷积层的输入是原始图像，那么在深度维度上的不同神经元将可能被不同方向的边界，或者是颜色斑点激活。我们将这些沿着深度方向排列、感受野相同的神经元集合称为深度列（depth column），也有人使用纤维（fibre）来称呼它们。</li><li>其次，在滑动滤波器的时候，必须指定步长。当步长为1，滤波器每次移动1个像素。当步长为2（或者不常用的3，或者更多，这些在实际中很少使用），滤波器滑动时每次移动2个像素。这个操作会让输出数据体在空间上变小。</li><li>在下文可以看到，有时候将输入数据体用0在边缘处进行填充是很方便的。这个零填充（zero-padding）的尺寸是一个超参数。零填充有一个良好性质，即可以控制输出数据体的空间尺寸（最常用的是用来保持输入数据体在空间上的尺寸，这样输入和输出的宽高都相等）。</li></ul></blockquote><p>输出数据体在空间上的尺寸可以通过输入数据体尺寸（W），卷积层中神经元的感受野尺寸（F），步长（S）和零填充的数量（P）的函数来计算。（译者注：这里假设输入数组的空间形状是正方形，即高度和宽度相等）输出数据体的空间尺寸为(W-F +2P)/S+1。比如输入是7x7，滤波器是3x3，步长为1，填充为0，那么就能得到一个5x5的输出。如果步长为2，输出就是3x3。下面是例子：<br><img src="/2022/112316139/conv2.png" alt></p><p>空间排列的图示。在本例中只有一个空间维度（x轴），神经元的感受野尺寸F=3，输入尺寸W=5，零填充P=1。左边：神经元使用的步长S=1，所以输出尺寸是(5-3+2)/1+1=5。右边：神经元的步长S=2，则输出尺寸是(5-3+2)/2+1=3。注意当步长S=3时是无法使用的，因为它无法整齐地穿过数据体。从等式上来说，因为(5-3+2)=4是不能被3整除的。</p><p>本例中，神经元的权重是[1,0,-1]，显示在图的右上角，偏差值为0。这些权重是被所有黄色的神经元共享的（参数共享的内容看下文相关内容）。</p><p>使用零填充：在上面左边例子中，注意输入维度是5，输出维度也是5。之所以如此，是因为感受野是3并且使用了1的零填充。如果不使用零填充，则输出数据体的空间维度就只有3，因为这就是滤波器整齐滑过并覆盖原始数据需要的数目。一般说来，当步长S = 1时，零填充的值是P = (F - 1) / 2，这样就能保证输入和输出数据体有相同的空间尺寸。这样做非常常见，在介绍卷积神经网络的结构的时候我们会详细讨论其原因。</p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> cs231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cs231n </tag>
+            
+            <tag> 课程笔记 </tag>
+            
+            <tag> 卷积神经网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cs231n-神经网络2</title>
+      <link href="/2022/112216136.html"/>
+      <url>/2022/112216136.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h3 id="一、本节大纲"><a href="#一、本节大纲" class="headerlink" title="一、本节大纲"></a>一、本节大纲</h3><blockquote><ul><li>设置数据和模型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据预处理<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;权重初始化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;批量归一化（Batch Normalization）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正则化（L2/L1/Maxnorm/Dropout）</li><li>损失函数</li><li>小结</li></ul></blockquote><h3 id="二、设置数据和模型"><a href="#二、设置数据和模型" class="headerlink" title="二、设置数据和模型"></a>二、设置数据和模型</h3><p>在上一节中介绍了神经元的模型，它在计算内积后进行非线性激活函数计算，神经网络将这些神经元组织成各个层。这些做法共同定义了评分函数（score function）的新形式，该形式是从前面线性分类章节中的简单线性映射发展而来的。具体来说，神经网络就是进行了一系列的线性映射与非线性激活函数交织的运算。本节将讨论更多的算法设计选项，比如数据预处理，权重初始化和损失函数。</p><h3 id="三、数据预处理"><a href="#三、数据预处理" class="headerlink" title="三、数据预处理"></a>三、数据预处理</h3><p>关于数据预处理我们有3个常用的符号，数据矩阵X，假设其尺寸是[N x D]（N是数据样本的数量，D是数据的维度）。</p><p><strong>均值减法（Mean subtraction）</strong>是预处理最常用的形式。它对数据中每个独立特征减去平均值，从几何上可以理解为在每个维度上都将数据云的中心都迁移到原点。在numpy中，该操作可以通过代码X -= np.mean(X, axis=0)实现。而对于图像，更常用的是对所有像素都减去一个值，可以用X -= np.mean(X)实现，也可以在3个颜色通道上分别操作。</p><p><strong>归一化（Normalization）</strong>是指将数据的所有维度都归一化，使其数值范围都近似相等。有两种常用方法可以实现归一化。第一种是先对数据做零中心化（zero-centered）处理，然后每个维度都除以其标准差，实现代码为<strong>X /= np.std(X, axis=0)</strong>。第二种方法是对每个维度都做归一化，使得每个维度的最大和最小值是1和-1。这个预处理操作只有在确信不同的输入特征有不同的数值范围（或计量单位）时才有意义，但要注意预处理操作的重要性几乎等同于学习算法本身。在图像处理中，由于像素的数值范围几乎是一致的（都在0-255之间），所以进行这个额外的预处理步骤并不是很必要。</p><p><img src="/2022/112216136/normalization.png" alt></p><p>一般数据预处理流程：左边：原始的2维输入数据。中间：在每个维度上都减去平均值后得到零中心化数据，现在数据云是以原点为中心的。右边：每个维度都除以其标准差来调整其数值范围。红色的线指出了数据各维度的数值范围，在中间的零中心化数据的数值范围不同，但在右边归一化数据中数值范围相同。</p><p>PCA和白化（Whitening）是另一种预处理形式。在这种处理中，先对数据进行零中心化处理，然后计算协方差矩阵，它展示了数据中的相关性结构。</p><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 假设输入数据矩阵X的尺寸为[N x D]</span>X <span class="token operator">-=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>X<span class="token punctuation">,</span> axis <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment"># 对数据进行零中心化(重要)</span>cov <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">.</span>T<span class="token punctuation">,</span> X<span class="token punctuation">)</span> <span class="token operator">/</span> X<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token comment"># 得到数据的协方差矩阵</span></code></pre><p>数据协方差矩阵的第(i, j)个元素是数据第i个和第j个维度的协方差。具体来说，该矩阵的对角线上的元素是方差。还有，协方差矩阵是对称和半正定的。我们可以对数据协方差矩阵进行SVD（奇异值分解）运算。</p><pre class="language-python" data-language="python"><code class="language-python">U<span class="token punctuation">,</span>S<span class="token punctuation">,</span>V <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>svd<span class="token punctuation">(</span>cov<span class="token punctuation">)</span></code></pre><p>U的列是特征向量，S是装有奇异值的1维数组（因为cov是对称且半正定的，所以S中元素是特征值的平方）。为了去除数据相关性，将已经零中心化处理过的原始数据投影到特征基准上：</p><pre class="language-python" data-language="python"><code class="language-python">Xrot <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span>U<span class="token punctuation">)</span> <span class="token comment"># 对数据去相关性</span></code></pre><p>注意U的列是标准正交向量的集合（范式为1，列之间标准正交），所以可以把它们看做标准正交基向量。因此，投影对应x中的数据的一个旋转，旋转产生的结果就是新的特征向量。如果计算Xrot的协方差矩阵，将会看到它是对角对称的。np.linalg.svd的一个良好性质是在它的返回值U中，特征向量是按照特征值的大小排列的。我们可以利用这个性质来对数据降维，只要使用前面的小部分特征向量，丢弃掉那些包含的数据没有方差的维度。 这个操作也被称为主成分分析（ Principal Component Analysis 简称PCA）降维：</p><pre class="language-python" data-language="python"><code class="language-python">Xrot_reduced <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>X<span class="token punctuation">,</span> U<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># Xrot_reduced 变成 [N x 100]</span></code></pre><p>经过上面的操作，将原始的数据集的大小由[N x D]降到了[N x 100]，留下了数据中包含最大方差的100个维度。通常使用PCA降维过的数据训练线性分类器和神经网络会达到非常好的性能效果，同时还能节省时间和存储器空间。</p><p>最后一个在实践中会看见的变换是白化（whitening）。白化操作的输入是特征基准上的数据，然后对每个维度除以其特征值来对数值范围进行归一化。该变换的几何解释是：如果数据服从多变量的高斯分布，那么经过白化后，数据的分布将会是一个均值为零，且协方差相等的矩阵。该操作的代码如下：</p><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 对数据进行白化操作:</span><span class="token comment"># 除以特征值 </span>Xwhite <span class="token operator">=</span> Xrot <span class="token operator">/</span> np<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>S <span class="token operator">+</span> <span class="token number">1e-5</span><span class="token punctuation">)</span></code></pre><p>警告：夸大的噪声。注意分母中添加了1e-5（或一个更小的常量）来防止分母为0。该变换的一个缺陷是在变换的过程中可能会夸大数据中的噪声，这是因为它将所有维度都拉伸到相同的数值范围，这些维度中也包含了那些只有极少差异性(方差小)而大多是噪声的维度。在实际操作中，这个问题可以用更强的平滑来解决（例如：采用比1e-5更大的值）。</p><p><img src="/2022/112216136/normalization2.png" alt><br>PCA/白化。左边是二维的原始数据。中间：经过PCA操作的数据。可以看出数据首先是零中心的，然后变换到了数据协方差矩阵的基准轴上。这样就对数据进行了解相关（协方差矩阵变成对角阵）。右边：每个维度都被特征值调整数值范围，将数据协方差矩阵变为单位矩阵。从几何上看，就是对数据在各个方向上拉伸压缩，使之变成服从高斯分布的一个数据点分布。</p><p>我们可以使用CIFAR-10数据将这些变化可视化出来。CIFAR-10训练集的大小是50000x3072，其中每张图片都可以拉伸为3072维的行向量。我们可以计算[3072 x 3072]的协方差矩阵然后进行奇异值分解（比较耗费计算性能），那么经过计算的特征向量看起来是什么样子呢？<br><img src="/2022/112216136/normalization3.png" alt></p><p>最左：一个用于演示的集合，含49张图片。左二：3072个特征值向量中的前144个。靠前面的特征向量解释了数据中大部分的方差，可以看见它们与图像中较低的频率相关。第三张是49张经过了PCA降维处理的图片，展示了144个特征向量。这就是说，展示原始图像是每个图像用3072维的向量，向量中的元素是图片上某个位置的像素在某个颜色通道中的亮度值。而现在每张图片只使用了一个144维的向量，其中每个元素表示了特征向量对于组成这张图片的贡献度。为了让图片能够正常显示，需要将144维度重新变成基于像素基准的3072个数值。因为U是一个旋转，可以通过乘以U.transpose()[:144,:]来实现，然后将得到的3072个数值可视化。可以看见图像变得有点模糊了，这正好说明前面的特征向量获取了较低的频率。然而，大多数信息还是保留了下来。最右：将“白化”后的数据进行显示。其中144个维度中的方差都被压缩到了相同的数值范围。然后144个白化后的数值通过乘以U.transpose()[:144,:]转换到图像像素基准上。现在较低的频率（代表了大多数方差）可以忽略不计了，较高的频率（代表相对少的方差）就被夸大了。</p><p><strong>实践操作</strong>。在这个笔记中提到PCA和白化主要是为了介绍的完整性，实际上在卷积神经网络中并不会采用这些变换。然而对数据进行零中心化操作还是非常重要的，对每个像素进行归一化也很常见。</p><p><strong>常见错误</strong>。进行预处理很重要的一点是：任何预处理策略（比如数据均值）都只能在训练集数据上进行计算，算法训练完毕后再应用到验证集或者测试集上。例如，如果先计算整个数据集图像的平均值然后每张图片都减去平均值，最后将整个数据集分成训练/验证/测试集，那么这个做法是错误的。<strong>应该怎么做呢？应该先分成训练/验证/测试集，只是从训练集中求图片平均值，然后各个集（训练/验证/测试集）中的图像再减去这个平均值。</strong></p><h3 id="四、权重初始化"><a href="#四、权重初始化" class="headerlink" title="四、权重初始化"></a>四、权重初始化</h3><p>我们已经看到如何构建一个神经网络的结构并对数据进行预处理，但是在开始训练网络之前，还需要初始化网络的参数。</p><p><strong>错误：全零初始化</strong>。让我们从应该避免的错误开始。在训练完毕后，虽然不知道网络中每个权重的最终值应该是多少，但如果数据经过了恰当的归一化的话，就可以假设所有权重数值中大约一半为正数，一半为负数。这样，一个听起来蛮合理的想法就是把这些权重的初始值都设为0吧，因为在期望上来说0是最合理的猜测。这个做法错误的！因为如果网络中的每个神经元都计算出同样的输出，然后它们就会在反向传播中计算出同样的梯度，从而进行同样的参数更新。换句话说，如果权重被初始化为同样的值，神经元之间就失去了不对称性的源头。</p><p><strong>小随机数初始化</strong>。因此，权重初始值要非常接近0又不能等于0。解决方法就是将权重初始化为很小的数值，以此来打破对称性。其思路是：如果神经元刚开始的时候是随机且不相等的，那么它们将计算出不同的更新，并将自身变成整个网络的不同部分。小随机数权重初始化的实现方法是：<strong>W = 0.01 * np.random.randn(D,H)</strong>。其中<strong>randn函数</strong>是基于零均值和标准差的一个高斯分布（译者注：国内教程一般习惯称均值参数为期望）来生成随机数的。根据这个式子，每个神经元的权重向量都被初始化为一个随机向量，而这些随机向量又服从一个多变量高斯分布，这样在输入空间中，所有的神经元的指向是随机的。也可以使用均匀分布生成的随机数，但是从实践结果来看，对于算法的结果影响极小。</p><p><strong>警告</strong>。并不是小数值一定会得到好的结果。例如，一个神经网络的层中的权重值很小，那么在反向传播的时候就会计算出非常小的梯度（因为梯度与权重值是成比例的）。这就会很大程度上减小反向传播中的“梯度信号”，在深度网络中，就会出现问题。</p><p><strong>使用1/sqrt(n)校准方差</strong>。上面做法存在一个问题，随着输入数据量的增长，随机初始化的神经元的输出数据的分布中的方差也在增大。我们可以除以输入数据量的平方根来调整其数值范围，这样神经元输出的方差就归一化到1了。也就是说，建议将神经元的权重向量初始化为：<strong>w = np.random.randn(n) / sqrt(n)</strong>。其中n是输入数据的数量。这样就保证了网络中所有神经元起始时有近似同样的输出分布。实践经验证明，这样做可以提高收敛的速度。</p><p><img src="/2022/112216136/fangcha.png" alt></p><p><strong>稀疏初始化（Sparse initialization）</strong>。另一个处理非标定方差的方法是将所有权重矩阵设为0，但是为了打破对称性，每个神经元都同下一层固定数目的神经元随机连接（其权重数值由一个小的高斯分布生成）。一个比较典型的连接数目是10个。</p><p><strong>偏置（biases）的初始化</strong>。通常将偏置初始化为0，这是因为随机小数值权重矩阵已经打破了对称性。对于ReLU非线性激活函数，有研究人员喜欢使用如0.01这样的小数值常量作为所有偏置的初始值，这是因为他们认为这样做能让所有的ReLU单元一开始就激活，这样就能保存并传播一些梯度。然而，这样做是不是总是能提高算法性能并不清楚（有时候实验结果反而显示性能更差），所以通常还是使用0来初始化偏置参数。</p><p><strong>实践</strong>。当前的推荐是使用ReLU激活函数，并且使用<strong>w = np.random.randn(n) * sqrt(2.0/n)</strong>来进行权重初始化，关于这一点，这篇文章有讨论。</p><p><strong>批量归一化（Batch Normalization）</strong>。批量归一化是loffe和Szegedy最近才提出的方法，该方法减轻了如何合理初始化神经网络这个棘手问题带来的头痛：），其做法是让激活数据在训练开始前通过一个网络，网络处理数据使其服从标准高斯分布。因为归一化是一个简单可求导的操作，所以上述思路是可行的。在实现层面，应用这个技巧通常意味着全连接层（或者是卷积层，后续会讲）与激活函数之间添加一个BatchNorm层。对于这个技巧本节不会展开讲，因为上面的参考文献中已经讲得很清楚了，需要知道的是在神经网络中使用批量归一化已经变得非常常见。在实践中，使用了批量归一化的网络对于不好的初始值有更强的鲁棒性。最后一句话总结：批量归一化可以理解为在网络的每一层之前都做预处理，只是这种操作以另一种方式与网络集成在了一起。搞定！</p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> cs231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 神经网络 </tag>
+            
+            <tag> cs231n </tag>
+            
+            <tag> 课程笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cs231n-神经网络1(下)</title>
+      <link href="/2022/112216135.html"/>
+      <url>/2022/112216135.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h3 id="一、本节大纲"><a href="#一、本节大纲" class="headerlink" title="一、本节大纲"></a>一、本节大纲</h3><blockquote><ul><li>1、不用大脑做类比的快速简介</li><li>2、单个神经元建模<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生物动机和连接<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为线性分类器的单个神经元<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常用的激活函数</li><li>3、神经网络结构<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层组织<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前向传播计算例子<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表达能力<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置层的数量和尺寸</li><li>4、小节</li><li>5、参考文献</li></ul></blockquote><h3 id="二、神经网络结构"><a href="#二、神经网络结构" class="headerlink" title="二、神经网络结构"></a>二、神经网络结构</h3><p><strong>将神经网络算法以神经元的形式图形化</strong>。神经网络被建模成神经元的集合，神经元之间以无环图的形式进行连接。也就是说，一些神经元的输出是另一些神经元的输入。在网络中是不允许循环的，因为这样会导致前向传播的无限循环。通常神经网络模型中神经元是分层的，而不是像生物神经元一样聚合成大小不一的团状。对于普通神经网络，最普通的层的类型是<strong>全连接层（fully-connected layer）</strong>。全连接层中的神经元与其前后两层的神经元是完全成对连接的，但是在同一个全连接层内的神经元之间没有连接。下面是两个神经网络的图例，都使用的全连接层：<br><img src="/2022/112216135/layer.png" alt></p><p>左边是一个2层神经网络，隐层由4个神经元（也可称为单元（unit））组成，输出层由2个神经元组成，输入层是3个神经元。右边是一个3层神经网络，两个含4个神经元的隐层。注意：层与层之间的神经元是全连接的，但是层内的神经元不连接。</p><p><strong>命名规则</strong>。<strong>当我们说N层神经网络的时候，我们没有把输入层算入</strong>。因此，单层的神经网络就是没有隐层的（输入直接映射到输出）。因此，有的研究者会说逻辑回归或者SVM只是单层神经网络的一个特例。研究者们也会使用人工神经网络（Artificial Neural Networks 缩写ANN）或者多层感知器（Multi-Layer Perceptrons 缩写MLP）来指代神经网络。很多研究者并不喜欢神经网络算法和人类大脑之间的类比，他们更倾向于用单元（unit）而不是神经元作为术语。</p><p><strong>输出层</strong>。和神经网络中其他层不同，输出层的神经元一般是不会有激活函数的（或者也可以认为它们有一个线性相等的激活函数）。这是因为最后的输出层大多用于表示分类评分值，因此是任意值的实数，或者某种实数值的目标数（比如在回归中）。</p><p><strong>确定网络尺寸</strong>。用来度量神经网络的尺寸的标准主要有两个：一个是神经元的个数，另一个是参数的个数，用上面图示的两个网络举例：</p><blockquote><ul><li>第一个网络有4+2=6个神经元（输入层不算），[3x4]+[4x2]=20个权重，还有4+2=6个偏置，共26个可学习的参数。</li><li>第二个网络有4+4+1=9个神经元，[3x4]+[4x4]+[4x1]=32个权重，4+4+1=9个偏置，共41个可学习的参数。</li></ul></blockquote><p>为了方便对比，现代卷积神经网络能包含约1亿个参数，可由10-20层构成（这就是深度学习）。然而，有效（effective）连接的个数因为参数共享的缘故大大增多。在后面的卷积神经网络内容中我们将学习更多。</p><h3 id="三、前向传播计算举例"><a href="#三、前向传播计算举例" class="headerlink" title="三、前向传播计算举例"></a>三、前向传播计算举例</h3><p>不断重复的矩阵乘法与激活函数交织。将神经网络组织成层状的一个主要原因，就是这个结构让神经网络算法使用矩阵向量操作变得简单和高效。用上面那个3层神经网络举例，输入是[3x1]的向量。一个层所有连接的强度可以存在一个单独的矩阵中。比如第一个隐层的权重W1是[4x3]，所有单元的偏置储存在b1中，尺寸[4x1]。这样，每个神经元的权重都在W1的一个行中，于是矩阵乘法np.dot(W1, x)就能计算该层中所有神经元的激活数据。类似的，W2将会是[4x4]矩阵，存储着第二个隐层的连接，W3是[1x4]的矩阵，用于输出层。完整的3层神经网络的前向传播就是简单的3次矩阵乘法，其中交织着激活函数的应用。</p><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 一个3层神经网络的前向传播:</span>f <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token number">1.0</span><span class="token operator">/</span><span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> np<span class="token punctuation">.</span>exp<span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 激活函数(用的sigmoid)</span>x <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment"># 含3个数字的随机输入向量(3x1)</span>h1 <span class="token operator">=</span> f<span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>W1<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">+</span> b1<span class="token punctuation">)</span> <span class="token comment"># 计算第一个隐层的激活数据(4x1)</span>h2 <span class="token operator">=</span> f<span class="token punctuation">(</span>np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>W2<span class="token punctuation">,</span> h1<span class="token punctuation">)</span> <span class="token operator">+</span> b2<span class="token punctuation">)</span> <span class="token comment"># 计算第二个隐层的激活数据(4x1)</span>out <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>W3<span class="token punctuation">,</span> h2<span class="token punctuation">)</span> <span class="token operator">+</span> b3 <span class="token comment"># 神经元输出(1x1)</span></code></pre><p>在上面的代码中，W1，W2，W3，b1，b2，b3都是网络中可以学习的参数。注意x并不是一个单独的列向量，而可以是一个批量的训练数据（其中每个输入样本将会是x中的一列），所有的样本将会被并行化的高效计算出来。注意神经网络最后一层通常是没有激活函数的（例如，在分类任务中它给出一个实数值的分类评分）。</p><blockquote><ul><li>全连接层的前向传播一般就是先进行一个矩阵乘法，然后加上偏置并运用激活函数。</li></ul></blockquote><h3 id="四、表达能力"><a href="#四、表达能力" class="headerlink" title="四、表达能力"></a>四、表达能力</h3><p>理解具有全连接层的神经网络的一个方式是：可以认为它们定义了一个由一系列函数组成的函数族，网络的权重就是每个函数的参数。如此产生的问题是：该函数族的表达能力如何？存在不能被神经网络表达的函数吗？</p><p><font color="#00FF">换句话说，神经网络可以近似任何连续函数</font></p><h3 id="五、设置层的数量和尺寸"><a href="#五、设置层的数量和尺寸" class="headerlink" title="五、设置层的数量和尺寸"></a>五、设置层的数量和尺寸</h3><p>在面对一个具体问题的时候该确定网络结构呢？到底是不用隐层呢？还是一个隐层？两个隐层或更多？每个层的尺寸该多大？</p><p>首先，要知道当我们增加层的数量和尺寸时，网络的容量上升了。即神经元们可以合作表达许多复杂函数，所以表达函数的空间增加。例如，如果有一个在二维平面上的二分类问题。我们可以训练3个不同的神经网络，每个网络都只有一个隐层，但是每层的神经元数目不同：</p><p><img src="/2022/112216135/convDemo.png" alt><br>更大的神经网络可以表达更复杂的函数。数据是用不同颜色的圆点表示他们的不同类别，决策边界是由训练过的神经网络做出的。你可以在<a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html">ConvNetsJS demo</a>上练练手。</p><p>在上图中，可以看见有更多神经元的神经网络可以表达更复杂的函数。然而这既是优势也是不足，优势是可以分类更复杂的数据，不足是可能造成对训练数据的过拟合。过拟合（Overfitting）是网络对数据中的噪声有很强的拟合能力，而没有重视数据间（假设）的潜在基本关系。举例来说，有20个神经元隐层的网络拟合了所有的训练数据，但是其代价是把决策边界变成了许多不相连的红绿区域。而有3个神经元的模型的表达能力只能用比较宽泛的方式去分类数据。它将数据看做是两个大块，并把个别在绿色区域内的红色点看做噪声。在实际中，这样可以在测试数据中获得更好的泛化（generalization）能力。</p><p>基于上面的讨论，看起来如果数据不是足够复杂，则似乎小一点的网络更好，因为可以防止过拟合。然而并非如此，防止神经网络的过拟合有很多方法（L2正则化，dropout和输入噪音等），后面会详细讨论。在实践中，使用这些方法来控制过拟合比减少网络神经元数目要好得多。</p><p>不要减少网络神经元数目的主要原因在于小网络更难使用梯度下降等局部方法来进行训练：虽然小型网络的损失函数的局部极小值更少，也比较容易收敛到这些局部极小值，但是这些最小值一般都很差，损失值很高。相反，大网络拥有更多的局部极小值，但就实际损失值来看，这些局部极小值表现更好，损失更小。因为神经网络是非凸的，就很难从数学上研究这些特性。即便如此，还是有一些文章尝试对这些目标函数进行理解，例如The Loss Surfaces of Multilayer Networks这篇论文。在实际中，你将发现如果训练的是一个小网络，那么最终的损失值将展现出多变性：某些情况下运气好会收敛到一个好的地方，某些情况下就收敛到一个不好的极值。从另一方面来说，如果你训练一个大的网络，你将发现许多不同的解决方法，但是最终损失值的差异将会小很多。这就是说，所有的解决办法都差不多，而且对于随机初始化参数好坏的依赖也会小很多。</p><p>重申一下，正则化强度是控制神经网络过拟合的好方法。看下图结果：<br><img src="/2022/112216135/convlamuda.png" alt></p><p>需要记住的是：不应该因为害怕出现过拟合而使用小网络。相反，应该进尽可能使用大网络，然后使用正则化技巧来控制过拟合。</p><h3 id="六、小结"><a href="#六、小结" class="headerlink" title="六、小结"></a>六、小结</h3><blockquote><ul><li>介绍了生物神经元的粗略模型；</li><li>讨论了几种不同类型的激活函数，其中ReLU是最佳推荐；</li><li>介绍了神经网络，神经元通过全连接层连接，层间神经元两两相连，但是层内神经元不连接；</li><li>理解了分层的结构能够让神经网络高效地进行矩阵乘法和激活函数运算；</li><li>理解了神经网络是一个通用函数近似器，但是该性质与其广泛使用无太大关系。之所以使用神经网络，是因为它们对于实际问题中的函数的公式能够某种程度上做出“正确”假设。</li><li>讨论了更大网络总是更好的这一事实。然而更大容量的模型一定要和更强的正则化（比如更高的权重衰减）配合，否则它们就会过拟合。在后续章节中我们讲学习更多正则化的方法，尤其是dropout。</li></ul></blockquote></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> cs231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 神经网络 </tag>
+            
+            <tag> cs231n </tag>
+            
+            <tag> 课程笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cs231n-神经网络1(上)</title>
+      <link href="/2022/112216134.html"/>
+      <url>/2022/112216134.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h3 id="一、本节大纲"><a href="#一、本节大纲" class="headerlink" title="一、本节大纲"></a>一、本节大纲</h3><blockquote><ul><li>1、不用大脑做类比的快速简介</li><li>2、单个神经元建模<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生物动机和连接<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为线性分类器的单个神经元<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常用的激活函数</li><li>3、神经网络结构<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层组织<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前向传播计算例子<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表达能力<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置层的数量和尺寸</li><li>4、小节</li><li>5、参考文献</li></ul></blockquote><h3 id="二、快速简介"><a href="#二、快速简介" class="headerlink" title="二、快速简介"></a>二、快速简介</h3><p>在不诉诸大脑的类比的情况下，依然是可以对神经网络算法进行介绍的。在线性分类一节中，在给出图像的情况下，是使用s = Wx来计算不同视觉类别的评分，其中W是一个矩阵，是一个x输入列向量，它包含了图像的全部像素数据。在使用数据库CIFAR-10的案例中，x是一个[3072x1]的列向量，W是一个[10x3072]的矩阵，所以输出的评分是一个包含10个分类评分的向量。</p><p>神经网络算法则不同，它的计算公式是s = W_2 * max(0, W_1 * x)。其中的W_1含义是这样的：举个例子来说，它可以是一个[100x3072]的矩阵，其作用是将图像转化为一个100维的过渡向量。函数max(0, -)是非线性的，它会作用到每个元素。这个非线性函数有多种选择，后续将会学到。但这个形式是一个最常用的选择，它就是简单地设置阈值，将所有小于0的值变成0。最终，矩阵W_2的尺寸是[10x100]，因此将得到10个数字，这10个数字可以解释为是分类的评分。注意非线性函数在计算上是至关重要的，如果略去这一步，那么两个矩阵将会合二为一，对于分类的评分计算将重新变成关于输入的线性函数。这个非线性函数就是改变的关键点。参数W_1, W_2将通过随机梯度下降来学习到，他们的梯度在反向传播过程中，通过链式法则来求导计算得出。</p><h3 id="三、神经元建模"><a href="#三、神经元建模" class="headerlink" title="三、神经元建模"></a>三、神经元建模</h3><p>一个神经元前向传播的实例代码如下：</p><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Neuron</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ... </span>  <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>inputs<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token triple-quoted-string string">""" 假设输入和权重是1-D的numpy数组，偏差是一个数字 """</span>    cell_body_sum <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>inputs <span class="token operator">*</span> self<span class="token punctuation">.</span>weights<span class="token punctuation">)</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>bias    firing_rate <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>exp<span class="token punctuation">(</span><span class="token operator">-</span>cell_body_sum<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># sigmoid激活函数</span>    <span class="token keyword">return</span> firing_rate</code></pre><p>换句话说，每个神经元都对它的输入和权重进行点积，然后加上偏差，最后使用非线性函数（或称为激活函数）。本例中使用的是sigmoid函数。在本节的末尾部分将介绍不同激活函数的细节。</p><h3 id="四、常用的激活函数"><a href="#四、常用的激活函数" class="headerlink" title="四、常用的激活函数"></a>四、常用的激活函数</h3><p>每个激活函数（或非线性函数）的输入都是一个数字，然后对其进行某种固定的数学操作。下面是在实践中可能遇到的几种激活函数：</p><p><img src="/2022/112216134/sigmoid.png" alt></p><p>Sigmoid。sigmoid非线性函数的数学公式是σ(x) = 1 / (1 + e ^ -x)，函数图像如上图的左边所示。在前一节中已经提到过，它输入实数值并将其“挤压”到0到1范围内。更具体地说，很大的负数变成0，很大的正数变成1。在历史上，sigmoid函数非常常用，这是因为它对于神经元的激活频率有良好的解释：从完全不激活（0）到在求和后的最大频率处的完全饱和（saturated）的激活（1）。然而现在sigmoid函数已经不太受欢迎，实际很少使用了，这是因为它有两个主要缺点：</p><blockquote><ul><li>Sigmoid函数饱和使梯度消失。sigmoid神经元有一个不好的特性，就是当神经元的激活在接近0或1处时会饱和：在这些区域，梯度几乎为0。回忆一下，在反向传播的时候，这个（局部）梯度将会与整个损失函数关于该门单元输出的梯度相乘。因此，如果局部梯度非常小，那么相乘的结果也会接近零，这会有效地“杀死”梯度，几乎就有没有信号通过神经元传到权重再到数据了。还有，为了防止饱和，必须对于权重矩阵初始化特别留意。比如，如果初始化权重过大，那么大多数神经元将会饱和，导致网络就几乎不学习了。</li><li>Sigmoid函数的输出不是零中心的。这个性质并不是我们想要的，因为在神经网络后面层中的神经元得到的数据将不是零中心的。这一情况将影响梯度下降的运作，因为如果输入神经元的数据总是正数（比如在f = w ^ T + b中每个元素都x &gt; 0），那么关于w的梯度在反向传播的过程中，将会要么全部是正数，要么全部是负数（具体依整个表达式f而定）。这将会导致梯度下降权重更新时出现z字型的下降。然而，可以看到整个批量的数据的梯度被加起来后，对于权重的最终更新将会有不同的正负，这样就从一定程度上减轻了这个问题。因此，该问题相对于上面的神经元饱和问题来说只是个小麻烦，没有那么严重。</li></ul></blockquote><p><strong>Tanh</strong>。tanh非线性函数图像如上图右边所示。它将实数值压缩到[-1,1]之间。和sigmoid神经元一样，它也存在饱和问题，但是和sigmoid神经元不同的是，它的输出是零中心的。因此，在实际操作中，tanh非线性函数比sigmoid非线性函数更受欢迎。注意tanh神经元是一个简单放大的sigmoid神经元，具体说来就是：tanh(x) = 2σ(2x) - 1。</p><p><img src="/2022/112216134/relu.png" alt></p><p><strong>ReLU</strong>。在近些年ReLU变得非常流行。它的函数公式是f(x) = max(0, x)。换句话说，这个激活函数就是一个关于0的阈值（如上图左侧）。使用ReLU有以下一些优缺点：</p><blockquote><ul><li>优点：相较于sigmoid和tanh函数，ReLU对于随机梯度下降的收敛有巨大的加速作用（ Krizhevsky 等的论文指出有6倍之多）。据称这是由它的线性，非饱和的公式导致的。</li><li>优点：sigmoid和tanh神经元含有指数运算等耗费计算资源的操作，而ReLU可以简单地通过对一个矩阵进行阈值计算得到。</li><li>缺点：在训练的时候，ReLU单元比较脆弱并且可能“死掉”。举例来说，当一个很大的梯度流过ReLU的神经元的时候，可能会导致梯度更新到一种特别的状态，在这种状态下神经元将无法被其他任何数据点再次激活。如果这种情况发生，那么从此所以流过这个神经元的梯度将都变成0。也就是说，这个ReLU单元在训练中将不可逆转的死亡，因为这导致了数据多样化的丢失。例如，如果学习率设置得太高，可能会发现网络中40%的神经元都会死掉（在整个训练集中这些神经元都不会被激活）。通过合理设置学习率，这种情况的发生概率会降低。</li></ul></blockquote><p>了解： Leaky Relu / Maxout</p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> cs231n </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 神经网络 </tag>
+            
+            <tag> cs231n </tag>
+            
+            <tag> 课程笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>cs231n-反向传播</title>
       <link href="/2022/112216133.html"/>
       <url>/2022/112216133.html</url>
@@ -558,9 +674,9 @@
             
             <tag> Pytorch </tag>
             
-            <tag> Pytorch基础代码 </tag>
-            
             <tag> 神经网络 </tag>
+            
+            <tag> Pytorch基础代码 </tag>
             
             <tag> Python卷积/池化/非线性 </tag>
             
@@ -927,9 +1043,9 @@
             
             <tag> Binbin0613 </tag>
             
-            <tag> 关于博客 </tag>
-            
             <tag> 日常 </tag>
+            
+            <tag> 关于博客 </tag>
             
         </tags>
       
@@ -985,9 +1101,9 @@
             
             <tag> Binbin0613 </tag>
             
-            <tag> 关于博客 </tag>
-            
             <tag> 日常 </tag>
+            
+            <tag> 关于博客 </tag>
             
         </tags>
       
