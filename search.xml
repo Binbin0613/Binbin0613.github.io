@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>(C++基础03)-程序的基本结构和语句</title>
+      <link href="/2023/073116142.html"/>
+      <url>/2023/073116142.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="C-基础03：程序的基本结构和语句"><a href="#C-基础03：程序的基本结构和语句" class="headerlink" title="C++基础03：程序的基本结构和语句"></a>C++基础03：程序的基本结构和语句</h2><pre class="language-c++" data-language="c++"><code class="language-c++"># include&lt;iostream&gt;# include&lt;stdio.h&gt;using namespace std;&#x2F;&#x2F; C语言程序的基本结构和语句int main() &#123;&#x2F;&#x2F; 一、C语言的语句和程序的基本结构&#x2F;&#x2F; 1, 语句的分类&#x2F;&#x2F;（1）控制语句：共有9中控制语句if for while do break switch continue goto return&#x2F;&#x2F;     （2）函数调用语句： 例如printf(&quot;Hello Word!&quot;);&#x2F;&#x2F;（3）表达式语句：  例如 int a; a &#x3D; 5; a +&#x3D; 5;&#x2F;&#x2F;     （4）复合语句：使用&#123;&#125;括起来的语句&#x2F;&#x2F;   凡是满足该条件的，&#123;&#125;内的语句都会执行&#x2F;&#x2F;   &#123;&#x2F;&#x2F;int a &#x3D; 1;&#x2F;&#x2F;......&#x2F;&#x2F;&#125;   大括号后面不用加分号&#x2F;&#x2F; 2、程序的三种基本结构&#x2F;&#x2F;（1）顺序结构&#x2F;&#x2F;（2）选择结构if-else&#x2F;多分支选择结构switch&#x2F;&#x2F;（3）循环结构&#x2F;&#x2F;当型循环结构：先判断是否可行，再进行操作&#x2F;&#x2F;直到型循环结构：先执行操作，再判断条件是否可行，要强调的是，至少会执行一次操作&#x2F;&#x2F; &#x2F;&#x2F; 3、赋值语句的特殊写法&#x2F;&#x2F;赋值语句可以编写在其他语句当中。return 0;&#125;</code></pre></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> 编程基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>(C++基础02)-数据类型，运算符，表达式</title>
       <link href="/2023/073116141.html"/>
       <url>/2023/073116141.html</url>
       
-        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="C-基础02：数据类型"><a href="#C-基础02：数据类型" class="headerlink" title="C++基础02：数据类型"></a>C++基础02：数据类型</h2><pre class="language-c++" data-language="c++"><code class="language-c++"># include&lt;iostream&gt;# include&lt;stdio.h&gt;using namespace std;int main() &#123;&#x2F;&#x2F; 数据的变化&#x2F;&#x2F; 八进制的数： 012&#x2F;&#x2F; 十六进制的数： 0X&#x2F;&#x2F; 可以直接进行赋值，将这些数字赋值给声明的变量 int demo &#x3D; 0x12;&#x2F;&#x2F; &#x2F;&#x2F; sizeof&quot;运算符&quot;表示的是，一个类型的变量所占用的内存字节数cout &lt;&lt; (sizeof(int)) &lt;&lt; endl;&#x2F;&#x2F; 4cout &lt;&lt; (sizeof(short)) &lt;&lt; endl;&#x2F;&#x2F; 2cout &lt;&lt; (sizeof(long)) &lt;&lt; endl;&#x2F;&#x2F; 4cout &lt;&lt; (sizeof(char)) &lt;&lt; endl;&#x2F;&#x2F; 1cout &lt;&lt; (sizeof(string)) &lt;&lt; endl;&#x2F;&#x2F; 28&#x2F;&#x2F; 实型变量&#x2F;&#x2F; float : 单精度变量，一般提供7位有效数字（保守估计6位），这是随着机器而定的&#x2F;&#x2F; double：双精度变量，一般提供15到16位有效数字（保守估计15位），这是随着机器而定的float a &#x3D; 1111111.111;double b &#x3D; 1111111.111;char c &#x3D; &#39;a&#39;;char cc &#x3D; 98;cout &lt;&lt; c &lt;&lt; endl;cout &lt;&lt; cc &lt;&lt; endl;&#x2F;&#x2F; 注意的是char类型的数据，单引号当中只能是一个字符，如果写多个字符，这个变量的值取最后一位字符（验证所得）char x &#x3D; &#39;w1&#39;;cout &lt;&lt; x &lt;&lt; endl;float f1 &#x3D; 0.5;float f2 &#x3D; 0.51;cout &lt;&lt; f1 &lt;&lt; f2 &lt;&lt; endl;&#x2F;&#x2F; 使用调试模式（鼠标）移动查看f1f2的变量的值的大小，会发现f2为0.50999999。在存储的时候是采用二进制的方式进行存储&#x2F;&#x2F; char c &#x3D; &#39;a&#39; 和 string c &#x3D;  &quot;a&quot; 的区别在于：char类型存储时，仅仅存储一个字符a，但是对于string类型，存储的是字符a和‘\0’表示结束符&#x2F;&#x2F; 数据之间的混合运算，都是低维度数据类型向高维度数据类型的转换，然后再进行运算double d &#x3D; 3.1415;int dd &#x3D; 3;cout &lt;&lt; d + dd &lt;&lt; endl;&#x2F;&#x2F; 首先int类型的dd转化为double类型，然后运算return 0;&#125;</code></pre><blockquote><p>\ ?    在书写连续多个问好时使用，防止他们被解析成三字母词<br>\ ’    用于表示字符常量‘<br>\ “    用于表示字符常量”<br>\ \    用于表示一个反斜杠，防止他被解译成一个转义字符<br>\ a    警告字符，表示：蜂鸣<br>\ b    退格符<br>\ f    换页符<br>\ n    换行符<br>\ r    回车符<br>\ t    水平制表符<br>\ v    垂直制表符<br>\ ddd    三位八进制数代表一个ASCII字符（ddd是一个八进制数字）<br>\ xdd    二为十六进制数代表一个ASCII字符（dd是一个十六进制数字）</p></blockquote><p>注意的是：‘a’ 和 “a” 之间的区别： 前者是字符常量，一个字符，后者是字符串常量，字符串常量后面通常由一个字符串结束符 /0 ，因此后者是两个字符。</p><p><img src="/2023/073116141/%E5%AD%97%E7%AC%A6%E5%9E%8B%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB.png" alt></p><p>注意的是：通常不同的数据类型之间的转换，系统首先会统一数据类型，然后进行运算</p><blockquote><p>int + double = double</p><p>int + char = int</p><p>系统是由低向高进行转换的</p></blockquote><p>转化的规则如下：</p><p><img src="/2023/073116141/%E5%AD%97%E7%AC%A6%E9%97%B4%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%A7%84%E5%88%99.png" alt></p></font>]]></content>
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="C-基础02：数据类型"><a href="#C-基础02：数据类型" class="headerlink" title="C++基础02：数据类型"></a>C++基础02：数据类型</h2><pre class="language-c++" data-language="c++"><code class="language-c++"># include&lt;iostream&gt;# include&lt;stdio.h&gt;using namespace std;int main() &#123;&#x2F;&#x2F; 数据的变化&#x2F;&#x2F; 八进制的数： 012&#x2F;&#x2F; 十六进制的数： 0X&#x2F;&#x2F; 可以直接进行赋值，将这些数字赋值给声明的变量 int demo &#x3D; 0x12;&#x2F;&#x2F; &#x2F;&#x2F; sizeof&quot;运算符&quot;表示的是，一个类型的变量所占用的内存字节数cout &lt;&lt; (sizeof(int)) &lt;&lt; endl;&#x2F;&#x2F; 4cout &lt;&lt; (sizeof(short)) &lt;&lt; endl;&#x2F;&#x2F; 2cout &lt;&lt; (sizeof(long)) &lt;&lt; endl;&#x2F;&#x2F; 4cout &lt;&lt; (sizeof(char)) &lt;&lt; endl;&#x2F;&#x2F; 1cout &lt;&lt; (sizeof(string)) &lt;&lt; endl;&#x2F;&#x2F; 28&#x2F;&#x2F; 实型变量&#x2F;&#x2F; float : 单精度变量，一般提供7位有效数字（保守估计6位），这是随着机器而定的&#x2F;&#x2F; double：双精度变量，一般提供15到16位有效数字（保守估计15位），这是随着机器而定的float a &#x3D; 1111111.111;double b &#x3D; 1111111.111;char c &#x3D; &#39;a&#39;;char cc &#x3D; 98;cout &lt;&lt; c &lt;&lt; endl;cout &lt;&lt; cc &lt;&lt; endl;&#x2F;&#x2F; 注意的是char类型的数据，单引号当中只能是一个字符，如果写多个字符，这个变量的值取最后一位字符（验证所得）char x &#x3D; &#39;w1&#39;;cout &lt;&lt; x &lt;&lt; endl;float f1 &#x3D; 0.5;float f2 &#x3D; 0.51;cout &lt;&lt; f1 &lt;&lt; f2 &lt;&lt; endl;&#x2F;&#x2F; 使用调试模式（鼠标）移动查看f1f2的变量的值的大小，会发现f2为0.50999999。在存储的时候是采用二进制的方式进行存储&#x2F;&#x2F; char c &#x3D; &#39;a&#39; 和 string c &#x3D;  &quot;a&quot; 的区别在于：char类型存储时，仅仅存储一个字符a，但是对于string类型，存储的是字符a和‘\0’表示结束符&#x2F;&#x2F; 数据之间的混合运算，都是低维度数据类型向高维度数据类型的转换，然后再进行运算double d &#x3D; 3.1415;int dd &#x3D; 3;cout &lt;&lt; d + dd &lt;&lt; endl;&#x2F;&#x2F; 首先int类型的dd转化为double类型，然后运算return 0;&#125;</code></pre><blockquote><p>\ ?    在书写连续多个问好时使用，防止他们被解析成三字母词<br>\ ’    用于表示字符常量‘<br>\ “    用于表示字符常量”<br>\ \    用于表示一个反斜杠，防止他被解译成一个转义字符<br>\ a    警告字符，表示：蜂鸣<br>\ b    退格符<br>\ f    换页符<br>\ n    换行符<br>\ r    回车符<br>\ t    水平制表符<br>\ v    垂直制表符<br>\ ddd    三位八进制数代表一个ASCII字符（ddd是一个八进制数字）<br>\ xdd    二为十六进制数代表一个ASCII字符（dd是一个十六进制数字）</p></blockquote><p>注意的是：‘a’ 和 “a” 之间的区别： 前者是字符常量，一个字符，后者是字符串常量，字符串常量后面通常由一个字符串结束符 /0 ，因此后者是两个字符。</p><p><img src="/2023/073116141/%E5%AD%97%E7%AC%A6%E5%9E%8B%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB.png" alt></p><p>注意的是：通常不同的数据类型之间的转换，系统首先会统一数据类型，然后进行运算</p><blockquote><p>int + double = double</p><p>int + char = int</p><p>系统是由低向高进行转换的</p></blockquote><p>转化的规则如下：</p><p><img src="/2023/073116141/%E5%AD%97%E7%AC%A6%E9%97%B4%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%A7%84%E5%88%99.png" alt></p><p>运算符的类别如下图所示：</p><p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt></p><p>运算符的意义：</p><p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6%E6%84%8F%E4%B9%891.png" alt></p><p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6%E6%84%8F%E4%B9%892.png" alt></p><p>注意：</p><blockquote><p>1、取余运算符的两边要求是整数</p><p>2、两个整数相除，系统会舍弃最后的小数部分</p><p>3、类型转化的方式有两种：</p><p>​        （1）自动类型转换： 系统自动进行转换</p><p>​        （2）强制类型转化： 自动类型转换无法满足要求，就使用强制类型转换。</p><p>4、自增和自减运算符：只能用于变量，不能用于常量或表达式</p><p>​        i++ 先用后加   ++i 先加后用</p><p>5、赋值表达式也是有值的，例如int a = 1; 则a = 5的值是5，等于等号右边的值</p><p>6、逗号表达式的优先级最低，（表达式1，表达式2），最终的结果是表达式2的值，（3,5）的值是5。 int a; a = 3 * 5 , a * 4   首先a=3 * 5 = 15, 然后计算15， a * 4  结果是a * 4 = 15 * 4 = 60</p></blockquote><p>（补充。。。）</p></font>]]></content>
       
       
       <categories>
@@ -35,7 +62,7 @@
       <link href="/2023/073116140.html"/>
       <url>/2023/073116140.html</url>
       
-        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3></font>]]></content>
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="C-的发展历史"><a href="#C-的发展历史" class="headerlink" title="C++的发展历史"></a>C++的发展历史</h2><h3 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h3></font>]]></content>
       
       
       <categories>

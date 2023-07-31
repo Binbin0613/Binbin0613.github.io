@@ -416,14 +416,14 @@ int main() &amp;#123;
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    792
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -510,6 +510,24 @@ int main() &#123;
 </blockquote>
 <p>转化的规则如下：</p>
 <p><img src="/2023/073116141/%E5%AD%97%E7%AC%A6%E9%97%B4%E8%BD%AC%E6%8D%A2%E7%9A%84%E8%A7%84%E5%88%99.png" alt></p>
+<p>运算符的类别如下图所示：</p>
+<p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt></p>
+<p>运算符的意义：</p>
+<p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6%E6%84%8F%E4%B9%891.png" alt></p>
+<p><img src="/2023/073116141/E:%5CBlog%5Csource_posts%5BC++%E5%9F%BA%E7%A1%8002%5D-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%5C%E8%BF%90%E7%AE%97%E7%AC%A6%E6%84%8F%E4%B9%892.png" alt></p>
+<p>注意：</p>
+<blockquote>
+<p>1、取余运算符的两边要求是整数</p>
+<p>2、两个整数相除，系统会舍弃最后的小数部分</p>
+<p>3、类型转化的方式有两种：</p>
+<p>​        （1）自动类型转换： 系统自动进行转换</p>
+<p>​        （2）强制类型转化： 自动类型转换无法满足要求，就使用强制类型转换。</p>
+<p>4、自增和自减运算符：只能用于变量，不能用于常量或表达式</p>
+<p>​        i++ 先用后加   ++i 先加后用</p>
+<p>5、赋值表达式也是有值的，例如int a = 1; 则a = 5的值是5，等于等号右边的值</p>
+<p>6、逗号表达式的优先级最低，（表达式1，表达式2），最终的结果是表达式2的值，（3,5）的值是5。 int a; a = 3 * 5 , a * 4   首先a=3 * 5 = 15, 然后计算15， a * 4  结果是a * 4 = 15 * 4 = 60</p>
+</blockquote>
+<p>（补充。。。）</p>
 </font>
 
 
@@ -656,18 +674,17 @@ int main() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/073116141.html">
+                <a href="/2023/073116142.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/163.jpg" class="responsive-img" alt="(C++基础02)-数据类型，运算符，表达式">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="(C++基础03)-程序的基本结构和语句">
                         
-                        <span class="card-title">(C++基础02)-数据类型，运算符，表达式</span>
+                        <span class="card-title">(C++基础03)-程序的基本结构和语句</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -677,9 +694,9 @@ int main() &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-31
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -696,7 +713,6 @@ int main() &#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
