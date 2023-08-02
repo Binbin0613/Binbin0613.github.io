@@ -4,14 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="(C++基础03)-程序的基本结构和语句, Software Engineer">
+    <meta name="keywords" content="(C++基础05)-函数, Software Engineer">
     <meta name="description" content="
 
-C++基础03：程序的基本结构和语句# include&amp;lt;iostream&amp;gt;
-# include&amp;lt;stdio.h&amp;gt;
-#include&amp;quot;temp2.h&amp;quot;
+C++基础05：函数#include&amp;lt;iostream&amp;gt;
 
-using namespace std;">
+using namespace std;
+
+&amp;#x2F;&amp;#x2F; 函数的内容
+&amp;#x2F;&amp;#x2F; 注意的是，如果函数写在了main函数的下面，则找不到该函">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +24,7 @@ using namespace std;">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>(C++基础03)-程序的基本结构和语句 | Binbin0613</title>
+    <title>(C++基础05)-函数 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +342,12 @@ using namespace std;">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/63.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">(C++基础03)-程序的基本结构和语句</h1>
+                    <h1 class="description center-align post-title">(C++基础05)-函数</h1>
                 </div>
             </div>
         </div>
@@ -399,28 +400,28 @@ using namespace std;">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-31
+                    2023-08-01
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-01
+                    2023-08-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    10 分
                 </div>
                 
 
@@ -445,188 +446,172 @@ using namespace std;">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
 
-<h2 id="C-基础03：程序的基本结构和语句"><a href="#C-基础03：程序的基本结构和语句" class="headerlink" title="C++基础03：程序的基本结构和语句"></a>C++基础03：程序的基本结构和语句</h2><pre class="language-c++" data-language="c++"><code class="language-c++"># include&lt;iostream&gt;
-# include&lt;stdio.h&gt;
-#include&quot;temp2.h&quot;
+<h2 id="C-基础05：函数"><a href="#C-基础05：函数" class="headerlink" title="C++基础05：函数"></a>C++基础05：函数</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 
 using namespace std;
 
-&#x2F;&#x2F; C语言程序的基本结构和语句
+&#x2F;&#x2F; 函数的内容
+&#x2F;&#x2F; 注意的是，如果函数写在了main函数的下面，则找不到该函数，需要事先声明
+&#x2F;&#x2F; 如果将函数写在main函数的上面，则表示函数以及定义并声明了
+
+&#x2F;&#x2F; 函数的定义
+&#x2F;&#x2F; 一个大项目通常不会存放到一个源文件里，因此一个C项目由一个或多个源文件组成
+&#x2F;&#x2F; 这些函数可以分别放到源文件里，被所有源文件公用
+&#x2F;&#x2F; 程序从main函数开始，也是从main函数当中结束
+&#x2F;&#x2F; 函数通常分为两类： 库函数  自定义函数
+
+&#x2F;&#x2F; 1、定义一个函数时，形式参数在函数被调用前不分配内存，调用的时候会分配内存，函数调用结束之后，形式参数的内存就被释放了，所以形式参数只能在函数内部使用
+&#x2F;&#x2F; 2、在函数调用的时候，实参的值自动赋值给了形参
+&#x2F;&#x2F; 3、在C语言当中，实参变量对形参变量的传递是“值传递”，也就是单向传递，只能由实参传递到形参
+&#x2F;&#x2F;	  即完成函数的调用之后，原本的实参的值并没有改变
+
+&#x2F;&#x2F; 函数的调用
+&#x2F;&#x2F; C语言所编写的函数，只能返回一个值
+&#x2F;&#x2F; 函数的调用有三种方式： 1 单独作为一条语句 2 函数出现在一个表达式中 3 函数作为另一个函数的实参
+
+&#x2F;&#x2F; 函数的声明
+&#x2F;&#x2F; 1、可以将函数写在main函数的前面，表示函数的定义并声明
+&#x2F;&#x2F; 2、我们必须将函数的声明放到任何源代码文件的具体函数之前（一般就是源代码的开头），才能保证这些函数调用其他函数时，被调用的函数OK
+&#x2F;&#x2F; 3、函数的声明：
+	&#x2F;&#x2F; 类型标识符 函数名(形参列表);
+
+&#x2F;&#x2F; 函数的嵌套定义
+&#x2F;&#x2F; C语言当中，不允许在一个函数当中定义另外一个函数
+&#x2F;&#x2F; C语言允许函数的嵌套调用
+
+&#x2F;&#x2F; 函数的递归调用： 在函数体内调用自己
+&#x2F;&#x2F; 函数的递归调用过程当中，只有一个函数结束之后，函数的局部变量占用的内存才会被释放
+int getJieCheng(int number) &#123;&#x2F;&#x2F; 1*2*3*4*5
+	if (number &#x3D;&#x3D; 1) &#123;	&#x2F;&#x2F; 递归函数必须要有结束条件
+		return 1;
+	&#125;
+	return number * getJieCheng(number-1);&#x2F;&#x2F; 递归关系
+&#125;
+&#x2F;&#x2F; 个人理解的递归函数的编写
+&#x2F;&#x2F; 在函数体内要确定所有的边界条件，通常是特殊情况我们能确定的
+&#x2F;&#x2F; 然后使用其中的递归条件直接重复调用函数（汉诺塔，斐波拉契数列，棋盘可移动位置）
+
+&#x2F;&#x2F; 递归的优缺点
+&#x2F;&#x2F; 代码精简，但是如果调用的层数太深，可能会导致调用栈（内存）溢出
+&#x2F;&#x2F; 效率和性能都不高，无法保证深层次的运行效率
+
+
+&#x2F;&#x2F; 数组元素&#x2F;数组名作为函数的参数
+&#x2F;&#x2F; 数组元素作为函数的参数： int a[5]; a[1] &#x3D; 1; getJieCheng(a[1]);
+&#x2F;&#x2F; 数组名作为函数的参数： 数组名是数组的首地址，传递的是数组的首地址,数组可以是多维数组
+	&#x2F;&#x2F; 此时，函数中的形参，也必须是数组名，或者是数组指针
+&#x2F;&#x2F; 注意：数组名作为函数参数时，不是“值传递（形参会分配内存）”，不是单向传递，而是把实参数组的开始地址传递给了形参数组（不会分配内存了）
+	&#x2F;&#x2F; 这样，两个数组就会共同占用同一块内存。这个叫地址传递，也就是说，形参数组的值发生变化，会导致
+	&#x2F;&#x2F; 实参数组当中的值发生变化
+void testShuZuCanShu(int temp[]) &#123;	&#x2F;&#x2F; 数组名作为参数，调用这个函数，temp和tempA是同一块地址
+	temp[0] &#x3D; 100;
+	temp[1] &#x3D; 100;
+	&#x2F;&#x2F; 这个函数的形参temp的大小可以声明大小，但是没有作用，函数会将实参的数组的地址给你
+	&#x2F;&#x2F; temp[100],实际上temp只能调用tempA[2]两个内容，其他的内存块temp无法控制，不该temp管，不属于temp
+	&#x2F;&#x2F; temp[5] &#x3D; 100; 这一块的内存不属于temp
+&#125;
+
+
+&#x2F;&#x2F; 全局变量和局部变量
+&#x2F;&#x2F; 一：局部变量： 在一个函数内部定义的变量，只能在函数内使用
+	&#x2F;&#x2F; 在main函数中的变量，只能在main函数中，即便main函数调用了其他函数
+	&#x2F;&#x2F; 不同函数当中的相同名字变量，互不相关
+&#x2F;&#x2F; 二：全局变量： 在函数外定义的变量，成为全局变量（外部变量）
+	&#x2F;&#x2F; 优点：不同的函数之间可以进行交互，而不需要形参实参的传递
+	&#x2F;&#x2F; 缺点：不便于阅读，全局变量会一直存在于系统当中，会占用内存
+
+&#x2F;&#x2F; extern int a; 表示在外部某个位置定义了变量a 这里不分配内存，只是做声明：后面有地方定义了a变量
+int a;
+&#x2F;&#x2F; 1、外部变量的定义只有有一次，会分配内存，定义时可以进行初始化
+&#x2F;&#x2F; 2、外部变量的声明很有很多次，声明不会分配内存
+&#x2F;&#x2F; 3、在同一个源文件当中，如果出现的全局变量和局部变量同名，在局部变量的作用范围内，全局变量不起作用
+
+
+&#x2F;&#x2F; 变量的存储类别
+&#x2F;&#x2F; 从变量存在的时间（生存周期）角度来划分，可以将变量分为： 
+		&#x2F;&#x2F;  静态存储变量和动态存储变量，从而引出了静态存储方式和动态存储方式
+		&#x2F;&#x2F;  静态存储变量： 在程序运行期间分配固定存储空间的变量，这种分配变量的方式为静态存储方式
+		&#x2F;&#x2F;  动态存储变量： 在程序运行期间根据需要进行动态分配存储空间的变量，这种分配方式为动态存储方式
+
+&#x2F;&#x2F;全局变量（在函数的外部定义的）放在静态存储区中，程序开始执行的时候给全局变量分配存储区﹐程序执行完毕后释放这些存储区
+&#x2F;&#x2F;在程序执行过程中它们占据固定的存储单元，而不是动态的分配和释放。
+
+&#x2F;&#x2F;动态存储区中存哪些数据呢?
+&#x2F;&#x2F; a)函数形参，函数形参被看做是局部变量。
+&#x2F;&#x2F; b)局部变量，比如函数内定义的一些变量。
+&#x2F;&#x2F; c)函数调用时现场的一些数据和返回地址等。
+&#x2F;&#x2F; 一般来讲，这些数据在函数调用开始时分配存储空间﹐函数调用完毕，这些空间就祊释放掉了。这种分配和释放，我们就认为是动态的
+&#x2F;&#x2F; 如果你两次调用同—个函蠢，分配给此函数的局部变里等等的存储空间地址可能就是不同的。
+
+
+&#x2F;&#x2F; 局部变量的存储方式
+&#x2F;&#x2F; 1.传统情形，函数的局部变量，在函数被调用时分配内存，函数结束时释放内存
+&#x2F;&#x2F; 2.局部静态变量，用static修饰的变量
+	&#x2F;&#x2F; 其能够保留原值，占用的存储单元不释放，在下一次调用函数时，该值是上次调用结束时的值
+void testStatic() &#123;
+	&#x2F;&#x2F; 静态局部变量
+	&#x2F;&#x2F; 在静态存储区分配内存，程序整个运行期间不释放
+	&#x2F;&#x2F; 局部静态变量是在编译时赋予初值的，只赋予一次
+	&#x2F;&#x2F; 定义局部静态变量，不赋予初值会被赋值为0，普通的局部变量不赋予初值是一个不确定的值
+	static int t &#x3D; 10;	
+	t++;
+	printf(&quot;%d\n&quot;, t);
+&#125;
+
+
+&#x2F;&#x2F; 全局变量跨文件使用的方式
+&#x2F;&#x2F; 场景： 在a.cpp文件中定义的变量，在b.cpp文件当中使用
+&#x2F;&#x2F; 使用extern 做一个外部变量的说明（b.cpp文件的头部），说明这个变量是其他文件当中被定义过的外部变量，本文件不需要再进行申明
+&#x2F;&#x2F; 使用方法：在b.cpp头部写： extern int temp;
+&#x2F;&#x2F; 值得注意的是：在b.cpp文件中改变了变量的值，则在a.cpp文件中也会改变
+&#x2F;&#x2F; 如果只想在a.cpp文件当中使用变量temp.只需要在a.cpp文件： static int temp; 就无法在其他文件中使用
+
+&#x2F;&#x2F; 函数的跨文件使用
+&#x2F;&#x2F; 根据文件是否能被其他源文件使用，函数被分为内部函数和外部函数
+&#x2F;&#x2F; 在函数的申明前面加上static，表示为内部函数，只能在本文件当中使用
+&#x2F;&#x2F; 两个文件中的函数均加static，尽管在不同的文件当中出现同名函数，也不会影响
+
+&#x2F;&#x2F; 在函数前面加上extern 表示为外部函数 表示从外部来的函数
+
+&#x2F;&#x2F; 总结static的用法
+&#x2F;&#x2F; 1、在函数内部的一个变量前加上static，表示该变量只能存在于静态存储区
+	  &#x2F;&#x2F; 在函数编译的时候初始化，如果不给初值，则被赋予初值Wie0，并且下次调用时，维持上次调用结束时的值
+&#x2F;&#x2F; 2、在全局变量前加上static，表示该变量只能在本文件中使用，不能在其他文件中使用
+&#x2F;&#x2F; 3、在函数定义前面加static，表示该函数只能在本文件中使用，不能在其他文件中使用
+
+
+
 int main() &#123;
+	&#x2F;&#x2F; 测试递归函数
+	printf(&quot;%d\n&quot;, getJieCheng(5));
 
-	&#x2F;&#x2F; 一、C语言的语句和程序的基本结构
-	&#x2F;&#x2F; 1, 语句的分类
-	&#x2F;&#x2F;		（1）控制语句：共有9中控制语句if for while do break switch continue goto return
-	&#x2F;&#x2F; 	    （2）函数调用语句： 例如printf(&quot;Hello Word!&quot;);
-	&#x2F;&#x2F;		（3）表达式语句：  例如 int a; a &#x3D; 5; a +&#x3D; 5;
-	&#x2F;&#x2F; 	    （4）复合语句：使用&#123;&#125;括起来的语句
-	&#x2F;&#x2F;					   凡是满足该条件的，&#123;&#125;内的语句都会执行
-	&#x2F;&#x2F;					   &#123;
-	&#x2F;&#x2F;							int a &#x3D; 1;
-	&#x2F;&#x2F;							......
-	&#x2F;&#x2F;						&#125;   大括号后面不用加分号
-	&#x2F;&#x2F; 2、程序的三种基本结构
-	&#x2F;&#x2F;		（1）顺序结构
-	&#x2F;&#x2F;		（2）选择结构if-else&#x2F;多分支选择结构switch
-	&#x2F;&#x2F;		（3）循环结构
-	&#x2F;&#x2F;					当型循环结构：先判断是否可行，再进行操作
-	&#x2F;&#x2F;					直到型循环结构：先执行操作，再判断条件是否可行，要强调的是，至少会执行一次操作
-	&#x2F;&#x2F; 
-	&#x2F;&#x2F; 3、赋值语句的特殊写法
-	&#x2F;&#x2F;		赋值语句可以编写在其他语句当中。
+	&#x2F;&#x2F; 测试数组名作为函数的参数，地址传递的过程
+	int tempA[2] &#x3D; &#123; 1,2 &#125;;
+	testShuZuCanShu(tempA);
+	printf(&quot;%d-%d\n&quot;, tempA[0], tempA[1]);	&#x2F;&#x2F; 此时两个元素均变成了100
 
-
-	&#x2F;&#x2F; 多分支语句switch
-	int i &#x3D; 3;
-	&#x2F;&#x2F;switch当中为表达式，一般是整型变量或表达式
-	&#x2F;&#x2F;每一个case之间的顺序没有影响
-	&#x2F;&#x2F; 每一个case后的值不相同，不要忘记break（包括default后面），会导致继续执行后续语句，直到遇到break或整个switch执行完毕
-	&#x2F;&#x2F; 每一个case下面多行语句均会执行，如果没有加&#123;&#125;，每一条语句任会执行。
-	&#x2F;&#x2F; switch可以没有default。
-	switch (i) &#123;
-		case 1: &#123;
-			printf(&quot;i&#x3D;%d&quot;, 1);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		case 2:
-		case 3:
-		case 4: &#123;
-			printf(&quot;i&#x3D;2或3或4&quot;);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		case 5: &#123;
-			printf(&quot;i&#x3D;%d&quot;, 5);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		default: &#123;
-			printf(&quot;i&#x3D;%d&quot;, -1);
-			break;
-		&#125;
+	&#x2F;&#x2F; 测试程序块内的局部变量
+	&#x2F;&#x2F; 用大括号编写一段代码，大括号内的叫复合语句，&#123;&#125;内的变量只能在复合语句中使用，复合语句也叫程序块
+	int a &#x3D; 0; int b &#x3D; 1;
+	&#123;
+		int c &#x3D; a + b;	&#x2F;&#x2F; 程序块内可以使用main函数内定义的变量，a,b可以使用
 	&#125;
+	&#x2F;&#x2F; c &#x3D; a + b; 程序显示未定义的标识符c 一旦离开程序块，c的内存就被释放了
+
+	&#x2F;&#x2F; 测试静态局部变量的存储
+	testStatic(); &#x2F;&#x2F; 输出三次为： 11 12 13
+	testStatic();
+	testStatic();
 
 
-	&#x2F;&#x2F; 一、数据的输出
-	&#x2F;&#x2F; #include 表示预编译命令，作用是将一些文件包含到用户的源文件当中来，也就是将某些文件的内容原封不动的粘贴到#include这个位置
-	&#x2F;&#x2F; #include&lt;stdio.h&gt; 标准的I&#x2F;O库，.h被称为头文件（head）
-	&#x2F;&#x2F; #include&quot;stdio.h&quot; 也是可行的。
-	&#x2F;&#x2F; 上述的两种包含头文件的区别： &lt;&gt;:表示从系统的目录当中进行查找文件，像加入标准的库文件使用&lt;&gt;，如果系统中没有，当前目录有，则会显示错误
-	&#x2F;&#x2F;								&quot;&quot;:表示首先从当前的目录文件进行查找文件，如果找不到，再到系统当中查找。&quot;&quot;用于对自己编写的头文件的引入，让系统优先使用当前目录当中的定义的头文件
-
-	char a, b, c;
-	a &#x3D; &#39;F&#39;;
-	b &#x3D; &#39;T&#39;;
-	c &#x3D; &#39;A&#39;;
-	putchar(a);
-	putchar(b);
-	putchar(c);
-
-	&#x2F;&#x2F; printf输出格式
-	&#x2F;&#x2F; %d: 以10进制输出一个数字
-	&#x2F;&#x2F; %o: 以8进制输出一个数字
-	&#x2F;&#x2F; %x: 以16进制输出一个数字
-	&#x2F;&#x2F; %u: 以10进制输出一个无符号数字
-	&#x2F;&#x2F; %c: 输出一个字符
-	&#x2F;&#x2F; %s: 输出一个字符串
-	&#x2F;&#x2F; %f: 输出一个实数
-	&#x2F;&#x2F; %.nf: 输出一个实数，保留n位小数
-
-	&#x2F;&#x2F; 数据的输入与输出
-	char temp;
-	temp &#x3D; getchar();		&#x2F;&#x2F; 从键盘上输入一个字符
-	putchar(temp);			&#x2F;&#x2F; 输出字符temp
-
-	&#x2F;&#x2F; scanf: 格式化输入函数，用来输入任何类型的多个数据
-	&#x2F;&#x2F; scanf(格式控制，地址表列)
-	&#x2F;&#x2F; 当输入回车时，表示输入结束
-	int x, y, z;
-	scanf_s(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;z);&#x2F;&#x2F;  表示在xyz的地址上输入数据,多个输入之间可以使用空格，回车，tab间隔
-	printf(&quot;%d%d%d&quot;, x, y, z);
-
-	&#x2F;&#x2F; 关系运算符（&lt;&gt;!&#x3D;&lt;&#x3D;&gt;&#x3D;）与关系表达式
-	&#x2F;&#x2F; 关系运算符的优先级  小于  算数运算符的优先级
-	&#x2F;&#x2F; 关系运算符的值，只有真和假两种
-
-	&#x2F;&#x2F; 逻辑运算符与逻辑表达式(||或   &amp;&amp;与   !非)
-	&#x2F;&#x2F; 用逻辑运算符 将 关系表达式 连接起来的，就是逻辑表达式
-	&#x2F;&#x2F; 逻辑表达式的值也是真或假
-	&#x2F;&#x2F; || &amp;&amp; ： 双目运算符
-	&#x2F;&#x2F; ! : 单目运算符
-	&#x2F;&#x2F; 注意的是： 千万不要把&amp;&amp; 和|| 写成 &amp; |,不会报错，但是逻辑会出错
-
-
-	&#x2F;&#x2F; 逻辑运算符求值问题:在逻辑表达式求解中，不是所有逻辑运算符都会被执行，
-	&#x2F;&#x2F; 只有在必须执行下一个逻辑运算符才能求出表达式的结果时，才执行该运算符。
-	&#x2F;&#x2F; a &amp;&amp; b &amp;&amp; c 只有a为真(非0)）才需要判断b，只有a, b都为真才判断c·只要a为假，就不必判断b。如果a为真，b为假，就不必判断c
-	int m &#x3D; 0;
-	if ((3 &gt; 5) &amp;&amp; (m &#x3D; 8)) &#123;	&#x2F;&#x2F; 此时，后面m&#x3D;8这一表达式不会被执行
-		printf(&quot;%d&quot;,m);
-	&#125;
-
-	&#x2F;&#x2F; 循环结构语句（当型循环结构，直到型循环结构）
-	&#x2F;&#x2F; goto, while, do while, for
-	&#x2F;&#x2F; goto语句: 无条件转向语句，用来跳转到某个程序位置进行执行
-	&#x2F;&#x2F; goto 语句标号； （其中语句标号是一个标识符，只能有字母数字下划线组成，且第一个字符必须是字母或下划线）
-	&#x2F;&#x2F; goto语句的用途： （1） 与if语句构成循环结构
-	&#x2F;&#x2F;					（2）从循环结构当中跳出，不推荐，破坏循环结构
-	&#x2F;&#x2F; 案例： 使用goto语句实现1~100的加法
-	int number &#x3D; 1; int sum &#x3D; 0;
-	loop:
-		if (number &lt;&#x3D; 100) &#123;
-			sum &#x3D; sum + number;
-			number++;
-			goto loop;
-		&#125;
-	printf(&quot;%d&quot;, sum);
-	&#x2F;&#x2F; 不建议使用goto语句
-
-
-	&#x2F;&#x2F; while 循环结构(先判断循环条件，再执行内容)
-
-	&#x2F;&#x2F; do while循环结构（直到型循环结构）
-	&#x2F;&#x2F; 直到型循环结构，至少会执行循环体内的语句一次
-
-
-	&#x2F;&#x2F; for:循环语句
-	&#x2F;&#x2F; for语司的一般形式 :
-	&#x2F;&#x2F; for(表达式1 : 表达式2; 表达式3)内嵌的语句
-	&#x2F;&#x2F; 执行过程:
-	&#x2F;&#x2F; a)先求解表达式1的值
-	&#x2F;&#x2F; b)再求解表达式2的值的
-		&#x2F;&#x2F; b.1)若表达式2的值为真，则执行for语句中指定的内嵌语句﹐再求解表达式3的值，反复循环步骤2，一直到表达式2的值为假。
-		&#x2F;&#x2F; b.2)若表达式2的值为假，则整个for循环结束，程序流程跳转到for语句后边的语句去执行。
-		
-		&#x2F;&#x2F; 这里我们要特别注意:表达式1的值只会被执行一次。
-		&#x2F;&#x2F; for语句最简单也是最常用的引用形式 :
-		&#x2F;&#x2F; for (循环变里赋初值 : 循环变里结束条件; 循环变里增加值）内嵌的语句
-
-	&#x2F;&#x2F; 特殊情况
-	&#x2F;&#x2F; 1、第一个表达式可以省略，但是循环变量需要在事前所定义
-	&#x2F;&#x2F; 2、第二个表达式可以省略，需要在循环体内编写break语句用于中断循环。
-	&#x2F;&#x2F; 3、第三个表达式可以省略，i++可以放在循环体内
-
-	&#x2F;&#x2F; goto while do while for 循环之间的比较
-	&#x2F;&#x2F; 1、大多数情况下，这些循环之间是可以互相替换的
-	&#x2F;&#x2F; 2、不建议使用goto语句,会破坏结构化程序设计
-	&#x2F;&#x2F; 3、while和for循环是先判断后执行语句，dowhile是先执行语句，后进行判断
-	&#x2F;&#x2F; 4、三种循环语句都可以使用break中断循环
-	&#x2F;&#x2F; 5、continue表示退出当前循环，会进行后续的循环内容
-	&#x2F;&#x2F; 6、 continue只能够用于while do while for三种结构体当中，不能用于switch
-    &#x2F;&#x2F; 7、contine表示跳过下面未执行的语句，接着执行下一次循环
-    for(int i &#x3D; 1; i&lt;&#x3D;100;i++)&#123;
-        if(i % 3 &#x3D;&#x3D; 0)&#123;
-            continue;
-        &#125;
-        printf(&quot;%d &quot;, i);
-    &#125;
 	return 0;
 &#125;
+
 </code></pre>
 
 
 
+<p>[更多内容](<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-functions.html">C 函数 | 菜鸟教程 (runoob.com)</a>)</p>
 </font>
 
 
@@ -655,7 +640,7 @@ int main() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2023/073116142.html">http://Binbin0613.github.io/2023/073116142.html</a>
+                    <a href="http://Binbin0613.github.io/2023/080116144.html">http://Binbin0613.github.io/2023/080116144.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -773,17 +758,18 @@ int main() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/080116143.html">
+                <a href="/2023/080116144.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/187.jpg" class="responsive-img" alt="(C++基础04)-数组">
+                        <img src="/medias/featureimages/63.jpg" class="responsive-img" alt="(C++基础05)-函数">
                         
-                        <span class="card-title">(C++基础04)-数组</span>
+                        <span class="card-title">(C++基础05)-函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -793,9 +779,9 @@ int main() &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -812,6 +798,7 @@ int main() &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -830,13 +817,13 @@ int main() &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/073116141.html">
+                <a href="/2023/080116143.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/163.jpg" class="responsive-img" alt="(C++基础02)-数据类型，运算符，表达式">
+                        <img src="/medias/featureimages/187.jpg" class="responsive-img" alt="(C++基础04)-数组">
                         
-                        <span class="card-title">(C++基础02)-数据类型，运算符，表达式</span>
+                        <span class="card-title">(C++基础04)-数组</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -847,7 +834,7 @@ int main() &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
                             </span>
                         <span class="publish-author">
                             

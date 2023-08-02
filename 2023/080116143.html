@@ -4,14 +4,13 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="(C++基础03)-程序的基本结构和语句, Software Engineer">
+    <meta name="keywords" content="(C++基础04)-数组, Software Engineer">
     <meta name="description" content="
 
-C++基础03：程序的基本结构和语句# include&amp;lt;iostream&amp;gt;
-# include&amp;lt;stdio.h&amp;gt;
-#include&amp;quot;temp2.h&amp;quot;
+C++基础04：数组#include &amp;lt;stdio.h&amp;gt;	&amp;#x2F;&amp;#x2F; C语言标准输入输出
+#include &amp;lt;iostream&amp;gt;	&amp;#x2F;&amp;#x2F; C++标准输入输出
 
-using namespace std;">
+using name">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +22,7 @@ using namespace std;">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>(C++基础03)-程序的基本结构和语句 | Binbin0613</title>
+    <title>(C++基础04)-数组 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +340,12 @@ using namespace std;">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/187.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">(C++基础03)-程序的基本结构和语句</h1>
+                    <h1 class="description center-align post-title">(C++基础04)-数组</h1>
                 </div>
             </div>
         </div>
@@ -399,7 +398,7 @@ using namespace std;">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-31
+                    2023-08-01
                 </div>
                 
 
@@ -413,14 +412,14 @@ using namespace std;">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.1k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    5 分
                 </div>
                 
 
@@ -445,185 +444,95 @@ using namespace std;">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
 
-<h2 id="C-基础03：程序的基本结构和语句"><a href="#C-基础03：程序的基本结构和语句" class="headerlink" title="C++基础03：程序的基本结构和语句"></a>C++基础03：程序的基本结构和语句</h2><pre class="language-c++" data-language="c++"><code class="language-c++"># include&lt;iostream&gt;
-# include&lt;stdio.h&gt;
-#include&quot;temp2.h&quot;
+<h2 id="C-基础04：数组"><a href="#C-基础04：数组" class="headerlink" title="C++基础04：数组"></a>C++基础04：数组</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;stdio.h&gt;	&#x2F;&#x2F; C语言标准输入输出
+#include &lt;iostream&gt;	&#x2F;&#x2F; C++标准输入输出
 
 using namespace std;
 
-&#x2F;&#x2F; C语言程序的基本结构和语句
+&#x2F;&#x2F; 数组
 int main() &#123;
 
-	&#x2F;&#x2F; 一、C语言的语句和程序的基本结构
-	&#x2F;&#x2F; 1, 语句的分类
-	&#x2F;&#x2F;		（1）控制语句：共有9中控制语句if for while do break switch continue goto return
-	&#x2F;&#x2F; 	    （2）函数调用语句： 例如printf(&quot;Hello Word!&quot;);
-	&#x2F;&#x2F;		（3）表达式语句：  例如 int a; a &#x3D; 5; a +&#x3D; 5;
-	&#x2F;&#x2F; 	    （4）复合语句：使用&#123;&#125;括起来的语句
-	&#x2F;&#x2F;					   凡是满足该条件的，&#123;&#125;内的语句都会执行
-	&#x2F;&#x2F;					   &#123;
-	&#x2F;&#x2F;							int a &#x3D; 1;
-	&#x2F;&#x2F;							......
-	&#x2F;&#x2F;						&#125;   大括号后面不用加分号
-	&#x2F;&#x2F; 2、程序的三种基本结构
-	&#x2F;&#x2F;		（1）顺序结构
-	&#x2F;&#x2F;		（2）选择结构if-else&#x2F;多分支选择结构switch
-	&#x2F;&#x2F;		（3）循环结构
-	&#x2F;&#x2F;					当型循环结构：先判断是否可行，再进行操作
-	&#x2F;&#x2F;					直到型循环结构：先执行操作，再判断条件是否可行，要强调的是，至少会执行一次操作
-	&#x2F;&#x2F; 
-	&#x2F;&#x2F; 3、赋值语句的特殊写法
-	&#x2F;&#x2F;		赋值语句可以编写在其他语句当中。
+	&#x2F;&#x2F; 一维数组
+	&#x2F;&#x2F; 一维数组的定义，引用，初始化
+	&#x2F;&#x2F; 构造类型： 把基本的数据类型进行一定的变换得到的数据类型
+
+	&#x2F;&#x2F;int array[10]; &#x2F;&#x2F; 表示数组有10个元素，下标从0开始到9
+
+	&#x2F;&#x2F; 注意的是：数组的大小是固定的，不允许改变的
+
+	&#x2F;&#x2F; 一维数组的初始化
+	int array[10] &#x3D; &#123; 1,2,3,4,5,6,7,8,9,0 &#125;;
+	&#x2F;&#x2F; 在定义数组时，可以不指定数组的长度
+	int a[] &#x3D; &#123; 1,2,3,4,5 &#125;;	&#x2F;&#x2F; 此时系统认为数组a的长度是5，即int a[5] &#x3D;&#123;1,2,3,4,5&#125;
+	int b[10] &#x3D; &#123; 1,2,3,4,5 &#125;;  &#x2F;&#x2F; 实际上的数组内容是1234500000
+
+	printf(&quot;数组a的长度是%d&quot;, sizeof(a) &#x2F; sizeof(a[0])); 
 
 
-	&#x2F;&#x2F; 多分支语句switch
-	int i &#x3D; 3;
-	&#x2F;&#x2F;switch当中为表达式，一般是整型变量或表达式
-	&#x2F;&#x2F;每一个case之间的顺序没有影响
-	&#x2F;&#x2F; 每一个case后的值不相同，不要忘记break（包括default后面），会导致继续执行后续语句，直到遇到break或整个switch执行完毕
-	&#x2F;&#x2F; 每一个case下面多行语句均会执行，如果没有加&#123;&#125;，每一条语句任会执行。
-	&#x2F;&#x2F; switch可以没有default。
-	switch (i) &#123;
-		case 1: &#123;
-			printf(&quot;i&#x3D;%d&quot;, 1);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		case 2:
-		case 3:
-		case 4: &#123;
-			printf(&quot;i&#x3D;2或3或4&quot;);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		case 5: &#123;
-			printf(&quot;i&#x3D;%d&quot;, 5);
-			&#x2F;&#x2F; ...
-			break;
-		&#125;
-		default: &#123;
-			printf(&quot;i&#x3D;%d&quot;, -1);
-			break;
-		&#125;
+	&#x2F;&#x2F; 二维数组
+	int c[2][3] &#x3D; &#123; &#123;1,2,3&#125;,&#123;2,3,4&#125; &#125;; &#x2F;&#x2F; 定义了一个2行3列的数组，值：1,2,3,2,3,4
+	&#x2F;&#x2F; c[0][0],c[0][1],c[0][2]
+	&#x2F;&#x2F; c[1][0],c[1][1],c[1][1]
+
+	&#x2F;&#x2F; 在卡断点调试的过程中，shift + f9表示查看元素的内容
+
+
+	&#x2F;&#x2F; 字符数 组: 用来存放字符的数组
+	char d[10] &#x3D; &#123;&#39;1&#39;,&#39;2&#39;,&#39;e&#39;,&#39;s&#39;&#125;;		&#x2F;&#x2F; 若没有完整的初始化字符数组，则后面的会使用\0来填充，相当于用0来填充，实际上\0的asicc码
+
+	&#x2F;&#x2F; 字符和字符串的结束标记
+	&#x2F;&#x2F; 使用字符串来初始化字符数组
+	
+	char e[] &#x3D; &#123; &quot;ILoveChina&quot; &#125;;	&#x2F;&#x2F; 一般而言，字符串的末尾会有一个\0，叫做字符串结束标记
+	char f[] &#x3D; &#123; &#39;I&#39;,&#39;L&#39;,&#39;o&#39;,&#39;v&#39;,&#39;e&#39;,&#39;C&#39;,&#39;h&#39;,&#39;i&#39;,&#39;n&#39;,&#39;a&#39; &#125;;
+	printf(&quot;%d&quot;, sizeof(e) &#x2F; sizeof(e[0]));	&#x2F;&#x2F; 数组的长度是11位，最后一位是\0
+	&#x2F;&#x2F; 如果一个字符串的第11个字符是\0,那么它的有效长度是10个
+	&#x2F;&#x2F; 也就是说，字符串遇到\0就意味着字符串的结束
+
+	
+	printf(&quot;%s\n&quot;,e);	&#x2F;&#x2F;ILoveChina烫烫烫烫烫 
+	printf(&quot;%s\n&quot;, f);	&#x2F;&#x2F;ILoveChina
+	&#x2F;&#x2F; 出现上述的原因是，e字符数组结尾没有出现00，导致关于继续打印出后面内容当中的内容，直到程序遇到00终止,打印字符串的时候不会打印\0
+	&#x2F;&#x2F; 而字符数组f是字符串初始化的，字符串本身结尾就有结束标记\0，因此打印的时候字符结束就是00.不会出错
+	&#x2F;&#x2F; 使用vs可以查看内容的地址，e字符数组后面的输出是无效字符的
+	for (int i &#x3D; 0; i &lt; sizeof(e) &#x2F; sizeof(e[0]); i++) &#123;
+		printf(&quot;%c\n&quot;, e[i]);		&#x2F;&#x2F; 最后会多出一个空的出来，就是字符串结束标记\0，asicc码是0
 	&#125;
 
+	
+	&#x2F;&#x2F; 注意： e和 &amp;e都被认为是数组的起始地址
+	printf(&quot;%d\n&quot;, e);
+	printf(&quot;%d\n&quot;, &amp;e);
 
-	&#x2F;&#x2F; 一、数据的输出
-	&#x2F;&#x2F; #include 表示预编译命令，作用是将一些文件包含到用户的源文件当中来，也就是将某些文件的内容原封不动的粘贴到#include这个位置
-	&#x2F;&#x2F; #include&lt;stdio.h&gt; 标准的I&#x2F;O库，.h被称为头文件（head）
-	&#x2F;&#x2F; #include&quot;stdio.h&quot; 也是可行的。
-	&#x2F;&#x2F; 上述的两种包含头文件的区别： &lt;&gt;:表示从系统的目录当中进行查找文件，像加入标准的库文件使用&lt;&gt;，如果系统中没有，当前目录有，则会显示错误
-	&#x2F;&#x2F;								&quot;&quot;:表示首先从当前的目录文件进行查找文件，如果找不到，再到系统当中查找。&quot;&quot;用于对自己编写的头文件的引入，让系统优先使用当前目录当中的定义的头文件
+	&#x2F;&#x2F; 在C语言当中，一维字符数组可以看做是字符串
+	&#x2F;&#x2F; puts(字符数组)：将字符串数组输出到屏幕当中
+	&#x2F;&#x2F; gets(字符数组): 从键盘上输入一个字符串数组
+	char str[100] &#x3D; &quot;IloveUESTC&quot;;
+	puts(str);	&#x2F;&#x2F; IloveUESTC
 
-	char a, b, c;
-	a &#x3D; &#39;F&#39;;
-	b &#x3D; &#39;T&#39;;
-	c &#x3D; &#39;A&#39;;
-	putchar(a);
-	putchar(b);
-	putchar(c);
+	&#x2F;&#x2F; strcat(字符数组1，字符数组2)，两个字符数组相拼接
+	&#x2F;&#x2F; 过程： 将字符数组1的最后一个字符\0去掉，然后将字符数组2的内容拼接过去，字符数组1的大小足够大能够容纳两个字符数组的大小
 
-	&#x2F;&#x2F; printf输出格式
-	&#x2F;&#x2F; %d: 以10进制输出一个数字
-	&#x2F;&#x2F; %o: 以8进制输出一个数字
-	&#x2F;&#x2F; %x: 以16进制输出一个数字
-	&#x2F;&#x2F; %u: 以10进制输出一个无符号数字
-	&#x2F;&#x2F; %c: 输出一个字符
-	&#x2F;&#x2F; %s: 输出一个字符串
-	&#x2F;&#x2F; %f: 输出一个实数
-	&#x2F;&#x2F; %.nf: 输出一个实数，保留n位小数
-
-	&#x2F;&#x2F; 数据的输入与输出
-	char temp;
-	temp &#x3D; getchar();		&#x2F;&#x2F; 从键盘上输入一个字符
-	putchar(temp);			&#x2F;&#x2F; 输出字符temp
-
-	&#x2F;&#x2F; scanf: 格式化输入函数，用来输入任何类型的多个数据
-	&#x2F;&#x2F; scanf(格式控制，地址表列)
-	&#x2F;&#x2F; 当输入回车时，表示输入结束
-	int x, y, z;
-	scanf_s(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;z);&#x2F;&#x2F;  表示在xyz的地址上输入数据,多个输入之间可以使用空格，回车，tab间隔
-	printf(&quot;%d%d%d&quot;, x, y, z);
-
-	&#x2F;&#x2F; 关系运算符（&lt;&gt;!&#x3D;&lt;&#x3D;&gt;&#x3D;）与关系表达式
-	&#x2F;&#x2F; 关系运算符的优先级  小于  算数运算符的优先级
-	&#x2F;&#x2F; 关系运算符的值，只有真和假两种
-
-	&#x2F;&#x2F; 逻辑运算符与逻辑表达式(||或   &amp;&amp;与   !非)
-	&#x2F;&#x2F; 用逻辑运算符 将 关系表达式 连接起来的，就是逻辑表达式
-	&#x2F;&#x2F; 逻辑表达式的值也是真或假
-	&#x2F;&#x2F; || &amp;&amp; ： 双目运算符
-	&#x2F;&#x2F; ! : 单目运算符
-	&#x2F;&#x2F; 注意的是： 千万不要把&amp;&amp; 和|| 写成 &amp; |,不会报错，但是逻辑会出错
+	&#x2F;&#x2F; strcpy(字符数组1，字符数组2)，右边那个拷贝到左边去
+	&#x2F;&#x2F; 字符数组2的大小  大于等于 字符数组1的大小
 
 
-	&#x2F;&#x2F; 逻辑运算符求值问题:在逻辑表达式求解中，不是所有逻辑运算符都会被执行，
-	&#x2F;&#x2F; 只有在必须执行下一个逻辑运算符才能求出表达式的结果时，才执行该运算符。
-	&#x2F;&#x2F; a &amp;&amp; b &amp;&amp; c 只有a为真(非0)）才需要判断b，只有a, b都为真才判断c·只要a为假，就不必判断b。如果a为真，b为假，就不必判断c
-	int m &#x3D; 0;
-	if ((3 &gt; 5) &amp;&amp; (m &#x3D; 8)) &#123;	&#x2F;&#x2F; 此时，后面m&#x3D;8这一表达式不会被执行
-		printf(&quot;%d&quot;,m);
-	&#125;
+	&#x2F;&#x2F; (5)strcmp(字符出1，字符出2》
+	&#x2F;&#x2F; 比较字符串1和字符串2，也算一个常用函数
+	&#x2F;&#x2F; a)如果学符串1等于享符串2, 该函教返回0·
+	&#x2F;&#x2F; b)如果字符串1 &lt; 享符串2，返回一个正整数 &gt; 0 的数 1 
+	&#x2F;&#x2F; c)如果字符串2 &gt; 字符串2, 返回一个负整数 &lt; 0 的数 -1
 
-	&#x2F;&#x2F; 循环结构语句（当型循环结构，直到型循环结构）
-	&#x2F;&#x2F; goto, while, do while, for
-	&#x2F;&#x2F; goto语句: 无条件转向语句，用来跳转到某个程序位置进行执行
-	&#x2F;&#x2F; goto 语句标号； （其中语句标号是一个标识符，只能有字母数字下划线组成，且第一个字符必须是字母或下划线）
-	&#x2F;&#x2F; goto语句的用途： （1） 与if语句构成循环结构
-	&#x2F;&#x2F;					（2）从循环结构当中跳出，不推荐，破坏循环结构
-	&#x2F;&#x2F; 案例： 使用goto语句实现1~100的加法
-	int number &#x3D; 1; int sum &#x3D; 0;
-	loop:
-		if (number &lt;&#x3D; 100) &#123;
-			sum &#x3D; sum + number;
-			number++;
-			goto loop;
-		&#125;
-	printf(&quot;%d&quot;, sum);
-	&#x2F;&#x2F; 不建议使用goto语句
+	&#x2F;&#x2F; 注意的是：在比较两个字符串之间的大小时,不要直接使用名称
+	&#x2F;&#x2F; strcmp(str1,str2);  使用这种方式， str1 &#x3D;&#x3D; str2 这种方式比较的是地址
+
+	&#x2F;&#x2F; strlen(字符数组)： 计算字符数组的长度，但是没有\0  返回的是字节数
+	&#x2F;&#x2F; str &#x3D; &quot;我love你&quot;；可以查看字节数，验证了一个汉字是两个字节
 
 
-	&#x2F;&#x2F; while 循环结构(先判断循环条件，再执行内容)
 
-	&#x2F;&#x2F; do while循环结构（直到型循环结构）
-	&#x2F;&#x2F; 直到型循环结构，至少会执行循环体内的语句一次
-
-
-	&#x2F;&#x2F; for:循环语句
-	&#x2F;&#x2F; for语司的一般形式 :
-	&#x2F;&#x2F; for(表达式1 : 表达式2; 表达式3)内嵌的语句
-	&#x2F;&#x2F; 执行过程:
-	&#x2F;&#x2F; a)先求解表达式1的值
-	&#x2F;&#x2F; b)再求解表达式2的值的
-		&#x2F;&#x2F; b.1)若表达式2的值为真，则执行for语句中指定的内嵌语句﹐再求解表达式3的值，反复循环步骤2，一直到表达式2的值为假。
-		&#x2F;&#x2F; b.2)若表达式2的值为假，则整个for循环结束，程序流程跳转到for语句后边的语句去执行。
-		
-		&#x2F;&#x2F; 这里我们要特别注意:表达式1的值只会被执行一次。
-		&#x2F;&#x2F; for语句最简单也是最常用的引用形式 :
-		&#x2F;&#x2F; for (循环变里赋初值 : 循环变里结束条件; 循环变里增加值）内嵌的语句
-
-	&#x2F;&#x2F; 特殊情况
-	&#x2F;&#x2F; 1、第一个表达式可以省略，但是循环变量需要在事前所定义
-	&#x2F;&#x2F; 2、第二个表达式可以省略，需要在循环体内编写break语句用于中断循环。
-	&#x2F;&#x2F; 3、第三个表达式可以省略，i++可以放在循环体内
-
-	&#x2F;&#x2F; goto while do while for 循环之间的比较
-	&#x2F;&#x2F; 1、大多数情况下，这些循环之间是可以互相替换的
-	&#x2F;&#x2F; 2、不建议使用goto语句,会破坏结构化程序设计
-	&#x2F;&#x2F; 3、while和for循环是先判断后执行语句，dowhile是先执行语句，后进行判断
-	&#x2F;&#x2F; 4、三种循环语句都可以使用break中断循环
-	&#x2F;&#x2F; 5、continue表示退出当前循环，会进行后续的循环内容
-	&#x2F;&#x2F; 6、 continue只能够用于while do while for三种结构体当中，不能用于switch
-    &#x2F;&#x2F; 7、contine表示跳过下面未执行的语句，接着执行下一次循环
-    for(int i &#x3D; 1; i&lt;&#x3D;100;i++)&#123;
-        if(i % 3 &#x3D;&#x3D; 0)&#123;
-            continue;
-        &#125;
-        printf(&quot;%d &quot;, i);
-    &#125;
 	return 0;
-&#125;
-</code></pre>
+&#125;</code></pre>
 
 
 
@@ -655,7 +564,7 @@ int main() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2023/073116142.html">http://Binbin0613.github.io/2023/073116142.html</a>
+                    <a href="http://Binbin0613.github.io/2023/080116143.html">http://Binbin0613.github.io/2023/080116143.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -777,13 +686,13 @@ int main() &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/080116143.html">
+                <a href="/2023/080116144.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/187.jpg" class="responsive-img" alt="(C++基础04)-数组">
+                        <img src="/medias/featureimages/63.jpg" class="responsive-img" alt="(C++基础05)-函数">
                         
-                        <span class="card-title">(C++基础04)-数组</span>
+                        <span class="card-title">(C++基础05)-函数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -830,13 +739,13 @@ int main() &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/073116141.html">
+                <a href="/2023/073116142.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/163.jpg" class="responsive-img" alt="(C++基础02)-数据类型，运算符，表达式">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="(C++基础03)-程序的基本结构和语句">
                         
-                        <span class="card-title">(C++基础02)-数据类型，运算符，表达式</span>
+                        <span class="card-title">(C++基础03)-程序的基本结构和语句</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
