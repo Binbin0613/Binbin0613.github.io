@@ -4,15 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="(C++基础05)-函数, Software Engineer">
+    <meta name="keywords" content="(C++基础07)-指针, Software Engineer">
     <meta name="description" content="
 
-C++基础05：函数#include&amp;lt;iostream&amp;gt;
-
+C++基础07：指针#include&amp;lt;iostream&amp;gt;
 using namespace std;
 
-&amp;#x2F;&amp;#x2F; 函数的内容
-&amp;#x2F;&amp;#x2F; 注意的是，如果函数写在了main函数的下面，则找不到该函">
+
+&amp;#x2F;&amp;#x2F; 一、预备知识
+	&amp;#x2F;&amp;#x2F; 静态存储区，动态存储区。。。不同的变量会存储在不同的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +24,7 @@ using namespace std;
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>(C++基础05)-函数 | Binbin0613</title>
+    <title>(C++基础07)-指针 | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -342,12 +342,12 @@ using namespace std;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/63.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">(C++基础05)-函数</h1>
+                    <h1 class="description center-align post-title">(C++基础07)-指针</h1>
                 </div>
             </div>
         </div>
@@ -400,28 +400,28 @@ using namespace std;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-01
+                    2023-08-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-02
+                    2023-08-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -446,172 +446,228 @@ using namespace std;
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
 
-<h2 id="C-基础05：函数"><a href="#C-基础05：函数" class="headerlink" title="C++基础05：函数"></a>C++基础05：函数</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
-
+<h2 id="C-基础07：指针"><a href="#C-基础07：指针" class="headerlink" title="C++基础07：指针"></a>C++基础07：指针</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 using namespace std;
 
-&#x2F;&#x2F; 函数的内容
-&#x2F;&#x2F; 注意的是，如果函数写在了main函数的下面，则找不到该函数，需要事先声明
-&#x2F;&#x2F; 如果将函数写在main函数的上面，则表示函数以及定义并声明了
 
-&#x2F;&#x2F; 函数的定义
-&#x2F;&#x2F; 一个大项目通常不会存放到一个源文件里，因此一个C项目由一个或多个源文件组成
-&#x2F;&#x2F; 这些函数可以分别放到源文件里，被所有源文件公用
-&#x2F;&#x2F; 程序从main函数开始，也是从main函数当中结束
-&#x2F;&#x2F; 函数通常分为两类： 库函数  自定义函数
+&#x2F;&#x2F; 一、预备知识
+	&#x2F;&#x2F; 静态存储区，动态存储区。。。不同的变量会存储在不同的存储区当中
+	&#x2F;&#x2F; 1、有些变量，会在编译的时候分配内存
+	&#x2F;&#x2F; 2、有些变量，会在程序运行的时候分配内存
 
-&#x2F;&#x2F; 1、定义一个函数时，形式参数在函数被调用前不分配内存，调用的时候会分配内存，函数调用结束之后，形式参数的内存就被释放了，所以形式参数只能在函数内部使用
-&#x2F;&#x2F; 2、在函数调用的时候，实参的值自动赋值给了形参
-&#x2F;&#x2F; 3、在C语言当中，实参变量对形参变量的传递是“值传递”，也就是单向传递，只能由实参传递到形参
-&#x2F;&#x2F;	  即完成函数的调用之后，原本的实参的值并没有改变
+&#x2F;&#x2F; 二、直接访问和间接访问
+	&#x2F;&#x2F; 直接访问： 按照这个变量的地址取值
+	&#x2F;&#x2F; 间接访问： 将变量i的地址存放到另一个存储单元中
+		&#x2F;&#x2F; 我们通常用int char等类型来定义并存储变量的值
+		&#x2F;&#x2F; 同时也有一种特殊的变量，能够存储另一个变量的“地址”，这就是指针变量 point &#x3D; &amp;i；
+		&#x2F;&#x2F; 有时候，地址也被称为指针。
 
-&#x2F;&#x2F; 函数的调用
-&#x2F;&#x2F; C语言所编写的函数，只能返回一个值
-&#x2F;&#x2F; 函数的调用有三种方式： 1 单独作为一条语句 2 函数出现在一个表达式中 3 函数作为另一个函数的实参
+&#x2F;&#x2F; 三、指针变量的定义
+	&#x2F;&#x2F; 类型标识符 *标识符 int *point; 这个指针变量 指向整型标量
+	&#x2F;&#x2F; 一个指针变量只能指向同一类型的变量
+	
+&#x2F;&#x2F; 四、指针变量的引用
+	&#x2F;&#x2F; 指针变量中只存放地址，不要将整型变量赋值给一个指针变量
+	&#x2F;&#x2F; *p &#x3D; i
 
-&#x2F;&#x2F; 函数的声明
-&#x2F;&#x2F; 1、可以将函数写在main函数的前面，表示函数的定义并声明
-&#x2F;&#x2F; 2、我们必须将函数的声明放到任何源代码文件的具体函数之前（一般就是源代码的开头），才能保证这些函数调用其他函数时，被调用的函数OK
-&#x2F;&#x2F; 3、函数的声明：
-	&#x2F;&#x2F; 类型标识符 函数名(形参列表);
-
-&#x2F;&#x2F; 函数的嵌套定义
-&#x2F;&#x2F; C语言当中，不允许在一个函数当中定义另外一个函数
-&#x2F;&#x2F; C语言允许函数的嵌套调用
-
-&#x2F;&#x2F; 函数的递归调用： 在函数体内调用自己
-&#x2F;&#x2F; 函数的递归调用过程当中，只有一个函数结束之后，函数的局部变量占用的内存才会被释放
-int getJieCheng(int number) &#123;&#x2F;&#x2F; 1*2*3*4*5
-	if (number &#x3D;&#x3D; 1) &#123;	&#x2F;&#x2F; 递归函数必须要有结束条件
-		return 1;
-	&#125;
-	return number * getJieCheng(number-1);&#x2F;&#x2F; 递归关系
-&#125;
-&#x2F;&#x2F; 个人理解的递归函数的编写
-&#x2F;&#x2F; 在函数体内要确定所有的边界条件，通常是特殊情况我们能确定的
-&#x2F;&#x2F; 然后使用其中的递归条件直接重复调用函数（汉诺塔，斐波拉契数列，棋盘可移动位置）
-
-&#x2F;&#x2F; 递归的优缺点
-&#x2F;&#x2F; 代码精简，但是如果调用的层数太深，可能会导致调用栈（内存）溢出
-&#x2F;&#x2F; 效率和性能都不高，无法保证深层次的运行效率
+&#x2F;&#x2F; 五、坑爹的解析
+	&#x2F;&#x2F; &amp;*p ： &amp; * 两个运算符的优先级相同，&amp;（*p） &#x3D; &amp;i &#x3D; p
+	&#x2F;&#x2F; *&amp;i : *&amp;p &#x3D; *(&amp;i) &#x3D; *p &#x3D; i
+	&#x2F;&#x2F; (*p)++ : i++
+	&#x2F;&#x2F; *p++ ：*和++的优先级相同，*p++ &#x3D; *(p++) 这里表示p所指向的内存 + p类型所占内存数后的地址
+		&#x2F;&#x2F; &amp;i &#x3D; p &#x3D; 1000;  p++ &#x3D; 1000 + sizeof(int)4; 但是这一块内存不被p所使用,谨慎使用p++
 
 
-&#x2F;&#x2F; 数组元素&#x2F;数组名作为函数的参数
-&#x2F;&#x2F; 数组元素作为函数的参数： int a[5]; a[1] &#x3D; 1; getJieCheng(a[1]);
-&#x2F;&#x2F; 数组名作为函数的参数： 数组名是数组的首地址，传递的是数组的首地址,数组可以是多维数组
-	&#x2F;&#x2F; 此时，函数中的形参，也必须是数组名，或者是数组指针
-&#x2F;&#x2F; 注意：数组名作为函数参数时，不是“值传递（形参会分配内存）”，不是单向传递，而是把实参数组的开始地址传递给了形参数组（不会分配内存了）
-	&#x2F;&#x2F; 这样，两个数组就会共同占用同一块内存。这个叫地址传递，也就是说，形参数组的值发生变化，会导致
-	&#x2F;&#x2F; 实参数组当中的值发生变化
-void testShuZuCanShu(int temp[]) &#123;	&#x2F;&#x2F; 数组名作为参数，调用这个函数，temp和tempA是同一块地址
-	temp[0] &#x3D; 100;
-	temp[1] &#x3D; 100;
-	&#x2F;&#x2F; 这个函数的形参temp的大小可以声明大小，但是没有作用，函数会将实参的数组的地址给你
-	&#x2F;&#x2F; temp[100],实际上temp只能调用tempA[2]两个内容，其他的内存块temp无法控制，不该temp管，不属于temp
-	&#x2F;&#x2F; temp[5] &#x3D; 100; 这一块的内存不属于temp
+&#x2F;&#x2F; 六、分析一下,为什么下面会出问题
+void swap(int *p1, int *p2) &#123;
+	&#x2F;&#x2F; 这个过程是： 
+	int temp;
+	temp &#x3D; *p1;		&#x2F;&#x2F; *p1 &#x3D; a &#x3D; 1 &#x3D;&#x3D;&gt; temp &#x3D;1
+	*p1 &#x3D; *p2;		&#x2F;&#x2F; *p2 &#x3D; b &#x3D; 2 &#x3D;&#x3D;&gt; *p1 &#x3D; 2    a &#x3D; 2
+	*p2 &#x3D; temp;		&#x2F;&#x2F; *p2 &#x3D; 1
+
+	&#x2F;&#x2F; 下面这种方式会出现问题 有点懵逼，但是就是下面这种方式不行
+	&#x2F;&#x2F; int *temp;
+	&#x2F;&#x2F; temp &#x3D; p1;
+	&#x2F;&#x2F; p1 &#x3D; p2;
+	&#x2F;&#x2F; p2 &#x3D; temp;
 &#125;
 
+&#x2F;&#x2F; 七、数组的指针
+	&#x2F;&#x2F; 数组指针： 数组的首地址  
+	&#x2F;&#x2F; 数组元素的指针： 数组元素的地址
 
-&#x2F;&#x2F; 全局变量和局部变量
-&#x2F;&#x2F; 一：局部变量： 在一个函数内部定义的变量，只能在函数内使用
-	&#x2F;&#x2F; 在main函数中的变量，只能在main函数中，即便main函数调用了其他函数
-	&#x2F;&#x2F; 不同函数当中的相同名字变量，互不相关
-&#x2F;&#x2F; 二：全局变量： 在函数外定义的变量，成为全局变量（外部变量）
-	&#x2F;&#x2F; 优点：不同的函数之间可以进行交互，而不需要形参实参的传递
-	&#x2F;&#x2F; 缺点：不便于阅读，全局变量会一直存在于系统当中，会占用内存
-
-&#x2F;&#x2F; extern int a; 表示在外部某个位置定义了变量a 这里不分配内存，只是做声明：后面有地方定义了a变量
-int a;
-&#x2F;&#x2F; 1、外部变量的定义只有有一次，会分配内存，定义时可以进行初始化
-&#x2F;&#x2F; 2、外部变量的声明很有很多次，声明不会分配内存
-&#x2F;&#x2F; 3、在同一个源文件当中，如果出现的全局变量和局部变量同名，在局部变量的作用范围内，全局变量不起作用
-
-
-&#x2F;&#x2F; 变量的存储类别
-&#x2F;&#x2F; 从变量存在的时间（生存周期）角度来划分，可以将变量分为： 
-		&#x2F;&#x2F;  静态存储变量和动态存储变量，从而引出了静态存储方式和动态存储方式
-		&#x2F;&#x2F;  静态存储变量： 在程序运行期间分配固定存储空间的变量，这种分配变量的方式为静态存储方式
-		&#x2F;&#x2F;  动态存储变量： 在程序运行期间根据需要进行动态分配存储空间的变量，这种分配方式为动态存储方式
-
-&#x2F;&#x2F;全局变量（在函数的外部定义的）放在静态存储区中，程序开始执行的时候给全局变量分配存储区﹐程序执行完毕后释放这些存储区
-&#x2F;&#x2F;在程序执行过程中它们占据固定的存储单元，而不是动态的分配和释放。
-
-&#x2F;&#x2F;动态存储区中存哪些数据呢?
-&#x2F;&#x2F; a)函数形参，函数形参被看做是局部变量。
-&#x2F;&#x2F; b)局部变量，比如函数内定义的一些变量。
-&#x2F;&#x2F; c)函数调用时现场的一些数据和返回地址等。
-&#x2F;&#x2F; 一般来讲，这些数据在函数调用开始时分配存储空间﹐函数调用完毕，这些空间就祊释放掉了。这种分配和释放，我们就认为是动态的
-&#x2F;&#x2F; 如果你两次调用同—个函蠢，分配给此函数的局部变里等等的存储空间地址可能就是不同的。
-
-
-&#x2F;&#x2F; 局部变量的存储方式
-&#x2F;&#x2F; 1.传统情形，函数的局部变量，在函数被调用时分配内存，函数结束时释放内存
-&#x2F;&#x2F; 2.局部静态变量，用static修饰的变量
-	&#x2F;&#x2F; 其能够保留原值，占用的存储单元不释放，在下一次调用函数时，该值是上次调用结束时的值
-void testStatic() &#123;
-	&#x2F;&#x2F; 静态局部变量
-	&#x2F;&#x2F; 在静态存储区分配内存，程序整个运行期间不释放
-	&#x2F;&#x2F; 局部静态变量是在编译时赋予初值的，只赋予一次
-	&#x2F;&#x2F; 定义局部静态变量，不赋予初值会被赋值为0，普通的局部变量不赋予初值是一个不确定的值
-	static int t &#x3D; 10;	
-	t++;
-	printf(&quot;%d\n&quot;, t);
+&#x2F;&#x2F; 八、改变数组元素的几种方式（形参与实参的对应）
+&#x2F;&#x2F; (1) 实参和形参都是数组名称
+void changeValue1(int tempArr[]) &#123;
+	tempArr[0] &#x3D; 100;
+&#125;
+&#x2F;&#x2F; (2) 实参用数组名，形参用指针变量
+void changeValue2(int* p) &#123;
+	p[1] &#x3D; 110;	&#x2F;&#x2F; p[1] &#x3D; *(p+1)
+&#125;
+&#x2F;&#x2F; (3) 实参用指针变量，形参用指针变量
+void changeValue3(int* p) &#123;
+	p[2] &#x3D; 120;	&#x2F;&#x2F; p[1] &#x3D; *(p+1)
+&#125;
+&#x2F;&#x2F; (4) 实参用指针变量，形参用数组名
+void changeValue4(int tempArr[]) &#123;
+	tempArr[3] &#x3D; 130;
 &#125;
 
+&#x2F;&#x2F; 九、指针数组和数组指针
 
-&#x2F;&#x2F; 全局变量跨文件使用的方式
-&#x2F;&#x2F; 场景： 在a.cpp文件中定义的变量，在b.cpp文件当中使用
-&#x2F;&#x2F; 使用extern 做一个外部变量的说明（b.cpp文件的头部），说明这个变量是其他文件当中被定义过的外部变量，本文件不需要再进行申明
-&#x2F;&#x2F; 使用方法：在b.cpp头部写： extern int temp;
-&#x2F;&#x2F; 值得注意的是：在b.cpp文件中改变了变量的值，则在a.cpp文件中也会改变
-&#x2F;&#x2F; 如果只想在a.cpp文件当中使用变量temp.只需要在a.cpp文件： static int temp; 就无法在其他文件中使用
 
-&#x2F;&#x2F; 函数的跨文件使用
-&#x2F;&#x2F; 根据文件是否能被其他源文件使用，函数被分为内部函数和外部函数
-&#x2F;&#x2F; 在函数的申明前面加上static，表示为内部函数，只能在本文件当中使用
-&#x2F;&#x2F; 两个文件中的函数均加static，尽管在不同的文件当中出现同名函数，也不会影响
-
-&#x2F;&#x2F; 在函数前面加上extern 表示为外部函数 表示从外部来的函数
-
-&#x2F;&#x2F; 总结static的用法
-&#x2F;&#x2F; 1、在函数内部的一个变量前加上static，表示该变量只能存在于静态存储区
-	  &#x2F;&#x2F; 在函数编译的时候初始化，如果不给初值，则被赋予初值Wie0，并且下次调用时，维持上次调用结束时的值
-&#x2F;&#x2F; 2、在全局变量前加上static，表示该变量只能在本文件中使用，不能在其他文件中使用
-&#x2F;&#x2F; 3、在函数定义前面加static，表示该函数只能在本文件中使用，不能在其他文件中使用
-
+&#x2F;&#x2F; 十、字符串指针和指向字符串的指针变量
+	&#x2F;&#x2F;char mystr1[] &#x3D; &quot;I love China!&quot;;
+	&#x2F;&#x2F;char mystr2[] &#x3D; &quot;I love China!&quot;; 
+	&#x2F;&#x2F;printf(&quot;%s\n&quot;, mystr1);			&#x2F;&#x2F; 将字符串拷贝到字符数组中
+	&#x2F;&#x2F;printf(&quot;%s\n&quot;, mystr2);			&#x2F;&#x2F; 这两个变量的地址不同
+	&#x2F;&#x2F;
+	&#x2F;&#x2F;char *mystr1 &#x3D; &quot;I love China!&quot;;	&#x2F;&#x2F; 这两个变量的相同，都指向 &quot;I love China!&quot;;的地址
+	&#x2F;&#x2F;char *mystr2 &#x3D; &quot;I love China!&quot;;	&#x2F;&#x2F; 不是拷贝
+&#x2F;&#x2F; C语言对字符串常量有特殊的处理，在内存中开辟一段类似于字符数组的空间来存储字符串常量
+&#x2F;&#x2F; 所有 &quot;I love China!&quot;;在内存中，有一块自己的内存地址。
 
 
 int main() &#123;
-	&#x2F;&#x2F; 测试递归函数
-	printf(&quot;%d\n&quot;, getJieCheng(5));
 
-	&#x2F;&#x2F; 测试数组名作为函数的参数，地址传递的过程
-	int tempA[2] &#x3D; &#123; 1,2 &#125;;
-	testShuZuCanShu(tempA);
-	printf(&quot;%d-%d\n&quot;, tempA[0], tempA[1]);	&#x2F;&#x2F; 此时两个元素均变成了100
+	&#x2F;&#x2F; 指针的定义
+	int i;
+	int *pointToi;	&#x2F;&#x2F; 定义一个指针变量
+	pointToi &#x3D; &amp;i;	&#x2F;&#x2F; 表明了pointToi指向了整型变量i
 
-	&#x2F;&#x2F; 测试程序块内的局部变量
-	&#x2F;&#x2F; 用大括号编写一段代码，大括号内的叫复合语句，&#123;&#125;内的变量只能在复合语句中使用，复合语句也叫程序块
-	int a &#x3D; 0; int b &#x3D; 1;
-	&#123;
-		int c &#x3D; a + b;	&#x2F;&#x2F; 程序块内可以使用main函数内定义的变量，a,b可以使用
-	&#125;
-	&#x2F;&#x2F; c &#x3D; a + b; 程序显示未定义的标识符c 一旦离开程序块，c的内存就被释放了
 
-	&#x2F;&#x2F; 测试静态局部变量的存储
-	testStatic(); &#x2F;&#x2F; 输出三次为： 11 12 13
-	testStatic();
-	testStatic();
+	&#x2F;&#x2F; 将p1指向大的数
+	&#x2F;*int a &#x3D; 1;
+	int b &#x3D; 2;
+	int *p1;
+	int *p2;
+	if (a &lt; b) &#123;
+		swap(*p1, *p2);
+	&#125;*&#x2F;
+
+	&#x2F;&#x2F;只要是数组，数组之间的地址都是挨着的
+	int arr[5];
+	arr[0] &#x3D; 1; arr[1] &#x3D; 2; arr[2] &#x3D; 3; arr[3] &#x3D; 4; arr[4] &#x3D; 5;
+	int* p &#x3D; &amp;arr[0];
+	*p &#x3D; 10;			&#x2F;&#x2F; 表示改变了*p &#x3D; arr[0] 的值
+	p &#x3D; p + 1;			&#x2F;&#x2F; 由于数组之间的地址是连续性的，所以p+1表示p所指向的元素的下一个元素
+	&#x2F;&#x2F; p指向数组首元素地址，p + i 表示p指向了数组a[i]. a + i也是表示元素a[i]
+
+	&#x2F;&#x2F; ！！！！！注意！！！！！
+	&#x2F;&#x2F; a+i	  表示数组第i个元素a[i]  a就是数组的初始地址 
+	&#x2F;&#x2F; p+i	  表示数组第i个元素a[i]	 p指向数组的初始地址
+	&#x2F;&#x2F; *(p+i) 表示数组第i个元素a[i]	 p可以++ p++合法，就是往后加一
+	&#x2F;&#x2F; *(a+i) 表示数组第i个元素a[i]	 a不可以++ a++不合法
+	&#x2F;&#x2F; p[i]   表示数组第i个元素a[i]
+
+
+	&#x2F;&#x2F; 八、改变数组元素的4种方式（形参与实参之间的4种对比方式）
+	int a[5] &#x3D; &#123; 1,2,3,4,5 &#125;;
+	&#x2F;&#x2F; (1) 实参和形参都是数组名称
+	changeValue1(a);		&#x2F;&#x2F; changeValue1的形参和实参公用某一块内存
+	printf(&quot;%d\n&quot;, a[0]);	&#x2F;&#x2F; 100 当数组名称作为实参传递时，传递的是数组的地址，实参数组原本的内容也会在changeValue1中改变
+	&#x2F;&#x2F; (2) 实参用数组名，形参用指针变量
+	changeValue2(a);		&#x2F;&#x2F; 实参是指针变量，并且又明确的指向
+	printf(&quot;%d\n&quot;, a[1]);	&#x2F;&#x2F; 110 
+	&#x2F;&#x2F; (3) 实参用指针变量，形参用指针变量
+	int *pa &#x3D; a;
+	changeValue3(pa);		
+	printf(&quot;%d\n&quot;, a[2]);
+	&#x2F;&#x2F; (4) 实参用指针变量，形参用数组名
+	int *paa &#x3D; a;
+	changeValue4(paa);
+	printf(&quot;%d\n&quot;, a[3]);
+	&#x2F;&#x2F; 总结： 数组名称（即数组的地址）与指针可以相互替换
+
+
+	&#x2F;&#x2F; 注意的是： 二维数组的aaa[1] 就是aaa[1][0]的地址 第二行元素的首地址
+	int aaa[2][2] &#x3D; &#123; &#123;1,2&#125;,&#123;3,4&#125; &#125;;
+	printf(&quot;%d\n&quot;, aaa[1]);		&#x2F;&#x2F; 下面两个元素的值相同
+	printf(&quot;%d\n&quot;, &amp;aaa[1][0]);
+
+
+	&#x2F;&#x2F; 实践一下
+	int aa[2][3] &#x3D; &#123; 86,86,86,86,86,86 &#125;;
+	int *pp &#x3D; (int *)(aa + 1);	&#x2F;&#x2F; 将二维数组的第二行首地址给p  aa[1][0]。。。aa[1][2]
+	*pp &#x3D; 100;					&#x2F;&#x2F; aa[1][0] &#x3D; 100
+	pp++;						&#x2F;&#x2F; 走4个字节 p指向 a[1][1]
+	*pp &#x3D; 110;					&#x2F;&#x2F; aa[1][1] &#x3D; 110;
+	
+	&#x2F;&#x2F; 九、指针数组和数组指针
 
 
 	return 0;
 &#125;
-
 </code></pre>
 
+<h3 id="一、知识理解"><a href="#一、知识理解" class="headerlink" title="一、知识理解"></a>一、知识理解</h3><blockquote>
+<p>​     静态存储区，动态存储区。。。不同的变量会存储在不同的存储区当中<br>​    1、有些变量，会在编译的时候分配内存<br>​    2、有些变量，会在程序运行的时候分配内存</p>
+</blockquote>
+<h3 id="二、直接访问和间接访问"><a href="#二、直接访问和间接访问" class="headerlink" title="二、直接访问和间接访问"></a>二、直接访问和间接访问</h3><blockquote>
+<p>直接访问： 按照这个变量的地址取值<br>间接访问： 将变量i的地址存放到另一个存储单元中<br>    我们通常用int char等类型来定义并存储变量的值<br>    同时也有一种特殊的变量，能够存储另一个变量的“地址”，这就是指针变量 point = &amp;i；<br>    有时候，地址也被称为指针。</p>
+</blockquote>
+<h3 id="三、指针变量的定义"><a href="#三、指针变量的定义" class="headerlink" title="三、指针变量的定义"></a>三、指针变量的定义</h3><p>​    类型标识符 *标识符 int *point; 这个指针变量 指向整型标量<br>​    一个指针变量只能指向同一类型的变量<br>​    </p>
+<h3 id="四、指针变量的引用"><a href="#四、指针变量的引用" class="headerlink" title="四、指针变量的引用"></a>四、指针变量的引用</h3><p>指针变量中只存放地址，不要将整型变量赋值给一个指针变量<br>*p = i</p>
+<h3 id="五、坑爹的解析"><a href="#五、坑爹的解析" class="headerlink" title="五、坑爹的解析"></a>五、坑爹的解析</h3><blockquote>
+<p>&amp;<em>p ： &amp; * 两个运算符的优先级相同，&amp;（*p） = &amp;i = p<br>*&amp;i ：  *&amp;p = *(&amp;i) = *p = i<br>( *p)++ ：  i++<br>// * p++ ：</em> 和++的优先级相同，*p++ = *(p++) 这里表示p所指向的内存 + p类型所占内存数后的地址<br>       &amp;i = p = 1000;  p++ = 1000 + sizeof(int)4; 但是这一块内存不被p所使用,谨慎使用p++</p>
+</blockquote>
+<h3 id="六、分析一下-为什么下面会出问题"><a href="#六、分析一下-为什么下面会出问题" class="headerlink" title="六、分析一下,为什么下面会出问题"></a>六、分析一下,为什么下面会出问题</h3><pre class="language-c++" data-language="c++"><code class="language-c++">void swap(int *p1, int *p2) &#123;
+	&#x2F;&#x2F; 这个过程是： 
+	int temp;
+	temp &#x3D; *p1;		&#x2F;&#x2F; *p1 &#x3D; a &#x3D; 1 &#x3D;&#x3D;&gt; temp &#x3D;1
+	*p1 &#x3D; *p2;		&#x2F;&#x2F; *p2 &#x3D; b &#x3D; 2 &#x3D;&#x3D;&gt; *p1 &#x3D; 2    a &#x3D; 2
+	*p2 &#x3D; temp;		&#x2F;&#x2F; *p2 &#x3D; 1
+
+&#x2F;&#x2F; 下面这种方式会出现问题 有点懵逼，但是就是下面这种方式不行
+&#x2F;&#x2F; int *temp;
+&#x2F;&#x2F; temp &#x3D; p1;
+&#x2F;&#x2F; p1 &#x3D; p2;
+&#x2F;&#x2F; p2 &#x3D; temp;
+&#125;</code></pre>
+<h3 id="七、数组的指针"><a href="#七、数组的指针" class="headerlink" title="七、数组的指针"></a>七、数组的指针</h3><p> 数组指针： 数组的首地址<br> 数组元素的指针： 数组元素的地址</p>
+<h3 id="八、改变数组元素的几种方式（形参与实参的对应）"><a href="#八、改变数组元素的几种方式（形参与实参的对应）" class="headerlink" title="八、改变数组元素的几种方式（形参与实参的对应）"></a>八、改变数组元素的几种方式（形参与实参的对应）</h3><pre class="language-none"><code class="language-none">&#x2F;&#x2F; (1) 实参和形参都是数组名称
+void changeValue1(int tempArr[]) &#123;
+	tempArr[0] &#x3D; 100;
+&#125;
+&#x2F;&#x2F; (2) 实参用数组名，形参用指针变量
+void changeValue2(int* p) &#123;
+	p[1] &#x3D; 110;	&#x2F;&#x2F; p[1] &#x3D; *(p+1)
+&#125;
+&#x2F;&#x2F; (3) 实参用指针变量，形参用指针变量
+void changeValue3(int* p) &#123;
+	p[2] &#x3D; 120;	&#x2F;&#x2F; p[1] &#x3D; *(p+1)
+&#125;
+&#x2F;&#x2F; (4) 实参用指针变量，形参用数组名
+void changeValue4(int tempArr[]) &#123;
+	tempArr[3] &#x3D; 130;
+&#125;</code></pre>
 
 
-<p>[更多内容](<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-functions.html">C 函数 | 菜鸟教程 (runoob.com)</a>)</p>
+
+<h3 id="九、指针数组和数组指针"><a href="#九、指针数组和数组指针" class="headerlink" title="九、指针数组和数组指针"></a>九、指针数组和数组指针</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; ！！！！！注意！！！！！
+&#x2F;&#x2F; a+i	  表示数组第i个元素a[i]  a就是数组的初始地址 
+&#x2F;&#x2F; p+i	  表示数组第i个元素a[i]	 p指向数组的初始地址
+&#x2F;&#x2F; *(p+i) 表示数组第i个元素a[i]	 p可以++ p++合法，就是往后加一
+&#x2F;&#x2F; *(a+i) 表示数组第i个元素a[i]	 a不可以++ a++不合法
+&#x2F;&#x2F; p[i]   表示数组第i个元素a[i]</code></pre>
+<h3 id="十、字符串指针和指向字符串的指针变量"><a href="#十、字符串指针和指向字符串的指针变量" class="headerlink" title="十、字符串指针和指向字符串的指针变量"></a>十、字符串指针和指向字符串的指针变量</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;char mystr1[] &#x3D; &quot;I love China!&quot;;
+&#x2F;&#x2F;char mystr2[] &#x3D; &quot;I love China!&quot;; 
+&#x2F;&#x2F;printf(&quot;%s\n&quot;, mystr1);			&#x2F;&#x2F; 将字符串拷贝到字符数组中
+&#x2F;&#x2F;printf(&quot;%s\n&quot;, mystr2);			&#x2F;&#x2F; 这两个变量的地址不同
+&#x2F;&#x2F;
+&#x2F;&#x2F;char *mystr1 &#x3D; &quot;I love China!&quot;;	&#x2F;&#x2F; 这两个变量的相同，都指向 &quot;I love China!&quot;;的地址
+&#x2F;&#x2F;char *mystr2 &#x3D; &quot;I love China!&quot;;	&#x2F;&#x2F; 不是拷贝
+
+&#x2F;&#x2F; C语言对字符串常量有特殊的处理，在内存中开辟一段类似于字符数组的空间来存储字符串常量
+&#x2F;&#x2F; 所有 &quot;I love China!&quot;;在内存中，有一块自己的内存地址。</code></pre>
+
+
+
+<p>二维数组a[][]的各种表达形式的意义：</p>
+<p><img src="/2023/080216146/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%90%84%E4%B8%AA%E8%A1%A8%E8%BE%BE%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%84%8F%E4%B9%89.png" alt></p>
+<p><a href>更多内容</a></p>
 </font>
 
 
@@ -640,7 +696,7 @@ int main() &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2023/080116144.html">http://Binbin0613.github.io/2023/080116144.html</a>
+                    <a href="http://Binbin0613.github.io/2023/080216146.html">http://Binbin0613.github.io/2023/080216146.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,17 +814,18 @@ int main() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/080216145.html">
+                <a href="/2023/080216146.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/216.jpg" class="responsive-img" alt="(C++基础06)-编译预处理">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="(C++基础07)-指针">
                         
-                        <span class="card-title">(C++基础06)-编译预处理</span>
+                        <span class="card-title">(C++基础07)-指针</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -778,9 +835,9 @@ int main() &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -797,6 +854,7 @@ int main() &#123;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -815,13 +873,13 @@ int main() &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/080116143.html">
+                <a href="/2023/080216145.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/187.jpg" class="responsive-img" alt="(C++基础04)-数组">
+                        <img src="/medias/featureimages/216.jpg" class="responsive-img" alt="(C++基础06)-编译预处理">
                         
-                        <span class="card-title">(C++基础04)-数组</span>
+                        <span class="card-title">(C++基础06)-编译预处理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -832,7 +890,7 @@ int main() &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-02
                             </span>
                         <span class="publish-author">
                             
