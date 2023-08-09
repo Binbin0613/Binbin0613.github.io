@@ -6,10 +6,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习3-神经网络的搭建, Software Engineer">
     <meta name="description" content="
-
-一、相关地址神经网络NN[Neural Network]PyTorch的nn Api
-二、torch.nn.Module 对所有的神经网络构成最基本的类import torch.nn as nn
-import torch.nn.func">
+¶一、相关地址
+¶神经网络NN[Neural Network]
+PyTorch的nn Api
+¶二、torch.nn.Module 对所有的神经网络构成最基本的类
+import torch.nn as nn
+import torch.nn">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -450,9 +452,11 @@ import torch.nn.func">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h4 id="一、相关地址"><a href="#一、相关地址" class="headerlink" title="一、相关地址"></a>一、相关地址</h4><h5 id="神经网络NN-Neural-Network"><a href="#神经网络NN-Neural-Network" class="headerlink" title="神经网络NN[Neural Network]"></a>神经网络NN[Neural Network]</h5><p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/nn.html">PyTorch的nn Api</a></p>
-<h4 id="二、torch-nn-Module-对所有的神经网络构成最基本的类"><a href="#二、torch-nn-Module-对所有的神经网络构成最基本的类" class="headerlink" title="二、torch.nn.Module 对所有的神经网络构成最基本的类"></a>二、torch.nn.Module 对所有的神经网络构成最基本的类</h4><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<h4 id="一、相关地址"><a class="header-anchor" href="#一、相关地址">¶</a>一、相关地址</h4>
+<h5 id="神经网络NN-Neural-Network"><a class="header-anchor" href="#神经网络NN-Neural-Network">¶</a>神经网络NN[Neural Network]</h5>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/nn.html">PyTorch的nn Api</a></p>
+<h4 id="二、torch-nn-Module-对所有的神经网络构成最基本的类"><a class="header-anchor" href="#二、torch-nn-Module-对所有的神经网络构成最基本的类">¶</a>二、torch.nn.Module 对所有的神经网络构成最基本的类</h4>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
 
 <span class="token keyword">class</span> <span class="token class-name">Model</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -464,10 +468,10 @@ import torch.nn.func">
     <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
         x <span class="token operator">=</span> F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>conv1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> F<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>conv2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-
-<p>上述代码当中的神经网络包括两个过程：forward函数对x首先进行卷积1，卷积1的处理过程在<strong>init</strong>函数当中定义nn.Conv2d(1, 20, 5)，然后对其进行非线性的处理relu，再来一次卷积2和非线性relu，最后返回结果。</p>
+<p>上述代码当中的神经网络包括两个过程：forward函数对x首先进行卷积1，卷积1的处理过程在__init__函数当中定义nn.Conv2d(1, 20, 5)，然后对其进行非线性的处理relu，再来一次卷积2和非线性relu，最后返回结果。</p>
 <p><img src="/2022/110716118/forward%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8.png" alt></p>
-<h4 id="三、卷积操作"><a href="#三、卷积操作" class="headerlink" title="三、卷积操作"></a>三、卷积操作</h4><p><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
+<h4 id="三、卷积操作"><a class="header-anchor" href="#三、卷积操作">¶</a>三、卷积操作</h4>
+<p><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt></p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 可以手动算一算</span>
 <span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
@@ -516,12 +520,13 @@ output3 <span class="token operator">=</span> F<span class="token punctuation">.
 <span class="token comment">#           [ 7, 18, 16, 16,  8],</span>
 <span class="token comment">#           [11, 13,  9,  3,  4],</span>
 <span class="token comment">#           [14, 13,  9,  7,  4]]]])</span></code></pre>
-
 <p><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E6%93%8D%E4%BD%9C1.png" alt></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md">官网上的卷积流程</a></p>
-<p>卷积流程如下：<br><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E5%8A%A8%E7%94%BB.png" alt></p>
+<p>卷积流程如下：<br>
+<img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E5%8A%A8%E7%94%BB.png" alt></p>
 <p><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E5%8F%82%E6%95%B0.png" alt></p>
-<h4 id="四、卷积数据集"><a href="#四、卷积数据集" class="headerlink" title="四、卷积数据集"></a>四、卷积数据集</h4><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<h4 id="四、卷积数据集"><a class="header-anchor" href="#四、卷积数据集">¶</a>四、卷积数据集</h4>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torchvision
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">import</span> Conv2d
@@ -561,8 +566,10 @@ writer <span class="token operator">=</span> SummaryWriter<span class="token pun
     step <span class="token operator">=</span> step <span class="token operator">+</span> <span class="token number">1</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>卷积后的效果图：<br><img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E5%90%8E%E7%9A%84tensorboard.png" alt></p>
-<h4 id="五、池化层Pooling-layers"><a href="#五、池化层Pooling-layers" class="headerlink" title="五、池化层Pooling layers"></a>五、池化层Pooling layers</h4><p>maxpooling: 最大池化的作用：保留原始的特征的同时，也需要降低维度。换而言之就是对其进行压缩，我们看的视频是1080P的，池化之后是720p也可以满足对视频的需求，但是其降低了数据的计算量。</p>
+<p>卷积后的效果图：<br>
+<img src="/2022/110716118/%E5%8D%B7%E7%A7%AF%E5%90%8E%E7%9A%84tensorboard.png" alt></p>
+<h4 id="五、池化层Pooling-layers"><a class="header-anchor" href="#五、池化层Pooling-layers">¶</a>五、池化层Pooling layers</h4>
+<p>maxpooling: 最大池化的作用：保留原始的特征的同时，也需要降低维度。换而言之就是对其进行压缩，我们看的视频是1080P的，池化之后是720p也可以满足对视频的需求，但是其降低了数据的计算量。</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
 <span class="token keyword">import</span> torchvision
@@ -613,9 +620,10 @@ step <span class="token operator">=</span> <span class="token number">0</span>
     step <span class="token operator">=</span> step <span class="token operator">+</span> <span class="token number">1</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-
 <p><img src="/2022/110716118/%E6%9C%80%E5%A4%A7%E6%B1%A0%E5%8C%96%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
-<h4 id="六、非线性激活relu处理和sigmoid处理"><a href="#六、非线性激活relu处理和sigmoid处理" class="headerlink" title="六、非线性激活relu处理和sigmoid处理"></a>六、非线性激活relu处理和sigmoid处理</h4><p>非线性激活函数实际上是给模型增强非线性的表达能力或者因素，有了非线性函数模型的表达能力就会更强。整个模型就像活了一样，而不是像机器一样只会做一些单一的线性操作。<br>没有激活函数的神经网络实际上是线性可加的，那么多线性层其实可以归为一层，只具有线性的神经网络表达能力及其有限。</p>
+<h4 id="六、非线性激活relu处理和sigmoid处理"><a class="header-anchor" href="#六、非线性激活relu处理和sigmoid处理">¶</a>六、非线性激活relu处理和sigmoid处理</h4>
+<p>非线性激活函数实际上是给模型增强非线性的表达能力或者因素，有了非线性函数模型的表达能力就会更强。整个模型就像活了一样，而不是像机器一样只会做一些单一的线性操作。<br>
+没有激活函数的神经网络实际上是线性可加的，那么多线性层其实可以归为一层，只具有线性的神经网络表达能力及其有限。</p>
 <p><img src="/2022/110716118/relu%E6%95%88%E6%9E%9C.png" alt></p>
 <p>注意：批的大小就是batch_size，每取一次就是一个step，step与batch_size是有关系的，因为通常数据集都很大，没有办法一次性全部取出来，单个单个的取浪费时间（与IO操作有关系），所有按照批处理的方式进行。</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
@@ -662,10 +670,13 @@ step <span class="token operator">=</span> <span class="token number">0</span>
     step <span class="token operator">+=</span> <span class="token number">1</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-
-<h4 id="七、CIFAR10-model结构"><a href="#七、CIFAR10-model结构" class="headerlink" title="七、CIFAR10 model结构"></a>七、CIFAR10 model结构</h4><p><img src="/2022/110716118/CIFAR10model%E7%BB%93%E6%9E%84.png" alt></p>
+<h4 id="七、CIFAR10-model结构"><a class="header-anchor" href="#七、CIFAR10-model结构">¶</a>七、CIFAR10 model结构</h4>
+<p><img src="/2022/110716118/CIFAR10model%E7%BB%93%E6%9E%84.png" alt></p>
 <p><img src="/2022/110716118/stride-padding%E7%9A%84%E8%AE%A1%E7%AE%97.png" alt></p>
-<h5 id="网络的处理流程："><a href="#网络的处理流程：" class="headerlink" title="网络的处理流程："></a>网络的处理流程：</h5><pre><code>卷积---池化---卷积---池化---卷积---池化---展开---线性层---线性层</code></pre><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+<h5 id="网络的处理流程："><a class="header-anchor" href="#网络的处理流程：">¶</a>网络的处理流程：</h5>
+<pre><code>卷积---池化---卷积---池化---卷积---池化---展开---线性层---线性层
+</code></pre>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">import</span> Conv2d<span class="token punctuation">,</span> MaxPool2d<span class="token punctuation">,</span> Flatten<span class="token punctuation">,</span> Linear<span class="token punctuation">,</span> Sequential
@@ -736,10 +747,11 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
 <span class="token comment">#     (8): Linear(in_features=64, out_features=10, bias=True)</span>
 <span class="token comment">#   )</span>
 <span class="token comment"># )</span></code></pre>
-
 <p>网络搭建在tensorboard当中的效果如下图所示：</p>
 <p><img src="/2022/110716118/seq%E7%9A%84tensorboard%E6%95%88%E6%9E%9C.png" alt></p>
-<h4 id="八、损失函数与反向传播"><a href="#八、损失函数与反向传播" class="headerlink" title="八、损失函数与反向传播"></a>八、损失函数与反向传播</h4><p>损失函数：指的是实际的输出与目标之间的差距<br>方向传播：指为我们更新数据提供了一定的依据</p>
+<h4 id="八、损失函数与反向传播"><a class="header-anchor" href="#八、损失函数与反向传播">¶</a>八、损失函数与反向传播</h4>
+<p>损失函数：指的是实际的输出与目标之间的差距<br>
+方向传播：指为我们更新数据提供了一定的依据</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">import</span> L1Loss
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
@@ -769,10 +781,10 @@ x <span class="token operator">=</span> torch<span class="token punctuation">.</
 loss_cross <span class="token operator">=</span> nn<span class="token punctuation">.</span>CrossEntropyLoss<span class="token punctuation">(</span><span class="token punctuation">)</span>
 result_cross <span class="token operator">=</span> loss_cross<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>result_cross<span class="token punctuation">)</span>     <span class="token comment"># tensor(1.1019)</span></code></pre>
-
 <p><img src="/2022/110716118/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.png" alt></p>
-<h5 id="交叉熵损失函数的计算"><a href="#交叉熵损失函数的计算" class="headerlink" title="交叉熵损失函数的计算"></a>交叉熵损失函数的计算</h5><p>交叉熵损失函数的解读：</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;假设：目标为检测左侧的图像，中间的为深度神经网络的模型图，分成三组[person, dog, cat]，其下标分别表示[0, 1, 2]输出的结果为[0.1, 0.2, 0.3], 目标是检测为dog[1]。</p>
+<h5 id="交叉熵损失函数的计算"><a class="header-anchor" href="#交叉熵损失函数的计算">¶</a>交叉熵损失函数的计算</h5>
+<p>交叉熵损失函数的解读：</p>
+<p>    假设：目标为检测左侧的图像，中间的为深度神经网络的模型图，分成三组[person, dog, cat]，其下标分别表示[0, 1, 2]输出的结果为[0.1, 0.2, 0.3], 目标是检测为dog[1]。</p>
 <p>对应于公式中：x表示output，class表示target的值</p>
 <p>则Loss(x, class) = -0.2 * 1  + log(exp(0.1) + exp(0.2) + exp(0.3))</p>
 <p><img src="/2022/110716118/%E4%BA%A4%E5%8F%89%E7%86%B5%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.png" alt></p>

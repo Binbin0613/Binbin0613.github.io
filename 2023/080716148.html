@@ -6,13 +6,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++基础09)-位运算及其应用场景, Software Engineer">
     <meta name="description" content="
-
-C++基础09：位运算及其应用场景#include&amp;lt;iostream&amp;gt;
+¶C++基础09：位运算及其应用场景
+#include&amp;lt;iostream&amp;gt;
 using namespace std;
 
 &amp;#x2F;&amp;#x2F; 一个字节由8个二进制位构成，最左边的成为最高位，最右边的是最低位
 
-&amp;#x2F;&amp;">
+&amp;#x2F;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -449,8 +449,8 @@ using namespace std;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-基础09：位运算及其应用场景"><a href="#C-基础09：位运算及其应用场景" class="headerlink" title="C++基础09：位运算及其应用场景"></a>C++基础09：位运算及其应用场景</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+<h2 id="C-基础09：位运算及其应用场景"><a class="header-anchor" href="#C-基础09：位运算及其应用场景">¶</a>C++基础09：位运算及其应用场景</h2>
+<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 using namespace std;
 
 &#x2F;&#x2F; 一个字节由8个二进制位构成，最左边的成为最高位，最右边的是最低位
@@ -546,27 +546,45 @@ int main() &#123;
 	
 &#125;
 </code></pre>
-
-<h3 id="一、位运算"><a href="#一、位运算" class="headerlink" title="一、位运算"></a>一、位运算</h3><p>一个字节由8个二进制位构成，最左边的成为最高位，最右边的是最低位</p>
-<p>一个字节就是：00000000-11111111（=2^8-1 = 255） 之间的数字<br>对应起来，一个整型int占4个字节，就是4*8=32位1，所以一个字节所能表示的最大数就是2^32 - 1</p>
+<h3 id="一、位运算"><a class="header-anchor" href="#一、位运算">¶</a>一、位运算</h3>
+<p>一个字节由8个二进制位构成，最左边的成为最高位，最右边的是最低位</p>
+<p>一个字节就是：00000000-11111111（=2^8-1 = 255） 之间的数字<br>
+对应起来，一个整型int占4个字节，就是4*8=32位1，所以一个字节所能表示的最大数就是2^32 - 1</p>
 <blockquote>
-<p>位运算符<br>   &amp; 按位于                    只有两边都是1 才能是1<br>    | 按位或                    一边为1 就是1<br>   ^ 按位异或                相同为0，否则为1<br>   ~ 取反（单目运算符）        0-&gt;1  1-&gt;0    按位取反注意需要加上前面所有的数字一起取反<br>   &lt;&lt; 左移                    左移若干位，末位补0  相当于10进制数 * 2</p>
-<blockquote>
-<blockquote>
-<p>右移                    右移若干位，左边高位补0  相当于10进制数 / 2</p>
+<p>位运算符<br>
+&amp; 按位于					只有两边都是1 才能是1<br>
+| 按位或					一边为1 就是1<br>
+^ 按位异或				相同为0，否则为1<br>
+~ 取反（单目运算符）		0-&gt;1  1-&gt;0	按位取反注意需要加上前面所有的数字一起取反<br>
+&lt;&lt; 左移					左移若干位，末位补0  相当于10进制数 * 2</p>
+<p>&quot;&gt;&gt;&quot;右移					右移若干位，左边高位补0  相当于10进制数 / 2</p>
 </blockquote>
-</blockquote>
-</blockquote>
-<p>运算过程：<br>    unsigned int a = 38 ( &amp; ) 22;<br>    100110    //38<br>    010110    //22<br>   // —————–<br>    000110    //6        &amp; 运算<br>    110110    //54    | 运算<br>    110000    //48    ^ 运算        用处在于： 如果想做翻转可以和1做异或，如果保留某些位和0做异或</p>
+<p>运算过程：<br>
+unsigned int a = 38 ( &amp; ) 22;<br>
+100110	//38<br>
+010110	//22<br>
+// -----------------<br>
+000110	//6		&amp; 运算<br>
+110110	//54    | 运算<br>
+110000	//48	^ 运算		用处在于： 如果想做翻转可以和1做异或，如果保留某些位和0做异或</p>
 <p>100110 取反的过程： 00000000 00000000 00000000 00100110 -&gt; 取反（所有的数字全部取反）</p>
-<p>左移的过程<br>   01111    //15<br>   // —————–<br>  11110    //30    左移一位<br>  111100   //60    左移两位</p>
-<p>右移的过程<br>  01111    //15<br>  // —————–<br>  00111    //7        右移一位<br>  00011    //3        右移两位</p>
+<p>左移的过程<br>
+01111	//15<br>
+// -----------------<br>
+11110	//30	左移一位<br>
+111100   //60	左移两位</p>
+<p>右移的过程<br>
+01111	//15<br>
+// -----------------<br>
+00111	//7		右移一位<br>
+00011    //3		右移两位</p>
 <p>二、实际应用场景</p>
 <blockquote>
-<pre><code>实际需求：游戏公司给每个玩家安排每日10个任务，系统需要判断的是：这10个任务玩家完成了哪几个，没有完成就督促完成    
-// 核心点在于：
-   // &amp;: 按位与  某个数与10000 按位与 能够实现： 判断第5位上，是否为1
-   // |: 按位或  某个数与10000 按位或 能够实现： 不管第5位上是什么，可以将第5位变为1</code></pre></blockquote>
+<p>实际需求：游戏公司给每个玩家安排每日10个任务，系统需要判断的是：这10个任务玩家完成了哪几个，没有完成就督促完成	<br>
+// 核心点在于：<br>
+// &amp;: 按位与  某个数与10000 按位与 能够实现： 判断第5位上，是否为1<br>
+// |: 按位或  某个数与10000 按位或 能够实现： 不管第5位上是什么，可以将第5位变为1</p>
+</blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">
 int main() &#123;
 	&#x2F;&#x2F; 假设初始值为146， 二进制表示为： 00000000 00000000 00000000 10010010
@@ -608,12 +626,8 @@ int main() &#123;
 		&#125;
 	&#125;
 &#125;</code></pre>
-
-
-
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>
@@ -762,18 +776,17 @@ int main() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/080716148.html">
+                <a href="/2023/080816149.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="(C++基础09)-位运算及其应用场景">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="(C++进阶01)-C++编译过程，头文件防卫，命名空间">
                         
-                        <span class="card-title">(C++基础09)-位运算及其应用场景</span>
+                        <span class="card-title">(C++进阶01)-C++编译过程，头文件防卫，命名空间</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -783,9 +796,9 @@ int main() &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -802,16 +815,11 @@ int main() &#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/C/">
                         <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%BC%80%E5%8F%91%E5%9C%BA%E6%99%AF/">
-                        <span class="chip bg-color">开发场景</span>
                     </a>
                     
                 </div>

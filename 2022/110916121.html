@@ -6,13 +6,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="目标检测--利用labelimg制作深度学习数据集, Software Engineer">
     <meta name="description" content="
+¶一、使用labelImg标记数据
+Labelimg是一款开源的数据标注工具，可以标注三种格式。
+   1  VOC标签格式，保存为xml文件。
 
-一、使用labelImg标记数据Labelimg是一款开源的数据标注工具，可以标注三种格式。
-1  VOC标签格式，保存为xml文件。
+   2  yolo标签格式，保存为txt文件。
 
-2  yolo标签格式，保存为txt文件。
-
-3 createML标签格式，保存为json格式。二">
+   3 createML标签格式，保">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    598
+                    600
                 </div>
                 
 
@@ -453,29 +453,34 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
+<h3 id="一、使用labelImg标记数据"><a class="header-anchor" href="#一、使用labelImg标记数据">¶</a>一、使用labelImg标记数据</h3>
+<p>Labelimg是一款开源的数据标注工具，可以标注三种格式。</p>
+<pre><code>   1  VOC标签格式，保存为xml文件。
 
-<h3 id="一、使用labelImg标记数据"><a href="#一、使用labelImg标记数据" class="headerlink" title="一、使用labelImg标记数据"></a>一、使用labelImg标记数据</h3><p>Labelimg是一款开源的数据标注工具，可以标注三种格式。</p>
-<pre><code>1  VOC标签格式，保存为xml文件。
+   2  yolo标签格式，保存为txt文件。
 
-2  yolo标签格式，保存为txt文件。
-
-3 createML标签格式，保存为json格式。</code></pre><h3 id="二、labelimg的安装"><a href="#二、labelimg的安装" class="headerlink" title="二、labelimg的安装"></a>二、labelimg的安装</h3><p>这里主要讲的是在window系统中的安装，首先打开cmd命令行（快捷键：win+R）。进入cmd命令行控制台。输入如下的命令：</p>
+   3 createML标签格式，保存为json格式。
+</code></pre>
+<h3 id="二、labelimg的安装"><a class="header-anchor" href="#二、labelimg的安装">¶</a>二、labelimg的安装</h3>
+<p>这里主要讲的是在window系统中的安装，首先打开cmd命令行（快捷键：win+R）。进入cmd命令行控制台。输入如下的命令：</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">pip install labelimg -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</code></pre>
-
-<p>行如上命令后，系统就会自动下载labelimg相关的依赖。由于这是一个很轻量的工具，所以下载起来很快，当出现如下红色框框中的告诉我们成功安装的时候，说明labelimg安装成功了。<br><img src="/2022/110916121/%E5%AE%89%E8%A3%85labelimg.png" alt></p>
-<h3 id="三、数据准备"><a href="#三、数据准备" class="headerlink" title="三、数据准备"></a>三、数据准备</h3><p>首先这里需要准备我们需要打标注的数据集。这里我建议新建一个名为VOC2007的文件夹（这个是约定俗成，不这么做也行），里面创建一个名为JPEGImages的文件夹存放我们需要打标签的图片文件；再创建一个名为Annotations存放标注的标签文件；最后创建一个名为 predefined_classes.txt 的txt文件来存放所要标注的类别名称。</p>
+<p>行如上命令后，系统就会自动下载labelimg相关的依赖。由于这是一个很轻量的工具，所以下载起来很快，当出现如下红色框框中的告诉我们成功安装的时候，说明labelimg安装成功了。<br>
+<img src="/2022/110916121/%E5%AE%89%E8%A3%85labelimg.png" alt></p>
+<h3 id="三、数据准备"><a class="header-anchor" href="#三、数据准备">¶</a>三、数据准备</h3>
+<p>首先这里需要准备我们需要打标注的数据集。这里我建议新建一个名为VOC2007的文件夹（这个是约定俗成，不这么做也行），里面创建一个名为JPEGImages的文件夹存放我们需要打标签的图片文件；再创建一个名为Annotations存放标注的标签文件；最后创建一个名为 predefined_classes.txt 的txt文件来存放所要标注的类别名称。</p>
 <p>VOC2007的目录结构为：</p>
-<p>├── VOC2007<br>│├── JPEGImages  存放需要打标签的图片文件<br>│├── Annotations  存放标注的标签文件<br>│├── predefined_classes.txt  定义自己要标注的所有类别（这个文件可有可无，但是在我们定义类别比较多的时候，最好有这个创建一个这样的txt文件来存放类别）</p>
+<p>├── VOC2007<br>
+│├── JPEGImages  存放需要打标签的图片文件<br>
+│├── Annotations  存放标注的标签文件<br>
+│├── predefined_classes.txt  定义自己要标注的所有类别（这个文件可有可无，但是在我们定义类别比较多的时候，最好有这个创建一个这样的txt文件来存放类别）</p>
 <p>具体查看：E:\DeepLearning\BinCode\VOCdevkit\VOC2007</p>
 <p><img src="/2022/110916121/%E6%A0%87%E6%B3%A8%E8%AE%BE%E7%BD%AE.png" alt></p>
 <p>打开cmd命令终端（快捷键：win+R）。进入到刚刚创建的这个VOC2007路径（这个很重要，涉及到能不能利用predefined_classes.txt 这个txt文件中定义的类别，我在这里卡了很久，一度以为不能显示txt文件中定义的类别是我安装有问题）。执行如图中的命令进入到VOC2007路径下（每个人的路径都不一样，按个人的路径去写）如下图所示：可以看到进入到相应的目录了。</p>
 <p><img src="/2022/110916121/%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95.png" alt></p>
 <p>输入如下的命令打开labelimg。这个命令的意思是打开labelimg工具；打开JPEGImage文件夹，初始化predefined_classes.txt里面定义的类。</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">labelimg JPEGImages predefined_classes.txt</code></pre>
-
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didiaopao/article/details/119808973">学习路径</a></p>
 </font>
-
 
                 
             </div>

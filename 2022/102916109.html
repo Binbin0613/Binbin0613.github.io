@@ -6,12 +6,15 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="图书管理系统4-表单验证及正则表达式, Software Engineer">
     <meta name="description" content="
+¶Quick Start
+¶一、表单验证代码
+¶(1)、前端代码
 
-Quick Start一、表单验证代码(1)、前端代码
-(2)、前端逻辑代码import request from &#34;../../utils/request&#34;;
+¶(2)、前端逻辑代码
+import request from &#34;../../utils/request&#34;;
 
 export default &amp;#123;
-    name: &#34;add">
+    nam">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,9 +455,12 @@ export default &amp;#123;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="一、表单验证代码"><a href="#一、表单验证代码" class="headerlink" title="一、表单验证代码"></a>一、表单验证代码</h3><h5 id="1-、前端代码"><a href="#1-、前端代码" class="headerlink" title="(1)、前端代码"></a>(1)、前端代码</h5><p><img src="/2022/102916109/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81html%E4%BB%A3%E7%A0%81.png" alt></p>
-<h5 id="2-、前端逻辑代码"><a href="#2-、前端逻辑代码" class="headerlink" title="(2)、前端逻辑代码"></a>(2)、前端逻辑代码</h5><pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">"../../utils/request"</span><span class="token punctuation">;</span>
+<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
+<h3 id="一、表单验证代码"><a class="header-anchor" href="#一、表单验证代码">¶</a>一、表单验证代码</h3>
+<h5 id="1-、前端代码"><a class="header-anchor" href="#1-、前端代码">¶</a>(1)、前端代码</h5>
+<p><img src="/2022/102916109/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81html%E4%BB%A3%E7%A0%81.png" alt></p>
+<h5 id="2-、前端逻辑代码"><a class="header-anchor" href="#2-、前端逻辑代码">¶</a>(2)、前端逻辑代码</h5>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">"../../utils/request"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span>
     <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"addAdmin"</span><span class="token punctuation">,</span>
@@ -517,9 +523,9 @@ export default &amp;#123;
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 </code></pre>
-
 <p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/form">官网案例</a></p>
-<h3 id="二、相关的正则表达式"><a href="#二、相关的正则表达式" class="headerlink" title="二、相关的正则表达式"></a>二、相关的正则表达式</h3><pre class="language-javascript" data-language="javascript"><code class="language-javascript">语法：
+<h3 id="二、相关的正则表达式"><a class="header-anchor" href="#二、相关的正则表达式">¶</a>二、相关的正则表达式</h3>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript">语法：
 	<span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">//:在js中表示一个正则表达式  var regExp =/......./</span>
 	<span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token operator">:</span>匹配字符串的开头位置
 	    <span class="token literal-property property">$</span><span class="token operator">:</span>匹配字符串的结束位置
@@ -646,7 +652,6 @@ export default &amp;#123;
  
 <span class="token number">34.</span> <span class="token constant">IP</span><span class="token function">地址：</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token number">25</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">|</span><span class="token number">2</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">]</span>\\d<span class="token operator">|</span><span class="token punctuation">[</span><span class="token number">01</span><span class="token punctuation">]</span><span class="token operator">?</span>\\d<span class="token operator">?</span>\\d<span class="token punctuation">)</span>\\<span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token number">25</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token operator">|</span><span class="token number">2</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">]</span>\\d<span class="token operator">|</span><span class="token punctuation">[</span><span class="token number">01</span><span class="token punctuation">]</span><span class="token operator">?</span>\\d<span class="token operator">?</span>\\d<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">正则表达式语法</a></p>
 </font>
                 
