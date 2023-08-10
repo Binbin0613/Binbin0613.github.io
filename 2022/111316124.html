@@ -7,12 +7,8 @@
     <meta name="keywords" content="VGG-VGG源代码及结构解析和训练, Software Engineer">
     <meta name="description" content="
 
-¶一、VGG16的结构
-可以看到，输入的图片大小为224 x 224，通道数为3
-第一层(卷积层)：224 x 224 x 64
-第二层(卷积层)：224 x 224 x 64
-最大池化层：112 x 112 x 128
-第三层(卷积层">
+
+一、VGG16的结构可以看到，输入的图片大小为224 x 224，通道数为3第一层(卷积层)：224 x 224 x 64第二层(卷积层)：224 x 224 x 64最大池化层：112 x 112 x 128第三层(卷积层)：112">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -453,31 +449,9 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
+
 <p><img src="/2022/111316124/vgg16%E6%AF%8F%E4%B8%80%E5%B1%82%E5%8F%98%E5%8C%96%E5%9B%BE.png" alt></p>
-<h3 id="一、VGG16的结构"><a class="header-anchor" href="#一、VGG16的结构">¶</a>一、VGG16的结构</h3>
-<p>可以看到，输入的图片大小为224 x 224，通道数为3<br>
-第一层(卷积层)：224 x 224 x 64<br>
-第二层(卷积层)：224 x 224 x 64<br>
-最大池化层：112 x 112 x 128<br>
-第三层(卷积层)：112 x 112 x 128<br>
-第四层(卷积层)：112 x 112 x 128<br>
-最大池化层：56 x 56 x 256<br>
-第五层(卷积层): 56 x 56 x 256<br>
-第六层(卷积层): 56 x 56 x 256<br>
-第七层(卷积层): 56 x 56 x 256<br>
-最大池化层：28 x 28 x 512<br>
-第八层(卷积层): 28 x 28 x 512<br>
-第九层(卷积层): 28 x 28 x 512<br>
-第十层(卷积层): 28 x 28 x 512<br>
-最大池化层：14 x 14 x 512<br>
-第十一层(卷积层): 14 x 14 x 512<br>
-第十二层(卷积层): 14 x 14 x 512<br>
-第十三层(卷积层): 14 x 14 x 512<br>
-最大池化层：7 x 7 x 512<br>
-第十四层(全连接层): 1 x 1 x 4096<br>
-第十五层(全连接层): 1 x 1 x 4096<br>
-第十六层(全连接层): 1 x 1 x 1000<br>
-softmax函数</p>
+<h3 id="一、VGG16的结构"><a href="#一、VGG16的结构" class="headerlink" title="一、VGG16的结构"></a>一、VGG16的结构</h3><p>可以看到，输入的图片大小为224 x 224，通道数为3<br>第一层(卷积层)：224 x 224 x 64<br>第二层(卷积层)：224 x 224 x 64<br>最大池化层：112 x 112 x 128<br>第三层(卷积层)：112 x 112 x 128<br>第四层(卷积层)：112 x 112 x 128<br>最大池化层：56 x 56 x 256<br>第五层(卷积层): 56 x 56 x 256<br>第六层(卷积层): 56 x 56 x 256<br>第七层(卷积层): 56 x 56 x 256<br>最大池化层：28 x 28 x 512<br>第八层(卷积层): 28 x 28 x 512<br>第九层(卷积层): 28 x 28 x 512<br>第十层(卷积层): 28 x 28 x 512<br>最大池化层：14 x 14 x 512<br>第十一层(卷积层): 14 x 14 x 512<br>第十二层(卷积层): 14 x 14 x 512<br>第十三层(卷积层): 14 x 14 x 512<br>最大池化层：7 x 7 x 512<br>第十四层(全连接层): 1 x 1 x 4096<br>第十五层(全连接层): 1 x 1 x 4096<br>第十六层(全连接层): 1 x 1 x 1000<br>softmax函数</p>
 <p>通过不断卷积、池化来提取特征，通过全连接层以及softmax函数可实现分类。下面根据结构来写代码，其中M代表最大池化，base里面定义了每一层通道数：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">vgg</span><span class="token punctuation">(</span>cfg<span class="token punctuation">,</span> i<span class="token punctuation">,</span> batch_norm<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     layers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -501,8 +475,9 @@ softmax函数</p>
     <span class="token keyword">return</span> layers
 base <span class="token operator">=</span>  <span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span>   <span class="token string">'M'</span><span class="token punctuation">,</span>
         <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">]</span></code></pre>
-<h3 id="二、使用CIFAR-10数据集实现分类"><a class="header-anchor" href="#二、使用CIFAR-10数据集实现分类">¶</a>二、使用CIFAR-10数据集实现分类</h3>
-<p>看源代码：</p>
+
+
+<h3 id="二、使用CIFAR-10数据集实现分类"><a href="#二、使用CIFAR-10数据集实现分类" class="headerlink" title="二、使用CIFAR-10数据集实现分类"></a>二、使用CIFAR-10数据集实现分类</h3><p>看源代码：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> optim
@@ -685,8 +660,8 @@ optimizer <span class="token operator">=</span> optim<span class="token punctuat
 
 <span class="token comment"># 保存模型</span>
 torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'./cnn.pth'</span><span class="token punctuation">)</span></code></pre>
-<h5 id="本地运行的结果-代码是循环100轮，我这里循环训练了10轮"><a class="header-anchor" href="#本地运行的结果-代码是循环100轮，我这里循环训练了10轮">¶</a>本地运行的结果(代码是循环100轮，我这里循环训练了10轮)</h5>
-<p><img src="/2022/111316124/vgg%E4%BB%A3%E7%A0%81.png" alt></p>
+
+<h5 id="本地运行的结果-代码是循环100轮，我这里循环训练了10轮"><a href="#本地运行的结果-代码是循环100轮，我这里循环训练了10轮" class="headerlink" title="本地运行的结果(代码是循环100轮，我这里循环训练了10轮)"></a>本地运行的结果(代码是循环100轮，我这里循环训练了10轮)</h5><p><img src="/2022/111316124/vgg%E4%BB%A3%E7%A0%81.png" alt></p>
 <p>代码位置：[H:\DeepLeaning\VGG16\BinCode_VGG16_test]</p>
 <pre class="language-none"><code class="language-none">Files already downloaded and verified
 Files already downloaded and verified
@@ -743,9 +718,9 @@ Finish 9 epoch, Loss: 0.606799, Acc: 0.784440
 782it [00:56, 13.96it&#x2F;s]
 Finish 10 epoch, Loss: 0.517089, Acc: 0.817000
 Test Loss: 1.253111, Acc: 0.611100</code></pre>
+
 <p>训练100轮会出现最终的结果正确率为100% ，从上述结果当中可以看到：正确率每一轮都在上升！</p>
-<h3 id="三、VGG网络实现-详细"><a class="header-anchor" href="#三、VGG网络实现-详细">¶</a>三、VGG网络实现(详细)</h3>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Vgg16_net</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h3 id="三、VGG网络实现-详细"><a href="#三、VGG网络实现-详细" class="headerlink" title="三、VGG网络实现(详细)"></a>三、VGG网络实现(详细)</h3><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Vgg16_net</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>Vgg16_net<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
  
@@ -867,6 +842,7 @@ Test Loss: 1.253111, Acc: 0.611100</code></pre>
         x <span class="token operator">=</span> x<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>
         x<span class="token operator">=</span>self<span class="token punctuation">.</span>fc<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
         <span class="token keyword">return</span> x</code></pre>
+
 </font>
                 
             </div>

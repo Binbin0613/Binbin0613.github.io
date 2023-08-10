@@ -6,15 +6,15 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习6-完整的模型训练塔路, Software Engineer">
     <meta name="description" content="
-¶一、模型的使用
-首先创建模型的py文件
+
+一、模型的使用首先创建模型的py文件
 import torch
 from torch import nn
 
 # 搭建神经网络
 class Bin(nn.Module):
     def __init__(self):
-        ">
+        s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -455,8 +455,8 @@ class Bin(nn.Module):
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、模型的使用"><a class="header-anchor" href="#一、模型的使用">¶</a>一、模型的使用</h3>
-<p>首先创建模型的py文件</p>
+
+<h3 id="一、模型的使用"><a href="#一、模型的使用" class="headerlink" title="一、模型的使用"></a>一、模型的使用</h3><p>首先创建模型的py文件</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">from</span> torch <span class="token keyword">import</span> nn
 
@@ -485,8 +485,8 @@ class Bin(nn.Module):
     <span class="token builtin">input</span> <span class="token operator">=</span> torch<span class="token punctuation">.</span>ones<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     output <span class="token operator">=</span> <span class="token builtin">bin</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>shape<span class="token punctuation">)</span></code></pre>
-<h5 id="一套完整的模型训练过程"><a class="header-anchor" href="#一套完整的模型训练过程">¶</a>一套完整的模型训练过程</h5>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
+
+<h5 id="一套完整的模型训练过程"><a href="#一套完整的模型训练过程" class="headerlink" title="一套完整的模型训练过程"></a>一套完整的模型训练过程</h5><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torchvision
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
 
@@ -592,8 +592,8 @@ writer <span class="token operator">=</span> SummaryWriter<span class="token pun
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"模型已保存"</span><span class="token punctuation">)</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h5 id="在tensorboard上的效果如图"><a class="header-anchor" href="#在tensorboard上的效果如图">¶</a>在tensorboard上的效果如图</h5>
-<p><img src="/2022/110816120/%E5%AE%8C%E6%95%B4%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B.png" alt></p>
+
+<h5 id="在tensorboard上的效果如图"><a href="#在tensorboard上的效果如图" class="headerlink" title="在tensorboard上的效果如图"></a>在tensorboard上的效果如图</h5><p><img src="/2022/110816120/%E5%AE%8C%E6%95%B4%E7%9A%84%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E6%B5%81%E7%A8%8B.png" alt></p>
 </font>
                 
             </div>

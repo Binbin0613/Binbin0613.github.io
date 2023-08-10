@@ -6,16 +6,9 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="cs231n-最优化(上), Software Engineer">
     <meta name="description" content="
-¶一、本节大纲
 
-1、损失函数可视化
-2、最优化
-        策略#1：随机搜索
-        策略#2：随机局部搜索
-        策略#3：跟随梯度 译者注：上篇截止处
-3、梯度计算
-        使用有限差值进行数值计算
-">
+一、本节大纲
+1、损失函数可视化2、最优化&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;策略#1：随机搜索&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -452,44 +445,25 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、本节大纲"><a class="header-anchor" href="#一、本节大纲">¶</a>一、本节大纲</h3>
-<blockquote>
-<p>1、损失函数可视化<br>
-2、最优化<br>
-        策略#1：随机搜索<br>
-        策略#2：随机局部搜索<br>
-        策略#3：跟随梯度 译者注：上篇截止处<br>
-3、梯度计算<br>
-        使用有限差值进行数值计算<br>
-        微分计算梯度<br>
-4、梯度下降<br>
-5、小结</p>
+
+<h3 id="一、本节大纲"><a href="#一、本节大纲" class="headerlink" title="一、本节大纲"></a>一、本节大纲</h3><blockquote>
+<p>1、损失函数可视化<br>2、最优化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;策略#1：随机搜索<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;策略#2：随机局部搜索<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;策略#3：跟随梯度 译者注：上篇截止处<br>3、梯度计算<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用有限差值进行数值计算<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微分计算梯度<br>4、梯度下降<br>5、小结</p>
 </blockquote>
-<h3 id="二、最优化简介"><a class="header-anchor" href="#二、最优化简介">¶</a>二、最优化简介</h3>
-<p>在上一节中，我们介绍了图像分类任务中的两个关键部分：</p>
-<p>1、基于参数的<strong>评分函数</strong>。该函数将原始图像像素映射为分类评分值（例如：一个线性函数）。<br>
-2、<strong>损失函数</strong>。该函数能够根据分类评分和训练集图像数据实际分类的一致性，衡量某个具体参数集的质量好坏。损失函数有多种版本和不同的实现方式（例如：Softmax或SVM）。</p>
+<h3 id="二、最优化简介"><a href="#二、最优化简介" class="headerlink" title="二、最优化简介"></a>二、最优化简介</h3><p>在上一节中，我们介绍了图像分类任务中的两个关键部分：</p>
+<p>1、基于参数的<strong>评分函数</strong>。该函数将原始图像像素映射为分类评分值（例如：一个线性函数）。<br>2、<strong>损失函数</strong>。该函数能够根据分类评分和训练集图像数据实际分类的一致性，衡量某个具体参数集的质量好坏。损失函数有多种版本和不同的实现方式（例如：Softmax或SVM）。</p>
 <p>上节中，线性函数的形式是f(s_i, W) = W * x_i，而SVM实现的公式是：</p>
 <p>$$ L=\displaystyle\frac{1}{N}\sum_i\sum_{j\not= y_i}[max(0,f(x_i;W)<em>j-f(x_i;W)</em>{y_i}+1)]+\alpha R(W) $$</p>
 <p>对于图像数据x_i，如果基于参数集W做出的分类预测与真实情况比较一致，那么计算出来的损失值L就很低。现在介绍第三个，也是最后一个关键部分：<strong>最优化Optimization</strong>。最优化是寻找能使得损失函数值最小化的参数W的过程。</p>
 <p><strong>铺垫</strong>：一旦理解了这三个部分是如何相互运作的，我们将会回到第一个部分（基于参数的函数映射），然后将其拓展为一个远比线性函数复杂的函数：首先是神经网络，然后是卷积神经网络。而损失函数和最优化过程这两个部分将会保持相对稳定。</p>
-<h3 id="三、损失函数可视化"><a class="header-anchor" href="#三、损失函数可视化">¶</a>三、损失函数可视化</h3>
-<p>我们可以通过数学公式来解释损失函数的分段线性结构。对于一个单独的数据，有损失函数的计算公式如下：<br>
-$$ Li=\sum_{j\not=y_i}[max(0,w<sup>T_jx_i-w</sup>T_{y_i}x_i+1) $$</p>
+<h3 id="三、损失函数可视化"><a href="#三、损失函数可视化" class="headerlink" title="三、损失函数可视化"></a>三、损失函数可视化</h3><p>我们可以通过数学公式来解释损失函数的分段线性结构。对于一个单独的数据，有损失函数的计算公式如下：<br>$$ Li=\sum_{j\not=y_i}[max(0,w^T_jx_i-w^T_{y_i}x_i+1) $$</p>
 <p>通过公式可见，每个样本的数据损失值是以W为参数的线性函数的总和（零阈值来源于max(0, -)函数）。W的每一行（即w_j），有时候它前面是一个正号（比如当它对应错误分类的时候），有时候它前面是一个负号（比如当它是是正确分类的时候）。为进一步阐明，假设有一个简单的数据集，其中包含有3个只有1个维度的点，数据集数据点有3个类别。那么完整的无正则化SVM的损失值计算如下：</p>
-<p>$$ L_0=max(0,w<sup>T_1x_0-w</sup>T_0x_0+1)+max(0,w<sup>T_2x_0-w</sup>T_0x_0+1) $$<br>
-$$ L_1=max(0,w<sup>T_0x_1-w</sup>T_1x_1+1)+max(0,w<sup>T_2x_1-w</sup>T_1x_1+1) $$<br>
-$$ L_2=max(0,w<sup>T_0x_2-w</sup>T_2x_2+1)+max(0,w<sup>T_1x_2-w</sup>T_2x_2+1) $$<br>
-$$L=(L_0+L_1+L_2)/3 $$</p>
+<p>$$ L_0=max(0,w^T_1x_0-w^T_0x_0+1)+max(0,w^T_2x_0-w^T_0x_0+1) $$<br>$$ L_1=max(0,w^T_0x_1-w^T_1x_1+1)+max(0,w^T_2x_1-w^T_1x_1+1) $$<br>$$ L_2=max(0,w^T_0x_2-w^T_2x_2+1)+max(0,w^T_1x_2-w^T_2x_2+1) $$<br>$$L=(L_0+L_1+L_2)/3 $$</p>
 <p><img src="/2022/112016131/w0.png" alt></p>
-<p>从一个维度方向上对数据损失值的展示。x轴方向就是一个权重，y轴就是损失值。数据损失是多个部分组合而成。其中每个部分要么是某个权重的独立部分，要么是该权重的线性函数与0阈值的比较。完整的SVM数据损失就是这个形状的30730维版本。<br>
-——————————————————————————————————————</p>
+<p>从一个维度方向上对数据损失值的展示。x轴方向就是一个权重，y轴就是损失值。数据损失是多个部分组合而成。其中每个部分要么是某个权重的独立部分，要么是该权重的线性函数与0阈值的比较。完整的SVM数据损失就是这个形状的30730维版本。<br>——————————————————————————————————————</p>
 <p>需要多说一句的是，你可能根据SVM的损失函数的碗状外观猜出它是一个凸函数。关于如何高效地最小化凸函数的论文有很多，你也可以学习斯坦福大学关于（凸函数最优化）的课程。但是一旦我们将f函数扩展到神经网络，目标函数就就不再是凸函数了，图像也不会像上面那样是个碗状，而是凹凸不平的复杂地形形状。</p>
 <p>不可导的损失函数。作为一个技术笔记，你要注意到：由于max操作，损失函数中存在一些不可导点（kinks），这些点使得损失函数不可微，因为在这些不可导点，梯度是没有定义的。但是次梯度（subgradient）依然存在且常常被使用。在本课中，我们将交换使用次梯度和梯度两个术语。</p>
-<h3 id="四、最优化-Optimization"><a class="header-anchor" href="#四、最优化-Optimization">¶</a>四、最优化 Optimization</h3>
-<p>重申一下：损失函数可以量化某个具体权重集W的质量。而最优化的目标就是找到能够最小化损失函数值的W 。我们现在就朝着这个目标前进，实现一个能够最优化损失函数的方法。对于有一些经验的同学，这节课看起来有点奇怪，因为使用的例子（SVM 损失函数）是一个凸函数问题。但是要记得，最终的目标是不仅仅对凸函数做最优化，而是能够最优化一个神经网络，而对于神经网络是不能简单的使用凸函数的最优化技巧的。</p>
-<h4 id="策略-1：一个差劲的初始方案：随机搜索"><a class="header-anchor" href="#策略-1：一个差劲的初始方案：随机搜索">¶</a>策略#1：一个差劲的初始方案：随机搜索</h4>
-<p>既然确认参数集W的好坏蛮简单的，那第一个想到的（差劲）方法，就是可以随机尝试很多不同的权重，然后看其中哪个最好。过程如下：</p>
+<h3 id="四、最优化-Optimization"><a href="#四、最优化-Optimization" class="headerlink" title="四、最优化 Optimization"></a>四、最优化 Optimization</h3><p>重申一下：损失函数可以量化某个具体权重集W的质量。而最优化的目标就是找到能够最小化损失函数值的W 。我们现在就朝着这个目标前进，实现一个能够最优化损失函数的方法。对于有一些经验的同学，这节课看起来有点奇怪，因为使用的例子（SVM 损失函数）是一个凸函数问题。但是要记得，最终的目标是不仅仅对凸函数做最优化，而是能够最优化一个神经网络，而对于神经网络是不能简单的使用凸函数的最优化技巧的。</p>
+<h4 id="策略-1：一个差劲的初始方案：随机搜索"><a href="#策略-1：一个差劲的初始方案：随机搜索" class="headerlink" title="策略#1：一个差劲的初始方案：随机搜索"></a>策略#1：一个差劲的初始方案：随机搜索</h4><p>既然确认参数集W的好坏蛮简单的，那第一个想到的（差劲）方法，就是可以随机尝试很多不同的权重，然后看其中哪个最好。过程如下：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 假设X_train的每一列都是一个数据样本（比如3073 x 50000）</span>
 <span class="token comment"># 假设Y_train是数据样本的类别标签（比如一个长50000的一维数组）</span>
 <span class="token comment"># 假设函数L对损失函数进行评价</span>
@@ -512,6 +486,7 @@ bestloss <span class="token operator">=</span> <span class="token builtin">float
 <span class="token comment"># in attempt 5 the loss was 8.943151, best 8.857370</span>
 <span class="token comment"># in attempt 6 the loss was 8.605604, best 8.605604</span>
 <span class="token comment"># ... (trunctated: continues for 1000 lines)</span></code></pre>
+
 <p>在上面的代码中，我们尝试了若干随机生成的权重矩阵<strong>W</strong>，其中某些的损失值较小，而另一些的损失值大些。我们可以把这次随机搜索中找到的最好的权重W取出，然后去跑测试集：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># 假设X_test尺寸是[3073 x 10000], Y_test尺寸是[10000 x 1]</span>
 scores <span class="token operator">=</span> Wbest<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>Xte_cols<span class="token punctuation">)</span> <span class="token comment"># 10 x 10000, the class scores for all test examples</span>
@@ -526,8 +501,7 @@ np<span class="token punctuation">.</span>mean<span class="token punctuation">(<
 <p>我们的策略是从随机权重开始，然后迭代取优，从而获得更低的损失值。</p>
 </blockquote>
 <p><strong>蒙眼徒步者的比喻</strong>：一个助于理解的比喻是把你自己想象成一个蒙着眼睛的徒步者，正走在山地地形上，目标是要慢慢走到山底。在CIFAR-10的例子中，这山是30730维的（因为<strong>W</strong>是3073x10）。我们在山上踩的每一点都对应一个的损失值，该损失值可以看做该点的海拔高度。</p>
-<h4 id="策略-2：随机本地搜索"><a class="header-anchor" href="#策略-2：随机本地搜索">¶</a>策略#2：随机本地搜索</h4>
-<p>第一个策略可以看做是每走一步都尝试几个随机方向，如果某个方向是向山下的，就向该方向走一步。这次我们从一个随机W开始，然后生成一个随机的扰动δW ，只有当W + δW的损失值变低，我们才会更新。这个过程的具体代码如下：</p>
+<h4 id="策略-2：随机本地搜索"><a href="#策略-2：随机本地搜索" class="headerlink" title="策略#2：随机本地搜索"></a>策略#2：随机本地搜索</h4><p>第一个策略可以看做是每走一步都尝试几个随机方向，如果某个方向是向山下的，就向该方向走一步。这次我们从一个随机W开始，然后生成一个随机的扰动δW ，只有当W + δW的损失值变低，我们才会更新。这个过程的具体代码如下：</p>
 <pre class="language-python" data-language="python"><code class="language-python">W <span class="token operator">=</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">3073</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0.001</span> <span class="token comment"># 生成随机初始W</span>
 bestloss <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"inf"</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">xrange</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -539,12 +513,13 @@ bestloss <span class="token operator">=</span> <span class="token builtin">float
     bestloss <span class="token operator">=</span> loss
   <span class="token keyword">print</span> <span class="token string">'iter %d loss is %f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> bestloss<span class="token punctuation">)</span></code></pre>
 <p>使用同样的数据（1000），这个方法可以得到21.4%的分类准确率。这个比策略一好，但是依然过于浪费计算资源。</p>
-<h4 id="策略-3：跟随梯度"><a class="header-anchor" href="#策略-3：跟随梯度">¶</a>策略#3：跟随梯度</h4>
-<p>前两个策略中，我们是尝试在权重空间中找到一个方向，沿着该方向能降低损失函数的损失值。其实不需要随机寻找方向，因为可以直接计算出最好的方向，这就是从数学上计算出最陡峭的方向。这个方向就是损失函数的<strong>梯度（gradient）</strong>。在蒙眼徒步者的比喻中，这个方法就好比是感受我们脚下山体的倾斜程度，然后向着最陡峭的下降方向下山。</p>
+<h4 id="策略-3：跟随梯度"><a href="#策略-3：跟随梯度" class="headerlink" title="策略#3：跟随梯度"></a>策略#3：跟随梯度</h4><p>前两个策略中，我们是尝试在权重空间中找到一个方向，沿着该方向能降低损失函数的损失值。其实不需要随机寻找方向，因为可以直接计算出最好的方向，这就是从数学上计算出最陡峭的方向。这个方向就是损失函数的<strong>梯度（gradient）</strong>。在蒙眼徒步者的比喻中，这个方法就好比是感受我们脚下山体的倾斜程度，然后向着最陡峭的下降方向下山。</p>
 <p>在一维函数中，斜率是函数在某一点的瞬时变化率。梯度是函数的斜率的一般化表达，它不是一个值，而是一个向量。在输入空间中，梯度是各个维度的斜率组成的向量（或者称为<strong>导数derivatives</strong>）。对一维函数的求导公式如下：</p>
 <p>$$ \displaystyle\frac{df(x)}{dx}=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h} $$</p>
 <p>当函数有多个参数的时候，我们称导数为偏导数。而梯度就是在每个维度上偏导数所形成的向量。</p>
 </font>
+
+
 
                 
             </div>

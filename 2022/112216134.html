@@ -6,18 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="cs231n-神经网络1(上), Software Engineer">
     <meta name="description" content="
-¶一、本节大纲
 
+一、本节大纲
 
 1、不用大脑做类比的快速简介
-2、单个神经元建模
-      生物动机和连接
-      作为线性分类器的单个神经元
-      常用的激活函数
-3、神经网络结构
-      层组织
-      前向传播计算例子
-  ">
+2、单个神经元建模&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;生物动机和连接&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为线性分类器">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -454,28 +447,19 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、本节大纲"><a class="header-anchor" href="#一、本节大纲">¶</a>一、本节大纲</h3>
-<blockquote>
+
+<h3 id="一、本节大纲"><a href="#一、本节大纲" class="headerlink" title="一、本节大纲"></a>一、本节大纲</h3><blockquote>
 <ul>
 <li>1、不用大脑做类比的快速简介</li>
-<li>2、单个神经元建模<br>
-      生物动机和连接<br>
-      作为线性分类器的单个神经元<br>
-      常用的激活函数</li>
-<li>3、神经网络结构<br>
-      层组织<br>
-      前向传播计算例子<br>
-      表达能力<br>
-      设置层的数量和尺寸</li>
+<li>2、单个神经元建模<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生物动机和连接<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为线性分类器的单个神经元<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常用的激活函数</li>
+<li>3、神经网络结构<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层组织<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前向传播计算例子<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表达能力<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置层的数量和尺寸</li>
 <li>4、小节</li>
 <li>5、参考文献</li>
 </ul>
 </blockquote>
-<h3 id="二、快速简介"><a class="header-anchor" href="#二、快速简介">¶</a>二、快速简介</h3>
-<p>在不诉诸大脑的类比的情况下，依然是可以对神经网络算法进行介绍的。在线性分类一节中，在给出图像的情况下，是使用s = Wx来计算不同视觉类别的评分，其中W是一个矩阵，是一个x输入列向量，它包含了图像的全部像素数据。在使用数据库CIFAR-10的案例中，x是一个[3072x1]的列向量，W是一个[10x3072]的矩阵，所以输出的评分是一个包含10个分类评分的向量。</p>
+<h3 id="二、快速简介"><a href="#二、快速简介" class="headerlink" title="二、快速简介"></a>二、快速简介</h3><p>在不诉诸大脑的类比的情况下，依然是可以对神经网络算法进行介绍的。在线性分类一节中，在给出图像的情况下，是使用s = Wx来计算不同视觉类别的评分，其中W是一个矩阵，是一个x输入列向量，它包含了图像的全部像素数据。在使用数据库CIFAR-10的案例中，x是一个[3072x1]的列向量，W是一个[10x3072]的矩阵，所以输出的评分是一个包含10个分类评分的向量。</p>
 <p>神经网络算法则不同，它的计算公式是s = W_2 * max(0, W_1 * x)。其中的W_1含义是这样的：举个例子来说，它可以是一个[100x3072]的矩阵，其作用是将图像转化为一个100维的过渡向量。函数max(0, -)是非线性的，它会作用到每个元素。这个非线性函数有多种选择，后续将会学到。但这个形式是一个最常用的选择，它就是简单地设置阈值，将所有小于0的值变成0。最终，矩阵W_2的尺寸是[10x100]，因此将得到10个数字，这10个数字可以解释为是分类的评分。注意非线性函数在计算上是至关重要的，如果略去这一步，那么两个矩阵将会合二为一，对于分类的评分计算将重新变成关于输入的线性函数。这个非线性函数就是改变的关键点。参数W_1, W_2将通过随机梯度下降来学习到，他们的梯度在反向传播过程中，通过链式法则来求导计算得出。</p>
-<h3 id="三、神经元建模"><a class="header-anchor" href="#三、神经元建模">¶</a>三、神经元建模</h3>
-<p>一个神经元前向传播的实例代码如下：</p>
+<h3 id="三、神经元建模"><a href="#三、神经元建模" class="headerlink" title="三、神经元建模"></a>三、神经元建模</h3><p>一个神经元前向传播的实例代码如下：</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Neuron</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token comment"># ... </span>
   <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>inputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -484,8 +468,7 @@
     firing_rate <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">1.0</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>exp<span class="token punctuation">(</span><span class="token operator">-</span>cell_body_sum<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># sigmoid激活函数</span>
     <span class="token keyword">return</span> firing_rate</code></pre>
 <p>换句话说，每个神经元都对它的输入和权重进行点积，然后加上偏差，最后使用非线性函数（或称为激活函数）。本例中使用的是sigmoid函数。在本节的末尾部分将介绍不同激活函数的细节。</p>
-<h3 id="四、常用的激活函数"><a class="header-anchor" href="#四、常用的激活函数">¶</a>四、常用的激活函数</h3>
-<p>每个激活函数（或非线性函数）的输入都是一个数字，然后对其进行某种固定的数学操作。下面是在实践中可能遇到的几种激活函数：</p>
+<h3 id="四、常用的激活函数"><a href="#四、常用的激活函数" class="headerlink" title="四、常用的激活函数"></a>四、常用的激活函数</h3><p>每个激活函数（或非线性函数）的输入都是一个数字，然后对其进行某种固定的数学操作。下面是在实践中可能遇到的几种激活函数：</p>
 <p><img src="/2022/112216134/sigmoid.png" alt></p>
 <p>Sigmoid。sigmoid非线性函数的数学公式是σ(x) = 1 / (1 + e ^ -x)，函数图像如上图的左边所示。在前一节中已经提到过，它输入实数值并将其“挤压”到0到1范围内。更具体地说，很大的负数变成0，很大的正数变成1。在历史上，sigmoid函数非常常用，这是因为它对于神经元的激活频率有良好的解释：从完全不激活（0）到在求和后的最大频率处的完全饱和（saturated）的激活（1）。然而现在sigmoid函数已经不太受欢迎，实际很少使用了，这是因为它有两个主要缺点：</p>
 <blockquote>

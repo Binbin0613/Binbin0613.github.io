@@ -4,14 +4,12 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="(C++进阶03)-结构，浅显修饰符，类, Software Engineer">
+    <meta name="keywords" content="(C++进阶03)-结构，权限修饰符，类，内联函数和const, Software Engineer">
     <meta name="description" content="
-¶C++进阶03：结构，浅显修饰符，类
-#include&amp;lt;iostream&amp;gt;
 
-¶一、范围for的使用
-&amp;#x2F;&amp;#x2F;范围for语句: 用于遍历一个序列
-int v[] &amp;#x3D; &amp;#123; 1,2,3,4,5">
+C++进阶03：结构，权限修饰符，类，内联函数和const一、函数传值类型&amp;#x2F; 结构体值传递和引用传递和地址传递
+struct student &amp;#123;
+	&amp;#x2F;&amp;#x2F; 所有的结构成员变量前面，都有缺省的权限修饰">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +21,7 @@ int v[] &amp;#x3D; &amp;#123; 1,2,3,4,5">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>(C++进阶03)-结构，浅显修饰符，类 | Binbin0613</title>
+    <title>(C++进阶03)-结构，权限修饰符，类，内联函数和const | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +339,12 @@ int v[] &amp;#x3D; &amp;#123; 1,2,3,4,5">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/144.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/111.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">(C++进阶03)-结构，浅显修饰符，类</h1>
+                    <h1 class="description center-align post-title">(C++进阶03)-结构，权限修饰符，类，内联函数和const</h1>
                 </div>
             </div>
         </div>
@@ -413,14 +411,14 @@ int v[] &amp;#x3D; &amp;#123; 1,2,3,4,5">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -444,109 +442,147 @@ int v[] &amp;#x3D; &amp;#123; 1,2,3,4,5">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="C-进阶03：结构，浅显修饰符，类"><a class="header-anchor" href="#C-进阶03：结构，浅显修饰符，类">¶</a>C++进阶03：结构，浅显修饰符，类</h2>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
-</code></pre>
-<h3 id="一、范围for的使用"><a class="header-anchor" href="#一、范围for的使用">¶</a>一、范围for的使用</h3>
-<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;范围for语句: 用于遍历一个序列
-int v[] &#x3D; &#123; 1,2,3,4,5 &#125;;
 
-&#x2F;&#x2F; 这里值得注意的是：每一次都有一个拷贝的处理，将V中的元素拷贝到i中来
-&#x2F;&#x2F;for (auto i : v) &#123;	
-		
-&#x2F;&#x2F; 省略了拷贝的动作，提升了程序的执行效率
-&#x2F;&#x2F; 这里的处理是在变量i的前面加上引用，表示每一次取的是V中元素的别名，不会另外消耗时间
-for (auto &amp;i : v) &#123;		
-	&#x2F;&#x2F;cout &lt;&lt; i &lt;&lt; endl;
-	i &#x3D; i + 1;
-&#125;</code></pre>
-<h3 id="二、内存分配"><a class="header-anchor" href="#二、内存分配">¶</a>二、内存分配</h3>
-<p>C++中，一般把内存进一步分为5个区域</p>
-<blockquote>
-<p>1、 栈：一般函数内的局部变量都会存放在这里，由编译器自动分配和释放（可以理解为：）<br>
-2、 堆：由程序员进行malloc/new进行分配，用free/delete来释放。忘记释放，系统会回收<br>
-3、 全局/静态存储区：存放全局变量和静态变量static，程序结束时系统会释放<br>
-4、 常量存储区： “I Love Chain”  int a = 0…<br>
-5、 程序代码区。</p>
-</blockquote>
-<p>堆和栈不同的用途和区别</p>
-<blockquote>
-<p>(1) 栈的空间是有限的，系统的分配速度快，程序员也无法控制<br>
-(2) 堆：只要不超过你实际的拥有的物理内存，在操作系统所允许的分配的最大的内存之内，都可以分配给你<br>
-分配的速度比较慢，你可以使用malloc/new来分配，free/delete来释放内存</p>
-</blockquote>
-<p>malloc和free : 在C语言中，使用malloc和free从堆中分配和释放内存，注意malloc和free是函数<br>
-new 和delete : 在C++语言中使用</p>
-<p>malloc(memory allocation): 动态内存分配</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 一般形式：
-&#x2F;&#x2F; void *malloc(int NumByte);	&#x2F;&#x2F; NumByte表示需要分配的字节数，分配成功则返回指向这段被分配内存的指针，分配失败返回NULL.
-&#x2F;&#x2F; 当这段分配的内存你不使用的时候，应该使用free()将这段内存释放掉，供其他地方使用
-&#x2F;&#x2F; void free(void *FirstByte) 将malloc分配的内存释放
+<h2 id="C-进阶03：结构，权限修饰符，类，内联函数和const"><a href="#C-进阶03：结构，权限修饰符，类，内联函数和const" class="headerlink" title="C++进阶03：结构，权限修饰符，类，内联函数和const"></a>C++进阶03：结构，权限修饰符，类，内联函数和const</h2><h3 id="一、函数传值类型"><a href="#一、函数传值类型" class="headerlink" title="一、函数传值类型"></a>一、函数传值类型</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F; 结构体值传递和引用传递和地址传递
+struct student &#123;
+	&#x2F;&#x2F; 所有的结构成员变量前面，都有缺省的权限修饰符public ,所以可以不加
+	int number;
+	char name[100];
+	void addNumber()&#123;
+		number++;	&#x2F;&#x2F; 入宫全部定义为private，则只有内部的func才能够访问，外面的都不行
+	&#125;
+&#125;;
 
-int* p &#x3D; NULL;				    &#x2F;&#x2F; 等价于 数字0
-p &#x3D; (int *)malloc(sizeof(int));	&#x2F;&#x2F; 在堆中分配4个字节的内存，有时候分配的空间太大会失败
-if (p !&#x3D; NULL) &#123;				&#x2F;&#x2F; 表示分配成功
-	*p &#x3D; 100;
-	cout &lt;&lt; *p &lt;&lt; endl;			&#x2F;&#x2F; 100
-	free(p);
+&#x2F;&#x2F; 参数属于值传递的过程，只会改变局部变量temp,不会影响到main中的结构变量
+void changeStudent(student temp) &#123;
+	temp.number &#x3D; 100;
+	strcpy_s(temp.name, sizeof(temp.name), &quot;Binbin Deng&quot;);
 &#125;
 
-char* pChar &#x3D; NULL;
-pChar &#x3D; (char*)malloc(100 * sizeof(char));
-if (pChar !&#x3D; NULL) &#123;
-	&#x2F;&#x2F;strcpy(pChar, &quot;My name is BinbinDeng&quot;); &#x2F;&#x2F; 程序提示需要使用更加安全的strcpy_s
-	strcpy_s(pChar, 100, &quot;My name is Binbin Deng&quot;);
-	&#x2F;&#x2F; 注意的是： 在C语言中，strcpy函数可以直接使用，用于拷贝字符类型的数据
-	&#x2F;&#x2F; strcpy将字符串拷贝到变量中，如果字符串字节数大于变量字节数，就会造成内存的溢出
-	&#x2F;&#x2F; strcpy_s函数： 如果字符串字节数大于变量的字节数，会提示变量空间太小，所以中间新增一个参数表示后面字符串的大小不要超过n个字节数
-	&#x2F;&#x2F; 如果中间的字节数n,任然小于后面字符串的字节数，程序会崩溃
-
-	cout &lt;&lt; pChar &lt;&lt; endl;
-	free(pChar);
+&#x2F;&#x2F; 参数属于引用，属于是main中结构变量的别名，所指向的是同一块内存空间，会改变结构变量的值
+void changeStudent(student &amp;temp) &#123;		
+	temp.number &#x3D; 100;
+	strcpy_s(temp.name, sizeof(temp.name), &quot;Binbin Deng&quot;);
 &#125;
 
-&#x2F;&#x2F; 分配一个可以存放100个int数据的内存空间
-int* pInt &#x3D; (int *)malloc(sizeof(int) * 100);
-if (pInt !&#x3D; NULL) &#123;
-	int* q &#x3D; p;
-	*q++ &#x3D; 1;			&#x2F;&#x2F; 先*q &#x3D; 1  q++  先用后加
-	*q++ &#x3D; 5;		
-	cout &lt;&lt; *p &lt;&lt; endl;		&#x2F;&#x2F;1
-	cout &lt;&lt; *(p + 1) &lt;&lt; endl;	&#x2F;&#x2F;5
-	free(pInt);
+&#x2F;&#x2F; 结构体指针作为参数，在main中调用时，将结构体变量的地址作为参数传递，这里进行的是地址传递
+void changeStudent2(student* temp) &#123;
+	temp-&gt;number &#x3D; 1000;
+	strcpy_s(temp-&gt;name, sizeof(temp-&gt;name), &quot;Bin&quot;);
+&#125;
+
+int mian()&#123;
+    student bin;
+	bin.number &#x3D; 1;
+	strcpy_s(bin.name, sizeof(bin.name), &quot;Daisy&quot;);
+	cout &lt;&lt; bin.number &lt;&lt; endl;
+	cout &lt;&lt; bin.name &lt;&lt; endl;
+
+	changeStudent(bin);
+	changeStudent2(&amp;bin);
+
+	cout &lt;&lt; bin.number &lt;&lt; endl;
+	cout &lt;&lt; bin.name &lt;&lt; endl;
 &#125;</code></pre>
-<p>使用new和delete： 是运算符（标识符），C++中使用new/delete从堆中分配和释放内存，不再使用malloc/free</p>
-<p>new的一般使用格式：</p>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wyp8268526/article/details/105391518">值传递，引用传递，地址传递</a></p>
+<h3 id="二、权限修饰符"><a href="#二、权限修饰符" class="headerlink" title="二、权限修饰符"></a>二、权限修饰符</h3><p>public 和 private 权限修饰符： public private protected</p>
 <blockquote>
-<p>（1）指针变量名 = new 类型标识符<br>
-(2）指针类型名 = new 类型标识符（初始值）	      // () 表示 设置初始值<br>
-（3）指针类型名 = new 类型标识符[内存单元个数]	// [] 表示分配若干个单元的数组</p>
+<p>public:   公有的，被其修饰的变量或函数 能够被外界所访问<br>private： 私有的，被其修饰的变量或函数 只有被内部定义才能使用</p>
 </blockquote>
-<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;int* myInt &#x3D; new int; &#x2F;&#x2F; (int *)malloc(sizeof(int))
-&#x2F;&#x2F;int* myInt &#x3D; new int(20); &#x2F;&#x2F; 给定了初始值20
-int* myInt &#x3D; new int[100]; &#x2F;&#x2F; 分配了一个大小为100的数组空间
-if (myInt !&#x3D; nullptr) &#123;		&#x2F;&#x2F; 这里表示： 指针变量是否为空，使用nullptr
+<h3 id="三、类简介：-类也是用户自定义的数据类型"><a href="#三、类简介：-类也是用户自定义的数据类型" class="headerlink" title="三、类简介： 类也是用户自定义的数据类型"></a>三、类简介： 类也是用户自定义的数据类型</h3><p>结构和类之间有什么区别？</p>
+<blockquote>
+<p>1、只有C++中有类的定义，C语言中没有<br>2、结构体用struct 类是class<br>3、C中：定义结构体变量：结构体变量； C++中定义属于类的变量： 对象<br>4、C++中，结构和类十分相似<br>重要： 5、C++中类的成员变量和函数访问权限都是private; C++中的结构体变量和函数的访问权限都是public<br>重要： 6、C++中类的继承默认都是private； 结构的继承默认都是public</p>
+</blockquote>
+<p>特别说明<br>    在C++语言结构当中，通常我们习惯的将相关的方法都写到一个类当中<br>    在C++标准库当中，包含了大量的类和模块供我们使用</p>
+<p>​    通常，我们习惯将类的定义放在一个.h头文件中，可以与类相同： student.h<br>​    而类中的相关方法的实现放在cpp文件中，student.cpp</p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; student.h
+struct student &#123;
+	int number;
+	char name[100];
+	void addNumber() &#123;&#125;
+&#125;;
 
-    int* qInt &#x3D; myInt;
-    *qInt++ &#x3D; 1;	&#x2F;&#x2F; 表示myInt[0] &#x3D; 1
-    *qInt++ &#x3D; 2;	&#x2F;&#x2F; 表示myInt[1] &#x3D; 2
+&#x2F;&#x2F; student.cpp
+#include &quot;student.h&quot;
+void student::addNumber&#123;
+	number++;
+&#125;
 
-    cout &lt;&lt; *myInt &lt;&lt; endl;		&#x2F;&#x2F; 指针名表示数组首地址
-    cout &lt;&lt; *(myInt+1) &lt;&lt; endl;	&#x2F;&#x2F; 指针所指向的数组的第二个元素
-    delete []myInt;		&#x2F;&#x2F; 释放分配的数组空间的内存</code></pre>
-<p>注意事项：</p>
-<ul>
-<li>分配和释放需要成对使用，有分配就有释放</li>
-<li>free/delete 不要重复使用</li>
-</ul>
-<h3 id="三、nullptr"><a class="header-anchor" href="#三、nullptr">¶</a>三、nullptr</h3>
-<p>nullptr： C++ 11 中引入的新的关键字<br>
-nullptr: 空指针</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">cout &lt;&lt; typeid(NULL).name() &lt;&lt; endl;		&#x2F;&#x2F; int
-cout &lt;&lt; typeid(nullptr).name() &lt;&lt; endl;		&#x2F;&#x2F; std::nullptr_t
-&#x2F;&#x2F; 所以表述为空指针： 建议使用nullptr: 空指针关键字</code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39686950/article/details/113485496">更多内容</a></p>
+&#x2F;&#x2F; other.cpp
+#include &quot;student.h&quot;</code></pre>
+
+
+
+<p><img src="/2023/080916152/C++%E7%B1%BB%E7%9A%84%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F.png" alt></p>
+<h3 id="四、内联函数"><a href="#四、内联函数" class="headerlink" title="四、内联函数"></a>四、内联函数</h3><h4 id="1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数"><a href="#1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数" class="headerlink" title="(1)、在函数的定义前加上关键字inline,导致这个函数变成内联函数"></a>(1)、在函数的定义前加上关键字inline,导致这个函数变成内联函数</h4><blockquote>
+<p>1）内联含函数比一般函数在前面多一个inline修饰符</p>
+<p>2）内联函数是直接复制“镶嵌”到主函数中去的，就是将内联函数的代码直接放在内联函数的位置上，这与一般函数不同，主函数在调用一般函数的时候，是指令跳转到被调用函数的入口地址，执行完被调用函数后，指令再跳转回主函数上继续执行后面的代码；而由于内联函数是将函数的代码直接放在了函数的位置上，所以没有指令跳转，指令按顺序执行</p>
+<p>3）一般函数的代码段只有一份，放在内存中的某个位置上，当程序调用它是，指令就跳转过来；当下一次程序调用它是，指令又跳转过来；而内联函数是程序中调用几次内联函数，内联函数的代码就会复制几份放在对应的位置上</p>
+<p>4）内联函数一般在头文件中定义，而一般函数在头文件中声明，在cpp中定义</p>
+</blockquote>
+<blockquote>
+<p>1、inline 影响编译器，在编译阶段对inline函数进行处理，“系统尝试将调用该函数的动作替换为函数本体”，避免了进栈出栈的动作，通过这种方式提升性能<br>2、inline 只是我们给编译器的建议，编译器是否这样处理，取决于编译器的诊断功能。也就是数决定权在编译器<br>3、内联函数的定义只能放在头文件中，这样需要用到内联函数的cpp文件，需要把内联函数的源代码#include进来<br>        以便找到这个函数的本地源代码，并尝试将该函数的调用替换为函数体</p>
+</blockquote>
+<h4 id="2-、内联函数的优缺点"><a href="#2-、内联函数的优缺点" class="headerlink" title="(2)、内联函数的优缺点"></a>(2)、内联函数的优缺点</h4><blockquote>
+<p>优点： 避免了指令的来回跳转，加快了程序的执行速度<br>缺点： 代码被多次复制，增加了代码量，占用了更多的空间</p>
+</blockquote>
+<h4 id="3-、注意："><a href="#3-、注意：" class="headerlink" title="(3)、注意："></a>(3)、注意：</h4><blockquote>
+<p>各种编译器对inline的处理各不相同，inline函数应该尽量简单，代码尽可能少，避免出现循环，分支，递归<br>否则编译器可能会因为代码的原因，拒接让这个函数成为内联函数</p>
+</blockquote>
+<h4 id="4-、内联函数比宏更强大"><a href="#4-、内联函数比宏更强大" class="headerlink" title="(4)、内联函数比宏更强大"></a>(4)、内联函数比宏更强大</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+ 
+#define SUM(x) x*x
+ 
+inline int fun(int x)&#123;
+	return x * x;
+&#125;
+ 
+int main()&#123;
+	int a &#x3D; SUM(2 + 3);
+	int b &#x3D; fun(2 + 3);
+	cout &lt;&lt; &quot;a &#x3D; &quot; &lt;&lt; a &lt;&lt; endl;		&#x2F;&#x2F; 11
+	cout &lt;&lt; &quot;b &#x3D; &quot; &lt;&lt; b &lt;&lt; endl;		&#x2F;&#x2F; 25
+	system(&quot;pause&quot;);
+	return 0;
+&#125;</code></pre>
+
+<p>分析：为什么通过宏执行的结果是11呢，宏比较机械和简单，只是将传入的参数直接放上去就执行，所以int a = SUM(2 + 3);就相当于int a = 2 + 3 * 2 +3;由于乘法优先级更高，所以得到a的值为11；而在内联函数中，传入的参数是5，所以得到25</p>
+<p>为了得到正确的结果，我们应该将宏改变为：#define SUM(x) ((x)*(x))</p>
+<h4 id="4-、类与内联函数"><a href="#4-、类与内联函数" class="headerlink" title="(4)、类与内联函数"></a>(4)、类与内联函数</h4><blockquote>
+<p>1）类内定义的函数都是内联函数，不管是否有inline修饰符</p>
+<p>2）函数声明在类内，但定义在类外的看是否有inline修饰符，如果有就是内联函数，否则不是</p>
+</blockquote>
+<h3 id="四、const-char-、-char-const-、-char-const"><a href="#四、const-char-、-char-const-、-char-const" class="headerlink" title="四、const char * 、 char const *、 char * const"></a>四、const char * 、 char const *、 char * const</h3><p>结论：</p>
+<blockquote>
+<p>cosnt char *p:  p所指向的对象，不能通过p来修改，p能够改变指向的对象，这个对象可以通过其他途径更改</p>
+<p>char const  *p： 与第一个等价</p>
+<p>char * const p: p只能指向这个对象，不能指向其他对象，但是能够修改这个对象的内容</p>
+<p>const char * const p: 只能指向这个对象，不能通过指针p更改对象内容，也不能更改p的指向</p>
+</blockquote>
+<pre class="language-c++" data-language="c++"><code class="language-c++">int main() &#123;
+	&#x2F;&#x2F; const char * 、 char const *、 char * const 三者之间的区别
+	char str[] &#x3D; &quot;I Love China&quot;;
+	const char* p &#x3D; str;	&#x2F;&#x2F; 在char *前面加上const：修饰的指针无法修改所指向的内容
+	&#x2F;&#x2F; *p &#x3D; &#39;Y&#39;; p所指向的内容，不能通过p来修改
+
+	&#x2F;&#x2F; char const * 与 const char * 等价的
+
+	&#x2F;&#x2F; char * const p &#x3D; str : 定义的时候必须进行初始化，一旦指向了一个东西之后，就不能再指向其他东西
+	char* const pp &#x3D; str;
+
+	&#x2F;&#x2F; 融合写法
+	const char* const ppp &#x3D; str;	&#x2F;&#x2F; 表示ppp只能指向str,并且也无法通过ppp修改str的值
+
+	return 0;
+&#125;</code></pre>
+
+
+
+<p><a href>更多内容</a></p>
 </font>
+
 
                 
             </div>
@@ -691,18 +727,17 @@ cout &lt;&lt; typeid(nullptr).name() &lt;&lt; endl;		&#x2F;&#x2F; std::nullptr_t
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/080916152.html">
+                <a href="/2023/080916153.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/144.jpg" class="responsive-img" alt="(C++进阶03)-结构，浅显修饰符，类">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="(C++进阶04)-string,vector">
                         
-                        <span class="card-title">(C++进阶03)-结构，浅显修饰符，类</span>
+                        <span class="card-title">(C++进阶04)-string,vector</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -712,9 +747,9 @@ cout &lt;&lt; typeid(nullptr).name() &lt;&lt; endl;		&#x2F;&#x2F; std::nullptr_t
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -731,7 +766,6 @@ cout &lt;&lt; typeid(nullptr).name() &lt;&lt; endl;		&#x2F;&#x2F; std::nullptr_t
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
