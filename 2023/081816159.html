@@ -4,16 +4,12 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="(C++进阶06)-类-初始化-构造函数-对象, Software Engineer">
+    <meta name="keywords" content="(C++进阶09)-类-RTTI-dynamic_cast-typeid, Software Engineer">
     <meta name="description" content="
 
-C++进阶06：类-初始化-构造函数-对象class Time &amp;#123;
-public:
-	int Hour;
-	int Minute;
-	int Second;
-	&amp;#x2F;&amp;#x2F; 成员函数
-	void initTime(">
+C++进阶09：类-RTTI-dynamic_cast-typeid#include&amp;lt;iostream&amp;gt;
+#include &amp;quot;extends_human.h&amp;quot;
+#include &amp;quot;extends">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +21,7 @@ public:
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>(C++进阶06)-类-初始化-构造函数-对象 | Binbin0613</title>
+    <title>(C++进阶09)-类-RTTI-dynamic_cast-typeid | Binbin0613</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -343,12 +339,12 @@ public:
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/107.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/184.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">(C++进阶06)-类-初始化-构造函数-对象</h1>
+                    <h1 class="description center-align post-title">(C++进阶09)-类-RTTI-dynamic_cast-typeid</h1>
                 </div>
             </div>
         </div>
@@ -401,28 +397,28 @@ public:
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-10
+                    2023-08-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-17
+                    2023-08-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    11 分
                 </div>
                 
 
@@ -447,88 +443,192 @@ public:
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
 
-<h2 id="C-进阶06：类-初始化-构造函数-对象"><a href="#C-进阶06：类-初始化-构造函数-对象" class="headerlink" title="C++进阶06：类-初始化-构造函数-对象"></a>C++进阶06：类-初始化-构造函数-对象</h2><pre class="language-c++" data-language="c++"><code class="language-c++">class Time &#123;
-public:
-	int Hour;
-	int Minute;
-	int Second;
-	&#x2F;&#x2F; 成员函数
-	void initTime(int tempHour, int tempMinute, int tempSecond) &#123;
-		Hour &#x3D; tempHour;
-		Minute &#x3D; tempMinute;
-		Second &#x3D; tempSecond;
+<h2 id="C-进阶09：类-RTTI-dynamic-cast-typeid"><a href="#C-进阶09：类-RTTI-dynamic-cast-typeid" class="headerlink" title="C++进阶09：类-RTTI-dynamic_cast-typeid"></a>C++进阶09：类-RTTI-dynamic_cast-typeid</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+#include &quot;extends_human.h&quot;
+#include &quot;extends_man.h&quot;
+using namespace std;
+
+int main() &#123;
+
+	&#x2F;&#x2F; 一、RTTI是什么？
+	&#x2F;&#x2F; Run Time Type Identification 运行时类型识别
+	&#x2F;&#x2F; 通过运行时类型识别，程序能够使用基类的指针或者引用来检查这些指针或者引用所指向的对象的实际派生类型
+
+	&#x2F;&#x2F; RTTI: 我们可以把这个称呼为一种系统提供给我们的一种能力，这种能力通过2个运算符来体现的。
+	&#x2F;&#x2F; (1) dynamic_cast运算符： 能够将基类的指针或者引用安全的转换为派生类的指针或引用。    父类 -&gt; 子类
+	&#x2F;&#x2F; (2) typeid 运算符     ： 返回指针或者引用所指对象的实际类型
+
+	&#x2F;&#x2F; 重点： 想让RTTI这两个运算符能够正常的工作，那么基类中必须“至少要有一个虚函数”，否则结果可能不正确
+			&#x2F;&#x2F; 因为只有虚函数的存在，这两个运算符才会使用指针或者引用所绑定的对象的动态类型（你new的那个类型）
+			&#x2F;&#x2F; 只有一个虚函数，系统才会为你创建一个虚函数表
+	&#x2F;&#x2F; 如果没有虚函数，可能最后的结果都是Human类型
+
+	Human* phuman &#x3D; new Man();
+	phuman-&gt;eat();				&#x2F;&#x2F; 调用的是子类的eat()方法，原因是父类中的eat方法是虚函数
+
+	&#x2F;&#x2F; 但是如果是单独的子类当中的方法，直接使用 phuman-&gt;的方法无法调用
+	&#x2F;&#x2F;phuman-&gt;manFunc(); 
+	&#x2F;&#x2F; 这种情况下，我们不能先在父类中定义，然后再定义为虚函数，子类中同样写一个同名函数，太恶心了这种写法
+	&#x2F;&#x2F; 这种情况，就需要使用RTTI- dynamic_cast
+
+	&#x2F;&#x2F; 二、dynamic_cast
+	&#x2F;&#x2F; 为了能够使父类的指针或引用转换为子类的指针或引用
+	&#x2F;&#x2F; 注意，能够成功转换是因为，在定义phuman时，是Human *phuman &#x3D; new Man();
+		&#x2F;&#x2F; (1) 使用c语言风格的强制类型转换，但是可能会出现问题，不安全
+		&#x2F;&#x2F; Man* p &#x3D; (Man*)phuman;
+		&#x2F;&#x2F; p-&gt;manFunc();
+		&#x2F;&#x2F; (2) 使用dynamic_cast : 如果能够转换成功，说明这个指针实际上就是要转换的那个类型，它能够为我们做安全检查
+	&#x2F;&#x2F; 注意的是： 在父类当中，一定至少要有一个虚函数，否则可能会出错
+	&#x2F;&#x2F;Man* p &#x3D; dynamic_cast&lt;Man*&gt;(phuman);  &#x2F;&#x2F; 将phuman转化为 Man * 类型
+	&#x2F;&#x2F;if (p !&#x3D; nullptr) &#123;
+	&#x2F;&#x2F;	cout &lt;&lt; &quot;phuman实际是一个Man类型&quot; &lt;&lt; endl;
+	&#x2F;&#x2F;	&#x2F;&#x2F; 然后可以调用Man中的成员函数，并且是安全的操作
+	&#x2F;&#x2F;	p-&gt;manFunc();
+	&#x2F;&#x2F;&#125;
+	&#x2F;&#x2F;else &#123;
+	&#x2F;&#x2F;	cout &lt;&lt; &quot;phuman不是Man类型&quot; &lt;&lt; endl;
+	&#x2F;&#x2F;&#125;
+
+	&#x2F;&#x2F; 对于引用，如果使用dynamic_cast转换失败，则系统会抛出一个std::bad_cast的异常。使用try&#123;&#125;...catch()&#123;&#125;;
+	Human &amp;q &#x3D; *phuman;		&#x2F;&#x2F; 这就是引用
+	try &#123;
+		Man&amp; m &#x3D; dynamic_cast&lt;Man&amp;&gt;(q);
+		cout &lt;&lt; &quot;phuman实际上是一个Man类型&quot; &lt;&lt; endl;
+		m.manFunc();  &#x2F;&#x2F; 调用子类中的方法
 	&#125;
-private:
-	int Millsecond;	&#x2F;&#x2F; 毫秒，私有成员变量
-
-public:
-	&#x2F;&#x2F; 构造函数 三个参数的构造函数
-	explicit Time(int tempHour, int tempMinute, int tempSecond) &#123;
-		Hour &#x3D; tempHour;
-		Minute &#x3D; tempMinute;
-		Second &#x3D; tempSecond;
+	catch (std::bad_cast) &#123;
+		cout &lt;&lt; &quot;phuman实际上不是一个Man类型&quot; &lt;&lt; endl;
 	&#125;
-	&#x2F;&#x2F; 构造函数 两个参数的构造函数
-	explicit Time(int tempHour, int tempMinute) &#123;
-		Hour &#x3D; tempHour;
-		Minute &#x3D; tempMinute;
-		Second &#x3D; 0;
+
+	&#x2F;&#x2F; 三、typeid运算符
+	&#x2F;&#x2F; typeid(指针&#x2F;引用)，也可以是typeid(表达式)
+	&#x2F;&#x2F; 拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类&#x2F;类类型)
+	cout &lt;&lt; typeid(*phuman).name() &lt;&lt; endl;		&#x2F;&#x2F; class Man              如果带上 * 所new的类型
+	cout &lt;&lt; typeid(phuman).name() &lt;&lt; endl;		&#x2F;&#x2F; class Human * __ptr64  如果不带* 则phuman的类型是定义时前面的类型：Human
+	cout &lt;&lt; typeid(q).name() &lt;&lt; endl;			&#x2F;&#x2F; class Man
+
+	char a[10] &#x3D; &#123; 1,2 &#125;;
+	int b &#x3D; 10;
+	string c &#x3D; &quot;abcd&quot;;
+	cout &lt;&lt; typeid(a).name() &lt;&lt; endl;
+	cout &lt;&lt; typeid(b).name() &lt;&lt; endl;
+	cout &lt;&lt; typeid(c).name() &lt;&lt; endl;
+	cout &lt;&lt; typeid(&quot;bin&quot;).name() &lt;&lt; endl;
+	&#x2F;&#x2F;char[10]
+	&#x2F;&#x2F;int
+	&#x2F;&#x2F;class std::basic_string&lt;char, struct std::char_traits&lt;char&gt;, class std::allocator&lt;char&gt; &gt;
+	&#x2F;&#x2F;char const [4]
+
+	&#x2F;&#x2F; 当我们判断某变量的类型时,不要把*给忘记了，注意： 父类中一定要有虚函数，下面的式子才会成立
+	if (typeid(*phuman) &#x3D;&#x3D; typeid(Man)) &#123;
+		cout &lt;&lt; &quot;typeid(*phuman) &#x3D;&#x3D; typeid(Man)&quot; &lt;&lt; endl;
 	&#125;
-	&#x2F;&#x2F; 构造函数 一个参数的构造函数
-	explicit Time(int tempHour) &#123;
-		Hour &#x3D; tempHour;
-		Minute &#x3D; 0;
-		Second &#x3D; 0;
-	&#125;
-	explicit Time()&#123;&#125;
-&#125;;</code></pre>
 
-<h3 id="一、综述"><a href="#一、综述" class="headerlink" title="一、综述"></a>一、综述</h3><p> 类是我们自己定义的数据类型（新类型）</p>
-<h3 id="二、类基础"><a href="#二、类基础" class="headerlink" title="二、类基础"></a>二、类基础</h3><blockquote>
-<p>(1) 一个类就是用户自己定义的数据类型，可以将类视为一个命名空间，包含着（成员变量，成员函数）<br>(2) 一个类的构成： 成员变量，各种特殊用途的成员函数<br>(3) 访问这个类时，如果是类的对象，使用.来访问对象的成员，如果是指向对象的指向，使用-&gt;访问 </p>
-<p>(4) public成员提供的接口是暴露给外界的，private在外界无法使用<br>(5) struct 是成员默认为public的class<br>(6) class当中的成员默认是private的</p>
-<p>struct {…};  等价于 class{public:…};  但是不建议在程序中混淆使用</p>
-</blockquote>
-<h3 id="三、成员函数"><a href="#三、成员函数" class="headerlink" title="三、成员函数"></a>三、成员函数</h3><h3 id="四、对象的拷贝"><a href="#四、对象的拷贝" class="headerlink" title="四、对象的拷贝"></a>四、对象的拷贝</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 默认的情况下： 都是每个成员变量逐个进行拷贝
-&#x2F;&#x2F; 调用的是拷贝构造函数
-&#x2F;&#x2F; 以下这几种赋值方式，拷贝后的对象，内存地址都不同
-&#x2F;&#x2F; 以下几种对象的创建和初始化方式没有调用构造函数，而是调用的“拷贝构造函数”
-Time myTime2 &#x3D; mytime;
-Time myTime3(mytime);
-Time myTime4 &#x3D; &#123; mytime &#125;;
-Time myTime5&#123; mytime &#125;;</code></pre>
+	&#x2F;&#x2F; 四、type_info 类
+	&#x2F;&#x2F; typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类&#x2F;类类型)
+	&#x2F;&#x2F; typeid返回的就是type_info（常量对象的引用）
+	&#x2F;&#x2F; (1) .name()  返回一个c语言风格的字符串
+	&#x2F;&#x2F; const表示返回的是一个常量引用，type_info表示返回值类型，typeid() 的返回值类型： 常量对象的引用
+	const type_info&amp; tp &#x3D; typeid(*phuman);
+	cout &lt;&lt; tp.name() &lt;&lt; endl;			&#x2F;&#x2F; class Man
 
-<h3 id="五、私有成员"><a href="#五、私有成员" class="headerlink" title="五、私有成员"></a>五、私有成员</h3><p>私有成员在外不能够被访问，但是在类的成员函数内部，可以被访问和使用</p>
-<h3 id="六、构造函数"><a href="#六、构造函数" class="headerlink" title="六、构造函数"></a>六、构造函数</h3><p>在类中，有一种特殊的成员函数，“名字与类名相同”，在构建类的时候会被系统调用</p>
-<blockquote>
-<p>构造函数会被系统自动调用，可以理解成：构造函数的目的是初始化类对象的数据成员</p>
-<p>(1) 构造函数没有返回值<br>(2) 不能手动调用构造函数,否则编译会报错<br>(3) “构造函数必须声明为public”， 我们创建一个对象时，系统自动为什么调用了构造函数，说明它是public修饰的<br>       因为类缺省的成员是私有成员，必须声明构造函数是一个public的，否则无法直接创建该类的对象</p>
-</blockquote>
-<pre class="language-c++" data-language="c++"><code class="language-c++">Time time &#x3D; Time(12, 12, 12); &#x2F;&#x2F; 创建类对象
-Time time2(12, 12, 12);
-Time time3 &#x3D; Time&#123; 12,12,12 &#125;;
-&#x2F;&#x2F;Time time4 &#x3D; &#123; 12,12,12 &#125;;	&#x2F;&#x2F; 加上explicit就不能了  不能进行隐式的类型转换
-Time time5&#123; 12,12,12 &#125;;</code></pre>
+	&#x2F;&#x2F; (2) &#x3D;&#x3D; !&#x3D; 
 
-<h3 id="七、函数的默认参数"><a href="#七、函数的默认参数" class="headerlink" title="七、函数的默认参数"></a>七、函数的默认参数</h3><blockquote>
-<p>(1)、 默认值智能放在函数的声明当中<br>(2)、 从有默认值的参数开始，后面的参数必须都要有默认值，下面的一行代码就不行，有默认值的参数必须放在后面<br>          // void myTime(int tempHour, int tempMinute = 10, int tempSecond)  -&gt; 不行<br>          // 需要变成void myTime(int tempHour , int tempSecond , int tempMinute = 10)<br>          // 创建对象的时候，myTime m = myTime(1,2);  两个参数即可，如果你给三个参数，就将那个默认值给替换了<br>(3)、 如果（2）中有一个默认参数，则创建参数只用给两个参数即可，但是某个构造函数只有两个参数时，系统会报错</p>
-</blockquote>
-<h3 id="八，隐式转换-和-explicit"><a href="#八，隐式转换-和-explicit" class="headerlink" title="八，隐式转换 和 explicit"></a>八，隐式转换 和 explicit</h3><pre class="language-c++" data-language="c++"><code class="language-c++">Time t1 &#x3D; (10);				&#x2F;&#x2F; 调用的一个参数的构造函数
-Time t2 &#x3D; 10;				&#x2F;&#x2F; 含糊不清晰的写法，存在临时对象 或 隐式转换的问题
-funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时对象 或 隐式转换的问题
-以上三种均能够编译通过，但是写法含糊不清</code></pre>
+	&#x2F;&#x2F; 五、RTTI 和 虚函数表
+	&#x2F;&#x2F; c++中，如果类里含有虚函数，编译器就会对该类产生一个虚函数表
+	&#x2F;&#x2F; 虚函数表里有很多项，每一项都是一个指针，每个指针指向的是这个类里的各个虚函数的入口地址
+	&#x2F;&#x2F; 虚函数表项里，第一个表项很特殊，它指向的不是虚函数的入口地址，而是这个类所关联的type_info对象
+	&#x2F;&#x2F; phuman对象里有一个我们看不见的指针，这个指针指向的是这个对象所在的类Man里的虚函数表
 
+	delete phuman;
 
-<p>我们可以强制要求系统，不能做隐式类型转换，在类的构造函数声明中带 explicit，那么这个构造函数只能用于初始化和显式类型转换</p>
-<p>对于<strong>单参数的构造函数，一般都声明为explicit</strong>，除非有特殊的原因</p>
-<h3 id="九、构造函数的初始化列表"><a href="#九、构造函数的初始化列表" class="headerlink" title="九、构造函数的初始化列表"></a>九、构造函数的初始化列表</h3><p>构造函数的初始化列表： 写法比较专业</p>
-<pre class="language-c++" data-language="c++"><code class="language-c++">myTime::myTime(int tempHour, int tempMinute, int tempSecond)		&#x2F;&#x2F; 构造函数初始化列表
-    :Hour(tempHour), Minute(tempMinute), Second(tempSecond),Millsecond(0) &#123;
-        Hour &#x3D; tempHour;	&#x2F;&#x2F; 这种叫做赋予初始值
-        ...  
+	return 0;
 &#125;</code></pre>
 
-<p>值得注意的是： 在初始化列表中，哪个成员变量在类中先定义，哪个成员变量就会先被初始化<br>不要做的是： 用一个成员变量的值，给另一个成员变量赋值   : Hour(tempHour), Minute(Hour)  不得行，因为你不知道成员变量在类中哪个先定义哪个后定义，很容易出错</p>
+
+
+<h3 id="一、RTTI是什么？"><a href="#一、RTTI是什么？" class="headerlink" title="一、RTTI是什么？"></a>一、RTTI是什么？</h3><p><strong>Run Time Type Identification —运行时类型识别</strong></p>
+<p>通过运行时类型识别，程序能够:  使用基类的指针或者引用来检查这些指针或者引用所指向的对象的实际派生类型</p>
+<p>RTTI: 我们可以把这个称呼为一种系统提供给我们的一种能力，这种能力通过2个运算符来体现的。</p>
+<blockquote>
+<p>(1) <strong>dynamic_cast运算符</strong>： 能够将基类的指针或者引用安全的转换为派生类的指针或引用。    父类 -&gt; 子类<br>(2) <strong>typeid 运算符</strong>     ： 返回指针或者引用所指对象的实际类型</p>
+</blockquote>
+<p>重点： 想让RTTI这两个运算符能够正常的工作，那么基类中必须“<strong>至少要有一个虚函数</strong>”，否则结果可能不正确<br>(1) 因为只有虚函数的存在，这两个运算符才会使用指针或者引用所绑定的对象的动态类型（你new的那个类型）<br>(2) 只有一个虚函数，系统才会为你创建一个虚函数表<br>(3) 如果没有虚函数，可能最后的结果都是Human类型</p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">Human* phuman &#x3D; new Man();
+phuman-&gt;eat();				&#x2F;&#x2F; 调用的是子类的eat()方法，原因是父类中的eat方法是虚函数</code></pre>
+
+<pre class="language-c++" data-language="c++"><code class="language-c++">但是如果是单独的子类当中的方法，直接使用 phuman-&gt;的方法无法调用
+phuman-&gt;manFunc(); 
+&#x2F;&#x2F; 这种情况下，我们不能先在父类中定义，然后再定义为虚函数，子类中同样写一个同名函数，太恶心了这种写法
+&#x2F;&#x2F; 这种情况，就需要使用RTTI- dynamic_cast</code></pre>
+
+
+
+<h3 id="二、dynamic-cast"><a href="#二、dynamic-cast" class="headerlink" title="二、dynamic_cast"></a>二、dynamic_cast</h3><p><strong>为了能够使父类的指针或引用转换为子类的指针或引用</strong></p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">注意，能够成功转换是因为，在定义phuman时，是Human *phuman &#x3D; new Man();
+&#x2F;&#x2F; (1) 使用c语言风格的强制类型转换，但是可能会出现问题，不安全
+	 Man* p &#x3D; (Man*)phuman;
+	 p-&gt;manFunc();			&#x2F;&#x2F; manFunc() 函数为Man类当中的成员函数，但是父类中没有
+&#x2F;&#x2F; (2) 使用dynamic_cast : 如果能够转换成功，说明这个指针实际上就是要转换的那个类型，它能够为我们做安全检查
+	&#x2F;&#x2F; 注意的是： 在父类当中，一定至少要有一个虚函数，否则可能会出错
+	Man* p &#x3D; dynamic_cast&lt;Man*&gt;(phuman);  &#x2F;&#x2F; 将phuman转化为 Man * 类型
+	if (p !&#x3D; nullptr) &#123;
+		cout &lt;&lt; &quot;phuman实际是一个Man类型&quot; &lt;&lt; endl;
+		&#x2F;&#x2F; 然后可以调用Man中的成员函数，并且是安全的操作
+		p-&gt;manFunc();
+	&#125;
+	else &#123;
+		cout &lt;&lt; &quot;phuman不是Man类型&quot; &lt;&lt; endl;
+	&#125;</code></pre>
+
+<p>对于引用，如果使用dynamic_cast转换失败，则系统会抛出一个<strong>std::bad_cast</strong>的异常。使用<strong>try{}…catch(){};</strong></p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">Human &amp;q &#x3D; *phuman;		&#x2F;&#x2F; 这就是引用
+try &#123;
+    Man&amp; m &#x3D; dynamic_cast&lt;Man&amp;&gt;(q);
+    cout &lt;&lt; &quot;phuman实际上是一个Man类型&quot; &lt;&lt; endl;
+    m.manFunc();  &#x2F;&#x2F; 调用子类中的方法
+&#125;
+catch (std::bad_cast) &#123;
+    cout &lt;&lt; &quot;phuman实际上不是一个Man类型&quot; &lt;&lt; endl;
+&#125;</code></pre>
+
+<h3 id="三、typeid运算符"><a href="#三、typeid运算符" class="headerlink" title="三、typeid运算符"></a>三、typeid运算符</h3><p>typeid(指针/引用)，也可以是typeid(表达式)<br>拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; typeid(指针&#x2F;引用)，也可以是typeid(表达式)
+&#x2F;&#x2F; 拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类&#x2F;类类型)
+cout &lt;&lt; typeid(*phuman).name() &lt;&lt; endl;		&#x2F;&#x2F; class Man              如果带上 * 所new的类型
+cout &lt;&lt; typeid(phuman).name() &lt;&lt; endl;		&#x2F;&#x2F; class Human * __ptr64  如果不带* 则phuman的类型是定义时前面的类型：Human
+cout &lt;&lt; typeid(q).name() &lt;&lt; endl;			&#x2F;&#x2F; class Man
+
+char a[10] &#x3D; &#123; 1,2 &#125;;
+int b &#x3D; 10;
+string c &#x3D; &quot;abcd&quot;;
+cout &lt;&lt; typeid(a).name() &lt;&lt; endl;
+cout &lt;&lt; typeid(b).name() &lt;&lt; endl;
+cout &lt;&lt; typeid(c).name() &lt;&lt; endl;
+cout &lt;&lt; typeid(&quot;bin&quot;).name() &lt;&lt; endl;
+&#x2F;&#x2F;char[10]
+&#x2F;&#x2F;int
+&#x2F;&#x2F;class std::basic_string&lt;char, struct std::char_traits&lt;char&gt;, class std::allocator&lt;char&gt; &gt;
+&#x2F;&#x2F;char const [4]
+
+&#x2F;&#x2F; 当我们判断某变量的类型时,不要把*给忘记了，注意： 父类中一定要有虚函数，下面的式子才会成立
+if (typeid(*phuman) &#x3D;&#x3D; typeid(Man)) &#123;
+cout &lt;&lt; &quot;typeid(*phuman) &#x3D;&#x3D; typeid(Man)&quot; &lt;&lt; endl;
+&#125;</code></pre>
+
+<h3 id="四、type-info-类"><a href="#四、type-info-类" class="headerlink" title="四、type_info 类"></a>四、type_info 类</h3><p>typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">typeid返回的就是type_info（常量对象的引用）
+&#x2F;&#x2F; (1) .name()  返回一个c语言风格的字符串
+&#x2F;&#x2F; const表示返回的是一个常量引用，type_info表示返回值类型，typeid() 的返回值类型： 常量对象的引用
+const type_info&amp; tp &#x3D; typeid(*phuman);
+cout &lt;&lt; tp.name() &lt;&lt; endl;			&#x2F;&#x2F; class Man
+
+&#x2F;&#x2F; (2) &#x3D;&#x3D; !&#x3D; </code></pre>
+
+<h3 id="五、RTTI-和-虚函数表"><a href="#五、RTTI-和-虚函数表" class="headerlink" title="五、RTTI 和 虚函数表"></a>五、RTTI 和 虚函数表</h3><p>c++中，如果类里含有虚函数，编译器就会对该类产生一个<strong>虚函数表</strong></p>
+<blockquote>
+<p>虚函数表里有很多项，每一项都是一个指针，每个指针指向的是这个类里的各个虚函数的入口地址<br>虚函数表项里，第一个表项很特殊，它指向的不是虚函数的入口地址，而是这个类所关联的type_info对象<br>phuman对象里有一个我们看不见的指针，这个指针指向的是这个对象所在的类Man里的虚函数表</p>
+</blockquote>
 <p><a href>更多内容</a></p>
 </font>
 
@@ -558,7 +658,7 @@ funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Binbin0613.github.io/2023/081016156.html">http://Binbin0613.github.io/2023/081016156.html</a>
+                    <a href="http://Binbin0613.github.io/2023/081816159.html">http://Binbin0613.github.io/2023/081816159.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -676,17 +776,18 @@ funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/081016157.html">
+                <a href="/2023/081816159.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/157.jpg" class="responsive-img" alt="(C++进阶07)-类-inline-const-mutable-this-static">
+                        <img src="/medias/featureimages/184.jpg" class="responsive-img" alt="(C++进阶09)-类-RTTI-dynamic_cast-typeid">
                         
-                        <span class="card-title">(C++进阶07)-类-inline-const-mutable-this-static</span>
+                        <span class="card-title">(C++进阶09)-类-RTTI-dynamic_cast-typeid</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -696,9 +797,63 @@ funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-10
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category">
+                                    C++
+                                </a>
+                            
+                            <a href="/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    编程基础
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/081716158.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/205.jpg" class="responsive-img" alt="(C++进阶08)-类-重载运算法-派生类-析构函数">
+                        
+                        <span class="card-title">(C++进阶08)-类-重载运算法-派生类-析构函数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -720,63 +875,6 @@ funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时�
                     
                     <a href="/tags/C/">
                         <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/081016155.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/112.jpg" class="responsive-img" alt="Binbin0613-毕业那天">
-                        
-                        <span class="card-title">Binbin0613-毕业那天</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/" class="post-category">
-                                    博客介绍
-                                </a>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/" class="post-category">
-                                    生活记录
-                                </a>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E4%BB%8B%E7%BB%8D/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/%E6%97%A5%E5%B8%B8%E7%85%A7%E7%89%87/" class="post-category">
-                                    日常照片
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Binbin0613/">
-                        <span class="chip bg-color">Binbin0613</span>
                     </a>
                     
                 </div>
