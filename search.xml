@@ -4,6 +4,97 @@
   
     
     <entry>
+      <title>Linux-C++通信架构实战chap2-环境搭建</title>
+      <link href="/2023/100716162.html"/>
+      <url>/2023/100716162.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="Linux-C-通信架构实战chap2-环境搭建："><a href="#Linux-C-通信架构实战chap2-环境搭建：" class="headerlink" title="Linux-C++通信架构实战chap2-环境搭建："></a>Linux-C++通信架构实战chap2-环境搭建：</h2><pre class="language-c++" data-language="c++"><code class="language-c++">一：windows下的vs2017安装c盘空闲空间尽量不要少于30G。a) 安装路径能设置到其他盘符（非c盘符），尽量安装到其他盘；b) 安装时只勾选和c++有关的选项，切不可多勾选；c) vs2017社区版（community）；二：准备一个word文档“linux c++通讯架构实战课程-重要内容记录.doc&quot;三：windows下的虚拟机安装 &#x2F;&#x2F; 装虚拟机软件（虚拟出一台电脑），然后我们就可以在这个虚拟出来的电脑上来安装一个linux操作系统； &#x2F;&#x2F; 装虚拟机软件采用的WMware-workstation；&#x2F;&#x2F;每位同学必须能够熟练的用百度搜索来解决问题；四：虚拟机中安装linux 操作系统&#x2F;&#x2F; a)红帽子Red hat，收费；&#x2F;&#x2F; b)CentOS：被红帽子收购，免费的；&#x2F;&#x2F; c)Ubuntu（乌班图）,免费；&#x2F;&#x2F; 用户名：kuangxiang   密码：123456&#x2F;&#x2F; ctrl+alt一起按，就能把鼠标显示出来；五：配置固定IP地址 &#x2F;&#x2F; 要修改配置文件  需要vim编辑器，乌班图要安装这个编辑器：  sudo apt-get install vim-gtk&#x2F;&#x2F; 两台主机（windows,乌班图）&#x2F;&#x2F; ip地址不能相同，但是要在同一个网段中&#x2F;&#x2F; 主动发送数据包这一端  叫 “客户端”，另一端叫 “服务器端”&#x2F;&#x2F; windows电脑的网络信息用ipconfig来查看；&#x2F;&#x2F; IPv4 地址 . . . . . . . . . . . . : 192.168.1.100&#x2F;&#x2F; 子网掩码  . . . . . . . . . . . . : 255.255.255.0&#x2F;&#x2F; 默认网关. . . . . . . . . . . . . : 192.168.1.1&#x2F;&#x2F; 所以这个乌班图linux的ip地址：192.168.1.126&#x2F;&#x2F; linux上查看网络信息是用ifconfig,网卡叫ens33&#x2F;&#x2F; vim编辑器分 文本输入状态，命令状态，从命令状态切换到文本输入状态，需要按字母i;&#x2F;&#x2F; 从文本输入状态切换回命令状态，按键盘左上边的esc键盘&#x2F;&#x2F; 在命令状态下输入 :wq!（存盘退出）   ，而输入:q!（不存盘退出）&#x2F;&#x2F; 修改一下dns   8.8.8.8六：配置远程连接&#x2F;&#x2F;(1)需要在linux上安装ssh服务；&#x2F;&#x2F;(2)远程连接工具，推荐 xshell;七：安装编译工具gcc（编译c程序.c）,g++(编译c++程序，就是.cpp程序) 等&#x2F;&#x2F; sudo apt-get install build-essential&#x2F;&#x2F; sudo apt-get install gcc&#x2F;&#x2F; sudo apt-get install g++八：共享一个操作目录&#x2F;&#x2F; vim使用的不习惯；&#x2F;&#x2F;二：&#x2F;&#x2F;samba服务；不采用&#x2F;&#x2F;通过虚拟机，把一个windows下的目录共享。让linux可以访问这个目录；</code></pre><h3 id="、相关问题"><a href="#、相关问题" class="headerlink" title="#、相关问题"></a>#、相关问题</h3><h4 id="解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】"><a href="#解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】" class="headerlink" title="解决 Linux 系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX is not in the sudoers file. This incident will be reported.】"></a>解决 Linux 系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX is not in the sudoers file. This incident will be reported.】</h4><p>[参考文献](<a href="https://zhuanlan.zhihu.com/p/143388819">解决 Linux 系统，出现”不在sudoers文件中，此事将被报告”的问题 - 知乎 (zhihu.com)</a>)</p><h4 id="主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】"><a href="#主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】" class="headerlink" title="主机与虚拟机之间的共享文件夹识别失败【/mnt/hgfs】"></a>主机与虚拟机之间的共享文件夹识别失败【/mnt/hgfs】</h4><p><a href="https://zhuanlan.zhihu.com/p/43920548">主机与虚拟机共享文件</a></p><p><a href>更多内容</a></p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> 通信架构实战 </category>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 通信架构实战 </tag>
+            
+            <tag> 异常处理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux-C++通信架构实战chap1-课程介绍</title>
+      <link href="/2023/090716161.html"/>
+      <url>/2023/090716161.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="Linux-C-通信架构实战chap1-课程介绍："><a href="#Linux-C-通信架构实战chap1-课程介绍：" class="headerlink" title="Linux-C++通信架构实战chap1-课程介绍："></a>Linux-C++通信架构实战chap1-课程介绍：</h2><pre class="language-c++" data-language="c++"><code class="language-c++">一：windows下的vs2017安装c盘空闲空间尽量不要少于30G。a) 安装路径能设置到其他盘符（非c盘符），尽量安装到其他盘；b) 安装时只勾选和c++有关的选项，切不可多勾选；c) vs2017社区版（community）；二：准备一个word文档“linux c++通讯架构实战课程-重要内容记录.doc&quot;三：windows下的虚拟机安装 &#x2F;&#x2F; 装虚拟机软件（虚拟出一台电脑），然后我们就可以在这个虚拟出来的电脑上来安装一个linux操作系统； &#x2F;&#x2F; 装虚拟机软件采用的WMware-workstation；&#x2F;&#x2F;每位同学必须能够熟练的用百度搜索来解决问题；四：虚拟机中安装linux 操作系统&#x2F;&#x2F; a)红帽子Red hat，收费；&#x2F;&#x2F; b)CentOS：被红帽子收购，免费的；&#x2F;&#x2F; c)Ubuntu（乌班图）,免费；&#x2F;&#x2F; 用户名：kuangxiang   密码：123456&#x2F;&#x2F; ctrl+alt一起按，就能把鼠标显示出来；五：配置固定IP地址 &#x2F;&#x2F; 要修改配置文件  需要vim编辑器，乌班图要安装这个编辑器：  sudo apt-get install vim-gtk&#x2F;&#x2F; 两台主机（windows,乌班图）&#x2F;&#x2F; ip地址不能相同，但是要在同一个网段中&#x2F;&#x2F; 主动发送数据包这一端  叫 “客户端”，另一端叫 “服务器端”&#x2F;&#x2F; windows电脑的网络信息用ipconfig来查看；&#x2F;&#x2F; IPv4 地址 . . . . . . . . . . . . : 192.168.1.100&#x2F;&#x2F; 子网掩码  . . . . . . . . . . . . : 255.255.255.0&#x2F;&#x2F; 默认网关. . . . . . . . . . . . . : 192.168.1.1&#x2F;&#x2F; 所以这个乌班图linux的ip地址：192.168.1.126&#x2F;&#x2F; linux上查看网络信息是用ifconfig,网卡叫ens33&#x2F;&#x2F; vim编辑器分 文本输入状态，命令状态，从命令状态切换到文本输入状态，需要按字母i;&#x2F;&#x2F; 从文本输入状态切换回命令状态，按键盘左上边的esc键盘&#x2F;&#x2F; 在命令状态下输入 :wq!（存盘退出）   ，而输入:q!（不存盘退出）&#x2F;&#x2F; 修改一下dns   8.8.8.8六：配置远程连接&#x2F;&#x2F;(1)需要在linux上安装ssh服务；&#x2F;&#x2F;(2)远程连接工具，推荐 xshell;七：安装编译工具gcc（编译c程序.c）,g++(编译c++程序，就是.cpp程序) 等&#x2F;&#x2F; sudo apt-get install build-essential&#x2F;&#x2F; sudo apt-get install gcc&#x2F;&#x2F; sudo apt-get install g++八：共享一个操作目录&#x2F;&#x2F; vim使用的不习惯；&#x2F;&#x2F;二：&#x2F;&#x2F;samba服务；不采用&#x2F;&#x2F;通过虚拟机，把一个windows下的目录共享。让linux可以访问这个目录；</code></pre><h3 id="一、RTTI是什么？"><a href="#一、RTTI是什么？" class="headerlink" title="一、RTTI是什么？"></a>一、RTTI是什么？</h3><p><a href>更多内容</a></p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> 通信架构实战 </category>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 通信架构实战 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>(C++进阶10)-类-左右值-左右值引用-move</title>
+      <link href="/2023/081916160.html"/>
+      <url>/2023/081916160.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="C-进阶10：类-左右值-左右值引用-move"><a href="#C-进阶10：类-左右值-左右值引用-move" class="headerlink" title="C++进阶10：类-左右值-左右值引用-move"></a>C++进阶10：类-左右值-左右值引用-move</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;#include&lt;vector&gt;using namespace std;int main() &#123;&#x2F;&#x2F; 一、左值和右值int i &#x3D; 10; &#x2F;&#x2F; 对象： 一块内存区域&#x2F;&#x2F; 左值： “能用在赋值语句等号左侧的东西” ，它能够代表 一个地址&#x2F;&#x2F; 右值： “不能作为左值的值就是右值”，右值不能出现在赋值语句的左侧&#x2F;&#x2F; 结论:&#x2F;&#x2F; C++的一条表达式，要么就是右值，要么就是左值，不可能两者都不是&#x2F;&#x2F; 左值有的时候可以被当做右值使用i &#x3D; i + 1;  &#x2F;&#x2F; i是一个左值，不是右值，虽然出现在了等号右边&#x2F;&#x2F; i用在了等号右边的时候，我们认为： i有一种右值属性（不是右值）&#x2F;&#x2F; i用在了等号左边的时候，用的是i代表的内存中的地址，我们认为： i有一种左值属性&#x2F;&#x2F; 用到左值的运算符有哪些？&#x2F;&#x2F; (1) 赋值运算符(i &#x3D; 50) &#x3D; 20;&#x2F;&#x2F; 最终的结果i&#x3D;10，因为赋值运算符的结果是一个左值&#x2F;&#x2F; (2) 取地址符&amp;i;&#x2F;&#x2F; (3) string vector 下标[] 都需要左值string abc &#x3D; &quot;Bin&quot;;vector&lt;int&gt;::iterator iter;iter++; iter--;abc[1];&#x2F;&#x2F; (4) 通过看一个运算符在一个字面值上能不能操作，我们就可以判断运算符是否用到的左值&#x2F;&#x2F; i++&#x2F;&#x2F; 注意：&#x2F;&#x2F; 左值表达式 就是 左值， 右值表达式 就是右值&#x2F;&#x2F; 左值： 代表一个地址，所以左值表达式的结果，就是一个对象，就得有地址&#x2F;&#x2F; 求值结果为对象的表达式，不代表一定是左值，具体再分析。&#x2F;&#x2F; 总结&#x2F;&#x2F; 变量一定是左值&#x2F;&#x2F; 100 这种常量 不是左值&#x2F;&#x2F; 二、引用分类int value &#x3D; 10;int&amp; refval &#x3D; value;refval &#x3D; 20;&#x2F;&#x2F; 三种形式的引用&#x2F;&#x2F; (1) 左值引用 （绑定到左值）&#x2F;&#x2F; (2) const引用（常量引用），也是左值引用。我们不希望修改值的对象const int&amp; refval2 &#x3D; value;&#x2F;&#x2F;refval2 &#x3D; 30;  &#x2F;&#x2F; 非法，因为表达式的左值无法被修改&#x2F;&#x2F; (3) 右值引用（绑定到右值）int&amp;&amp; refrightvalue &#x3D; 3;&#x2F;&#x2F; 右值引用绑定到一个常量refrightvalue &#x3D; 5;&#x2F;&#x2F; 三、左值引用&#x2F;&#x2F; 引用左值，绑定到左值上&#x2F;&#x2F;char* p &#x3D; nullptr;&#x2F;&#x2F; 指针有空指针的说法&#x2F;&#x2F; 但是，引用没有空引用的说法，必须在定义的时候初始化-绑定左值int a &#x3D; 1;int&amp; b&#123; a &#125;;  &#x2F;&#x2F; 把b绑定到a上去&#x2F;&#x2F;int&amp; c;     &#x2F;&#x2F; 错误，引用必须要初始化&#x2F;&#x2F; int &amp;c &#x3D; 1;&#x2F;&#x2F; 错误，左值引用不能绑定到右值，必须绑定到左值const int&amp; c &#x3D; 1;&#x2F;&#x2F; 可以，const引用可以绑定到右值，这一句等价于： int temp &#x3D; 1; const int &amp;c &#x3D; temp;&#x2F;&#x2F; 四、右值引用&#x2F;&#x2F; 右值引用，就是引用右值，也就是说，必须绑定到右值。&#x2F;&#x2F; &amp;&amp;： 希望用右值引用来绑定一些即将销毁或者是一些临时的对象上int&amp;&amp; refrightvalue2 &#x3D; 10;  &#x2F;&#x2F; 右值引用可以理解成为一个对象的名字&#x2F;&#x2F; 总结：绑定到左值上的引用，一般不能绑定到右值，反之同理string str &#x3D; &quot;Bin&quot;;string&amp; s &#x3D; str;&#x2F;&#x2F; 可以，左值引用绑定左值&#x2F;&#x2F; string&amp; s2 &#x3D; &quot;Bin&quot;;&#x2F;&#x2F; 不可以，左值引用不能绑定到临时变量，临时变量被系统当做右值const string&amp; s3 &#x3D; &quot;Bin&quot;;&#x2F;&#x2F; 可以，系统创建了一个临时变量，然后绑定到左值引用s3上去&#x2F;&#x2F; const引用不但可以绑定到右值，还可以执行到string的隐式类型转换并将所得的值放到string临时变量中&#x2F;&#x2F; string &amp;&amp;s4 &#x3D; str;&#x2F;&#x2F; 不可以，右值不能绑定到左值string&amp;&amp; s4 &#x3D; &quot;Bin&quot;;&#x2F;&#x2F; 可以，绑定到一个临时变量，临时变量的值为: Binint m &#x3D; 10;int&amp; m1 &#x3D; m;&#x2F;&#x2F; 可以，左值引用绑定左值&#x2F;&#x2F;int&amp;&amp; m2 &#x3D; m;&#x2F;&#x2F; 不可以，不能将右值绑定到左值上int&amp;&amp; m3 &#x3D; m * 100;&#x2F;&#x2F; 可以， i*100 是右值，右值引用能绑定到右值上const int&amp;&amp; m4 &#x3D; m * 100;   &#x2F;&#x2F; 可以，邦定到右值上&#x2F;&#x2F; 总结：&#x2F;&#x2F; 1、返回左值引用的函数，连同赋值，下标，解引用和前置递增减运算符(--i)，都是返回左值表达式的例子&#x2F;&#x2F; 2、返回非引用类型的函数，连同算术，关系，位以及后置递增减运算符(i--),都生成右值，不能将左值引用绑定到这类表达式上&#x2F;&#x2F; 解释一下i++ 和 ++i&#x2F;&#x2F; ++i 左值表达式，  首先给变量i+1  然后返回i本身&#x2F;&#x2F;  (++i) &#x3D; 99   i被赋值为99， 先i &#x3D; i+1 然后 i &#x3D; 99&#x2F;&#x2F; i++ 右值表达式&#x2F;&#x2F; i++ 先产生一个临时变量temp， 记录i(_temp &#x3D; i)用来使用，再给i+1 ,接着返回这个临时变量&#x2F;&#x2F; (i++) &#x3D; 99;    语法错误int i &#x3D; 1;int&amp;&amp; r1 &#x3D; i++;&#x2F;&#x2F;成功绑定右值。但是此后r1的值和i没有关系。&#x2F;&#x2F;i +&#x3D;5;&#x2F;&#x2F;int &amp;r2 &#x3D; i++;&#x2F;&#x2F;不可以,不能绑到右值表达式上去int &amp;r3 &#x3D; ++i;  &#x2F;&#x2F;r3绑到i，r3就变成i的别名了。&#x2F;&#x2F;i +&#x3D; 5;&#x2F;&#x2F;int &amp;&amp;r4&#x3D; ++i; &#x2F;不可以,右值不能绑定左值表达式。&#x2F;&#x2F;重点强调:&#x2F;&#x2F; (1)rl虽然是右值引用（绑定到了右值)，但是r1本身它是左值〈你要把rl看成一个变量)。因为它在&#x3D;左边呆着int&amp; r5 &#x3D; r1;  &#x2F;&#x2F;r1是左值。&#x2F;&#x2F;int &amp;&amp;r6 &#x3D; r1;&#x2F;&#x2F; (2）所有变量，看成左值。因为他们是有地址的。而且你用右值引用也绑定不上。&#x2F;&#x2F;int &amp;&amp;r11 &#x3D; i;&#x2F;&#x2F;失败。&#x2F;&#x2F; (3）任何函数里边的形参都是左值。void f(int i, int &amp;&amp;w) :w是右值引用，但w本身是左值。&#x2F;&#x2F; (4）临时对象都是右值。下节详细讲解临时对象。&#x2F;&#x2F; (4.1) 右值引用的目的&#x2F;&#x2F; (a) c++11引入， &amp;&amp;，代表一种新的数据类型&#x2F;&#x2F; (b) 提高程序的运行效率，把拷贝对象变成移动对象，提升程序运行效率(在对象拷贝的过程中&#x2F;&#x2F;      会将原对象的成员变量依次的拷贝到新的对象中去，但我们利用引用的方式将原对象的内存直接给新对象&#x2F;&#x2F;降低了内存的消耗。)&#x2F;&#x2F; (c) 移动对象如何发生  &amp;&amp; (应付移动构造函数，应付移动赋值运算符用的)&#x2F;&#x2F;&#x2F;&#x2F; 五、std::move函数&#x2F;&#x2F; c++11标准库中的新函数&#x2F;&#x2F; 由于在程序中可能与同名的move函数发生冲突，所以建议在使用的时候： std::move()&#x2F;&#x2F; 实际上这个函数根本上就没有移动的操作&#x2F;&#x2F; 作用： 将一个左值，强制转换为一个右值，带来的结果就是一个右值可以绑定上去&#x2F;&#x2F; 注意： 在使用了std::move(n) 之后，后续就不要再使用n了int n &#x3D; 10;&#x2F;&#x2F;int&amp;&amp; ri &#x3D; n;  &#x2F;&#x2F; 错误，n是左值，无法绑定到右值引用上int&amp;&amp; ri &#x3D; std::move(n);&#x2F;&#x2F; 可以,将n转换为右值，然后绑定到右值的引用上n &#x3D; 20;&#x2F;&#x2F; ri 和 i 表示同一块地址string bin &#x3D; &quot;BinBin&quot;;string de &#x3D; std::move(bin);&#x2F;&#x2F; 执行上面两条语句之后，bin内容变为空，de内容为”Binbin&quot;,但是注意这里不是move转移的操作&#x2F;&#x2F; 而是在这个过程中执行了string中的移动构造函数&#x2F;&#x2F; 六、左值右值总结说明return 0;&#125;</code></pre><h3 id="一、RTTI是什么？"><a href="#一、RTTI是什么？" class="headerlink" title="一、RTTI是什么？"></a>一、RTTI是什么？</h3><p><a href>更多内容</a></p></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+          <category> 编程基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>(C++进阶09)-类-RTTI-dynamic_cast-typeid</title>
       <link href="/2023/081816159.html"/>
       <url>/2023/081816159.html</url>

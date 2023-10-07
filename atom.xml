@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2023-08-19T07:29:34.682Z</updated>
+  <updated>2023-10-07T12:10:50.799Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -17,11 +17,108 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux-C++通信架构实战chap2-环境搭建</title>
+    <link href="http://binbin0613.github.io/2023/100716162.html"/>
+    <id>http://binbin0613.github.io/2023/100716162.html</id>
+    <published>2023-10-07T11:59:59.280Z</published>
+    <updated>2023-10-07T12:10:50.799Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h2 id=&quot;Linux-C-通信架构实战chap2-环境搭建：&quot;&gt;&lt;a href=&quot;#Linux-C-通信架构实战chap2-环境搭建：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
+    
+    <category term="通信架构实战" scheme="http://binbin0613.github.io/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="linux" scheme="http://binbin0613.github.io/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/linux/"/>
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
+    
+    <category term="通信架构实战" scheme="http://binbin0613.github.io/tags/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="异常处理" scheme="http://binbin0613.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-C++通信架构实战chap1-课程介绍</title>
+    <link href="http://binbin0613.github.io/2023/090716161.html"/>
+    <id>http://binbin0613.github.io/2023/090716161.html</id>
+    <published>2023-09-07T11:28:09.991Z</published>
+    <updated>2023-10-07T11:59:44.732Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h2 id=&quot;Linux-C-通信架构实战chap1-课程介绍：&quot;&gt;&lt;a href=&quot;#Linux-C-通信架构实战chap1-课程介绍：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
+    
+    <category term="通信架构实战" scheme="http://binbin0613.github.io/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="linux" scheme="http://binbin0613.github.io/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/linux/"/>
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
+    
+    <category term="通信架构实战" scheme="http://binbin0613.github.io/tags/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>(C++进阶10)-类-左右值-左右值引用-move</title>
+    <link href="http://binbin0613.github.io/2023/081916160.html"/>
+    <id>http://binbin0613.github.io/2023/081916160.html</id>
+    <published>2023-08-19T09:44:13.683Z</published>
+    <updated>2023-09-02T08:16:58.978Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+
+&lt;h2 id=&quot;C-进阶10：类-左右值-左右值引用-move&quot;&gt;&lt;a href=&quot;#C-进阶10：类-左右值-左右值引用-move&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
+    
+    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>(C++进阶09)-类-RTTI-dynamic_cast-typeid</title>
     <link href="http://binbin0613.github.io/2023/081816159.html"/>
     <id>http://binbin0613.github.io/2023/081816159.html</id>
     <published>2023-08-18T14:20:17.467Z</published>
-    <updated>2023-08-19T07:29:34.682Z</updated>
+    <updated>2023-08-19T09:43:45.570Z</updated>
     
     
       
@@ -501,93 +598,6 @@
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
 
 &lt;h2 id=&quot;C-基础04：数组&quot;&gt;&lt;a href=&quot;#C-基础04：数组&quot; class=&quot;headerlink&quot; title=&quot;C++基础04：数组&quot;&gt;&lt;/a&gt;C++基础04：数组&lt;/h2&gt;&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
-    
-    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(C++基础03)-程序的基本结构和语句</title>
-    <link href="http://binbin0613.github.io/2023/073116142.html"/>
-    <id>http://binbin0613.github.io/2023/073116142.html</id>
-    <published>2023-07-31T12:03:21.677Z</published>
-    <updated>2023-08-01T10:10:31.818Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础03：程序的基本结构和语句&quot;&gt;&lt;a href=&quot;#C-基础03：程序的基本结构和语句&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
-    
-    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(C++基础02)-数据类型，运算符，表达式</title>
-    <link href="http://binbin0613.github.io/2023/073116141.html"/>
-    <id>http://binbin0613.github.io/2023/073116141.html</id>
-    <published>2023-07-31T11:10:31.722Z</published>
-    <updated>2023-08-01T02:17:02.547Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础02：数据类型&quot;&gt;&lt;a href=&quot;#C-基础02：数据类型&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
-    
-    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(C++基础01)-安装环境及C++简介</title>
-    <link href="http://binbin0613.github.io/2023/073116140.html"/>
-    <id>http://binbin0613.github.io/2023/073116140.html</id>
-    <published>2023-07-31T11:07:19.547Z</published>
-    <updated>2023-07-31T12:02:46.690Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-的发展历史&quot;&gt;&lt;a href=&quot;#C-的发展历史&quot; class=&quot;headerlink&quot; title=&quot;C++的发展历史&quot;&gt;&lt;/a&gt;C++的发展历史&lt;/h2&gt;&lt;h3 id=&quot;一、&quot;&gt;&lt;a</summary>
         
       
     
