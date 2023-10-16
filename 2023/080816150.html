@@ -6,13 +6,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++代码小技巧), Software Engineer">
     <meta name="description" content="
-
-C++代码小技巧一、计算代码运行时间（1）常用的计算代码运行时间方式
+¶C++代码小技巧
+¶一、计算代码运行时间
+（1）常用的计算代码运行时间方式
 #include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;time.h&amp;gt;
  
 clock_t start, finish;
-double ti">
+double">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -449,8 +450,9 @@ double ti">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-代码小技巧"><a href="#C-代码小技巧" class="headerlink" title="C++代码小技巧"></a>C++代码小技巧</h2><h4 id="一、计算代码运行时间"><a href="#一、计算代码运行时间" class="headerlink" title="一、计算代码运行时间"></a>一、计算代码运行时间</h4><p>（1）常用的计算代码运行时间方式</p>
+<h2 id="C-代码小技巧"><a class="header-anchor" href="#C-代码小技巧">¶</a>C++代码小技巧</h2>
+<h4 id="一、计算代码运行时间"><a class="header-anchor" href="#一、计算代码运行时间">¶</a>一、计算代码运行时间</h4>
+<p>（1）常用的计算代码运行时间方式</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;stdio.h&gt;
 #include &lt;time.h&gt;
  
@@ -465,7 +467,6 @@ int main()&#123;
     times &#x3D; (double)(finish - start)&#x2F;CLOCKS_PER_SEC;
     printf(&quot;times:%f\n&quot;, times);
 &#125;</code></pre>
-
 <p>（2）高精度计算代码运行时间方式</p>
 <p>这可能是当今测量墙壁时间的最佳，最便捷的方法，但仅在C ++ 11和更高版本上可用。如果您的项目/编译器不支持C ++ 11，则需要本文列出的其他选项之一。</p>
 <p>该<code>&lt;chrono&gt;</code>库可以访问您机器中的几个不同的时钟，每个时钟都有不同的用途和特性。如果需要，您可以在<a href="https://link.zhihu.com/?target=https%3A//en.cppreference.com/w/cpp/chrono">此处</a>获取有关每种时钟的更多详细信息。但是，除非您确实需要其他时钟，否则我建议只使用<code>high_resolution_clock</code>。该时钟使用的是最高分辨率的时钟，因此对大多数人来说可能就足够了。使用方法如下：</p>
@@ -481,12 +482,11 @@ int main() &#123;
 	printf(&quot;Time measured: %.5f seconds.\n&quot;, elapsed.count() * 1e-9);
 	return 0;
 &#125;</code></pre>
-
 <p>[更多](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/349949616">在C / C ++中测量执行时间的8种方法 - 知乎 (zhihu.com)</a>)</p>
-<h4 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h4><p>（1）</p>
+<h4 id="二、"><a class="header-anchor" href="#二、">¶</a>二、</h4>
+<p>（1）</p>
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>

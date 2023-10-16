@@ -6,11 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶08)-类-重载运算法-派生类-析构函数, Software Engineer">
     <meta name="description" content="
-
-C++进阶08：类-重载运算法-派生类-析构函数#include&amp;lt;iostream&amp;gt;
+¶C++进阶08：类-重载运算法-派生类-析构函数
+#include&amp;lt;iostream&amp;gt;
 #include &amp;quot;temp10_类_time.h&amp;quot;
 
-#include &amp;quot;extends_human.h&amp;">
+#include &amp;quot;extends_human.h">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -443,8 +443,8 @@ C++进阶08：类-重载运算法-派生类-析构函数#include&amp;lt;iostream
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-进阶08：类-重载运算法-派生类-析构函数"><a href="#C-进阶08：类-重载运算法-派生类-析构函数" class="headerlink" title="C++进阶08：类-重载运算法-派生类-析构函数"></a>C++进阶08：类-重载运算法-派生类-析构函数</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+<h2 id="C-进阶08：类-重载运算法-派生类-析构函数"><a class="header-anchor" href="#C-进阶08：类-重载运算法-派生类-析构函数">¶</a>C++进阶08：类-重载运算法-派生类-析构函数</h2>
+<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;temp10_类_time.h&quot;
 
 #include &quot;extends_human.h&quot;
@@ -596,9 +596,6 @@ int main() &#123;
 
 	return 0;
 &#125;</code></pre>
-
-
-
 <p>myTime.h</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#ifndef __MYTIME__
 #define __MYTIME__
@@ -662,7 +659,6 @@ public:
 &#125;;
 
 #endif</code></pre>
-
 <p>myTime.cpp</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;temp10_类_time.h&quot;
@@ -734,7 +730,6 @@ myTime&amp; myTime::operator&#x3D;(const myTime&amp; tempObj) &#123;
 myTime::~myTime() &#123;
 	std::cout &lt;&lt; &quot;调用了析构函数&quot; &lt;&lt; std::endl;
 &#125;</code></pre>
-
 <p><strong>继承关系的类</strong></p>
 <p>Human.h</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#pragma once
@@ -767,7 +762,6 @@ class Human &#123;
     void funcProt();
 &#125;;
 #endif</code></pre>
-
 <p><strong>Human.cpp</strong></p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include &quot;extends_man.h&quot;
 #include&lt;iostream&gt;
@@ -795,7 +789,6 @@ Man::~Man() &#123;
 void Man::manFunc() &#123;
 	std::cout &lt;&lt; &quot;子类中有，父类中没有的方法&quot; &lt;&lt; std::endl;
 &#125;</code></pre>
-
 <p><strong>man.h</strong></p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#pragma once
 #include&lt;iostream&gt;
@@ -820,7 +813,6 @@ private:
 &#125;;
 
 #endif</code></pre>
-
 <p><strong>man.cpp</strong></p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include &quot;extends_man.h&quot;
 #include&lt;iostream&gt;
@@ -848,10 +840,8 @@ Man::~Man() &#123;
 void Man::manFunc() &#123;
 	std::cout &lt;&lt; &quot;子类中有，父类中没有的方法&quot; &lt;&lt; std::endl;
 &#125;</code></pre>
-
-
-
-<h3 id="一、重载运算符"><a href="#一、重载运算符" class="headerlink" title="一、重载运算符"></a>一、重载运算符</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 赋值运算符重载
+<h3 id="一、重载运算符"><a class="header-anchor" href="#一、重载运算符">¶</a>一、重载运算符</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 赋值运算符重载
 &#x2F;&#x2F; 在Time.cpp文件中实现，所以需要使用myTime::
 &#x2F;&#x2F; 重载运算符&#x3D; 比较的是两个myTime类是否完全相等，参数是一个myTime的引用类型，加上const表示不会修改参与运算的类的内容
 myTime&amp; myTime::operator&#x3D;(const myTime&amp; tempObj) &#123;
@@ -862,11 +852,10 @@ myTime&amp; myTime::operator&#x3D;(const myTime&amp; tempObj) &#123;
 	&#x2F;&#x2F; 返回的是对象本身，所有使用return *this
 	return *this;
 &#125;</code></pre>
-
-
-
 <blockquote>
-<p>重载： 我们需要写一个成员函数，这个成员函数名“operator==”, 这个成员函数体里面，需要写逻辑判断两个对象是否相等<br>重载运算符： 本质上是一个函数，整个函数的正式名字： opertor + 运算符<br>重载运算符是一个函数，它也有返回值类型和成员列表：参数就是参与运算的对象</p>
+<p>重载： 我们需要写一个成员函数，这个成员函数名“operator==”, 这个成员函数体里面，需要写逻辑判断两个对象是否相等<br>
+重载运算符： 本质上是一个函数，整个函数的正式名字： opertor + 运算符<br>
+重载运算符是一个函数，它也有返回值类型和成员列表：参数就是参与运算的对象</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">myTime myTime3;					&#x2F;&#x2F; 调用了构造函数
 myTime myTime4 &#x3D; &#123; myTime3 &#125;;	&#x2F;&#x2F; 调用了拷贝构造函数 myTime::myTime(const myTime&amp; tempTime, int a)
@@ -881,22 +870,32 @@ myTime6 &#x3D; myTime3;				&#x2F;&#x2F; 赋值运算符 ： 拷贝赋值运算�
 		std::cout &lt;&lt; &quot;调用了赋值运算符重载&#x3D;&quot; &lt;&lt; std::endl;
 		return *this;	&#x2F;&#x2F; 把自身返回回去 
 	&#125;*&#x2F;</code></pre>
-
-<h3 id="二、析构函数"><a href="#二、析构函数" class="headerlink" title="二、析构函数:"></a>二、析构函数:</h3><p>相对于构造函数： 对象在销毁的时候，会调用析构函数</p>
+<h3 id="二、析构函数"><a class="header-anchor" href="#二、析构函数">¶</a>二、析构函数:</h3>
+<p>相对于构造函数： 对象在销毁的时候，会调用析构函数</p>
 <blockquote>
-<p>（1） 如果我们不写析构函数，编译器会给定一个默认的析构函数，默认的析构函数为空，没干啥事<br>（2） 析构函数也是类的成员函数，没有返回值，没有参数，不会被重载，只能有唯一一个析构函数<br>（3） 在调出main函数时，对象会调用析构函数，上面创建了6个对象，所以上述会调用6次析构函数<br>（4） 一般而言对象内成员变量，先定义先初始化，先定义后销毁</p>
+<p>（1） 如果我们不写析构函数，编译器会给定一个默认的析构函数，默认的析构函数为空，没干啥事<br>
+（2） 析构函数也是类的成员函数，没有返回值，没有参数，不会被重载，只能有唯一一个析构函数<br>
+（3） 在调出main函数时，对象会调用析构函数，上面创建了6个对象，所以上述会调用6次析构函数<br>
+（4） 一般而言对象内成员变量，先定义先初始化，先定义后销毁</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 使用new delete创建和销毁对象,以下的代码必须要成对出现
 myTime *myTime7 &#x3D; new myTime();
 delete myTime7;		&#x2F;&#x2F; 使用delete，系统会调用析构函数</code></pre>
-<p>对比与总结：<br><strong>构造函数</strong>： 做了两件事情： 函数体之前（初始化列表） 和  构造函数体内<br><strong>析构函数</strong>： 做了两件事情： 函数体之内 代码块（销毁其他内容）   和  函数体之后 销毁对象</p>
-<h3 id="三、派生类"><a href="#三、派生类" class="headerlink" title="三、派生类"></a>三、派生类</h3><p>类之间存在层次关系： 父类（基类/超类），子类<br><strong>继承</strong>： 面向对象的核心思想之一</p>
+<p>对比与总结：<br>
+<strong>构造函数</strong>： 做了两件事情： 函数体之前（初始化列表） 和  构造函数体内<br>
+<strong>析构函数</strong>： 做了两件事情： 函数体之内 代码块（销毁其他内容）   和  函数体之后 销毁对象</p>
+<h3 id="三、派生类"><a class="header-anchor" href="#三、派生类">¶</a>三、派生类</h3>
+<p>类之间存在层次关系： 父类（基类/超类），子类<br>
+<strong>继承</strong>： 面向对象的核心思想之一</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">class Man :public Human&#123;&#125;  表示man是human的子类
 class 子类名  : 继承方式(public&#x2F;private&#x2F;protected) 父类名 &#123;&#125;</code></pre>
-
-<h3 id="四、派生类对象定义时，调用构造函数的顺序"><a href="#四、派生类对象定义时，调用构造函数的顺序" class="headerlink" title="四、派生类对象定义时，调用构造函数的顺序"></a>四、派生类对象定义时，调用构造函数的顺序</h3><h3 id="重点：-先调用父类的构造函数，再调用子类的构造函数"><a href="#重点：-先调用父类的构造函数，再调用子类的构造函数" class="headerlink" title="重点： 先调用父类的构造函数，再调用子类的构造函数"></a>重点： 先调用父类的构造函数，再调用子类的构造函数</h3><h3 id="五、三种访问权限：-public-private-protected"><a href="#五、三种访问权限：-public-private-protected" class="headerlink" title="五、三种访问权限： public/private/protected"></a>五、三种访问权限： public/private/protected</h3><p><strong>建议上网查询</strong></p>
+<h3 id="四、派生类对象定义时，调用构造函数的顺序"><a class="header-anchor" href="#四、派生类对象定义时，调用构造函数的顺序">¶</a>四、派生类对象定义时，调用构造函数的顺序</h3>
+<h3 id="重点：-先调用父类的构造函数，再调用子类的构造函数"><a class="header-anchor" href="#重点：-先调用父类的构造函数，再调用子类的构造函数">¶</a>重点： 先调用父类的构造函数，再调用子类的构造函数</h3>
+<h3 id="五、三种访问权限：-public-private-protected"><a class="header-anchor" href="#五、三种访问权限：-public-private-protected">¶</a>五、三种访问权限： public/private/protected</h3>
+<p><strong>建议上网查询</strong></p>
 <p><strong>查询</strong>： 父类中修饰的变量，被子类修饰继承，那么子类的访问权限是什么？</p>
-<h3 id="六、基类指针，派生类指针"><a href="#六、基类指针，派生类指针" class="headerlink" title="六、基类指针，派生类指针"></a>六、基类指针，派生类指针</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 传统的new对象的方式
+<h3 id="六、基类指针，派生类指针"><a class="header-anchor" href="#六、基类指针，派生类指针">¶</a>六、基类指针，派生类指针</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 传统的new对象的方式
 &#x2F;&#x2F;Human* h1 &#x3D; new Human();
 Man* m1 &#x3D; new Man();
 &#x2F;&#x2F; 新玩法： 父类指针new一个子类对象
@@ -905,21 +904,25 @@ Human* h2 &#x3D; new Man();
 &#x2F;&#x2F;delete h1;
 delete m1;
 delete h2;</code></pre>
-
-
-
-<h3 id="七、虚函数"><a href="#七、虚函数" class="headerlink" title="七、虚函数"></a>七、虚函数</h3><p><strong>具体需求</strong>： 我们声明一个父类的指针，使其能够访问父类的方法和子类的同名方法；</p>
-<p><strong>处理方式</strong>： 在父类中，将这个同名函数使用virtual关键字修饰，声明为虚函数<br>只要在父类中被声明为虚函数，那么在子类中不管加不加virtual，都是虚函数</p>
+<h3 id="七、虚函数"><a class="header-anchor" href="#七、虚函数">¶</a>七、虚函数</h3>
+<p><strong>具体需求</strong>： 我们声明一个父类的指针，使其能够访问父类的方法和子类的同名方法；</p>
+<p><strong>处理方式</strong>： 在父类中，将这个同名函数使用virtual关键字修饰，声明为虚函数<br>
+只要在父类中被声明为虚函数，那么在子类中不管加不加virtual，都是虚函数</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; new的是那个类（子类或者父类），后续调用的就是那个类的同名方法
 Human *h3 &#x3D; new Man();	&#x2F;&#x2F; 创建对象时，new的是哪种对象，访问的同名函数就是哪种对象的虚函数
 h3-&gt;eat();				&#x2F;&#x2F; 男人吃饭，调用的是子类的虚函数eat  ,如果在父类中不是定义的虚函数，则只能为&quot;人类需要吃饭&quot;
 delete h3;</code></pre>
-
 <blockquote>
-<p>override ： 用于在子类当中修饰虚函数的，表示对父类中函数的重写： void eat() override;<br>final：     用于对父类函数的修饰，被final修饰的父类函数无法被子类重写<br>调用函数是 “动态绑定”的，动态： 只有程序执行的时候才知道调用的是那个子类的eat()函数</p>
+<p>override ： 用于在子类当中修饰虚函数的，表示对父类中函数的重写： void eat() override;<br>
+final：     用于对父类函数的修饰，被final修饰的父类函数无法被子类重写<br>
+调用函数是 “动态绑定”的，动态： 只有程序执行的时候才知道调用的是那个子类的eat()函数</p>
 </blockquote>
-<h3 id="八、多态性"><a href="#八、多态性" class="headerlink" title="八、多态性"></a>八、多态性</h3><p><strong>多态性是 只对虚函数来说的</strong><br>    <strong>多态性</strong>： 体现在具有继承关系的父类和子类之间的，子类的重写的成员函数eat() 同时父类把eat声明为virtual<br>    程序运行时，通过父类的指针，动态绑定到父类指针上的对象（子类对象或父类对象，然后系统内部会插叙一个虚函数表，找到函数eat的入口地址，调用子类或父类的eat()，这就是运行时的多态性</p>
-<h3 id="九、纯虚函数"><a href="#九、纯虚函数" class="headerlink" title="九、纯虚函数"></a>九、纯虚函数</h3><p><strong>纯虚函数</strong>：在基类中声明的虚函数，在父类中没有定义，但要求所有派生类都要定义该虚函数自己的实现方法</p>
+<h3 id="八、多态性"><a class="header-anchor" href="#八、多态性">¶</a>八、多态性</h3>
+<p><strong>多态性是 只对虚函数来说的</strong><br>
+<strong>多态性</strong>： 体现在具有继承关系的父类和子类之间的，子类的重写的成员函数eat() 同时父类把eat声明为virtual<br>
+程序运行时，通过父类的指针，动态绑定到父类指针上的对象（子类对象或父类对象，然后系统内部会插叙一个虚函数表，找到函数eat的入口地址，调用子类或父类的eat()，这就是运行时的多态性</p>
+<h3 id="九、纯虚函数"><a class="header-anchor" href="#九、纯虚函数">¶</a>九、纯虚函数</h3>
+<p><strong>纯虚函数</strong>：在基类中声明的虚函数，在父类中没有定义，但要求所有派生类都要定义该虚函数自己的实现方法</p>
 <p>基类中的实现方法是在基类中的虚函数声明中（没有函数体，在后面加上 = 0）： virtual void eat() = 0</p>
 <blockquote>
 <p>注意：  一旦一个类中有了纯虚函数，那么你就不能生成这个类的对象了，这个类就是  抽象类</p>
@@ -931,29 +934,37 @@ delete h3;</code></pre>
 &#x2F;&#x2F; 但是可以生成子类的对象，并且调用子类的纯虚函数
 Human* h4 &#x3D; new Man();	
 h4-&gt;eat();</code></pre>
-
-<h3 id="十、虚析构函数-基类的析构函数一般写成虚函数"><a href="#十、虚析构函数-基类的析构函数一般写成虚函数" class="headerlink" title="十、虚析构函数 : 基类的析构函数一般写成虚函数"></a>十、虚析构函数 : 基类的析构函数一般写成虚函数</h3><pre class="language-c++" data-language="c++"><code class="language-c++">Human* pman &#x3D; new Man();
+<h3 id="十、虚析构函数-基类的析构函数一般写成虚函数"><a class="header-anchor" href="#十、虚析构函数-基类的析构函数一般写成虚函数">¶</a>十、虚析构函数 : 基类的析构函数一般写成虚函数</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">Human* pman &#x3D; new Man();
 delete pman;					&#x2F;&#x2F; 坏事了，没有调用子类的析构函数
 &#x2F;&#x2F; 结论： 在用基类指针 new 子类的对象时，在delete的时候，系统不会调用派生类的析构函数，存在问题
 &#x2F;&#x2F; 解决问题： 将父类的析构函数定义为虚函数----养成习惯</code></pre>
-
 <blockquote>
-<p>记住： 在public继承关系中，基类对派生类及其对象的操作，智能影响到从基类继承下来的成员<br>如果想要把基类对非继承成员进行操作，则也要把基类的这个函数定义为虚函数，析构函数也是如此<br>另外就是，基类中析构函数的虚属性也会被继承给子类，这样的话子类中的析构函数也就成为了需函数，虽然名字不同</p>
+<p>记住： 在public继承关系中，基类对派生类及其对象的操作，智能影响到从基类继承下来的成员<br>
+如果想要把基类对非继承成员进行操作，则也要把基类的这个函数定义为虚函数，析构函数也是如此<br>
+另外就是，基类中析构函数的虚属性也会被继承给子类，这样的话子类中的析构函数也就成为了需函数，虽然名字不同</p>
 </blockquote>
-<p>delcte phuman的时候，肯定是要调用父类的析构函数，但在父类析构函数中它要是想要调用子类Men的祈构函数，那么<br>Human这个类中的析构函数就要声明为virtual的，也就是说C++ 中为了获得运行时的多态行为，所调用的成员函的必须得是virtual的</p>
-<p> 所以大家要记住结论:</p>
+<p>delcte phuman的时候，肯定是要调用父类的析构函数，但在父类析构函数中它要是想要调用子类Men的祈构函数，那么<br>
+Human这个类中的析构函数就要声明为virtual的，也就是说C++ 中为了获得运行时的多态行为，所调用的成员函的必须得是virtual的</p>
+<p>所以大家要记住结论:</p>
 <blockquote>
-<p>如果一个类，想要做“基类”，我们务必要把这个类的<strong>析构函数</strong>写成<strong>virtual析构函数</strong>;<br>只要基类的析构函数是虚函数，就能够保证我们delete基类指针时能够运行正确的析构函数版本;<br>—也就是能把所有的对象delete干净，不会造成内存泄漏<br>虚函数会增加内存的开销，类里面定义虚函数，编译器就会给这个类增加虚函数表，在这个表里存放虚函数的指针</p>
+<p>如果一个类，想要做“基类”，我们务必要把这个类的<strong>析构函数</strong>写成<strong>virtual析构函数</strong>;<br>
+只要基类的析构函数是虚函数，就能够保证我们delete基类指针时能够运行正确的析构函数版本;<br>
+—也就是能把所有的对象delete干净，不会造成内存泄漏<br>
+虚函数会增加内存的开销，类里面定义虚函数，编译器就会给这个类增加虚函数表，在这个表里存放虚函数的指针</p>
 </blockquote>
-<h3 id="十一、友元函数"><a href="#十一、友元函数" class="headerlink" title="十一、友元函数"></a>十一、友元函数</h3><p>因为friend 友元函数不属于类成员函数，所以不受public private protected的限制<br>在类的申明头文件中添加： friend void func();</p>
+<h3 id="十一、友元函数"><a class="header-anchor" href="#十一、友元函数">¶</a>十一、友元函数</h3>
+<p>因为friend 友元函数不属于类成员函数，所以不受public private protected的限制<br>
+在类的申明头文件中添加： friend void func();</p>
 <p><strong>总结：</strong> func() 是一个函数，通过声明为某个类的友元函数，它就可以访问这个类的所有成员，包括public protected private</p>
 <p>注意：</p>
 <blockquote>
-<p>(1) 友元关系不能被继承，<br>(2) 友元关系是单向的<br>(3) 友元关系没有传递性</p>
+<p>(1) 友元关系不能被继承，<br>
+(2) 友元关系是单向的<br>
+(3) 友元关系没有传递性</p>
 </blockquote>
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>

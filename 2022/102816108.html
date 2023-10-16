@@ -6,10 +6,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="图书管理系统3-实现分页查询的功能, Software Engineer">
     <meta name="description" content="
-
-Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;lt;dependency&gt;
+¶Quick Start
+¶一、后端完成相关的配置
+¶(1)、安装pageHelper的依赖
+&amp;lt;dependency&gt;
     &amp;lt;groupId&gt;com.github.pagehelper&amp;lt;/groupId&gt;
-    &amp;lt;ar">
+    &amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,20 +444,22 @@ Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="一、后端完成相关的配置"><a href="#一、后端完成相关的配置" class="headerlink" title="一、后端完成相关的配置"></a>一、后端完成相关的配置</h3><h5 id="1-、安装pageHelper的依赖"><a href="#1-、安装pageHelper的依赖" class="headerlink" title="(1)、安装pageHelper的依赖"></a>(1)、安装pageHelper的依赖</h5><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
+<h3 id="一、后端完成相关的配置"><a class="header-anchor" href="#一、后端完成相关的配置">¶</a>一、后端完成相关的配置</h3>
+<h5 id="1-、安装pageHelper的依赖"><a class="header-anchor" href="#1-、安装pageHelper的依赖">¶</a>(1)、安装pageHelper的依赖</h5>
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.github.pagehelper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>pagehelper-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.4.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
 <p><img src="/2022/102816108/pageHelper%E4%BE%9D%E8%B5%96.png" alt></p>
-<h5 id="2-、相关代码"><a href="#2-、相关代码" class="headerlink" title="(2)、相关代码"></a>(2)、相关代码</h5><p>UserController:</p>
+<h5 id="2-、相关代码"><a class="header-anchor" href="#2-、相关代码">¶</a>(2)、相关代码</h5>
+<p>UserController:</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">// 编写分页查询的功能</span>
 <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/page"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token class-name">Result</span> <span class="token class-name">UserPage</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token class-name">Result</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span>userService<span class="token punctuation">.</span><span class="token function">getUserPage</span><span class="token punctuation">(</span>userPageRequest<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>UserService:</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">getUsersList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -463,7 +467,6 @@ Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;
     <span class="token comment">// 分页查询user</span>
     <span class="token class-name">Object</span> <span class="token function">getUserPage</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>UserServiceImpl:</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">IUserService</span> <span class="token punctuation">&#123;</span>
@@ -485,7 +488,6 @@ Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">PageInfo</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span>users<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>UserMapper:</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">&#123;</span>
@@ -496,11 +498,13 @@ Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;
     <span class="token comment">// 通过参数进行条件查询：并且返回分页的效果</span>
     <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token function">selectUserByCondition</span><span class="token punctuation">(</span><span class="token class-name">UserPageRequest</span> userPageRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>User.xml:</p>
 <p><img src="/2022/102816108/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2xml.png" alt></p>
-<h3 id="二、前端代码"><a href="#二、前端代码" class="headerlink" title="二、前端代码"></a>二、前端代码</h3><h5 id="1-、分页插件的代码"><a href="#1-、分页插件的代码" class="headerlink" title="(1)、分页插件的代码"></a>(1)、分页插件的代码</h5><p><img src="/2022/102816108/%E5%89%8D%E7%AB%AF%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6.png" alt></p>
-<h5 id="2-、处理变化函数的代码"><a href="#2-、处理变化函数的代码" class="headerlink" title="(2)、处理变化函数的代码"></a>(2)、处理变化函数的代码</h5><pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<h3 id="二、前端代码"><a class="header-anchor" href="#二、前端代码">¶</a>二、前端代码</h3>
+<h5 id="1-、分页插件的代码"><a class="header-anchor" href="#1-、分页插件的代码">¶</a>(1)、分页插件的代码</h5>
+<p><img src="/2022/102816108/%E5%89%8D%E7%AB%AF%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6.png" alt></p>
+<h5 id="2-、处理变化函数的代码"><a class="header-anchor" href="#2-、处理变化函数的代码">¶</a>(2)、处理变化函数的代码</h5>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token comment">// fetch("http://localhost:9090/user/list").then(res => res.json()).then(res => &#123;</span>
     <span class="token comment">//   console.log(res);</span>
     <span class="token comment">//   this.tableData = res;</span>
@@ -540,9 +544,8 @@ Quick Start一、后端完成相关的配置(1)、安装pageHelper的依赖&amp;
     <span class="token keyword">this</span><span class="token punctuation">.</span>params<span class="token punctuation">.</span>pageNum <span class="token operator">=</span> pageNum<span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p><img src="/2022/102816108/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C.png" alt></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Y4y1N7Sw/?p=4&spm_id_from=pageDriver&vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12Y4y1N7Sw/?p=4&amp;spm_id_from=pageDriver&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">视频教程</a></p>
 </font>
                 
             </div>

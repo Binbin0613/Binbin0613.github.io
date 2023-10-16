@@ -6,14 +6,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶06)-类-初始化-构造函数-对象, Software Engineer">
     <meta name="description" content="
-
-C++进阶06：类-初始化-构造函数-对象class Time &amp;#123;
+¶C++进阶06：类-初始化-构造函数-对象
+class Time &amp;#123;
 public:
 	int Hour;
 	int Minute;
 	int Second;
 	&amp;#x2F;&amp;#x2F; 成员函数
-	void initTime(">
+	void initTime">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,8 +446,8 @@ public:
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-进阶06：类-初始化-构造函数-对象"><a href="#C-进阶06：类-初始化-构造函数-对象" class="headerlink" title="C++进阶06：类-初始化-构造函数-对象"></a>C++进阶06：类-初始化-构造函数-对象</h2><pre class="language-c++" data-language="c++"><code class="language-c++">class Time &#123;
+<h2 id="C-进阶06：类-初始化-构造函数-对象"><a class="header-anchor" href="#C-进阶06：类-初始化-构造函数-对象">¶</a>C++进阶06：类-初始化-构造函数-对象</h2>
+<pre class="language-c++" data-language="c++"><code class="language-c++">class Time &#123;
 public:
 	int Hour;
 	int Minute;
@@ -482,14 +482,21 @@ public:
 	&#125;
 	explicit Time()&#123;&#125;
 &#125;;</code></pre>
-
-<h3 id="一、综述"><a href="#一、综述" class="headerlink" title="一、综述"></a>一、综述</h3><p> 类是我们自己定义的数据类型（新类型）</p>
-<h3 id="二、类基础"><a href="#二、类基础" class="headerlink" title="二、类基础"></a>二、类基础</h3><blockquote>
-<p>(1) 一个类就是用户自己定义的数据类型，可以将类视为一个命名空间，包含着（成员变量，成员函数）<br>(2) 一个类的构成： 成员变量，各种特殊用途的成员函数<br>(3) 访问这个类时，如果是类的对象，使用.来访问对象的成员，如果是指向对象的指向，使用-&gt;访问 </p>
-<p>(4) public成员提供的接口是暴露给外界的，private在外界无法使用<br>(5) struct 是成员默认为public的class<br>(6) class当中的成员默认是private的</p>
+<h3 id="一、综述"><a class="header-anchor" href="#一、综述">¶</a>一、综述</h3>
+<p>类是我们自己定义的数据类型（新类型）</p>
+<h3 id="二、类基础"><a class="header-anchor" href="#二、类基础">¶</a>二、类基础</h3>
+<blockquote>
+<p>(1) 一个类就是用户自己定义的数据类型，可以将类视为一个命名空间，包含着（成员变量，成员函数）<br>
+(2) 一个类的构成： 成员变量，各种特殊用途的成员函数<br>
+(3) 访问这个类时，如果是类的对象，使用.来访问对象的成员，如果是指向对象的指向，使用-&gt;访问</p>
+<p>(4) public成员提供的接口是暴露给外界的，private在外界无法使用<br>
+(5) struct 是成员默认为public的class<br>
+(6) class当中的成员默认是private的</p>
 <p>struct {…};  等价于 class{public:…};  但是不建议在程序中混淆使用</p>
 </blockquote>
-<h3 id="三、成员函数"><a href="#三、成员函数" class="headerlink" title="三、成员函数"></a>三、成员函数</h3><h3 id="四、对象的拷贝"><a href="#四、对象的拷贝" class="headerlink" title="四、对象的拷贝"></a>四、对象的拷贝</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 默认的情况下： 都是每个成员变量逐个进行拷贝
+<h3 id="三、成员函数"><a class="header-anchor" href="#三、成员函数">¶</a>三、成员函数</h3>
+<h3 id="四、对象的拷贝"><a class="header-anchor" href="#四、对象的拷贝">¶</a>四、对象的拷贝</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 默认的情况下： 都是每个成员变量逐个进行拷贝
 &#x2F;&#x2F; 调用的是拷贝构造函数
 &#x2F;&#x2F; 以下这几种赋值方式，拷贝后的对象，内存地址都不同
 &#x2F;&#x2F; 以下几种对象的创建和初始化方式没有调用构造函数，而是调用的“拷贝构造函数”
@@ -497,41 +504,49 @@ Time myTime2 &#x3D; mytime;
 Time myTime3(mytime);
 Time myTime4 &#x3D; &#123; mytime &#125;;
 Time myTime5&#123; mytime &#125;;</code></pre>
-
-<h3 id="五、私有成员"><a href="#五、私有成员" class="headerlink" title="五、私有成员"></a>五、私有成员</h3><p>私有成员在外不能够被访问，但是在类的成员函数内部，可以被访问和使用</p>
-<h3 id="六、构造函数"><a href="#六、构造函数" class="headerlink" title="六、构造函数"></a>六、构造函数</h3><p>在类中，有一种特殊的成员函数，“名字与类名相同”，在构建类的时候会被系统调用</p>
+<h3 id="五、私有成员"><a class="header-anchor" href="#五、私有成员">¶</a>五、私有成员</h3>
+<p>私有成员在外不能够被访问，但是在类的成员函数内部，可以被访问和使用</p>
+<h3 id="六、构造函数"><a class="header-anchor" href="#六、构造函数">¶</a>六、构造函数</h3>
+<p>在类中，有一种特殊的成员函数，“名字与类名相同”，在构建类的时候会被系统调用</p>
 <blockquote>
 <p>构造函数会被系统自动调用，可以理解成：构造函数的目的是初始化类对象的数据成员</p>
-<p>(1) 构造函数没有返回值<br>(2) 不能手动调用构造函数,否则编译会报错<br>(3) “构造函数必须声明为public”， 我们创建一个对象时，系统自动为什么调用了构造函数，说明它是public修饰的<br>       因为类缺省的成员是私有成员，必须声明构造函数是一个public的，否则无法直接创建该类的对象</p>
+<p>(1) 构造函数没有返回值<br>
+(2) 不能手动调用构造函数,否则编译会报错<br>
+(3) “构造函数必须声明为public”， 我们创建一个对象时，系统自动为什么调用了构造函数，说明它是public修饰的<br>
+因为类缺省的成员是私有成员，必须声明构造函数是一个public的，否则无法直接创建该类的对象</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">Time time &#x3D; Time(12, 12, 12); &#x2F;&#x2F; 创建类对象
 Time time2(12, 12, 12);
 Time time3 &#x3D; Time&#123; 12,12,12 &#125;;
 &#x2F;&#x2F;Time time4 &#x3D; &#123; 12,12,12 &#125;;	&#x2F;&#x2F; 加上explicit就不能了  不能进行隐式的类型转换
 Time time5&#123; 12,12,12 &#125;;</code></pre>
-
-<h3 id="七、函数的默认参数"><a href="#七、函数的默认参数" class="headerlink" title="七、函数的默认参数"></a>七、函数的默认参数</h3><blockquote>
-<p>(1)、 默认值智能放在函数的声明当中<br>(2)、 从有默认值的参数开始，后面的参数必须都要有默认值，下面的一行代码就不行，有默认值的参数必须放在后面<br>          // void myTime(int tempHour, int tempMinute = 10, int tempSecond)  -&gt; 不行<br>          // 需要变成void myTime(int tempHour , int tempSecond , int tempMinute = 10)<br>          // 创建对象的时候，myTime m = myTime(1,2);  两个参数即可，如果你给三个参数，就将那个默认值给替换了<br>(3)、 如果（2）中有一个默认参数，则创建参数只用给两个参数即可，但是某个构造函数只有两个参数时，系统会报错</p>
+<h3 id="七、函数的默认参数"><a class="header-anchor" href="#七、函数的默认参数">¶</a>七、函数的默认参数</h3>
+<blockquote>
+<p>(1)、 默认值智能放在函数的声明当中<br>
+(2)、 从有默认值的参数开始，后面的参数必须都要有默认值，下面的一行代码就不行，有默认值的参数必须放在后面<br>
+// void myTime(int tempHour, int tempMinute = 10, int tempSecond)  -&gt; 不行<br>
+// 需要变成void myTime(int tempHour , int tempSecond , int tempMinute = 10)<br>
+// 创建对象的时候，myTime m = myTime(1,2);  两个参数即可，如果你给三个参数，就将那个默认值给替换了<br>
+(3)、 如果（2）中有一个默认参数，则创建参数只用给两个参数即可，但是某个构造函数只有两个参数时，系统会报错</p>
 </blockquote>
-<h3 id="八，隐式转换-和-explicit"><a href="#八，隐式转换-和-explicit" class="headerlink" title="八，隐式转换 和 explicit"></a>八，隐式转换 和 explicit</h3><pre class="language-c++" data-language="c++"><code class="language-c++">Time t1 &#x3D; (10);				&#x2F;&#x2F; 调用的一个参数的构造函数
+<h3 id="八，隐式转换-和-explicit"><a class="header-anchor" href="#八，隐式转换-和-explicit">¶</a>八，隐式转换 和 explicit</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">Time t1 &#x3D; (10);				&#x2F;&#x2F; 调用的一个参数的构造函数
 Time t2 &#x3D; 10;				&#x2F;&#x2F; 含糊不清晰的写法，存在临时对象 或 隐式转换的问题
 funcTimeTestExplicit(10);	 &#x2F;&#x2F; 含糊不清晰的写法，存在临时对象 或 隐式转换的问题
 以上三种均能够编译通过，但是写法含糊不清</code></pre>
-
-
 <p>我们可以强制要求系统，不能做隐式类型转换，在类的构造函数声明中带 explicit，那么这个构造函数只能用于初始化和显式类型转换</p>
 <p>对于<strong>单参数的构造函数，一般都声明为explicit</strong>，除非有特殊的原因</p>
-<h3 id="九、构造函数的初始化列表"><a href="#九、构造函数的初始化列表" class="headerlink" title="九、构造函数的初始化列表"></a>九、构造函数的初始化列表</h3><p>构造函数的初始化列表： 写法比较专业</p>
+<h3 id="九、构造函数的初始化列表"><a class="header-anchor" href="#九、构造函数的初始化列表">¶</a>九、构造函数的初始化列表</h3>
+<p>构造函数的初始化列表： 写法比较专业</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">myTime::myTime(int tempHour, int tempMinute, int tempSecond)		&#x2F;&#x2F; 构造函数初始化列表
     :Hour(tempHour), Minute(tempMinute), Second(tempSecond),Millsecond(0) &#123;
         Hour &#x3D; tempHour;	&#x2F;&#x2F; 这种叫做赋予初始值
         ...  
 &#125;</code></pre>
-
-<p>值得注意的是： 在初始化列表中，哪个成员变量在类中先定义，哪个成员变量就会先被初始化<br>不要做的是： 用一个成员变量的值，给另一个成员变量赋值   : Hour(tempHour), Minute(Hour)  不得行，因为你不知道成员变量在类中哪个先定义哪个后定义，很容易出错</p>
+<p>值得注意的是： 在初始化列表中，哪个成员变量在类中先定义，哪个成员变量就会先被初始化<br>
+不要做的是： 用一个成员变量的值，给另一个成员变量赋值   : Hour(tempHour), Minute(Hour)  不得行，因为你不知道成员变量在类中哪个先定义哪个后定义，很容易出错</p>
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>

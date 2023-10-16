@@ -6,11 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Linux-C++通信架构实战chap2-环境搭建, Software Engineer">
     <meta name="description" content="
-
-Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
+¶Linux-C++通信架构实战chap2-环境搭建：
+一：windows下的vs2017安装
 		c盘空闲空间尽量不要少于30G。
 			a) 安装路径能设置到其他盘符（非c盘符），尽量安装到其他盘；
-			b) 安装时只勾选和c++有关">
+			b) 安装时只勾选和c++有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -417,14 +417,14 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-07
+                    2023-10-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    769
+                    894
                 </div>
                 
 
@@ -455,8 +455,8 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="Linux-C-通信架构实战chap2-环境搭建："><a href="#Linux-C-通信架构实战chap2-环境搭建：" class="headerlink" title="Linux-C++通信架构实战chap2-环境搭建："></a>Linux-C++通信架构实战chap2-环境搭建：</h2><pre class="language-c++" data-language="c++"><code class="language-c++">一：windows下的vs2017安装
+<h2 id="Linux-C-通信架构实战chap2-环境搭建："><a class="header-anchor" href="#Linux-C-通信架构实战chap2-环境搭建：">¶</a>Linux-C++通信架构实战chap2-环境搭建：</h2>
+<pre class="language-c++" data-language="c++"><code class="language-c++">一：windows下的vs2017安装
 		c盘空闲空间尽量不要少于30G。
 			a) 安装路径能设置到其他盘符（非c盘符），尽量安装到其他盘；
 			b) 安装时只勾选和c++有关的选项，切不可多勾选；
@@ -509,12 +509,27 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
 	&#x2F;&#x2F;二：
 	&#x2F;&#x2F;samba服务；不采用
 	&#x2F;&#x2F;通过虚拟机，把一个windows下的目录共享。让linux可以访问这个目录；</code></pre>
+<h3 id="、相关问题"><a class="header-anchor" href="#、相关问题">¶</a>#、相关问题</h3>
+<h4 id="1、解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】"><a class="header-anchor" href="#1、解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】">¶</a>1、解决 Linux 系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX is not in the sudoers file. This incident will be reported.】</h4>
+<p>[参考文献](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143388819">解决 Linux 系统，出现&quot;不在sudoers文件中，此事将被报告&quot;的问题 - 知乎 (zhihu.com)</a>)</p>
+<h4 id="2、主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】"><a class="header-anchor" href="#2、主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】">¶</a>2、主机与虚拟机之间的共享文件夹识别失败【/mnt/hgfs】</h4>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43920548">主机与虚拟机共享文件</a></p>
+<h4 id="3、linux安装出现错误：-apt-command-not-found"><a class="header-anchor" href="#3、linux安装出现错误：-apt-command-not-found">¶</a>3、linux安装出现错误：[apt : command not found]</h4>
+<pre class="language-bash" data-language="bash"><code class="language-bash">Linux系统分为两种：
+	<span class="token number">1</span>、RedHat系列，包含Redhat centos Fedora
+	<span class="token number">2</span>、Debian系列，包含Debian Ubuntu
 
-<h3 id="、相关问题"><a href="#、相关问题" class="headerlink" title="#、相关问题"></a>#、相关问题</h3><h4 id="解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】"><a href="#解决-Linux-系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX-is-not-in-the-sudoers-file-This-incident-will-be-reported-】" class="headerlink" title="解决 Linux 系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX is not in the sudoers file. This incident will be reported.】"></a>解决 Linux 系统，出现“不在sudoers文件中，此事将被报告”的问题【XXX is not in the sudoers file. This incident will be reported.】</h4><p>[参考文献](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143388819">解决 Linux 系统，出现”不在sudoers文件中，此事将被报告”的问题 - 知乎 (zhihu.com)</a>)</p>
-<h4 id="主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】"><a href="#主机与虚拟机之间的共享文件夹识别失败【-mnt-hgfs】" class="headerlink" title="主机与虚拟机之间的共享文件夹识别失败【/mnt/hgfs】"></a>主机与虚拟机之间的共享文件夹识别失败【/mnt/hgfs】</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43920548">主机与虚拟机共享文件</a></p>
+在使用之前使用命令查看下系统的版本
+    <span class="token function">cat</span> /proc/version
+    <span class="token function">cat</span> /proc/version
+    
+    -<span class="token operator">></span> Linux version <span class="token number">3.10</span>.0-862.el7.x86_64 <span class="token punctuation">(</span>builder@kbuilder.dev.centos.org<span class="token punctuation">)</span> <span class="token punctuation">(</span>gcc version <span class="token number">4.8</span>.5 <span class="token number">20150623</span> <span class="token punctuation">(</span>Red Hat <span class="token number">4.8</span>.5-28<span class="token punctuation">)</span> <span class="token punctuation">(</span>GCC<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token comment">#1 SMP Fri Apr 20 16:44:24 UTC 2018</span>
+    里面有Red Hat
+
+RedHat系列使用的命令是： yum
+Debian系列使用的命令是：apt-get</code></pre>
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>
@@ -667,18 +682,17 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/100716162.html">
+                <a href="/2023/101016163.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/123.jpg" class="responsive-img" alt="Linux-C++通信架构实战chap2-环境搭建">
+                        <img src="/medias/featureimages/40.jpg" class="responsive-img" alt="Linux问题汇总">
                         
-                        <span class="card-title">Linux-C++通信架构实战chap2-环境搭建</span>
+                        <span class="card-title">Linux问题汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -688,22 +702,14 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category">
-                                    C++
-                                </a>
-                            
-                            <a href="/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/" class="post-category">
-                                    通信架构实战
-                                </a>
-                            
-                            <a href="/categories/C/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/linux/" class="post-category">
+                            <a href="/categories/linux/" class="post-category">
                                     linux
                                 </a>
                             
@@ -711,20 +717,15 @@ Linux-C++通信架构实战chap2-环境搭建：一：windows下的vs2017安装
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%80%9A%E4%BF%A1%E6%9E%B6%E6%9E%84%E5%AE%9E%E6%88%98/">
-                        <span class="chip bg-color">通信架构实战</span>
-                    </a>
-                    
                     <a href="/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
                         <span class="chip bg-color">异常处理</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
+                        <span class="chip bg-color">问题汇总</span>
                     </a>
                     
                 </div>

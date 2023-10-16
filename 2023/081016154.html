@@ -6,14 +6,14 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶05)-迭代器, Software Engineer">
     <meta name="description" content="
-
-C++进阶05：迭代器需要仔细的阅读代码的写法：
+¶C++进阶05：迭代器
+需要仔细的阅读代码的写法：
 #include&amp;lt;iostream&amp;gt;
 #include&amp;lt;vector&amp;gt;
 using namespace std;
 
 struct student &amp;#123;
-	">
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,8 +446,8 @@ struct student &amp;#123;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-进阶05：迭代器"><a href="#C-进阶05：迭代器" class="headerlink" title="C++进阶05：迭代器"></a>C++进阶05：迭代器</h2><p>需要仔细的阅读代码的写法：</p>
+<h2 id="C-进阶05：迭代器"><a class="header-anchor" href="#C-进阶05：迭代器">¶</a>C++进阶05：迭代器</h2>
+<p>需要仔细的阅读代码的写法：</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include&lt;vector&gt;
 using namespace std;
@@ -607,29 +607,28 @@ int main() &#123;
 	return 0;
 &#125;
 </code></pre>
-
-<h3 id="一、迭代器简介"><a href="#一、迭代器简介" class="headerlink" title="一、迭代器简介"></a>一、迭代器简介</h3><p>迭代器是一种遍历容器内元素的 数据类型，这种数据类型有点像指针，我们直接理解为迭代器用来指向容器中的某个元素</p>
+<h3 id="一、迭代器简介"><a class="header-anchor" href="#一、迭代器简介">¶</a>一、迭代器简介</h3>
+<p>迭代器是一种遍历容器内元素的 数据类型，这种数据类型有点像指针，我们直接理解为迭代器用来指向容器中的某个元素</p>
 <p>string vector []: 实际上很少用到[]，更加常用的方式是迭代器，也更加通用</p>
-<h3 id="二、迭代器begin-end-，rbegin-rend"><a href="#二、迭代器begin-end-，rbegin-rend" class="headerlink" title="二、迭代器begin()/end()，rbegin()/rend()"></a>二、迭代器begin()/end()，rbegin()/rend()</h3><p>begin()/end() 用来返回迭代器类型</p>
+<h3 id="二、迭代器begin-end-，rbegin-rend"><a class="header-anchor" href="#二、迭代器begin-end-，rbegin-rend">¶</a>二、迭代器begin()/end()，rbegin()/rend()</h3>
+<p>begin()/end() 用来返回迭代器类型</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">aiter &#x3D; a.begin();	&#x2F;&#x2F; 如果容器a中有元素，begin返回的是迭代器，指向容器中的第一个元素
 &#x2F;&#x2F; 相当于 aiter指向了 a[0]
 aiter &#x3D; a.end();	&#x2F;&#x2F; 指向的不是容器的末端元素，而是末端元素的后边一个元素</code></pre>
-
-<p>如果容器元素为空，则begin()和end()返回的迭代器相同<br>可以用来判断容器是否为空</p>
+<p>如果容器元素为空，则begin()和end()返回的迭代器相同<br>
+可以用来判断容器是否为空</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; a2;
 vector&lt;int&gt;::iterator a2beginIter &#x3D; a2.begin();
 vector&lt;int&gt;::iterator a2endIter &#x3D; a2.end();
 if (a2beginIter &#x3D;&#x3D; a2endIter) &#123;
 	cout &lt;&lt; &quot;a2容器为空&quot; &lt;&lt; endl; &#x2F;&#x2F; 输出：a2容器为空
 &#125;</code></pre>
-
 <p>正向迭代器 遍历容器的所有元素:记忆</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 正向迭代器 iterator 遍历容器的所有元素:记忆
 vector&lt;int&gt; a3 &#x3D; &#123; 1,2,3,4,5 &#125;;
 for (vector&lt;int&gt;::iterator iter &#x3D; a3.begin(); iter !&#x3D; a3.end(); iter++) &#123;
 	cout &lt;&lt; *iter &lt;&lt; endl;
 &#125;</code></pre>
-
 <p>反向迭代器： 从后往前遍历一个容器</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 反向迭代器： 从后往前遍历一个容器: reverse_iterator
 &#x2F;&#x2F; rbegin(): 返回一个反向迭代器，指向容器的最后一个元素			---&gt;作为反向迭代器的第一个元素
@@ -639,15 +638,16 @@ for (vector&lt;int&gt;::reverse_iterator riter &#x3D; a3.rbegin(); riter !&#x3D;
 &#125;</code></pre>
 <p><img src="/2023/081016154/%E8%BF%AD%E4%BB%A3%E5%99%A8beginend.png" alt></p>
 <p>图：迭代器begin()/end()操作，反向迭代器rbegin()/rend()操作</p>
-<h3 id="三、向容器中添加结构体变量"><a href="#三、向容器中添加结构体变量" class="headerlink" title="三、向容器中添加结构体变量"></a>三、向容器中添加结构体变量</h3><pre class="language-c++" data-language="c++"><code class="language-c++">student Bin;
+<h3 id="三、向容器中添加结构体变量"><a class="header-anchor" href="#三、向容器中添加结构体变量">¶</a>三、向容器中添加结构体变量</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">student Bin;
 Bin.number &#x3D; 100;
 vector&lt;student&gt; sList;
 sList.push_back(Bin);
 vector&lt;student&gt;::iterator sIter &#x3D; sList.begin();	&#x2F;&#x2F; 一定要先往容器中添加元素，再创建iter
 cout &lt;&lt; (*sIter).number &lt;&lt; endl;
 cout &lt;&lt; sIter-&gt;number &lt;&lt; endl;</code></pre>
-
-<h3 id="四、const-iterator迭代器"><a href="#四、const-iterator迭代器" class="headerlink" title="四、const_iterator迭代器"></a>四、const_iterator迭代器</h3><p>表示该迭代器所指向的元素不能改变，但是迭代器可以改变指向</p>
+<h3 id="四、const-iterator迭代器"><a class="header-anchor" href="#四、const-iterator迭代器">¶</a>四、const_iterator迭代器</h3>
+<p>表示该迭代器所指向的元素不能改变，但是迭代器可以改变指向</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; a4 &#x3D; &#123; 1,2,3,4,5 &#125;;
 for (vector&lt;int&gt;::const_iterator iter &#x3D; a4.begin(); iter !&#x3D; a4.end(); iter++) &#123;
 	&#x2F;&#x2F;*iter &#x3D; 1;	&#x2F;&#x2F; 这里不允许修改内容
@@ -660,8 +660,8 @@ for (vector&lt;int&gt;::const_iterator iter &#x3D; a4.begin(); iter !&#x3D; a4.e
     &#x2F;&#x2F;*iter &#x3D; 1;	&#x2F;&#x2F; 这里不允许修改常量的内容
     cout &lt;&lt; *iter &lt;&lt; endl;
 &#125;</code></pre>
-
-<h3 id="五、迭代器失效问题"><a href="#五、迭代器失效问题" class="headerlink" title="五、迭代器失效问题"></a>五、迭代器失效问题</h3><p>在进行范围for语句，或者使用迭代器循环遍历容器时，不要在遍历过程中，增加或删除容器中的元素</p>
+<h3 id="五、迭代器失效问题"><a class="header-anchor" href="#五、迭代器失效问题">¶</a>五、迭代器失效问题</h3>
+<p>在进行范围for语句，或者使用迭代器循环遍历容器时，不要在遍历过程中，增加或删除容器中的元素</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">vector&lt;int&gt; a6 &#x3D; &#123; 1,2,3,4,5 &#125;;
 for (vector&lt;int&gt;::iterator iter &#x3D; a6.begin(); iter !&#x3D; a6.end(); iter++) &#123;
     &#x2F;&#x2F;a6.push_back(6);	&#x2F;&#x2F; 不能添加此语句，会导致该迭代器的失效
@@ -675,8 +675,7 @@ for (vector&lt;int&gt;::iterator iter &#x3D; a6.begin(); iter !&#x3D; a6.end(); 
 for (vector&lt;int&gt;::iterator iter &#x3D; a6.begin(); iter !&#x3D; a6.end(); iter++) &#123;
 	cout &lt;&lt; *iter &lt;&lt; endl;
 &#125;</code></pre>
-
-<p>​    ersse()函数： 移出iter位置上的元素，返回下一个元素的位置</p>
+<p>​	ersse()函数： 移出iter位置上的元素，返回下一个元素的位置</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 不断的释放容器中的元素值
 vector&lt;int&gt; a7 &#x3D; &#123; 1,2,3,4,5 &#125;;
 vector&lt;int&gt;::iterator iter &#x3D; a7.begin();
@@ -686,7 +685,6 @@ vector&lt;int&gt;::iterator iend &#x3D; a7.end();
 while (iter !&#x3D; a7.end()) &#123;	&#x2F;&#x2F; 在进行容器变化的时候，需要注意
     iter &#x3D; a7.erase(iter);	&#x2F;&#x2F; 移出iter上的元素
 &#125;</code></pre>
-
 <p>六、实际案例演示</p>
 <p>1、使用迭代器遍历string中的内容，并修改</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">string str &#x3D; &quot;I Love China&quot;;
@@ -694,7 +692,6 @@ for (auto iter &#x3D; str.begin(); iter !&#x3D; str.end(); iter++) &#123;	&#x2F;
     *iter &#x3D; toupper(*iter);
 &#125;
 cout &lt;&lt; str &lt;&lt; endl;</code></pre>
-
 <p>2、创建配置文件对象，每个对象都有自己的属性名itemName 和 属性值 itemContent，向容器中添加变量，并且查询属性名对应的属性值</p>
 <p>方法：</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 现在的需求是： 我给定一个配置文件名和配置项名称，你返回这个配置项的内容
@@ -706,9 +703,6 @@ char* getInfo(vector&lt;conf*&gt; &amp;conflist, const char* tempItem) &#123;
 	&#125;
 	return nullptr;
 &#125;</code></pre>
-
-
-
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 配置文件如下：
 &#x2F;&#x2F; ServerName &#x3D; 1区		&#x2F;&#x2F; 表示服务器名称
 &#x2F;&#x2F; ServerID &#x3D; 10000		&#x2F;&#x2F; 表示服务器ID
@@ -737,16 +731,8 @@ for (pos &#x3D; conflist.begin(); pos !&#x3D; conflist.end(); pos++) &#123;
     delete (*pos);
 &#125;
 conflist.clear(); &#x2F;&#x2F; 要不要都可以</code></pre>
-
-
-
-
-
-
-
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>

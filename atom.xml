@@ -6,7 +6,7 @@
   <link href="http://binbin0613.github.io/atom.xml" rel="self"/>
   
   <link href="http://binbin0613.github.io/"/>
-  <updated>2023-10-07T12:10:50.799Z</updated>
+  <updated>2023-10-16T00:52:56.671Z</updated>
   <id>http://binbin0613.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Linux-C++通信架构实战chap2-环境搭建</title>
-    <link href="http://binbin0613.github.io/2023/100716162.html"/>
-    <id>http://binbin0613.github.io/2023/100716162.html</id>
-    <published>2023-10-07T11:59:59.280Z</published>
-    <updated>2023-10-07T12:10:50.799Z</updated>
+    <title>Linux服务器实战01-服务器介绍</title>
+    <link href="http://binbin0613.github.io/2023/101616164.html"/>
+    <id>http://binbin0613.github.io/2023/101616164.html</id>
+    <published>2023-10-16T00:40:49.276Z</published>
+    <updated>2023-10-16T00:52:56.671Z</updated>
     
     
       
@@ -29,8 +29,65 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;Linux-C-通信架构实战chap2-环境搭建：&quot;&gt;&lt;a href=&quot;#Linux-C-通信架构实战chap2-环境搭建：&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;Linux服务器实战01-服务器介绍&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="linux" scheme="http://binbin0613.github.io/categories/linux/"/>
+    
+    <category term="服务器" scheme="http://binbin0613.github.io/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="linux" scheme="http://binbin0613.github.io/tags/linux/"/>
+    
+    <category term="服务器" scheme="http://binbin0613.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux问题汇总</title>
+    <link href="http://binbin0613.github.io/2023/101016163.html"/>
+    <id>http://binbin0613.github.io/2023/101016163.html</id>
+    <published>2023-10-09T16:41:19.715Z</published>
+    <updated>2023-10-13T12:59:39.172Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h2 id=&quot;Linux环境下遇到的问题汇总：&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="linux" scheme="http://binbin0613.github.io/categories/linux/"/>
+    
+    
+    <category term="异常处理" scheme="http://binbin0613.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    
+    <category term="问题汇总" scheme="http://binbin0613.github.io/tags/%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux-C++通信架构实战chap2-环境搭建</title>
+    <link href="http://binbin0613.github.io/2023/100716162.html"/>
+    <id>http://binbin0613.github.io/2023/100716162.html</id>
+    <published>2023-10-07T11:59:59.280Z</published>
+    <updated>2023-10-09T16:41:53.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
+&lt;h2 id=&quot;Linux-C-通信架构实战chap2-环境搭建：&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -64,8 +121,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;Linux-C-通信架构实战chap1-课程介绍：&quot;&gt;&lt;a href=&quot;#Linux-C-通信架构实战chap1-课程介绍：&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;Linux-C-通信架构实战chap1-课程介绍：&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -97,8 +153,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶10：类-左右值-左右值引用-move&quot;&gt;&lt;a href=&quot;#C-进阶10：类-左右值-左右值引用-move&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶10：类-左右值-左右值引用-move&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -126,8 +181,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶09：类-RTTI-dynamic-cast-typeid&quot;&gt;&lt;a href=&quot;#C-进阶09：类-RTTI-dynamic-cast-typeid&quot;</summary>
+&lt;h2 id=&quot;C-进阶09：类-RTTI-dynamic-cast-typeid&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -155,8 +209,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶08：类-重载运算法-派生类-析构函数&quot;&gt;&lt;a href=&quot;#C-进阶08：类-重载运算法-派生类-析构函数&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶08：类-重载运算法-派生类-析构函数&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -184,8 +237,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶07：类-inline-const-mutable-this-static&quot;&gt;&lt;a href=&quot;#C-进阶07：类-inline-const-mutable-this-static&quot;</summary>
+&lt;h2 id=&quot;C-进阶07：类-inline-const-mutable-this-static&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -213,8 +265,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶06：类-初始化-构造函数-对象&quot;&gt;&lt;a href=&quot;#C-进阶06：类-初始化-构造函数-对象&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶06：类-初始化-构造函数-对象&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -242,8 +293,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;毕业那天&quot;&gt;&lt;a href=&quot;#毕业那天&quot; class=&quot;headerlink&quot; title=&quot;毕业那天&quot;&gt;&lt;/a&gt;&lt;strong&gt;毕业那天&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Bin，&lt;a</summary>
+&lt;h2 id=&quot;毕业那天&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#毕业那天&quot;&gt;¶&lt;/a&gt;&lt;strong&gt;毕业那天&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Bin，&lt;a</summary>
         
       
     
@@ -273,8 +324,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶05：迭代器&quot;&gt;&lt;a href=&quot;#C-进阶05：迭代器&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶05：迭代器&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -302,8 +352,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶04：string-vector&quot;&gt;&lt;a href=&quot;#C-进阶04：string-vector&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶04：string-vector&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -331,8 +380,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶03：结构，权限修饰符，类，内联函数和const&quot;&gt;&lt;a href=&quot;#C-进阶03：结构，权限修饰符，类，内联函数和const&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶03：结构，权限修饰符，类，内联函数和const&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -360,8 +408,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶02：范围for，new内存动态分配，nullptr&quot;&gt;&lt;a href=&quot;#C-进阶02：范围for，new内存动态分配，nullptr&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶02：范围for，new内存动态分配，nullptr&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -389,8 +436,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-代码小技巧&quot;&gt;&lt;a href=&quot;#C-代码小技巧&quot; class=&quot;headerlink&quot; title=&quot;C++代码小技巧&quot;&gt;&lt;/a&gt;C++代码小技巧&lt;/h2&gt;&lt;h4</summary>
+&lt;h2 id=&quot;C-代码小技巧&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#C-代码小技巧&quot;&gt;¶&lt;/a&gt;C++代码小技巧&lt;/h2&gt;
+&lt;h4 id=&quot;一、计算代码运行时间&quot;&gt;&lt;a</summary>
         
       
     
@@ -420,8 +467,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-进阶01：C-编译过程，头文件防卫，命名空间&quot;&gt;&lt;a href=&quot;#C-进阶01：C-编译过程，头文件防卫，命名空间&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-进阶01：C-编译过程，头文件防卫，命名空间&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -449,8 +495,7 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础09：位运算及其应用场景&quot;&gt;&lt;a href=&quot;#C-基础09：位运算及其应用场景&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-基础09：位运算及其应用场景&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
         
       
     
@@ -480,8 +525,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础08：结构体&quot;&gt;&lt;a href=&quot;#C-基础08：结构体&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;C-基础08：结构体&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#C-基础08：结构体&quot;&gt;¶&lt;/a&gt;C++基础08：结构体&lt;/h2&gt;
+&lt;pre</summary>
         
       
     
@@ -509,8 +554,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础07：指针&quot;&gt;&lt;a href=&quot;#C-基础07：指针&quot; class=&quot;headerlink&quot; title=&quot;C++基础07：指针&quot;&gt;&lt;/a&gt;C++基础07：指针&lt;/h2&gt;&lt;pre</summary>
+&lt;h2 id=&quot;C-基础07：指针&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#C-基础07：指针&quot;&gt;¶&lt;/a&gt;C++基础07：指针&lt;/h2&gt;
+&lt;pre</summary>
         
       
     
@@ -538,66 +583,8 @@
         
         
     <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础06：编译预处理&quot;&gt;&lt;a href=&quot;#C-基础06：编译预处理&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
-    
-    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(C++基础05)-函数</title>
-    <link href="http://binbin0613.github.io/2023/080116144.html"/>
-    <id>http://binbin0613.github.io/2023/080116144.html</id>
-    <published>2023-08-01T14:22:42.460Z</published>
-    <updated>2023-08-02T09:37:19.313Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础05：函数&quot;&gt;&lt;a href=&quot;#C-基础05：函数&quot; class=&quot;headerlink&quot; title=&quot;C++基础05：函数&quot;&gt;&lt;/a&gt;C++基础05：函数&lt;/h2&gt;&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/categories/C/"/>
-    
-    <category term="编程基础" scheme="http://binbin0613.github.io/categories/C/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="C++" scheme="http://binbin0613.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>(C++基础04)-数组</title>
-    <link href="http://binbin0613.github.io/2023/080116143.html"/>
-    <id>http://binbin0613.github.io/2023/080116143.html</id>
-    <published>2023-08-01T10:11:42.118Z</published>
-    <updated>2023-08-01T14:22:17.154Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;font face=&quot;Times New Roman, 楷体&quot;&gt;
-
-&lt;h2 id=&quot;C-基础04：数组&quot;&gt;&lt;a href=&quot;#C-基础04：数组&quot; class=&quot;headerlink&quot; title=&quot;C++基础04：数组&quot;&gt;&lt;/a&gt;C++基础04：数组&lt;/h2&gt;&lt;pre</summary>
+&lt;h2 id=&quot;C-基础06：编译预处理&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#C-基础06：编译预处理&quot;&gt;¶&lt;/a&gt;C++基础06：编译预处理&lt;/h2&gt;
+&lt;pre</summary>
         
       
     

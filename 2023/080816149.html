@@ -6,8 +6,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶01)-C++编译过程，头文件防卫，命名空间, Software Engineer">
     <meta name="description" content="
-
-C++进阶01：C++编译过程，头文件防卫，命名空间一、语言特性，工程构成，可移植性(1) 语言特性：过程式，对象式程序设计过程式：            面向过程式的程序设计：C语言C++ ：从下往下，逐步完成问题          ">
+¶C++进阶01：C++编译过程，头文件防卫，命名空间
+¶一、语言特性，工程构成，可移植性
+¶(1) 语言特性：过程式，对象式程序设计
+过程式：
+面向过程式的程序设计：C语言C++ ：从下往下，逐步完成问题				
+// 结构： 学生：学">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -440,11 +444,19 @@ C++进阶01：C++编译过程，头文件防卫，命名空间一、语言特性
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-进阶01：C-编译过程，头文件防卫，命名空间"><a href="#C-进阶01：C-编译过程，头文件防卫，命名空间" class="headerlink" title="C++进阶01：C++编译过程，头文件防卫，命名空间"></a>C++进阶01：C++编译过程，头文件防卫，命名空间</h2><h3 id="一、语言特性，工程构成，可移植性"><a href="#一、语言特性，工程构成，可移植性" class="headerlink" title="一、语言特性，工程构成，可移植性"></a>一、语言特性，工程构成，可移植性</h3><h4 id="1-语言特性：过程式，对象式程序设计"><a href="#1-语言特性：过程式，对象式程序设计" class="headerlink" title="(1) 语言特性：过程式，对象式程序设计"></a>(1) 语言特性：过程式，对象式程序设计</h4><p>过程式：<br>            面向过程式的程序设计：C语言C++ ：从下往下，逐步完成问题<br>                    // 结构： 学生：学号，姓名，班级…<br>                    // C语言当中，使用结构，需要首先定义一个属于该结构的变量                结构 == 类</p>
+<h2 id="C-进阶01：C-编译过程，头文件防卫，命名空间"><a class="header-anchor" href="#C-进阶01：C-编译过程，头文件防卫，命名空间">¶</a>C++进阶01：C++编译过程，头文件防卫，命名空间</h2>
+<h3 id="一、语言特性，工程构成，可移植性"><a class="header-anchor" href="#一、语言特性，工程构成，可移植性">¶</a>一、语言特性，工程构成，可移植性</h3>
+<h4 id="1-语言特性：过程式，对象式程序设计"><a class="header-anchor" href="#1-语言特性：过程式，对象式程序设计">¶</a>(1) 语言特性：过程式，对象式程序设计</h4>
+<p>过程式：<br>
+面向过程式的程序设计：C语言C++ ：从下往下，逐步完成问题				<br>
+// 结构： 学生：学号，姓名，班级…<br>
+// C语言当中，使用结构，需要首先定义一个属于该结构的变量				结构 == 类</p>
 <p>对象式：</p>
-<p>​            基于对象式的程序设计：C++语言<br>​            面向对象式的程序设计：C++语言    </p>
-<p>​    // 在C++语言当中，将结构 叫做 “类”<br>​    // 在C++语言当中，需要使用到类时，不定义结构变量，而是定义一个 对象        结构变量 == 对象<br>​        // 在类当中，不仅仅能定义关于类的成员变量，还可以定义一些关于该类的函数(方法)，实现相关功能</p>
+<p>​			基于对象式的程序设计：C++语言	<br>
+​			面向对象式的程序设计：C++语言</p>
+<p>​	// 在C++语言当中，将结构 叫做 “类”<br>
+​	// 在C++语言当中，需要使用到类时，不定义结构变量，而是定义一个 对象		结构变量 == 对象<br>
+​		// 在类当中，不仅仅能定义关于类的成员变量，还可以定义一些关于该类的函数(方法)，实现相关功能</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">struct student&#123;			&#x2F;&#x2F; 在结构体当中声明一些成员变量和函数
 	int number;
 	void study();
@@ -455,32 +467,51 @@ struct student BinbinDeng;	&#x2F;&#x2F; 对象
 BinbinDeng.student();
 &#x2F;&#x2F; 总的来说，就是C语言面向过程使用【结构体】创建【结构变量】把成员变量和函数声明在结构体中
 			&#x2F;&#x2F;    C++ 面向对象使用【类】    创建【对象】	把成员变量和函数声明在类中</code></pre>
-
 <blockquote>
-<p>// 继承性<br>// 创建一个类，包含上述类的所有成员变量和方法，该子类继承父类</p>
-<p>// 多态性<br>// 子类的方法与父类的方法重名了，属于面向对象的程序设计</p>
+<p>// 继承性<br>
+// 创建一个类，包含上述类的所有成员变量和方法，该子类继承父类</p>
+<p>// 多态性<br>
+// 子类的方法与父类的方法重名了，属于面向对象的程序设计</p>
 <p>// 封装性</p>
 </blockquote>
-<p>面向对象的程序设计的优点：<br>易维护<br>易扩展<br>模块化</p>
-<h4 id="2-编写一个最简单的C-程序"><a href="#2-编写一个最简单的C-程序" class="headerlink" title="(2) 编写一个最简单的C++程序"></a>(2) 编写一个最简单的C++程序</h4><ul>
+<p>面向对象的程序设计的优点：<br>
+易维护<br>
+易扩展<br>
+模块化</p>
+<h4 id="2-编写一个最简单的C-程序"><a class="header-anchor" href="#2-编写一个最简单的C-程序">¶</a>(2) 编写一个最简单的C++程序</h4>
+<ul>
 <li>一个解决方案包括若干个项目</li>
 <li>一个项目生成一个可执行程序</li>
 </ul>
-<p>在main函数当中，返回值一般表示状态，返回0表示成功，非0一般表示一些错误，这里一般先返回0<br>返回值在Windows下一般没什么用，在linux当中，返回值有作用<br>main函数是整个函数的入口函数，系统是从该函数开始执行的</p>
-<h4 id="3-工程文件构成"><a href="#3-工程文件构成" class="headerlink" title="(3) 工程文件构成"></a>(3) 工程文件构成</h4><blockquote>
-<p> 1、一个项目当中，存在多个cpp文件和多个h文件<br> 2、可能出现 .c .cpp .cxx源文件后缀   还有.m .mm<br> 3、头文件一般是.h<br> 4、.hpp表示的是将头文件和相关实现都放到该文件当中，可以减少编译的次数</p>
+<p>在main函数当中，返回值一般表示状态，返回0表示成功，非0一般表示一些错误，这里一般先返回0<br>
+返回值在Windows下一般没什么用，在linux当中，返回值有作用<br>
+main函数是整个函数的入口函数，系统是从该函数开始执行的</p>
+<h4 id="3-工程文件构成"><a class="header-anchor" href="#3-工程文件构成">¶</a>(3) 工程文件构成</h4>
+<blockquote>
+<p>1、一个项目当中，存在多个cpp文件和多个h文件<br>
+2、可能出现 .c .cpp .cxx源文件后缀   还有.m .mm<br>
+3、头文件一般是.h<br>
+4、.hpp表示的是将头文件和相关实现都放到该文件当中，可以减少编译的次数</p>
 </blockquote>
-<h4 id="4-可移植性问题"><a href="#4-可移植性问题" class="headerlink" title="(4) 可移植性问题"></a>(4) 可移植性问题</h4><ul>
-<li>​    编译型语言：需要编译的过程，编译生成二进制文件(可执行文件)        执行速度快        C++</li>
-<li>​    解释型语言： 不进行预先编译，先解释，再运行                                                             lua</li>
+<h4 id="4-可移植性问题"><a class="header-anchor" href="#4-可移植性问题">¶</a>(4) 可移植性问题</h4>
+<ul>
+<li>​	编译型语言：需要编译的过程，编译生成二进制文件(可执行文件)		执行速度快		C++</li>
+<li>​	解释型语言： 不进行预先编译，先解释，再运行										                     lua</li>
 </ul>
 <pre class="language-c++" data-language="c++"><code class="language-c++">一个C++项目当中包含多个源文件，所以项目的执行过程可以理解为：
 源文件1 -&gt; 编译 -&gt; 目标文件1
 源文件2 -&gt; 编译 -&gt; 目标文件2  多个目标文件进行链接 -&gt; 可执行文件</code></pre>
-<h3 id="二、命名空间简介"><a href="#二、命名空间简介" class="headerlink" title="二、命名空间简介"></a>二、命名空间简介</h3><p>(1) 命名空间<br>    命名空间就是：为了防止重名而引入的一种机制<br>    需要处理的是：多个Cpp源文件当中出现同名的函数或变量时，看上述的C++项目执行过程可知，<br>                  项目会最终将多个CPP源文件所编译的目标文件进行链接，所以会导致多个重名的因素编译不过<br>                  这里引入命名空间。</p>
-<p>​    同名实体：同名函数，同名变量，同名类定义</p>
+<h3 id="二、命名空间简介"><a class="header-anchor" href="#二、命名空间简介">¶</a>二、命名空间简介</h3>
+<p>(1) 命名空间<br>
+命名空间就是：为了防止重名而引入的一种机制<br>
+需要处理的是：多个Cpp源文件当中出现同名的函数或变量时，看上述的C++项目执行过程可知，<br>
+项目会最终将多个CPP源文件所编译的目标文件进行链接，所以会导致多个重名的因素编译不过<br>
+这里引入命名空间。</p>
+<p>​	同名实体：同名函数，同名变量，同名类定义</p>
 <blockquote>
-<p>场景：在多个CPP文件当中创建了同名函数(参数项和返回值相同)，在编译的过程当中生成的目标文件obj会出错，重复定义的符号<br>      系统中可以定义多个命名空间，每一个命名空间都有自己的名字，不可以重名<br>      可以将这个命名空间看做 作用域，不同作用域下同名的函数，不受影响</p>
+<p>场景：在多个CPP文件当中创建了同名函数(参数项和返回值相同)，在编译的过程当中生成的目标文件obj会出错，重复定义的符号<br>
+系统中可以定义多个命名空间，每一个命名空间都有自己的名字，不可以重名<br>
+可以将这个命名空间看做 作用域，不同作用域下同名的函数，不受影响</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">namespace name&#123;
 	...
@@ -492,7 +523,6 @@ BinbinDeng.student();
 命名空间名称::实体名		----其中::叫做“作用域运算符”
 temp1::copyName();
 如果不写temp1，则需要在文件开始的地方写：using namespace temp1;</code></pre>
-
 <p>实际场景：</p>
 <p>temp2.cpp</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
@@ -507,7 +537,6 @@ namespace temp2 &#123;
 		cout &lt;&lt; &quot;temp2中的copyName2()&quot;;
 	&#125;
 &#125;</code></pre>
-
 <p>temp1.h</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#ifndef __HEAD__TAMP1__
 #define __HEAD__TEMP1__
@@ -520,7 +549,6 @@ namespace temp2 &#123;
 &#125;
 
 #endif &#x2F;&#x2F; !__HEAD__TAMP1__</code></pre>
-
 <p>temp1.cpp</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;temp1.h&quot;		&#x2F;&#x2F; 只有包含了命名空间的声明，才能在本文件中使用
@@ -546,11 +574,12 @@ int main() &#123;
 	&#125;*&#x2F;
 	return 0;
 &#125;</code></pre>
-
-
-
-<h3 id="三、基本输入输出精解"><a href="#三、基本输入输出精解" class="headerlink" title="三、基本输入输出精解"></a>三、基本输入输出精解</h3><p>// c++中不使用printf, 而是使用C++提供的标准库<br>输入输出流库：iostream标准库<br>流： 就是一种字符序列</p>
-<h4 id="（1）输出运算符"><a href="#（1）输出运算符" class="headerlink" title="（1）输出运算符"></a>（1）输出运算符</h4><pre class="language-c++" data-language="c++"><code class="language-c++">std::cout
+<h3 id="三、基本输入输出精解"><a class="header-anchor" href="#三、基本输入输出精解">¶</a>三、基本输入输出精解</h3>
+<p>// c++中不使用printf, 而是使用C++提供的标准库<br>
+输入输出流库：iostream标准库<br>
+流： 就是一种字符序列</p>
+<h4 id="（1）输出运算符"><a class="header-anchor" href="#（1）输出运算符">¶</a>（1）输出运算符</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">std::cout
 std: 命名空间，标准库命名空间
 cout： conslo output  是一个对象：标准输出对象
 	可以这样理解：
@@ -576,7 +605,8 @@ cout： conslo output  是一个对象：标准输出对象
 	注意： 不要这样写代码：
 		cout &lt;&lt; i-- &lt;&lt; i--; 在不同的编译器当中可能会出现不同的值，从右往左进行运算
 		尽量避免一个表达式中超过一次的改变变量的值</code></pre>
-<h4 id="（2）换行"><a href="#（2）换行" class="headerlink" title="（2）换行"></a>（2）换行</h4><pre class="language-c++" data-language="c++"><code class="language-c++">std::endl			---是一个模板函数名，相当于函数指针
+<h4 id="（2）换行"><a class="header-anchor" href="#（2）换行">¶</a>（2）换行</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">std::endl			---是一个模板函数名，相当于函数指针
 	作用：
 	（1）输出换行符  \n
 	（2）强制刷新 输出缓冲区(把缓冲区上的内容往屏幕上写)，缓冲区的所有数据，都被系统清除了
@@ -586,29 +616,26 @@ cout： conslo output  是一个对象：标准输出对象
 			b) 执行到了main函数的return语句
 			c) 执行了std::endl;   ---- 强制刷新输出缓冲区
 			d) 当系统不太繁忙的时候，系统会查看缓冲区的内容，发现内容则将其输出（这就是为什么不使用std::endl的时候不强制输出缓冲区，也可以输出内容）</code></pre>
-
-<h4 id="（3）输出运算符"><a href="#（3）输出运算符" class="headerlink" title="（3）输出运算符"></a>（3）输出运算符</h4><pre class="language-c++" data-language="c++"><code class="language-c++">cin: 标准 输入符
+<h4 id="（3）输出运算符"><a class="header-anchor" href="#（3）输出运算符">¶</a>（3）输出运算符</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">cin: 标准 输入符
 &gt;&gt; : 输入运算符
 	cin &gt;&gt; a;		--- 其返回值也是一个对象
 		cin &gt;&gt; a &gt;&gt; b;
 		等价于
 		(cin &gt;&gt; a) &gt;&gt; b;</code></pre>
-
-
-
-<h3 id="四、auto-头文件防卫，引用，变量"><a href="#四、auto-头文件防卫，引用，变量" class="headerlink" title="四、auto 头文件防卫，引用，变量"></a>四、auto 头文件防卫，引用，变量</h3><h4 id="1-局部变量及初始化"><a href="#1-局部变量及初始化" class="headerlink" title="(1) 局部变量及初始化"></a>(1) 局部变量及初始化</h4><pre class="language-c++" data-language="c++"><code class="language-c++">int a &#123;1&#125;; 
+<h3 id="四、auto-头文件防卫，引用，变量"><a class="header-anchor" href="#四、auto-头文件防卫，引用，变量">¶</a>四、auto 头文件防卫，引用，变量</h3>
+<h4 id="1-局部变量及初始化"><a class="header-anchor" href="#1-局部变量及初始化">¶</a>(1) 局部变量及初始化</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">int a &#123;1&#125;; 
 int a[] &#123;1,2,3&#125;;		---需要认识这种初始化的方式</code></pre>
-
-
-
-<h4 id="2-auto-变量的自动类型推断"><a href="#2-auto-变量的自动类型推断" class="headerlink" title="(2) auto: 变量的自动类型推断"></a>(2) auto: 变量的自动类型推断</h4><pre class="language-c++" data-language="c++"><code class="language-c++">auto 可以在声明变量的时候，根据变量初始值的类型自动为此变量选择匹配的类型
+<h4 id="2-auto-变量的自动类型推断"><a class="header-anchor" href="#2-auto-变量的自动类型推断">¶</a>(2) auto: 变量的自动类型推断</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">auto 可以在声明变量的时候，根据变量初始值的类型自动为此变量选择匹配的类型
 auto 自动类型推断在编译阶段完成，因此使用auto不会造成程序的效率降低
 
 	auto x &#x3D; true;		&#x2F;&#x2F; 自动推断为bool类型
 	auto y &#x3D; 1;			&#x2F;&#x2F; 自动推断为int类型
 	auto z &#x3D; &#39;a&#39;;		&#x2F;&#x2F; 自动推断为char类型</code></pre>
-
-<h4 id="3-头文件的防卫式声明"><a href="#3-头文件的防卫式声明" class="headerlink" title="(3) 头文件的防卫式声明"></a>(3) 头文件的防卫式声明</h4><pre class="language-c++" data-language="c++"><code class="language-c++">场景介绍： 在引入头文件时，会引用多个.h文件，但是在这些头文件当中可能会存在b.h引用了a.h，当在C.cpp文件中引入了a.h和b.h之后，使用a.h中的变量时，会发生错误：（a.h中的变量重复定义）
+<h4 id="3-头文件的防卫式声明"><a class="header-anchor" href="#3-头文件的防卫式声明">¶</a>(3) 头文件的防卫式声明</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">场景介绍： 在引入头文件时，会引用多个.h文件，但是在这些头文件当中可能会存在b.h引用了a.h，当在C.cpp文件中引入了a.h和b.h之后，使用a.h中的变量时，会发生错误：（a.h中的变量重复定义）
 
 	解决方案：在所有的头文件当中使用 ifdef  ifndef 条件编译
 	#ifndef 标识符
@@ -621,7 +648,6 @@ auto 自动类型推断在编译阶段完成，因此使用auto不会造成程�
 	#endif &#x2F;&#x2F; !__HEAD__TAMP1__
 	注意的是：每一个头文件当中的#ifndef的名称不能相同。
 			  意思是：如果没有定义过，就执行程序段，如果被定义过就直接跳过，能够实现所有的头文件在引入的时候只被引入一次</code></pre>
-
 <p>过程演示为什么防卫式声明可以解决上述问题：</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">head1.h:
 #ifndef __HEAD1__TAMP__
@@ -653,28 +679,22 @@ main：
 3、__HEAD2__TAMP__没有被定义，所以执行内部的程序块
 4、这里再次 #include &quot;head1.h&quot;, 但是head1.h内部的__HEAD1__TAMP__ 已经被定义了，所以内部的程序不会被执行
 5、继续执行 head2.h中的 程序： global_2被定义。</code></pre>
-
-
-
 <p>[防卫式声明更多理解](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/336622992">头文件的防卫式声明 - 知乎 (zhihu.com)</a>)</p>
-<h4 id="4-引用"><a href="#4-引用" class="headerlink" title="(4) 引用"></a>(4) 引用</h4><p>理解为：为变量起别名，使用&amp;符号，起完别名，别名和变量本身被视为同一变量</p>
+<h4 id="4-引用"><a class="header-anchor" href="#4-引用">¶</a>(4) 引用</h4>
+<p>理解为：为变量起别名，使用&amp;符号，起完别名，别名和变量本身被视为同一变量</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">int a &#x3D; 10;			---变量本身和别名 使用的是同一块内存，不会造成内容的消耗
 int &amp;aa &#x3D; a;		---注意：这里的&amp;不是取地址符的意思，初始化必须绑定到对象上
 1、定义别名的时候必须进行初始化
 2、只能够给变量进行初始化
 3、引用后的两个变量名，使用的是同一块内存</code></pre>
-
-<h4 id="5-常量const"><a href="#5-常量const" class="headerlink" title="(5) 常量const"></a>(5) 常量const</h4><pre class="language-c++" data-language="c++"><code class="language-c++">const： 表示的就是变量的值不变
+<h4 id="5-常量const"><a class="header-anchor" href="#5-常量const">¶</a>(5) 常量const</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">const： 表示的就是变量的值不变
 const int a &#x3D; 1;
 
 constexpr 
 	该关键字是C++11才引入的，也是一个常量的概念，在编译的时候求值，肯定能提升性能</code></pre>
-
-
-
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>

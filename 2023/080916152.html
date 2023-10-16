@@ -6,10 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶03)-结构，权限修饰符，类，内联函数和const, Software Engineer">
     <meta name="description" content="
-
-C++进阶03：结构，权限修饰符，类，内联函数和const一、函数传值类型&amp;#x2F; 结构体值传递和引用传递和地址传递
+¶C++进阶03：结构，权限修饰符，类，内联函数和const
+¶一、函数传值类型
+&amp;#x2F; 结构体值传递和引用传递和地址传递
 struct student &amp;#123;
-	&amp;#x2F;&amp;#x2F; 所有的结构成员变量前面，都有缺省的权限修饰">
+	&amp;#x2F;&amp;#x2F; 所有的结构成员变量前面，都有缺省的权">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,8 +443,9 @@ struct student &amp;#123;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-
-<h2 id="C-进阶03：结构，权限修饰符，类，内联函数和const"><a href="#C-进阶03：结构，权限修饰符，类，内联函数和const" class="headerlink" title="C++进阶03：结构，权限修饰符，类，内联函数和const"></a>C++进阶03：结构，权限修饰符，类，内联函数和const</h2><h3 id="一、函数传值类型"><a href="#一、函数传值类型" class="headerlink" title="一、函数传值类型"></a>一、函数传值类型</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F; 结构体值传递和引用传递和地址传递
+<h2 id="C-进阶03：结构，权限修饰符，类，内联函数和const"><a class="header-anchor" href="#C-进阶03：结构，权限修饰符，类，内联函数和const">¶</a>C++进阶03：结构，权限修饰符，类，内联函数和const</h2>
+<h3 id="一、函数传值类型"><a class="header-anchor" href="#一、函数传值类型">¶</a>一、函数传值类型</h3>
+<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F; 结构体值传递和引用传递和地址传递
 struct student &#123;
 	&#x2F;&#x2F; 所有的结构成员变量前面，都有缺省的权限修饰符public ,所以可以不加
 	int number;
@@ -484,18 +486,28 @@ int mian()&#123;
 	cout &lt;&lt; bin.number &lt;&lt; endl;
 	cout &lt;&lt; bin.name &lt;&lt; endl;
 &#125;</code></pre>
-
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wyp8268526/article/details/105391518">值传递，引用传递，地址传递</a></p>
-<h3 id="二、权限修饰符"><a href="#二、权限修饰符" class="headerlink" title="二、权限修饰符"></a>二、权限修饰符</h3><p>public 和 private 权限修饰符： public private protected</p>
+<h3 id="二、权限修饰符"><a class="header-anchor" href="#二、权限修饰符">¶</a>二、权限修饰符</h3>
+<p>public 和 private 权限修饰符： public private protected</p>
 <blockquote>
-<p>public:   公有的，被其修饰的变量或函数 能够被外界所访问<br>private： 私有的，被其修饰的变量或函数 只有被内部定义才能使用</p>
+<p>public:   公有的，被其修饰的变量或函数 能够被外界所访问<br>
+private： 私有的，被其修饰的变量或函数 只有被内部定义才能使用</p>
 </blockquote>
-<h3 id="三、类简介：-类也是用户自定义的数据类型"><a href="#三、类简介：-类也是用户自定义的数据类型" class="headerlink" title="三、类简介： 类也是用户自定义的数据类型"></a>三、类简介： 类也是用户自定义的数据类型</h3><p>结构和类之间有什么区别？</p>
+<h3 id="三、类简介：-类也是用户自定义的数据类型"><a class="header-anchor" href="#三、类简介：-类也是用户自定义的数据类型">¶</a>三、类简介： 类也是用户自定义的数据类型</h3>
+<p>结构和类之间有什么区别？</p>
 <blockquote>
-<p>1、只有C++中有类的定义，C语言中没有<br>2、结构体用struct 类是class<br>3、C中：定义结构体变量：结构体变量； C++中定义属于类的变量： 对象<br>4、C++中，结构和类十分相似<br>重要： 5、C++中类的成员变量和函数访问权限都是private; C++中的结构体变量和函数的访问权限都是public<br>重要： 6、C++中类的继承默认都是private； 结构的继承默认都是public</p>
+<p>1、只有C++中有类的定义，C语言中没有<br>
+2、结构体用struct 类是class<br>
+3、C中：定义结构体变量：结构体变量； C++中定义属于类的变量： 对象<br>
+4、C++中，结构和类十分相似<br>
+重要： 5、C++中类的成员变量和函数访问权限都是private; C++中的结构体变量和函数的访问权限都是public<br>
+重要： 6、C++中类的继承默认都是private； 结构的继承默认都是public</p>
 </blockquote>
-<p>特别说明<br>    在C++语言结构当中，通常我们习惯的将相关的方法都写到一个类当中<br>    在C++标准库当中，包含了大量的类和模块供我们使用</p>
-<p>​    通常，我们习惯将类的定义放在一个.h头文件中，可以与类相同： student.h<br>​    而类中的相关方法的实现放在cpp文件中，student.cpp</p>
+<p>特别说明<br>
+在C++语言结构当中，通常我们习惯的将相关的方法都写到一个类当中<br>
+在C++标准库当中，包含了大量的类和模块供我们使用</p>
+<p>​	通常，我们习惯将类的定义放在一个.h头文件中，可以与类相同： student.h<br>
+​    而类中的相关方法的实现放在cpp文件中，student.cpp</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; student.h
 struct student &#123;
 	int number;
@@ -511,26 +523,33 @@ void student::addNumber&#123;
 
 &#x2F;&#x2F; other.cpp
 #include &quot;student.h&quot;</code></pre>
-
-
-
 <p><img src="/2023/080916152/C++%E7%B1%BB%E7%9A%84%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F.png" alt></p>
-<h3 id="四、内联函数"><a href="#四、内联函数" class="headerlink" title="四、内联函数"></a>四、内联函数</h3><h4 id="1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数"><a href="#1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数" class="headerlink" title="(1)、在函数的定义前加上关键字inline,导致这个函数变成内联函数"></a>(1)、在函数的定义前加上关键字inline,导致这个函数变成内联函数</h4><blockquote>
+<h3 id="四、内联函数"><a class="header-anchor" href="#四、内联函数">¶</a>四、内联函数</h3>
+<h4 id="1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数"><a class="header-anchor" href="#1-、在函数的定义前加上关键字inline-导致这个函数变成内联函数">¶</a>(1)、在函数的定义前加上关键字inline,导致这个函数变成内联函数</h4>
+<blockquote>
 <p>1）内联含函数比一般函数在前面多一个inline修饰符</p>
 <p>2）内联函数是直接复制“镶嵌”到主函数中去的，就是将内联函数的代码直接放在内联函数的位置上，这与一般函数不同，主函数在调用一般函数的时候，是指令跳转到被调用函数的入口地址，执行完被调用函数后，指令再跳转回主函数上继续执行后面的代码；而由于内联函数是将函数的代码直接放在了函数的位置上，所以没有指令跳转，指令按顺序执行</p>
 <p>3）一般函数的代码段只有一份，放在内存中的某个位置上，当程序调用它是，指令就跳转过来；当下一次程序调用它是，指令又跳转过来；而内联函数是程序中调用几次内联函数，内联函数的代码就会复制几份放在对应的位置上</p>
 <p>4）内联函数一般在头文件中定义，而一般函数在头文件中声明，在cpp中定义</p>
 </blockquote>
 <blockquote>
-<p>1、inline 影响编译器，在编译阶段对inline函数进行处理，“系统尝试将调用该函数的动作替换为函数本体”，避免了进栈出栈的动作，通过这种方式提升性能<br>2、inline 只是我们给编译器的建议，编译器是否这样处理，取决于编译器的诊断功能。也就是数决定权在编译器<br>3、内联函数的定义只能放在头文件中，这样需要用到内联函数的cpp文件，需要把内联函数的源代码#include进来<br>        以便找到这个函数的本地源代码，并尝试将该函数的调用替换为函数体</p>
+<p>1、inline 影响编译器，在编译阶段对inline函数进行处理，“系统尝试将调用该函数的动作替换为函数本体”，避免了进栈出栈的动作，通过这种方式提升性能<br>
+2、inline 只是我们给编译器的建议，编译器是否这样处理，取决于编译器的诊断功能。也就是数决定权在编译器<br>
+3、内联函数的定义只能放在头文件中，这样需要用到内联函数的cpp文件，需要把内联函数的源代码#include进来<br>
+以便找到这个函数的本地源代码，并尝试将该函数的调用替换为函数体</p>
 </blockquote>
-<h4 id="2-、内联函数的优缺点"><a href="#2-、内联函数的优缺点" class="headerlink" title="(2)、内联函数的优缺点"></a>(2)、内联函数的优缺点</h4><blockquote>
-<p>优点： 避免了指令的来回跳转，加快了程序的执行速度<br>缺点： 代码被多次复制，增加了代码量，占用了更多的空间</p>
+<h4 id="2-、内联函数的优缺点"><a class="header-anchor" href="#2-、内联函数的优缺点">¶</a>(2)、内联函数的优缺点</h4>
+<blockquote>
+<p>优点： 避免了指令的来回跳转，加快了程序的执行速度<br>
+缺点： 代码被多次复制，增加了代码量，占用了更多的空间</p>
 </blockquote>
-<h4 id="3-、注意："><a href="#3-、注意：" class="headerlink" title="(3)、注意："></a>(3)、注意：</h4><blockquote>
-<p>各种编译器对inline的处理各不相同，inline函数应该尽量简单，代码尽可能少，避免出现循环，分支，递归<br>否则编译器可能会因为代码的原因，拒接让这个函数成为内联函数</p>
+<h4 id="3-、注意："><a class="header-anchor" href="#3-、注意：">¶</a>(3)、注意：</h4>
+<blockquote>
+<p>各种编译器对inline的处理各不相同，inline函数应该尽量简单，代码尽可能少，避免出现循环，分支，递归<br>
+否则编译器可能会因为代码的原因，拒接让这个函数成为内联函数</p>
 </blockquote>
-<h4 id="4-、内联函数比宏更强大"><a href="#4-、内联函数比宏更强大" class="headerlink" title="(4)、内联函数比宏更强大"></a>(4)、内联函数比宏更强大</h4><pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+<h4 id="4-、内联函数比宏更强大"><a class="header-anchor" href="#4-、内联函数比宏更强大">¶</a>(4)、内联函数比宏更强大</h4>
+<pre class="language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
  
 #define SUM(x) x*x
@@ -547,14 +566,15 @@ int main()&#123;
 	system(&quot;pause&quot;);
 	return 0;
 &#125;</code></pre>
-
 <p>分析：为什么通过宏执行的结果是11呢，宏比较机械和简单，只是将传入的参数直接放上去就执行，所以int a = SUM(2 + 3);就相当于int a = 2 + 3 * 2 +3;由于乘法优先级更高，所以得到a的值为11；而在内联函数中，传入的参数是5，所以得到25</p>
 <p>为了得到正确的结果，我们应该将宏改变为：#define SUM(x) ((x)*(x))</p>
-<h4 id="4-、类与内联函数"><a href="#4-、类与内联函数" class="headerlink" title="(4)、类与内联函数"></a>(4)、类与内联函数</h4><blockquote>
+<h4 id="4-、类与内联函数"><a class="header-anchor" href="#4-、类与内联函数">¶</a>(4)、类与内联函数</h4>
+<blockquote>
 <p>1）类内定义的函数都是内联函数，不管是否有inline修饰符</p>
 <p>2）函数声明在类内，但定义在类外的看是否有inline修饰符，如果有就是内联函数，否则不是</p>
 </blockquote>
-<h3 id="四、const-char-、-char-const-、-char-const"><a href="#四、const-char-、-char-const-、-char-const" class="headerlink" title="四、const char * 、 char const *、 char * const"></a>四、const char * 、 char const *、 char * const</h3><p>结论：</p>
+<h3 id="四、const-char-、-char-const-、-char-const"><a class="header-anchor" href="#四、const-char-、-char-const-、-char-const">¶</a>四、const char * 、 char const *、 char * const</h3>
+<p>结论：</p>
 <blockquote>
 <p>cosnt char *p:  p所指向的对象，不能通过p来修改，p能够改变指向的对象，这个对象可以通过其他途径更改</p>
 <p>char const  *p： 与第一个等价</p>
@@ -577,12 +597,8 @@ int main()&#123;
 
 	return 0;
 &#125;</code></pre>
-
-
-
 <p><a href>更多内容</a></p>
 </font>
-
 
                 
             </div>
