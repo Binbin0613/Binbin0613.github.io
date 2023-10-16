@@ -6,10 +6,10 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶07)-类-inline-const-mutable-this-static, Software Engineer">
     <meta name="description" content="
-¶C++进阶07：类-inline-const-mutable-this-static
-#include&amp;lt;iostream&amp;gt;
+
+C++进阶07：类-inline-const-mutable-this-static#include&amp;lt;iostream&amp;gt;
 #include &amp;quot;temp10_类_time.h&amp;quot;
-using namespa">
+using namespac">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -442,8 +442,8 @@ using namespa">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="C-进阶07：类-inline-const-mutable-this-static"><a class="header-anchor" href="#C-进阶07：类-inline-const-mutable-this-static">¶</a>C++进阶07：类-inline-const-mutable-this-static</h2>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+
+<h2 id="C-进阶07：类-inline-const-mutable-this-static"><a href="#C-进阶07：类-inline-const-mutable-this-static" class="headerlink" title="C++进阶07：类-inline-const-mutable-this-static"></a>C++进阶07：类-inline-const-mutable-this-static</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;temp10_类_time.h&quot;
 using namespace std;
 
@@ -513,6 +513,9 @@ int main() &#123;
 	return 0;
 &#125;
 </code></pre>
+
+
+
 <p>myTime.h</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#ifndef __MYTIME__
 #define __MYTIME__
@@ -576,6 +579,7 @@ public:
 &#125;;
 
 #endif</code></pre>
+
 <p>myTime.cpp</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;temp10_类_time.h&quot;
@@ -647,31 +651,26 @@ myTime&amp; myTime::operator&#x3D;(const myTime&amp; tempObj) &#123;
 myTime::~myTime() &#123;
 	std::cout &lt;&lt; &quot;调用了析构函数&quot; &lt;&lt; std::endl;
 &#125;</code></pre>
-<h3 id="一、在类内实现成员函数inline"><a class="header-anchor" href="#一、在类内实现成员函数inline">¶</a>一、在类内实现成员函数inline</h3>
-<p>直接在类中定义的成员函数，会被当做inline内联函数来处理<br>
-内联函数： 系统将函数体内的代码直接执行，忽略调用的过程，提高程序的执行效率<br>
-多个cpp文件可以直接include该头文件，因为系统会将其当做inline函数，不会看做是函数，而是代码块，不会出现函数重复定义的情况</p>
-<h3 id="二、成员函数末尾的const-常量成员函数"><a class="header-anchor" href="#二、成员函数末尾的const-常量成员函数">¶</a>二、成员函数末尾的const 常量成员函数</h3>
-<pre class="language-c++" data-language="c++"><code class="language-c++">const： 常量，在成员函数的后面加一个const，在成员函数的声明和定义中增加const
+
+<h3 id="一、在类内实现成员函数inline"><a href="#一、在类内实现成员函数inline" class="headerlink" title="一、在类内实现成员函数inline"></a>一、在类内实现成员函数inline</h3><p>直接在类中定义的成员函数，会被当做inline内联函数来处理<br>内联函数： 系统将函数体内的代码直接执行，忽略调用的过程，提高程序的执行效率<br>多个cpp文件可以直接include该头文件，因为系统会将其当做inline函数，不会看做是函数，而是代码块，不会出现函数重复定义的情况</p>
+<h3 id="二、成员函数末尾的const-常量成员函数"><a href="#二、成员函数末尾的const-常量成员函数" class="headerlink" title="二、成员函数末尾的const 常量成员函数"></a>二、成员函数末尾的const 常量成员函数</h3><pre class="language-c++" data-language="c++"><code class="language-c++">const： 常量，在成员函数的后面加一个const，在成员函数的声明和定义中增加const
 void Time::addHour(int number) const&#123;&#125;   表示在函数内部不会修改time对象的成员变量
 作用： 告诉系统，这个成员函数 不会修改该对象内任何成员变量的值等等
 const只能放在成员函数的后面，表示不会修改成员变量的值</code></pre>
-<h3 id="三、mutable-不稳定，容易改变的意思-，-const的反义词，mutable的引入是为了突破const的限制"><a class="header-anchor" href="#三、mutable-不稳定，容易改变的意思-，-const的反义词，mutable的引入是为了突破const的限制">¶</a>三、mutable(不稳定，容易改变的意思)， const的反义词，mutable的引入是为了突破const的限制</h3>
-<pre class="language-c++" data-language="c++"><code class="language-c++">一个成员变量被mutable修饰了，那么它就一直处于可被修改的状态，即便被const修饰
+
+<h3 id="三、mutable-不稳定，容易改变的意思-，-const的反义词，mutable的引入是为了突破const的限制"><a href="#三、mutable-不稳定，容易改变的意思-，-const的反义词，mutable的引入是为了突破const的限制" class="headerlink" title="三、mutable(不稳定，容易改变的意思)， const的反义词，mutable的引入是为了突破const的限制"></a>三、mutable(不稳定，容易改变的意思)， const的反义词，mutable的引入是为了突破const的限制</h3><pre class="language-c++" data-language="c++"><code class="language-c++">一个成员变量被mutable修饰了，那么它就一直处于可被修改的状态，即便被const修饰
 mutable int hour; 那么在const末尾修饰的方法中就能被修改</code></pre>
-<h3 id="四、返回自身对象的引用：-this"><a class="header-anchor" href="#四、返回自身对象的引用：-this">¶</a>四、返回自身对象的引用： this</h3>
-<pre class="language-c++" data-language="c++"><code class="language-c++">(1) this只能在成员函数中使用，全局函数，静态函数都不能使用this指针
+
+<h3 id="四、返回自身对象的引用：-this"><a href="#四、返回自身对象的引用：-this" class="headerlink" title="四、返回自身对象的引用： this"></a>四、返回自身对象的引用： this</h3><pre class="language-c++" data-language="c++"><code class="language-c++">(1) this只能在成员函数中使用，全局函数，静态函数都不能使用this指针
 (2) 在普通成员函数中，this是一个指向非const对象的const指针，this只能为指向该类的类型： myTime * const this.
      this只能指向myTime对象</code></pre>
-<h3 id="五、static成员"><a class="header-anchor" href="#五、static成员">¶</a>五、static成员</h3>
-<p><strong>属于整个类的成员变量，这种成员变量叫做static成员变量</strong></p>
+
+<h3 id="五、static成员"><a href="#五、static成员" class="headerlink" title="五、static成员"></a>五、static成员</h3><p><strong>属于整个类的成员变量，这种成员变量叫做static成员变量</strong></p>
 <p><strong>特点</strong>： 不属于某个对象，属于整个类，一旦在某个对象中修改了这个成员变量的值，在其他对象中能看到修改后的结果</p>
 <blockquote>
-<p>这种成员变量只有一个副本，对于这种成员变量的引用，					 使用  类名:: 成员变量名<br>
-成员函数前面也可以加static构成： 静态成员函数， 属于整个类的成员函数，使用  类名:: 成员函数名(…)</p>
+<p>这种成员变量只有一个副本，对于这种成员变量的引用，                     使用  类名:: 成员变量名<br>成员函数前面也可以加static构成： 静态成员函数， 属于整个类的成员函数，使用  类名:: 成员函数名(…)</p>
 </blockquote>
-<p>如何定义静态成员变量（分配内存-在类定义的头文件中没有给静态成员变量分配内存）<br>
-答： 我们会在使用它的源文件开头位置定义，只能在一个源文件中定义，多个cpp文件定义会重复定义错误</p>
+<p>如何定义静态成员变量（分配内存-在类定义的头文件中没有给静态成员变量分配内存）<br>答： 我们会在使用它的源文件开头位置定义，只能在一个源文件中定义，多个cpp文件定义会重复定义错误</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 这种静态成员变量，在多个对象之间共同使用，跨对象使用
 cout &lt;&lt; &quot;类中的静态成员变量&quot; &lt;&lt; myTime::myStatic &lt;&lt; endl;
 
@@ -684,39 +683,25 @@ cout &lt;&lt; &quot;myTime* m2 中的静态成员变量&quot; &lt;&lt; m2-&gt;my
 cout &lt;&lt; &quot;myTime* m3 中的静态成员变量&quot; &lt;&lt; m3-&gt;myStatic &lt;&lt; endl;	&#x2F;&#x2F; 20
 delete m2, m3;
 &#x2F;&#x2F; 上述的 myTime::myStatic  m2-&gt;myStatic  m3-&gt;myStatic  三个值指向的是同一块内存地址</code></pre>
-<h3 id="六、默认的构造函数"><a class="header-anchor" href="#六、默认的构造函数">¶</a>六、默认的构造函数</h3>
-<blockquote>
-<p>(1) 没有参数的构造函数，被称为  默认构造函数<br>
-(2) 在创建对象时，会调用构造函数，当我们没有在类中定义构造函数时，系统会调用默认构造函数（没有参数的构造函数）  隐式的自动定义一个默认构造函数<br>
-(3) 一旦我们自己定义了构造函数，系统就不会创建这个 默认的构造函数了</p>
+
+<h3 id="六、默认的构造函数"><a href="#六、默认的构造函数" class="headerlink" title="六、默认的构造函数"></a>六、默认的构造函数</h3><blockquote>
+<p>(1) 没有参数的构造函数，被称为  默认构造函数<br>(2) 在创建对象时，会调用构造函数，当我们没有在类中定义构造函数时，系统会调用默认构造函数（没有参数的构造函数）  隐式的自动定义一个默认构造函数<br>(3) 一旦我们自己定义了构造函数，系统就不会创建这个 默认的构造函数了</p>
 </blockquote>
-<h3 id="七、-default-delete"><a class="header-anchor" href="#七、-default-delete">¶</a>七、=default  =delete</h3>
-<p>// =default  编译器能够为我们自动生成函数体, 一般的函数，带有参数的函数，都不能使用<br>
-// 	   myTime(){}  等价于   myTime() = default;<br>
-// =delete<br>
-//     myTime = delete;  让程序显式的禁用某个函数</p>
-<h3 id="八、拷贝构造函数"><a class="header-anchor" href="#八、拷贝构造函数">¶</a>八、拷贝构造函数</h3>
-<p>默认情况下，类对象的拷贝是每个成员变量依次拷贝<br>
-myTime myTime1;				// 调用默认构造函数,并且初始化了对象</p>
-<p>拷贝构造函数<br>
-如果一个类的构造函数的第一个参数 是所属的类类型的引用，如果还有其他额外的参数<br>
-这些额外的参数还有默认值，则这个构造函数也叫： 拷贝构造函数<br>
-函数的默认参数必须放在函数的声明中，除非该函数没有函数声明</p>
+<h3 id="七、-default-delete"><a href="#七、-default-delete" class="headerlink" title="七、=default  =delete"></a>七、=default  =delete</h3><p>// =default  编译器能够为我们自动生成函数体, 一般的函数，带有参数的函数，都不能使用<br>    //        myTime(){}  等价于   myTime() = default;<br>    // =delete<br>    //     myTime = delete;  让程序显式的禁用某个函数</p>
+<h3 id="八、拷贝构造函数"><a href="#八、拷贝构造函数" class="headerlink" title="八、拷贝构造函数"></a>八、拷贝构造函数</h3><p>默认情况下，类对象的拷贝是每个成员变量依次拷贝<br>myTime myTime1;                // 调用默认构造函数,并且初始化了对象</p>
+<p>拷贝构造函数<br>如果一个类的构造函数的第一个参数 是所属的类类型的引用，如果还有其他额外的参数<br>        这些额外的参数还有默认值，则这个构造函数也叫： 拷贝构造函数<br>        函数的默认参数必须放在函数的声明中，除非该函数没有函数声明</p>
 <blockquote>
-<p>注意：<br>
-(1) 建议拷贝构造函数第一个参数总是带着const： 第一个参数是所属类的类型的引用，加上const表示拷贝过程中不会不小心更改了<br>
-(2) 拷贝构造函数不建议声明成： explicit    ： 如果声明了，会发现上述4种情况1,4会报错，因为这是隐式的写法</p>
+<p>注意：<br>        (1) 建议拷贝构造函数第一个参数总是带着const： 第一个参数是所属类的类型的引用，加上const表示拷贝过程中不会不小心更改了<br>        (2) 拷贝构造函数不建议声明成： explicit    ： 如果声明了，会发现上述4种情况1,4会报错，因为这是隐式的写法</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 调用拷贝构造函数的时机
 myTime myTime2 &#x3D; myTime1;	&#x2F;&#x2F; 调用了拷贝构造函数，4个相同
 myTime myTime3(myTime1);
 myTime myTime4&#123; myTime1 &#125;;
 myTime myTime5 &#x3D; &#123; myTime1 &#125;;</code></pre>
-<p>注意：<br>
-(1) 如果我们没有定义一个拷贝构造函数，编译器会帮我们定义一个<br>
-(2) 如果是编译器帮我们定义的拷贝构造函数，这个拷贝构造函数也是将对象的成员依次拷贝到正在创建的对象中去</p>
-<h3 id="更多内容"><a class="header-anchor" href="#更多内容">¶</a><a href>更多内容</a></h3>
-</font>
+
+<p>注意：<br> (1) 如果我们没有定义一个拷贝构造函数，编译器会帮我们定义一个<br> (2) 如果是编译器帮我们定义的拷贝构造函数，这个拷贝构造函数也是将对象的成员依次拷贝到正在创建的对象中去</p>
+<h3 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a><a href>更多内容</a></h3></font>
+
 
                 
             </div>

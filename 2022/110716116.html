@@ -6,15 +6,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习1-环境安装, Software Engineer">
     <meta name="description" content="
-¶一、各类资源地址
-Pytorch官网
+
+一、各类资源地址Pytorch官网
 anaconda官网
 anaconda历史版本
 安装教程视频
-¶1、安装anaconda
-根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功
-
-¶2、显卡的配置">
+1、安装anaconda根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功
+2、显卡的配置本地显卡版">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -412,7 +410,7 @@ anaconda历史版本
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    366
+                    364
                 </div>
                 
 
@@ -443,35 +441,34 @@ anaconda历史版本
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、各类资源地址"><a class="header-anchor" href="#一、各类资源地址">¶</a>一、各类资源地址</h3>
-<p><a target="_blank" rel="noopener" href="https://pytorch.org/">Pytorch官网</a></p>
+
+<h3 id="一、各类资源地址"><a href="#一、各类资源地址" class="headerlink" title="一、各类资源地址"></a>一、各类资源地址</h3><p><a target="_blank" rel="noopener" href="https://pytorch.org/">Pytorch官网</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.anaconda.com/">anaconda官网</a></p>
 <p><a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">anaconda历史版本</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411t7RN/?spm_id_from=333.337.search-card.all.click&amp;vd_source=0f50d0008f8b836aa3258f634d65d48e">安装教程视频</a></p>
-<h4 id="1、安装anaconda"><a class="header-anchor" href="#1、安装anaconda">¶</a>1、安装anaconda</h4>
-<p>根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功<br>
-<img src="/2022/110716116/anaconda%E7%9A%84base%E7%8E%AF%E5%A2%83.png" alt></p>
-<h4 id="2、显卡的配置"><a class="header-anchor" href="#2、显卡的配置">¶</a>2、显卡的配置</h4>
-<p>本地显卡版本：任务管理器-性能-GPU<br>
-设备管理器-显示适配器<br>
-驱动 + CUDA</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hE411t7RN/?spm_id_from=333.337.search-card.all.click&vd_source=0f50d0008f8b836aa3258f634d65d48e">安装教程视频</a></p>
+<h4 id="1、安装anaconda"><a href="#1、安装anaconda" class="headerlink" title="1、安装anaconda"></a>1、安装anaconda</h4><p>根据上述安装地址下载安装,搜索Anaconda Prompt出现base环境说明安装成功<br><img src="/2022/110716116/anaconda%E7%9A%84base%E7%8E%AF%E5%A2%83.png" alt></p>
+<h4 id="2、显卡的配置"><a href="#2、显卡的配置" class="headerlink" title="2、显卡的配置"></a>2、显卡的配置</h4><p>本地显卡版本：任务管理器-性能-GPU<br>设备管理器-显示适配器<br>驱动 + CUDA</p>
 <p>查看驱动版本：</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">nvidia-smi</code></pre>
 <p><img src="/2022/110716116/%E9%A9%B1%E5%8A%A8%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B.png" alt></p>
-<h4 id="3、使用conda创建虚拟环境"><a class="header-anchor" href="#3、使用conda创建虚拟环境">¶</a>3、使用conda创建虚拟环境</h4>
-<p>1、打开Anaconda Prompt窗口，创建环境Pytorch</p>
+<h4 id="3、使用conda创建虚拟环境"><a href="#3、使用conda创建虚拟环境" class="headerlink" title="3、使用conda创建虚拟环境"></a>3、使用conda创建虚拟环境</h4><p>1、打开Anaconda Prompt窗口，创建环境Pytorch</p>
 <pre class="language-conda" data-language="conda"><code class="language-conda">conda create -n pytorch python&#x3D;3.6</code></pre>
+
 <p>2、激活环境</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">conda activate pytorch</code></pre>
+
 <p>3、查看环境当中具备哪些工具包：</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">pip list</code></pre>
+
 <p>4、查看pytorch是否可用</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">python
 &gt;&gt;&gt; import torch
 &gt;&gt;&gt; torch.cuda.is_available();
 # 返回True表示本机GPU可被pytorch使用</code></pre>
+
 <p>5、删除虚拟环境</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">conda remove -n pytorch_env(虚拟环境名称)  --all</code></pre>
+
 <p><img src="/2022/110716116/%E6%9F%A5%E7%9C%8Bpytorch%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%A8.png" alt></p>
 <p>6、将pytorch安装到指定的目录下</p>
 <pre class="language-cmd" data-language="cmd"><code class="language-cmd">查看anaconda文档
@@ -488,22 +485,18 @@ labelImg                 C:\Users\Administrator\.conda\envs\labelImg
 base                  *  D:\Anaconda\setup
 pytorch                  D:\Anaconda\setup\envs\pytorch
 </code></pre>
-<p>7、创建好了虚拟环境之后，安装pytorch<br>
-<a target="_blank" rel="noopener" href="https://pytorch.org/">pytorch安装路径</a><br>
-<img src alt></p>
-<h3 id="二、相关的操作命令"><a class="header-anchor" href="#二、相关的操作命令">¶</a>二、相关的操作命令</h3>
-<pre class="language-cmd" data-language="cmd"><code class="language-cmd">dir() : 打开函数，查看有哪些方法
+
+<p>7、创建好了虚拟环境之后，安装pytorch<br><a target="_blank" rel="noopener" href="https://pytorch.org/">pytorch安装路径</a><br><img src alt></p>
+<h3 id="二、相关的操作命令"><a href="#二、相关的操作命令" class="headerlink" title="二、相关的操作命令"></a>二、相关的操作命令</h3><pre class="language-cmd" data-language="cmd"><code class="language-cmd">dir() : 打开函数，查看有哪些方法
 help(): 工具的使用方法</code></pre>
-<p><img src="/2022/110716116/pythorch%E5%91%BD%E4%BB%A4.png" alt><br>
-<img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A42.png" alt><br>
-<img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A43.png" alt></p>
-<h5 id="查看是否安装成功"><a class="header-anchor" href="#查看是否安装成功">¶</a>查看是否安装成功</h5>
-<p>在pycharm当中完成环境的配置之后</p>
+<p><img src="/2022/110716116/pythorch%E5%91%BD%E4%BB%A4.png" alt><br><img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A42.png" alt><br><img src="/2022/110716116/pytorch%E5%91%BD%E4%BB%A43.png" alt></p>
+<h5 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h5><p>在pycharm当中完成环境的配置之后</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torch
 <span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>cuda<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>is_available<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>cuda_version<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>version<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+
 </font>
                 
             </div>

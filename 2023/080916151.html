@@ -6,11 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶02)-范围for，new内存动态分配，nullptr, Software Engineer">
     <meta name="description" content="
-¶C++进阶02：范围for，new内存动态分配，nullptr
-#include&amp;lt;iostream&amp;gt;
+
+C++进阶02：范围for，new内存动态分配，nullptr#include&amp;lt;iostream&amp;gt;
 #include&amp;lt;chrono&amp;gt;
 #include&amp;lt;time.h&amp;gt;
-using namespace">
+using namespace ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -443,8 +443,8 @@ using namespace">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="C-进阶02：范围for，new内存动态分配，nullptr"><a class="header-anchor" href="#C-进阶02：范围for，new内存动态分配，nullptr">¶</a>C++进阶02：范围for，new内存动态分配，nullptr</h2>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+
+<h2 id="C-进阶02：范围for，new内存动态分配，nullptr"><a href="#C-进阶02：范围for，new内存动态分配，nullptr" class="headerlink" title="C++进阶02：范围for，new内存动态分配，nullptr"></a>C++进阶02：范围for，new内存动态分配，nullptr</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include&lt;chrono&gt;
 #include&lt;time.h&gt;
 using namespace std;
@@ -552,8 +552,10 @@ int main() &#123;
 	return 0;
 &#125;
 </code></pre>
-<h3 id="一、范围for的使用"><a class="header-anchor" href="#一、范围for的使用">¶</a>一、范围for的使用</h3>
-<pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;范围for语句: 用于遍历一个序列
+
+
+
+<h3 id="一、范围for的使用"><a href="#一、范围for的使用" class="headerlink" title="一、范围for的使用"></a>一、范围for的使用</h3><pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;范围for语句: 用于遍历一个序列
 int v[] &#x3D; &#123; 1,2,3,4,5 &#125;;
 
 &#x2F;&#x2F; 这里值得注意的是：每一次都有一个拷贝的处理，将V中的元素拷贝到i中来
@@ -565,23 +567,16 @@ for (auto &amp;i : v) &#123;
 	&#x2F;&#x2F;cout &lt;&lt; i &lt;&lt; endl;
 	i &#x3D; i + 1;
 &#125;</code></pre>
-<h3 id="二、内存分配"><a class="header-anchor" href="#二、内存分配">¶</a>二、内存分配</h3>
-<p>C++中，一般把内存进一步分为5个区域</p>
+
+<h3 id="二、内存分配"><a href="#二、内存分配" class="headerlink" title="二、内存分配"></a>二、内存分配</h3><p>C++中，一般把内存进一步分为5个区域</p>
 <blockquote>
-<p>1、 栈：一般函数内的局部变量都会存放在这里，由编译器自动分配和释放（可以理解为：）<br>
-2、 堆：由程序员进行malloc/new进行分配，用free/delete来释放。忘记释放，系统会回收<br>
-3、 全局/静态存储区：存放全局变量和静态变量static，程序结束时系统会释放<br>
-4、 常量存储区： “I Love Chain”  int a = 0…<br>
-5、 程序代码区。</p>
+<p>1、 栈：一般函数内的局部变量都会存放在这里，由编译器自动分配和释放（可以理解为：）<br>2、 堆：由程序员进行malloc/new进行分配，用free/delete来释放。忘记释放，系统会回收<br>3、 全局/静态存储区：存放全局变量和静态变量static，程序结束时系统会释放<br>4、 常量存储区： “I Love Chain”  int a = 0….<br>5、 程序代码区。</p>
 </blockquote>
 <p>堆和栈不同的用途和区别</p>
 <blockquote>
-<p>(1) 栈的空间是有限的，系统的分配速度快，程序员也无法控制<br>
-(2) 堆：只要不超过你实际的拥有的物理内存，在操作系统所允许的分配的最大的内存之内，都可以分配给你<br>
-分配的速度比较慢，你可以使用malloc/new来分配，free/delete来释放内存</p>
+<p>(1) 栈的空间是有限的，系统的分配速度快，程序员也无法控制<br>(2) 堆：只要不超过你实际的拥有的物理内存，在操作系统所允许的分配的最大的内存之内，都可以分配给你<br>            分配的速度比较慢，你可以使用malloc/new来分配，free/delete来释放内存</p>
 </blockquote>
-<p>malloc和free : 在C语言中，使用malloc和free从堆中分配和释放内存，注意malloc和free是函数<br>
-new 和delete : 在C++语言中使用</p>
+<p>malloc和free : 在C语言中，使用malloc和free从堆中分配和释放内存，注意malloc和free是函数<br>new 和delete : 在C++语言中使用</p>
 <p>malloc(memory allocation): 动态内存分配</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; 一般形式：
 &#x2F;&#x2F; void *malloc(int NumByte);	&#x2F;&#x2F; NumByte表示需要分配的字节数，分配成功则返回指向这段被分配内存的指针，分配失败返回NULL.
@@ -620,12 +615,13 @@ if (pInt !&#x3D; NULL) &#123;
 	cout &lt;&lt; *(p + 1) &lt;&lt; endl;	&#x2F;&#x2F;5
 	free(pInt);
 &#125;</code></pre>
+
 <p>使用new和delete： 是运算符（标识符），C++中使用new/delete从堆中分配和释放内存，不再使用malloc/free</p>
 <p>new的一般使用格式：</p>
 <blockquote>
 <p>（1）指针变量名 = new 类型标识符</p>
-<p>（2）指针类型名 = new 类型标识符（初始值）	      // () 表示 设置初始值</p>
-<p>（3）指针类型名 = new 类型标识符[内存单元个数]	// [] 表示分配若干个单元的数组</p>
+<p>（2）指针类型名 = new 类型标识符（初始值）          // () 表示 设置初始值</p>
+<p>（3）指针类型名 = new 类型标识符[内存单元个数]    // [] 表示分配若干个单元的数组</p>
 </blockquote>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;int* myInt &#x3D; new int; &#x2F;&#x2F; (int *)malloc(sizeof(int))
 &#x2F;&#x2F;int* myInt &#x3D; new int(20); &#x2F;&#x2F; 给定了初始值20
@@ -639,19 +635,20 @@ if (myInt !&#x3D; nullptr) &#123;		&#x2F;&#x2F; 这里表示： 指针变量是�
     cout &lt;&lt; *myInt &lt;&lt; endl;		&#x2F;&#x2F; 指针名表示数组首地址
     cout &lt;&lt; *(myInt+1) &lt;&lt; endl;	&#x2F;&#x2F; 指针所指向的数组的第二个元素
     delete []myInt;		&#x2F;&#x2F; 释放分配的数组空间的内存</code></pre>
+
 <p>注意事项：</p>
 <ul>
 <li>分配和释放需要成对使用，有分配就有释放</li>
 <li>free/delete 不要重复使用</li>
 </ul>
-<h3 id="三、nullptr"><a class="header-anchor" href="#三、nullptr">¶</a>三、nullptr</h3>
-<p>nullptr： C++ 11 中引入的新的关键字<br>
-nullptr: 空指针</p>
+<h3 id="三、nullptr"><a href="#三、nullptr" class="headerlink" title="三、nullptr"></a>三、nullptr</h3><p>nullptr： C++ 11 中引入的新的关键字<br>    nullptr: 空指针</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">cout &lt;&lt; typeid(NULL).name() &lt;&lt; endl;		&#x2F;&#x2F; int
 cout &lt;&lt; typeid(nullptr).name() &lt;&lt; endl;		&#x2F;&#x2F; std::nullptr_t
 &#x2F;&#x2F; 所以表述为空指针： 建议使用nullptr: 空指针关键字</code></pre>
+
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39686950/article/details/113485496">更多内容</a></p>
 </font>
+
 
                 
             </div>

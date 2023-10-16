@@ -6,13 +6,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="图书管理系统1-创建Vue前端项目, Software Engineer">
     <meta name="description" content="
-¶Quick Start
-¶一、创建Vue项目及安装依赖项
-(1)、使用下列命令安装/更新Vue-cli
+
+Quick Start一、创建Vue项目及安装依赖项(1)、使用下列命令安装/更新Vue-cli
 npm install -g @vue&amp;#x2F;cli
 # OR
 yarn global add @vue&amp;#x2F;cli
-vu">
+
+vue-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,7 +414,7 @@ vu">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    912
+                    920
                 </div>
                 
 
@@ -445,20 +445,22 @@ vu">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2>
-<h3 id="一、创建Vue项目及安装依赖项"><a class="header-anchor" href="#一、创建Vue项目及安装依赖项">¶</a>一、创建Vue项目及安装依赖项</h3>
-<p>(1)、使用下列命令安装/更新Vue-cli</p>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="一、创建Vue项目及安装依赖项"><a href="#一、创建Vue项目及安装依赖项" class="headerlink" title="一、创建Vue项目及安装依赖项"></a>一、创建Vue项目及安装依赖项</h3><p>(1)、使用下列命令安装/更新Vue-cli</p>
 <pre class="language-base" data-language="base"><code class="language-base">npm install -g @vue&#x2F;cli
 # OR
 yarn global add @vue&#x2F;cli</code></pre>
+
 <p><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/installation.html">vue-vli学习网站</a></p>
 <p>(2)、使用下列命令安装Vue框架内容</p>
 <pre class="language-base" data-language="base"><code class="language-base">vue create [项目名]</code></pre>
+
 <p>(3)、使用命令访问创建的项目内容</p>
 <pre class="language-base" data-language="base"><code class="language-base">vue run dev&#x2F;serve</code></pre>
-<p>(4)、前端项目当中使用Element-ui<br>
-官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/guide/design">https://element.eleme.cn/#/zh-CN/guide/design</a></p>
+
+<p>(4)、前端项目当中使用Element-ui<br>官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/guide/design">https://element.eleme.cn/#/zh-CN/guide/design</a></p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i element-ui <span class="token parameter variable">-S</span></code></pre>
+
 <p>在vue前端项目当中使用</p>
 <pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// main.js</span>
 <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>
@@ -472,10 +474,8 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
   <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="二、几个小技巧"><a class="header-anchor" href="#二、几个小技巧">¶</a>二、几个小技巧</h3>
-<p>(1)、通常情况下，原始的界面都会出现页面一小部分留白，我们可以编辑全局样式进行控制<br>
-a、在assets目录下创建global.css<br>
-b、在main.js当中进行引入：import “@/assets/global.css”</p>
+
+<h3 id="二、几个小技巧"><a href="#二、几个小技巧" class="headerlink" title="二、几个小技巧"></a>二、几个小技巧</h3><p>(1)、通常情况下，原始的界面都会出现页面一小部分留白，我们可以编辑全局样式进行控制<br>a、在assets目录下创建global.css<br>b、在main.js当中进行引入：import “@/assets/global.css”</p>
 <pre class="language-css" data-language="css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">&#123;</span>
     <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
@@ -483,13 +483,11 @@ b、在main.js当中进行引入：import “@/assets/global.css”</p>
 <span class="token selector">*</span> <span class="token punctuation">&#123;</span>
     <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> //消除掉盒子模型的内边距，通常是有一个像素的大小
 <span class="token punctuation">&#125;</span></code></pre>
+
 <p>(2)、在IDEA编译器当中Add Configurations当中选择npm，找到执行的package.json文件，使用npm run serve命令</p>
 <p><img src="/2022/102716107/IDEA%E4%BD%BF%E7%94%A8npm%E8%BF%90%E8%A1%8C%E7%AA%97%E5%8F%A3.png" alt></p>
-<p>(3)、更新相关的系统icon<br>
-         阿里巴巴icon图标库： <a target="_blank" rel="noopener" href="https://www.iconfont.cn/">https://www.iconfont.cn/</a></p>
-<p>(4)、系统的框架的搭建<br>
-通常情况下，系统的页面都是分为[头部栏][左侧导航栏][中间主体部分]三个部分，我们就这三部分进行系统页面的划分<br>
-在创建好的vue前端项目当中，在app.vue文件当中完成三个部分的划分</p>
+<p>(3)、更新相关的系统icon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阿里巴巴icon图标库： <a target="_blank" rel="noopener" href="https://www.iconfont.cn/">https://www.iconfont.cn/</a></p>
+<p>(4)、系统的框架的搭建<br>通常情况下，系统的页面都是分为[头部栏][左侧导航栏][中间主体部分]三个部分，我们就这三部分进行系统页面的划分<br>在创建好的vue前端项目当中，在app.vue文件当中完成三个部分的划分</p>
 <p>a)、头部区域</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--头部区域--></span>
 <span class="token comment">&lt;!--
@@ -503,6 +501,7 @@ b、在main.js当中进行引入：import “@/assets/global.css”</p>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>@/assets/logo.png<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">width</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span> <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span> <span class="token property">top</span><span class="token punctuation">:</span> 9px<span class="token punctuation">;</span> <span class="token property">left</span><span class="token punctuation">:</span> 10px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">font-size</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span> <span class="token property">margin-left</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>图书管理系统<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+
 <p>b)、主体区域</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--侧边栏和主体内容--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">display</span><span class="token punctuation">:</span> flex</span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
@@ -541,6 +540,7 @@ b、在main.js当中进行引入：import “@/assets/global.css”</p>
     index="/":                              在导航栏当中，index表示的就是跳转的路径，可以对应到router.js当中的path
     &lt;router-view/>:                         切换过程当中页面切换的部分，一个代替的部分，只需要放到主题数据区域即可
 --></span></code></pre>
+
 <p>(5)、将elementUI中的各类组件的大小进行配置</p>
 <pre class="language-javascript" data-language="javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementUI<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token literal-property property">size</span><span class="token operator">:</span> <span class="token string">'mini'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 配置elementui的样式大小 medium small mini</span></code></pre>
 </font>

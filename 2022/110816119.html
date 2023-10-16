@@ -6,11 +6,10 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习5-现有模型的修改, Software Engineer">
     <meta name="description" content="
-¶一、模型的使用
-¶查看vgg16的模型结构
-import torchvision
 
-# train_data = torchvision.dataset.ImageNet(&#34;./data_image_net&#34;, split=&#39;train">
+一、模型的使用查看vgg16的模型结构import torchvision
+
+# train_data = torchvision.dataset.ImageNet(&#34;./data_image_net&#34;, split=&#39;train&#39;, ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,7 +419,7 @@ import torchvision
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    993
+                    992
                 </div>
                 
 
@@ -451,9 +450,8 @@ import torchvision
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h3 id="一、模型的使用"><a class="header-anchor" href="#一、模型的使用">¶</a>一、模型的使用</h3>
-<h5 id="查看vgg16的模型结构"><a class="header-anchor" href="#查看vgg16的模型结构">¶</a>查看vgg16的模型结构</h5>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torchvision
+
+<h3 id="一、模型的使用"><a href="#一、模型的使用" class="headerlink" title="一、模型的使用"></a>一、模型的使用</h3><h5 id="查看vgg16的模型结构"><a href="#查看vgg16的模型结构" class="headerlink" title="查看vgg16的模型结构"></a>查看vgg16的模型结构</h5><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> torchvision
 
 <span class="token comment"># train_data = torchvision.dataset.ImageNet("./data_image_net", split='train', download=True,</span>
 <span class="token comment">#                                           transform=torchvision.transforms.ToTensor())</span>
@@ -568,8 +566,8 @@ vgg16_true<span class="token punctuation">.</span>classifier<span class="token p
 <span class="token comment"># 在原有模型的基础上添加的步骤</span>
 <span class="token comment">#   (add_linear): Linear(in_features=1000, out_features=10, bias=True)</span>
 <span class="token comment"># )</span></code></pre>
-<h3 id="二、模型的保存与加载"><a class="header-anchor" href="#二、模型的保存与加载">¶</a>二、模型的保存与加载</h3>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">################################## 模型的保存 #################################</span>
+
+<h3 id="二、模型的保存与加载"><a href="#二、模型的保存与加载" class="headerlink" title="二、模型的保存与加载"></a>二、模型的保存与加载</h3><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment">################################## 模型的保存 #################################</span>
 <span class="token keyword">import</span> torch
 <span class="token keyword">import</span> torchvision
 
@@ -596,6 +594,8 @@ model <span class="token operator">=</span> torch<span class="token punctuation"
 vgg16 <span class="token operator">=</span> torchvision<span class="token punctuation">.</span>models<span class="token punctuation">.</span>vgg16<span class="token punctuation">(</span>pretrained<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 vgg16<span class="token punctuation">.</span>load_state_dict<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token string">"vgg_method2.pth"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>vgg16<span class="token punctuation">)</span></code></pre>
+
+
 </font>
                 
             </div>

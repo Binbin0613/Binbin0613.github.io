@@ -6,12 +6,12 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++基础06)-编译预处理, Software Engineer">
     <meta name="description" content="
-¶C++基础06：编译预处理
-#include&amp;lt;iostream&amp;gt;
+
+C++基础06：编译预处理#include&amp;lt;iostream&amp;gt;
 using namespace std;
 
 &amp;#x2F;&amp;#x2F; 不带参数的宏定义: 使用PI代替“3.1415926”这个字符串
-#define PI ">
+#define PI 3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,8 +444,8 @@ using namespace std;
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="C-基础06：编译预处理"><a class="header-anchor" href="#C-基础06：编译预处理">¶</a>C++基础06：编译预处理</h2>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+
+<h2 id="C-基础06：编译预处理"><a href="#C-基础06：编译预处理" class="headerlink" title="C++基础06：编译预处理"></a>C++基础06：编译预处理</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 using namespace std;
 
 &#x2F;&#x2F; 不带参数的宏定义: 使用PI代替“3.1415926”这个字符串
@@ -520,77 +520,50 @@ int main() &#123;
 	return 0;
 &#125;
 </code></pre>
-<h3 id="一、知识理解"><a class="header-anchor" href="#一、知识理解">¶</a>一、知识理解</h3>
-<blockquote>
-<p>一个项目可以通过编译，链接生成一个可执行文件<br>
-每一个源文件(.cpp)都会单独编译，生成一个目标文件(.o或者.obj，扩展名与操作系统有关)<br>
-系统会把这些.o文件进行链接，生成一个可执行文件</p>
+
+<h3 id="一、知识理解"><a href="#一、知识理解" class="headerlink" title="一、知识理解"></a>一、知识理解</h3><blockquote>
+<p>一个项目可以通过编译，链接生成一个可执行文件<br>每一个源文件(.cpp)都会单独编译，生成一个目标文件(.o或者.obj，扩展名与操作系统有关)<br>系统会把这些.o文件进行链接，生成一个可执行文件</p>
 </blockquote>
 <p>编译的过程？</p>
-<p>​		笼统的说： 词法，语法分析，目标文件（临时文件）的生成，优化之类</p>
+<p>​        笼统的说： 词法，语法分析，目标文件（临时文件）的生成，优化之类</p>
 <blockquote>
-<p>1、预处理<br>
-2、编译：词法，语法分析，目标打码生成，优化，产生一些临时文件<br>
-3、汇编：生成.o(.obj)目标文件</p>
+<p>1、预处理<br>2、编译：词法，语法分析，目标打码生成，优化，产生一些临时文件<br>3、汇编：生成.o(.obj)目标文件</p>
 </blockquote>
-<p>预处理干了什么？<br>
-在源程序.cpp文件当中加入一些特殊的代码(特殊的命令)，编译系统对特殊代码的处理，就是预处理<br>
-处理结果再和源程序代码进行2编译，3汇编</p>
+<p>预处理干了什么？<br>             在源程序.cpp文件当中加入一些特殊的代码(特殊的命令)，编译系统对特殊代码的处理，就是预处理<br>             处理结果再和源程序代码进行2编译，3汇编</p>
 <p>C语言一般提供三种预处理功能:</p>
 <blockquote>
-<p>1、宏定义</p>
-<p>2、文件包含</p>
+<p>1、宏定义 </p>
+<p>2、文件包含 </p>
 <p>3、条件编译</p>
 <p>这几种功能也是通过程序代码实现，但是：都是以#开头的代码</p>
 </blockquote>
-<h3 id="二、不带参数的宏定义"><a class="header-anchor" href="#二、不带参数的宏定义">¶</a>二、不带参数的宏定义</h3>
-<p>​		不带参数的宏定义： 用一个指定的标识符来代替 一个字符串</p>
+<h3 id="二、不带参数的宏定义"><a href="#二、不带参数的宏定义" class="headerlink" title="二、不带参数的宏定义"></a>二、不带参数的宏定义</h3><p>​        不带参数的宏定义： 用一个指定的标识符来代替 一个字符串</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">#define 标识符&#x2F;宏名 字符串</code></pre>
-<p>好处： 预编译时，将宏名替换成字符串的过程：宏展开<br>
-增加了修改的便利性，这种方式经常使用</p>
+
+<p>好处： 预编译时，将宏名替换成字符串的过程：宏展开<br>                    增加了修改的便利性，这种方式经常使用</p>
 <p>注意：</p>
 <blockquote>
-<p>（1）宏名，一般全部大写，习惯<br>
-（2）不加分号，这不是C语句<br>
-（3）#define只能出现在函数的外面（最上面），只能在本文件中使用，不能在其他文件中使用。<br>
-一般的工程项目中，将定义的宏写在一个文件中，然后引入即可。<br>
-（4）使用#undef命令，终止宏定义的作用域(一般很少使用)<br>
-（5）宏定义时，看可以进行层层定义</p>
+<p>（1）宏名，一般全部大写，习惯<br>（2）不加分号，这不是C语句<br>（3）#define只能出现在函数的外面（最上面），只能在本文件中使用，不能在其他文件中使用。<br>        一般的工程项目中，将定义的宏写在一个文件中，然后引入即可。<br>（4）使用#undef命令，终止宏定义的作用域(一般很少使用)<br>（5）宏定义时，看可以进行层层定义</p>
 </blockquote>
-<h3 id="三、带参数的宏定义"><a class="header-anchor" href="#三、带参数的宏定义">¶</a>三、带参数的宏定义</h3>
-<p>​			 带参数的宏定义： #define 宏名(参数表) 字符串<br>
-​			 例如S（2,3）使用2,3分别替换参数a,b<br>
-​			 S（2,3） = 2* 3;<br>
-​			 注意： 如果写成S（1+1,3），最终的结果是 1+1*3，原因是宏定义是在预处理的过程，程序只会执行<br>
-​</p>
-<h3 id="四、宏定义和函数之间的区别"><a class="header-anchor" href="#四、宏定义和函数之间的区别">¶</a>四、宏定义和函数之间的区别</h3>
-<blockquote>
-<p>1、宏定义直接进行了简单的字符替换，而函数是先计算实参表达式的值<br>
-2、函数调用在程序运行时进行的，分配临时内存，宏展开是在预编译时进行的，没有分配内存，没有值传递，没有返回值<br>
-3、宏的参数没有类型这个说法，只有替换的的方式<br>
-4、宏展开只占用编译时间，不占用程序的运行时间</p>
+<h3 id="三、带参数的宏定义"><a href="#三、带参数的宏定义" class="headerlink" title="三、带参数的宏定义"></a>三、带参数的宏定义</h3><p>​             带参数的宏定义： #define 宏名(参数表) 字符串<br>​             例如S（2,3）使用2,3分别替换参数a,b<br>​             S（2,3） = 2* 3;<br>​             注意： 如果写成S（1+1,3），最终的结果是 1+1*3，原因是宏定义是在预处理的过程，程序只会执行<br>​            </p>
+<h3 id="四、宏定义和函数之间的区别"><a href="#四、宏定义和函数之间的区别" class="headerlink" title="四、宏定义和函数之间的区别"></a>四、宏定义和函数之间的区别</h3><blockquote>
+<p>1、宏定义直接进行了简单的字符替换，而函数是先计算实参表达式的值<br>2、函数调用在程序运行时进行的，分配临时内存，宏展开是在预编译时进行的，没有分配内存，没有值传递，没有返回值<br>3、宏的参数没有类型这个说法，只有替换的的方式<br>4、宏展开只占用编译时间，不占用程序的运行时间</p>
 </blockquote>
-<p>​</p>
-<h3 id="五、文件包含：将另外一个文件的内容包含到本文件中"><a class="header-anchor" href="#五、文件包含：将另外一个文件的内容包含到本文件中">¶</a>五、文件包含：将另外一个文件的内容包含到本文件中</h3>
-<blockquote>
-<p>1、一般而言 通常用于.h文件<br>
-2、 我们把宏定义，函数说明，其他的include命令，全局变量的外部声明等存放到头文件中<br>
-3、 文件包含可以嵌套的<br>
-4、 #include 使用&lt;&gt; 表示从系统目录当中寻找头文件， &quot;&quot;表示先从当前目录寻找，没有则从系统目录中寻找</p>
+<p>​    </p>
+<h3 id="五、文件包含：将另外一个文件的内容包含到本文件中"><a href="#五、文件包含：将另外一个文件的内容包含到本文件中" class="headerlink" title="五、文件包含：将另外一个文件的内容包含到本文件中"></a>五、文件包含：将另外一个文件的内容包含到本文件中</h3><blockquote>
+<p>1、一般而言 通常用于.h文件<br>2、 我们把宏定义，函数说明，其他的include命令，全局变量的外部声明等存放到头文件中<br>3、 文件包含可以嵌套的<br>4、 #include 使用&lt;&gt; 表示从系统目录当中寻找头文件， “”表示先从当前目录寻找，没有则从系统目录中寻找</p>
 </blockquote>
-<h3 id="六、条件编译：对一部分内容，指定编译条件"><a class="header-anchor" href="#六、条件编译：对一部分内容，指定编译条件">¶</a>六、条件编译：对一部分内容，指定编译条件</h3>
-<blockquote>
-<p>1、#ifdef  标识符 程序段1 [#else 程序段2] #endif</p>
-<p>​				===&gt; 当标识符被定义过(#ifdef) 则对程序段1进行编译，否则程序段2进行编译，#else可以没有<br>
-2、#ifndef 标识符 程序段1 [#else 程序段2] #endif</p>
-<p>​				===&gt; 当标识符没有被定义过(#ifndef) 则对程序段1进行编译，否则程序段2进行编译，#else可以没有<br>
-3、#if 表达式 程序段1 #else 程序段 #endif</p>
+<h3 id="六、条件编译：对一部分内容，指定编译条件"><a href="#六、条件编译：对一部分内容，指定编译条件" class="headerlink" title="六、条件编译：对一部分内容，指定编译条件"></a>六、条件编译：对一部分内容，指定编译条件</h3><blockquote>
+<p>1、#ifdef  标识符 程序段1 [#else 程序段2] #endif </p>
+<p>​                ===&gt; 当标识符被定义过(#ifdef) 则对程序段1进行编译，否则程序段2进行编译，#else可以没有<br>2、#ifndef 标识符 程序段1 [#else 程序段2] #endif </p>
+<p>​                ===&gt; 当标识符没有被定义过(#ifndef) 则对程序段1进行编译，否则程序段2进行编译，#else可以没有<br>3、#if 表达式 程序段1 #else 程序段 #endif</p>
 <p>好处：</p>
-<p>1、条件编译可以降低目标文件的长度</p>
+<p>1、条件编译可以降低目标文件的长度 </p>
 <p>2、可以处理跨平台的问题</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wucz122140729/article/details/98477404">更多内容</a></p>
 </font>
+
 
                 
             </div>

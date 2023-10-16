@@ -6,10 +6,10 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Linux服务器实战01-服务器介绍, Software Engineer">
     <meta name="description" content="
-¶Linux服务器实战01-服务器介绍
-¶1、服务器介绍
 
-Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的R">
+Linux服务器实战01-服务器介绍1、服务器介绍2、开发前准备工作
+
+1、linux上部署的nginx服务器，本机上配置基本的linux开发环境,[参考地址](Linux-C++通信架构实战chap2-环境搭建 | Binbin061">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,7 +415,7 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    400
+                    335
                 </div>
                 
 
@@ -446,20 +446,35 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="Linux服务器实战01-服务器介绍"><a class="header-anchor" href="#Linux服务器实战01-服务器介绍">¶</a>Linux服务器实战01-服务器介绍</h2>
-<h3 id="1、服务器介绍"><a class="header-anchor" href="#1、服务器介绍">¶</a>1、服务器介绍</h3>
-<blockquote>
-<p>Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时也提供了IMAP/POP3/SMTP服务。Nginx是由伊戈尔·赛索耶夫为俄罗斯访问量第二的Rambler.ru站点（俄文：Рамблер）开发的，第一个公开版本0.1.0发布于2004年10月4日。其将源代码以类BSD许可证的形式发布，因它的稳定性、丰富的功能集、简单的配置文件和低系统资源的消耗而闻名。2011年6月1日，nginx 1.0.4发布。</p>
-<p>Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，在BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：百度、京东、新浪、网易、腾讯、淘宝等。</p>
-<p>Nginx 是高性能的 HTTP 和反向代理的web服务器，处理高并发能力是十分强大的，能经受高负 载的考验,有报告表明能支持高达 50,000 个并发连接数。</p>
-<p>Nginx支持热部署，启动简单，可以做到7*24不间断运行。几个月都不需要重新启动。</p>
+
+<h2 id="Linux服务器实战01-服务器介绍"><a href="#Linux服务器实战01-服务器介绍" class="headerlink" title="Linux服务器实战01-服务器介绍"></a>Linux服务器实战01-服务器介绍</h2><h3 id="1、服务器介绍"><a href="#1、服务器介绍" class="headerlink" title="1、服务器介绍"></a>1、服务器介绍</h3><h3 id="2、开发前准备工作"><a href="#2、开发前准备工作" class="headerlink" title="2、开发前准备工作"></a>2、开发前准备工作</h3><blockquote>
+<ul>
+<li><p>1、linux上部署的nginx服务器，本机上配置基本的linux开发环境,[参考地址](<a href="https://binbin0613.github.io/2023/100716162.html">Linux-C++通信架构实战chap2-环境搭建 | Binbin0613</a>)</p>
+<p>a) epoll,linux 内核版本为2.6或者以上；<br>b) gcc编译器，g++编译器；<br>c) pcre库：函数库；支持解析正则表达式；<br>d) zlib库：压缩解压缩功能；<br>e) openssl库：ssl功能相关库，用于网站加密通讯</p>
+</li>
+<li><p>2、window上基本的开发环境，VS Stduio VSCode</p>
+</li>
+</ul>
 </blockquote>
-<h3 id="2、开发前准备工作"><a class="header-anchor" href="#2、开发前准备工作">¶</a>2、开发前准备工作</h3>
-<blockquote>
-<p>1、linux上部署的nginx服务器，本机上配置基本的linux开发环境,[参考地址](<a href="https://binbin0613.github.io/2023/100716162.html">Linux-C++通信架构实战chap2-环境搭建 | Binbin0613</a>)</p>
-<p>2、window上基本的开发环境，VS Stduio VSCode</p>
-</blockquote>
-</font>
+<h3 id="3、nginx的下载编译运行"><a href="#3、nginx的下载编译运行" class="headerlink" title="3、nginx的下载编译运行"></a>3、nginx的下载编译运行</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/nginx/sbin/
+./nginx  启动
+./nginx <span class="token parameter variable">-s</span> stop  停止
+./nginx <span class="token parameter variable">-s</span> quit  安全退出
+./nginx <span class="token parameter variable">-s</span> reload  重新加载配置文件  如果我们修改了配置文件，就需要重新加载。
+<span class="token function">ps</span> aux<span class="token operator">|</span><span class="token function">grep</span> nginx  查看nginx进程</code></pre>
+
+<p>其他相关命令：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 开启service firewalld start</span>
+<span class="token comment"># 重启service firewalld restart</span>
+<span class="token comment"># 关闭service firewalld stop</span>
+<span class="token comment"># 查看防火墙规则firewall-cmd --list-all</span>
+<span class="token comment"># 查询端口是否开放firewall-cmd --query-port=8080/tcp</span>
+<span class="token comment"># 开放80端口firewall-cmd --permanent --add-port=80/tcp</span>
+<span class="token comment"># 移除端口firewall-cmd --permanent --remove-port=8080/tcp#重启防火墙(修改配置后要重启防火墙)firewall-cmd --reload</span>
+<span class="token comment"># 参数解释1、firwall-cmd：是Linux提供的操作firewall的一个工具；2、--permanent：表示设置为持久；3、--add-port：标识添加的端口；</span></code></pre>
+
+<h4 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h4></font>
+
 
                 
             </div>
@@ -608,18 +623,17 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/101616164.html">
+                <a href="/2023/101616165.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/194.jpg" class="responsive-img" alt="Linux服务器实战01-服务器介绍">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Linux服务器实战02-正反向代理，负载均衡，动静分离">
                         
-                        <span class="card-title">Linux服务器实战01-服务器介绍</span>
+                        <span class="card-title">Linux服务器实战02-正反向代理，负载均衡，动静分离</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -629,9 +643,9 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-16
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -640,15 +654,14 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
                                     linux
                                 </a>
                             
-                            <a href="/categories/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
-                                    服务器
+                            <a href="/categories/linux/nginx/" class="post-category">
+                                    nginx
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -656,8 +669,12 @@ Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器，同时�
                         <span class="chip bg-color">linux</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                        <span class="chip bg-color">服务器</span>
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
+                        <span class="chip bg-color">负载均衡</span>
                     </a>
                     
                 </div>

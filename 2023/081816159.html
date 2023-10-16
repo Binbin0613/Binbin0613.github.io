@@ -6,10 +6,10 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="(C++进阶09)-类-RTTI-dynamic_cast-typeid, Software Engineer">
     <meta name="description" content="
-¶C++进阶09：类-RTTI-dynamic_cast-typeid
-#include&amp;lt;iostream&amp;gt;
+
+C++进阶09：类-RTTI-dynamic_cast-typeid#include&amp;lt;iostream&amp;gt;
 #include &amp;quot;extends_human.h&amp;quot;
-#include &amp;quot;extend">
+#include &amp;quot;extends">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -411,14 +411,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    11 分
                 </div>
                 
 
@@ -442,8 +442,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h2 id="C-进阶09：类-RTTI-dynamic-cast-typeid"><a class="header-anchor" href="#C-进阶09：类-RTTI-dynamic-cast-typeid">¶</a>C++进阶09：类-RTTI-dynamic_cast-typeid</h2>
-<pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
+
+<h2 id="C-进阶09：类-RTTI-dynamic-cast-typeid"><a href="#C-进阶09：类-RTTI-dynamic-cast-typeid" class="headerlink" title="C++进阶09：类-RTTI-dynamic_cast-typeid"></a>C++进阶09：类-RTTI-dynamic_cast-typeid</h2><pre class="language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
 #include &quot;extends_human.h&quot;
 #include &quot;extends_man.h&quot;
 using namespace std;
@@ -544,26 +544,27 @@ int main() &#123;
 
 	return 0;
 &#125;</code></pre>
-<h3 id="一、RTTI是什么？"><a class="header-anchor" href="#一、RTTI是什么？">¶</a>一、RTTI是什么？</h3>
-<p><strong>Run Time Type Identification —运行时类型识别</strong></p>
+
+
+
+<h3 id="一、RTTI是什么？"><a href="#一、RTTI是什么？" class="headerlink" title="一、RTTI是什么？"></a>一、RTTI是什么？</h3><p><strong>Run Time Type Identification —运行时类型识别</strong></p>
 <p>通过运行时类型识别，程序能够:  使用基类的指针或者引用来检查这些指针或者引用所指向的对象的实际派生类型</p>
 <p>RTTI: 我们可以把这个称呼为一种系统提供给我们的一种能力，这种能力通过2个运算符来体现的。</p>
 <blockquote>
-<p>(1) <strong>dynamic_cast运算符</strong>： 能够将基类的指针或者引用安全的转换为派生类的指针或引用。    父类 -&gt; 子类<br>
-(2) <strong>typeid 运算符</strong>     ： 返回指针或者引用所指对象的实际类型</p>
+<p>(1) <strong>dynamic_cast运算符</strong>： 能够将基类的指针或者引用安全的转换为派生类的指针或引用。    父类 -&gt; 子类<br>(2) <strong>typeid 运算符</strong>     ： 返回指针或者引用所指对象的实际类型</p>
 </blockquote>
-<p>重点： 想让RTTI这两个运算符能够正常的工作，那么基类中必须“<strong>至少要有一个虚函数</strong>”，否则结果可能不正确<br>
-(1) 因为只有虚函数的存在，这两个运算符才会使用指针或者引用所绑定的对象的动态类型（你new的那个类型）<br>
-(2) 只有一个虚函数，系统才会为你创建一个虚函数表<br>
-(3) 如果没有虚函数，可能最后的结果都是Human类型</p>
+<p>重点： 想让RTTI这两个运算符能够正常的工作，那么基类中必须“<strong>至少要有一个虚函数</strong>”，否则结果可能不正确<br>(1) 因为只有虚函数的存在，这两个运算符才会使用指针或者引用所绑定的对象的动态类型（你new的那个类型）<br>(2) 只有一个虚函数，系统才会为你创建一个虚函数表<br>(3) 如果没有虚函数，可能最后的结果都是Human类型</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">Human* phuman &#x3D; new Man();
 phuman-&gt;eat();				&#x2F;&#x2F; 调用的是子类的eat()方法，原因是父类中的eat方法是虚函数</code></pre>
+
 <pre class="language-c++" data-language="c++"><code class="language-c++">但是如果是单独的子类当中的方法，直接使用 phuman-&gt;的方法无法调用
 phuman-&gt;manFunc(); 
 &#x2F;&#x2F; 这种情况下，我们不能先在父类中定义，然后再定义为虚函数，子类中同样写一个同名函数，太恶心了这种写法
 &#x2F;&#x2F; 这种情况，就需要使用RTTI- dynamic_cast</code></pre>
-<h3 id="二、dynamic-cast"><a class="header-anchor" href="#二、dynamic-cast">¶</a>二、dynamic_cast</h3>
-<p><strong>为了能够使父类的指针或引用转换为子类的指针或引用</strong></p>
+
+
+
+<h3 id="二、dynamic-cast"><a href="#二、dynamic-cast" class="headerlink" title="二、dynamic_cast"></a>二、dynamic_cast</h3><p><strong>为了能够使父类的指针或引用转换为子类的指针或引用</strong></p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">注意，能够成功转换是因为，在定义phuman时，是Human *phuman &#x3D; new Man();
 &#x2F;&#x2F; (1) 使用c语言风格的强制类型转换，但是可能会出现问题，不安全
 	 Man* p &#x3D; (Man*)phuman;
@@ -579,6 +580,7 @@ phuman-&gt;manFunc();
 	else &#123;
 		cout &lt;&lt; &quot;phuman不是Man类型&quot; &lt;&lt; endl;
 	&#125;</code></pre>
+
 <p>对于引用，如果使用dynamic_cast转换失败，则系统会抛出一个<strong>std::bad_cast</strong>的异常。使用<strong>try{}…catch(){};</strong></p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">Human &amp;q &#x3D; *phuman;		&#x2F;&#x2F; 这就是引用
 try &#123;
@@ -589,9 +591,8 @@ try &#123;
 catch (std::bad_cast) &#123;
     cout &lt;&lt; &quot;phuman实际上不是一个Man类型&quot; &lt;&lt; endl;
 &#125;</code></pre>
-<h3 id="三、typeid运算符"><a class="header-anchor" href="#三、typeid运算符">¶</a>三、typeid运算符</h3>
-<p>typeid(指针/引用)，也可以是typeid(表达式)<br>
-拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
+
+<h3 id="三、typeid运算符"><a href="#三、typeid运算符" class="headerlink" title="三、typeid运算符"></a>三、typeid运算符</h3><p>typeid(指针/引用)，也可以是typeid(表达式)<br>拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; typeid(指针&#x2F;引用)，也可以是typeid(表达式)
 &#x2F;&#x2F; 拿到对象类型信息，typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类&#x2F;类类型)
 cout &lt;&lt; typeid(*phuman).name() &lt;&lt; endl;		&#x2F;&#x2F; class Man              如果带上 * 所new的类型
@@ -614,8 +615,8 @@ cout &lt;&lt; typeid(&quot;bin&quot;).name() &lt;&lt; endl;
 if (typeid(*phuman) &#x3D;&#x3D; typeid(Man)) &#123;
 cout &lt;&lt; &quot;typeid(*phuman) &#x3D;&#x3D; typeid(Man)&quot; &lt;&lt; endl;
 &#125;</code></pre>
-<h3 id="四、type-info-类"><a class="header-anchor" href="#四、type-info-类">¶</a>四、type_info 类</h3>
-<p>typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
+
+<h3 id="四、type-info-类"><a href="#四、type-info-类" class="headerlink" title="四、type_info 类"></a>四、type_info 类</h3><p>typeid就会返回一个： 常量对象的引用，这个常量对象： 是一个标准库类型 type_info(类/类类型)</p>
 <pre class="language-c++" data-language="c++"><code class="language-c++">typeid返回的就是type_info（常量对象的引用）
 &#x2F;&#x2F; (1) .name()  返回一个c语言风格的字符串
 &#x2F;&#x2F; const表示返回的是一个常量引用，type_info表示返回值类型，typeid() 的返回值类型： 常量对象的引用
@@ -623,15 +624,14 @@ const type_info&amp; tp &#x3D; typeid(*phuman);
 cout &lt;&lt; tp.name() &lt;&lt; endl;			&#x2F;&#x2F; class Man
 
 &#x2F;&#x2F; (2) &#x3D;&#x3D; !&#x3D; </code></pre>
-<h3 id="五、RTTI-和-虚函数表"><a class="header-anchor" href="#五、RTTI-和-虚函数表">¶</a>五、RTTI 和 虚函数表</h3>
-<p>c++中，如果类里含有虚函数，编译器就会对该类产生一个<strong>虚函数表</strong></p>
+
+<h3 id="五、RTTI-和-虚函数表"><a href="#五、RTTI-和-虚函数表" class="headerlink" title="五、RTTI 和 虚函数表"></a>五、RTTI 和 虚函数表</h3><p>c++中，如果类里含有虚函数，编译器就会对该类产生一个<strong>虚函数表</strong></p>
 <blockquote>
-<p>虚函数表里有很多项，每一项都是一个指针，每个指针指向的是这个类里的各个虚函数的入口地址<br>
-虚函数表项里，第一个表项很特殊，它指向的不是虚函数的入口地址，而是这个类所关联的type_info对象<br>
-phuman对象里有一个我们看不见的指针，这个指针指向的是这个对象所在的类Man里的虚函数表</p>
+<p>虚函数表里有很多项，每一项都是一个指针，每个指针指向的是这个类里的各个虚函数的入口地址<br>虚函数表项里，第一个表项很特殊，它指向的不是虚函数的入口地址，而是这个类所关联的type_info对象<br>phuman对象里有一个我们看不见的指针，这个指针指向的是这个对象所在的类Man里的虚函数表</p>
 </blockquote>
 <p><a href>更多内容</a></p>
 </font>
+
 
                 
             </div>

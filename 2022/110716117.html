@@ -6,12 +6,11 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Pytorch学习2-基础代码解析, Software Engineer">
     <meta name="description" content="
-¶一、数据加载模块
-DataSet: 提供一种方式去获取数据及其label
-DataLoader: 为后面的网络提供不同的数据形式
+
+一、数据加载模块DataSet: 提供一种方式去获取数据及其labelDataLoader: 为后面的网络提供不同的数据形式
 from torch.utils.data import Dataset
 import cv2
-from ">
+from PI">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,7 +419,7 @@ from ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -444,9 +443,8 @@ from ">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <font face="Times New Roman, 楷体">
-<h4 id="一、数据加载模块"><a class="header-anchor" href="#一、数据加载模块">¶</a>一、数据加载模块</h4>
-<p>DataSet: 提供一种方式去获取数据及其label<br>
-DataLoader: 为后面的网络提供不同的数据形式</p>
+
+<h4 id="一、数据加载模块"><a href="#一、数据加载模块" class="headerlink" title="一、数据加载模块"></a>一、数据加载模块</h4><p>DataSet: 提供一种方式去获取数据及其label<br>DataLoader: 为后面的网络提供不同的数据形式</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> Dataset
 <span class="token keyword">import</span> cv2
 <span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
@@ -492,8 +490,7 @@ img<span class="token punctuation">,</span> label <span class="token operator">=
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>ants_dataset<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment"># 124</span></code></pre>
 <p><img src="/2022/110716117/DataSet%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt></p>
-<h4 id="二、tensorboard数据展示模块"><a class="header-anchor" href="#二、tensorboard数据展示模块">¶</a>二、tensorboard数据展示模块</h4>
-<p>tensorboard的使用</p>
+<h4 id="二、tensorboard数据展示模块"><a href="#二、tensorboard数据展示模块" class="headerlink" title="二、tensorboard数据展示模块"></a>二、tensorboard数据展示模块</h4><p>tensorboard的使用</p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data <span class="token keyword">import</span> Dataset
 <span class="token keyword">import</span> cv2
@@ -522,13 +519,10 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
 <span class="token comment"># 这里是会出现多个函数，最后扭在一起是多个函数进行了一个拟合，需要把logs文件夹里面的内容删除即可</span>
 <span class="token comment"># terminal当中编写命令： tensorboard --logdir=logs --port=6007</span>
 </code></pre>
+
 <p><img src="/2022/110716117/tensorboard%E8%BF%87%E7%A8%8B.png" alt></p>
 <p><img src="/2022/110716117/tensorboard%E6%95%88%E6%9E%9C%E5%9B%BE.png" alt></p>
-<h4 id="三、transforms"><a class="header-anchor" href="#三、transforms">¶</a>三、transforms</h4>
-<p>在python当中的用法 —&gt;tensor的数据类型<br>
-通过transforms.ToTensor去看两个问题：<br>
-1、transforms该如何使用（python）<br>
-2、为什么我们需要Tensor数据类型</p>
+<h4 id="三、transforms"><a href="#三、transforms" class="headerlink" title="三、transforms"></a>三、transforms</h4><p>在python当中的用法 —&gt;tensor的数据类型<br>通过transforms.ToTensor去看两个问题：<br>1、transforms该如何使用（python）<br>2、为什么我们需要Tensor数据类型</p>
 <p><img src="/2022/110716117/transforms%E7%BB%93%E6%9E%9C%E5%8F%8A%E7%94%A8%E6%B3%95.png" alt></p>
 <pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
 <span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
@@ -578,8 +572,8 @@ tensor_img <span class="token operator">=</span> tensor_trans<span class="token 
 writer<span class="token punctuation">.</span>add_image<span class="token punctuation">(</span><span class="token string">"Tensor_img"</span><span class="token punctuation">,</span> tensor_img<span class="token punctuation">)</span>
 
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<h5 id="transforms常见的函数"><a class="header-anchor" href="#transforms常见的函数">¶</a>transforms常见的函数</h5>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+<h5 id="transforms常见的函数"><a href="#transforms常见的函数" class="headerlink" title="transforms常见的函数"></a>transforms常见的函数</h5><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 <span class="token keyword">from</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>tensorboard <span class="token keyword">import</span> SummaryWriter
 <span class="token keyword">from</span> torchvision <span class="token keyword">import</span> transforms
 
@@ -638,6 +632,8 @@ trans_compose_2 <span class="token operator">=</span> transforms<span class="tok
 writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p><img src="/2022/110716117/transform%E6%96%B9%E6%B3%95.png" alt></p>
 </font>
+
+
 
                 
             </div>
