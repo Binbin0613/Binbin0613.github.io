@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Linux服务器实战03-服务器目录设计</title>
+      <link href="/2023/101616166.html"/>
+      <url>/2023/101616166.html</url>
+      
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="Linux服务器实战03-服务器目录设计"><a href="#Linux服务器实战03-服务器目录设计" class="headerlink" title="Linux服务器实战03-服务器目录设计"></a>Linux服务器实战03-服务器目录设计</h2><h3 id="1、服务器目录结构"><a href="#1、服务器目录结构" class="headerlink" title="1、服务器目录结构"></a>1、服务器目录结构</h3><p>tree的安装</p><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> tree</code></pre><p>使用命令查看nginx服务器的目录结构</p><pre class="language-bash" data-language="bash"><code class="language-bash">auto / :编译相关的脚本，可执行文件configure一会会用到这些脚本cc /   <span class="token builtin class-name">:</span> 检查编译器的脚本lib /  <span class="token builtin class-name">:</span> 检查依赖库的脚本os /   <span class="token builtin class-name">:</span> 检查操作系统类型的脚本<span class="token builtin class-name">type</span> / <span class="token builtin class-name">:</span> 检查平台类型的脚本CHANGES <span class="token builtin class-name">:</span> 修复的bug，新增加的功能说明CHANGES.ru <span class="token builtin class-name">:</span> 俄语版CHANGESconf / <span class="token builtin class-name">:</span> 默认的配置文件configure <span class="token builtin class-name">:</span> 编译nginx之前必须先执行本脚本以生成一些必要的中间文件contrib / <span class="token builtin class-name">:</span> 脚本和工具，典型的是vim高亮工具 <span class="token function">vim</span> / <span class="token builtin class-name">:</span> vim高亮工具html / <span class="token builtin class-name">:</span> 欢迎界面和错误界面相关的html文件<span class="token function">man</span> / <span class="token builtin class-name">:</span> nginx帮助文件目录src / <span class="token builtin class-name">:</span> nginx源码目录core <span class="token builtin class-name">:</span> 核心代码event <span class="token builtin class-name">:</span> event<span class="token punctuation">(</span>事件<span class="token punctuation">)</span>模块相关代码http <span class="token builtin class-name">:</span> http<span class="token punctuation">(</span>web服务<span class="token punctuation">)</span>模块相关代码mail <span class="token builtin class-name">:</span> 邮件模块相关代码os <span class="token builtin class-name">:</span> 操作系统相关代码stream <span class="token builtin class-name">:</span> 流处理相关代码objs/:执行了configure生成的中间文件目录ngx_modules.c：内容决定了我们一会编译nginx的时候有哪些模块会被编译到nginx里边来。Makefile:执行了configure脚本产生的编译规则文件，执行make命令时用到</code></pre></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux服务器实战02-正反向代理，负载均衡，动静分离</title>
       <link href="/2023/101616165.html"/>
       <url>/2023/101616165.html</url>
@@ -1782,7 +1811,7 @@
       <link href="/2022/102416107.html"/>
       <url>/2022/102416107.html</url>
       
-        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="欢迎大家访问我的博客Binbin0613"><a href="#欢迎大家访问我的博客Binbin0613" class="headerlink" title="欢迎大家访问我的博客Binbin0613"></a><strong>欢迎大家访问我的博客<a href="Binbin0613.github.io">Binbin0613</a></strong></h2><h3 id="做一个自我介绍"><a href="#做一个自我介绍" class="headerlink" title="做一个自我介绍"></a>做一个自我介绍</h3><p>Bin，<a href="http://www.xhu.edu.cn/">XHU</a>软件工程本，<a href="https://sias.uestc.edu.cn/">UESTC</a>电子信息专硕，21岁大四在读身高170cm体重不说每天8点到23点待实验室周末无休还卡在毕设的码农一位！</p><blockquote><ul><li>爱好： 踢足球(大学基本没碰过 &#x1F605;)</li><li>学习方向： <a href="https://github.com/Binbin0613">REID</a> &nbsp; &nbsp; <a href="https://github.com/Binbin0613">Search</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">JAVA</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">Vue</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">React</a></li></ul></blockquote><p><img src="/2022/102416107/avatar.jpg" alt></p><h5 id="忘记说了：-2022年阿根廷必夺冠！！！"><a href="#忘记说了：-2022年阿根廷必夺冠！！！" class="headerlink" title="忘记说了： 2022年阿根廷必夺冠！！！"></a>忘记说了： 2022年阿根廷必夺冠！！！</h5><hr><p>那天晚上阳了，躺床上看的，后劲太大，2023.8.17-广东深圳</p><hr><h4 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info:"></a>More Info:</h4><p>QQ：3474251879<br>WeChat: Ilovedaisysomuch<br>Email: <a href="mailto:Binbin.0626@foxmail.com">Binbin.0626@foxmail.com</a><br>Github: <a href="https://github.com/Binbin0613">https://github.com/Binbin0613</a><br>Sina: 基本上不玩，偶尔看看</p></font>]]></content>
+        <content type="html"><![CDATA[<font face="Times New Roman, 楷体"><h2 id="欢迎大家访问我的博客Binbin0613"><a href="#欢迎大家访问我的博客Binbin0613" class="headerlink" title="欢迎大家访问我的博客Binbin0613"></a><strong>欢迎大家访问我的博客<a href="Binbin0613.github.io">Binbin0613</a></strong></h2><h3 id="做一个自我介绍"><a href="#做一个自我介绍" class="headerlink" title="做一个自我介绍"></a>做一个自我介绍</h3><p>Bin，<a href="http://www.xhu.edu.cn/">XHU</a>软件工程本，<a href="https://sias.uestc.edu.cn/">UESTC</a>电子信息专硕，21岁大四在读身高170cm体重不说每天8点到23点待实验室周末无休还卡在毕设的码农一位！</p><blockquote><ul><li>爱好： 踢足球(大学基本没碰过 &#x1F605;)</li><li>学习方向： <a href="https://github.com/Binbin0613">REID</a> &nbsp; &nbsp; <a href="https://github.com/Binbin0613">Search</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">JAVA</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">Vue</a> &nbsp;&nbsp; <a href="https://github.com/Binbin0613">React</a></li></ul></blockquote><p><img src="/2022/102416107/avatar.jpg" alt></p><h5 id="忘记说了：-2022年阿根廷必夺冠！！！"><a href="#忘记说了：-2022年阿根廷必夺冠！！！" class="headerlink" title="忘记说了： 2022年阿根廷必夺冠！！！"></a>忘记说了： 2022年阿根廷必夺冠！！！</h5><hr><p>那天晚上阳了，躺床上看的，后劲太大，2023.8.17-广东深圳</p><hr><h4 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info:"></a>More Info:</h4><p>QQ：3474251879<br>WeChat: Ilovedaisysomuch<br>Email: <a href="mailto:Binbin.0626@foxmail.com">Binbin.0626@foxmail.com</a><br>Github: <a href="https://github.com/Binbin0613">https://github.com/Binbin0613</a><br>Sina: 基本上不玩，偶尔看看</p><p>Detial:</p><p><img src="/2022/102416107/1.png" alt></p><p><img src="/2022/102416107/2.png" alt></p><p><img src="/2022/102416107/3.png" alt></p><p><img src="/2022/102416107/4.png" alt></p><p><img src="/2022/102416107/5.png" alt></p><p><img src="/2022/102416107/6.png" alt></p><p><img src="/2022/102416107/7.png" alt></p></font>]]></content>
       
       
       <categories>
