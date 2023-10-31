@@ -402,14 +402,14 @@ Linux环境下遇到的问题汇总：#、相关问题1、解决 Linux 系统，
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-13
+                    2023-10-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    519
+                    677
                 </div>
                 
 
@@ -474,6 +474,21 @@ Debian系列使用的命令是：apt-get</code></pre>
 将“编码”从“ UTF-8”更改为“ ANSI”。
 
 再次Make成功</code></pre>
+
+<h4 id="5、linux上执行代码出现-error-‘to-string’-is-not-a-member-of-‘std’-C-版本问题"><a href="#5、linux上执行代码出现-error-‘to-string’-is-not-a-member-of-‘std’-C-版本问题" class="headerlink" title="5、linux上执行代码出现[error: ‘to_string’ is not a member of ‘std’],C++版本问题"></a>5、linux上执行代码出现[error: ‘to_string’ is not a member of ‘std’],C++版本问题</h4><pre class="language-c++" data-language="c++"><code class="language-c++">error: &#39;to_string&#39; is not a member of &#39;std&#39;
+error: &#39;thread&#39; is not a member of &#39;std&#39;</code></pre>
+
+<p>因为 to_string 和 thread 是 C++11 才支持的，所以出现这种错误的原因可能是编译时漏了支持 C++11 的编译选项。</p>
+<p>所以在进行编译的过程中，使用 <strong>-std=c++11</strong> 或者 <strong>-std=gnu++11</strong></p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">g++ -o LinuxBinClient LinuxBinClient.cpp -std&#x3D;c++11</code></pre>
+
+<p>如果使用的是cmake生成MakeFile的话，需要检查CmakeLists.txt的文件的C++配置，加上</p>
+<pre class="language-c++" data-language="c++"><code class="language-c++">## --- C++11 build flags ---
+add_definitions(-D_GLIBCXX_USE_C99&#x3D;1)
+ 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)</code></pre>
 
 
 
